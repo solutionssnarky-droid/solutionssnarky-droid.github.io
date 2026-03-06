@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The World is Changing. Is India Ready? | Geopolitics & Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<style>
+  :root {
+    --ink:       #1A1208;
+    --paper:     #FAF7F2;
+    --cream:     #F3EDE3;
+    --orange:    #D4520A;
+    --orange-lt: #F5E6DC;
+    --blue:      #1A3A6B;
+    --blue-lt:   #E0E8F5;
+    --red:       #B22222;
+    --red-lt:    #FDECEA;
+    --gold:      #B8860B;
+    --green:     #1E5C2E;
+    --green-lt:  #E6F4EA;
+    --mid:       #5C5244;
+    --rule:      #C8BFB0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--ink);
+    color: #C8BFB0;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 48px;
+  }
+  .topbar a { color: var(--orange); text-decoration: none; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 48px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 60%, rgba(212,82,10,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 30%, rgba(26,58,107,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; position: relative; }
+  .hero-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-kicker::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 2px;
+    background: var(--orange);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--orange);
+  }
+  .hero-sub {
+    font-size: 19px;
+    font-weight: 300;
+    color: #B0A898;
+    max-width: 580px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #7A6E62;
+    text-transform: uppercase;
+  }
+  .hero-meta span { color: #B0A898; }
+  .read-time {
+    background: rgba(212,82,10,0.15);
+    border: 1px solid rgba(212,82,10,0.3);
+    border-radius: 3px;
+    padding: 4px 10px;
+    color: var(--orange);
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 820px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .intro p { font-size: 20px; line-height: 1.8; color: #2A2218; margin-bottom: 20px; font-weight: 300; }
+  .intro p:first-child::first-letter {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 80px;
+    font-weight: 900;
+    float: left;
+    line-height: 0.72;
+    margin: 8px 12px 0 0;
+    color: var(--orange);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section { padding: 56px 0 40px; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 60px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 28px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 36px 0 10px;
+    color: var(--ink);
+  }
+  p { margin-bottom: 20px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── SHIFT CARDS ── */
+  .shift-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  @media (max-width: 640px) { .shift-grid { grid-template-columns: 1fr; } }
+
+  .shift-card {
+    background: var(--cream);
+    border-left: 4px solid var(--blue);
+    padding: 20px 22px;
+    border-radius: 0 6px 6px 0;
+  }
+  .shift-card h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--blue);
+  }
+  .shift-card p { font-size: 14.5px; color: var(--mid); line-height: 1.65; margin: 0; }
+
+  /* ── OPPORTUNITY / RISK CARDS ── */
+  .cards { display: flex; flex-direction: column; gap: 14px; margin: 28px 0; }
+
+  .card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+
+  .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    padding: 0;
+  }
+  .card-body { padding: 18px 22px; }
+  .card-body strong {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .card-body p { font-size: 14.5px; line-height: 1.65; color: var(--mid); margin: 0; }
+
+  .card.opp .card-icon { background: var(--green); }
+  .card.opp .card-body { background: var(--green-lt); }
+  .card.opp .card-body strong { color: var(--green); }
+
+  .card.risk .card-icon { background: var(--red); }
+  .card.risk .card-body { background: var(--red-lt); }
+  .card.risk .card-body strong { color: var(--red); }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    margin: 48px -32px;
+    padding: 36px 40px;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    border-radius: 4px;
+  }
+  .pullquote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 120px;
+    line-height: 0.6;
+    color: var(--orange);
+    position: absolute;
+    top: 28px; left: 28px;
+    opacity: 0.6;
+  }
+  .pullquote p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    padding-left: 48px;
+    margin: 0;
+    color: #EDE7DC;
+  }
+
+  /* ── STAT BAR ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 36px 0;
+  }
+  @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+  .stat-cell {
+    background: var(--paper);
+    padding: 24px 22px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--orange);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 15px;
+  }
+  .summary-table thead tr {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .summary-table thead th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 500;
+  }
+  .summary-table thead th:nth-child(2) { color: #7FCC99; }
+  .summary-table thead th:nth-child(3) { color: #FF9999; }
+  .summary-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .summary-table tbody tr:nth-child(even) td { background: var(--cream); }
+  .summary-table tbody td { padding: 13px 18px; line-height: 1.55; }
+  .summary-table tbody td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--mid);
+    font-weight: 500;
+  }
+  .summary-table tbody td:nth-child(2) { color: var(--green); }
+  .summary-table tbody td:nth-child(3) { color: var(--red); }
+
+  /* ── CONCLUSION ── */
+  .conclusion {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 72px 48px;
+    margin-top: 0;
+  }
+  .conclusion-inner { max-width: 820px; margin: 0 auto; }
+  .conclusion h2 {
+    color: var(--paper);
+    font-size: clamp(28px, 4vw, 42px);
+    margin-bottom: 28px;
+  }
+  .conclusion h2 em { font-style: italic; color: var(--orange); }
+  .conclusion p { color: #C0B8AC; font-size: 18px; line-height: 1.8; margin-bottom: 22px; }
+  .conclusion p strong { color: var(--paper); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #111008;
+    color: #5A524A;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 28px 48px;
+    text-align: center;
+    line-height: 1.9;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+
+  /* ── INLINE ACCENT ── */
+  .accent { color: var(--orange); font-weight: 600; }
+  .tag {
+    display: inline-block;
+    background: var(--orange-lt);
+    color: var(--orange);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>Geopolitics &amp; Growth — March 2026</span>
+  <span><a href="#">India Business Review</a></span>
+  <span class="read-time">8-min read</span>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Global Strategy · India Focus</div>
+    <h1>The World is Changing.<br/><em>Is India Ready?</em></h1>
+    <p class="hero-sub">How seismic shifts in global power are reshaping India's $205 billion service economy — for better and for worse.</p>
+    <div class="hero-meta">
+      <span>March 2026</span>
+      <span>·</span>
+      <span>Global Business</span>
+      <span>·</span>
+      <span class="read-time">⏱ 8-min read</span>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div style="background:var(--cream); border-bottom:1px solid var(--rule);">
+  <div class="container">
+    <div class="stat-row">
+      <div class="stat-cell">
+        <span class="stat-num">$205B</span>
+        <span class="stat-label">India Software Exports FY2024</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">45%</span>
+        <span class="stat-label">of Global GCCs based in India</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">5.8M</span>
+        <span class="stat-label">Strong Indian Tech Workforce</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="container">
+  <div class="intro">
+    <p>The world's power structure is shifting — fast. The old rulebook of free trade, stable alliances, and one dominant superpower? It's being torn up in real time.</p>
+    <p>For India — which has built a <span class="accent">$205 billion software and services empire</span> on the back of that old world order — this is a moment of enormous stakes. Some of these changes could supercharge India's growth. Others could quietly hollow it out.</p>
+    <p>Let's break it all down, simply.</p>
+  </div>
+</div>
+
+<!-- SECTION 1: WHAT'S CHANGING -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">Part I</div>
+    <h2>First, What's Actually Changing?</h2>
+    <p>Think of today's world like a major corporate restructuring: the old CEO (the U.S.) still has power, but everyone's stopped fully listening. New regional bosses are asserting themselves. And the whole org chart is being redrawn.</p>
+
+    <div class="shift-grid">
+      <div class="shift-card">
+        <h4>🇺🇸 🆚 🇨🇳 &nbsp; The Rivalry</h4>
+        <p>The U.S. and China are now in open strategic competition. Chips, AI, and rare minerals are being weaponised. Companies everywhere are scrambling to reduce China dependence — and looking for alternatives.</p>
+      </div>
+      <div class="shift-card">
+        <h4>🚧 &nbsp; Tariffs Are Back</h4>
+        <p>The U.S. slapped India with 50% tariffs on goods in 2025 — its highest against any major partner. After tense negotiations, this fell to 18% in early 2026. The era of penalty-free trade is over.</p>
+      </div>
+      <div class="shift-card">
+        <h4>🌐 &nbsp; The World is Splitting</h4>
+        <p>Countries are clustering around shared interests. The EU, BRICS, and Gulf states are building their own economic lanes. Everyone is now optimising not just for cost — but for geopolitical safety.</p>
+      </div>
+      <div class="shift-card">
+        <h4>🤖 &nbsp; AI is the New Oil</h4>
+        <p>Artificial intelligence has become the defining technology of this era. The nation and corporation that leads in AI wins — in commerce, defence, and diplomacy. This is driving a global scramble for AI talent.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: OPPORTUNITIES -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">Part II</div>
+    <h2>The Good News for India 🇮🇳</h2>
+    <p>Here's where India catches a tailwind — potentially a massive one.</p>
+
+    <div class="cards">
+      <div class="card opp">
+        <div class="card-icon">🏢</div>
+        <div class="card-body">
+          <strong>Companies are fleeing China — and landing in India</strong>
+          <p>When Western companies move operations out of China, India is the most natural home for Global Capability Centres (GCCs) — the offshore hubs where IT, analytics, and engineering work gets done. India already hosts <strong>45% of all GCCs globally</strong>. That number is growing fast.</p>
+        </div>
+      </div>
+      <div class="card opp">
+        <div class="card-icon">🤖</div>
+        <div class="card-body">
+          <strong>The AI boom is India's boom</strong>
+          <p>The world needs AI engineers, data scientists, and software architects — by the millions. India has them. India's AI market is projected to hit <strong>$28.8 billion by 2026</strong> and grow at 45% per year. The government has invested $1.2 billion in GPU infrastructure to make India a genuine AI hub.</p>
+        </div>
+      </div>
+      <div class="card opp">
+        <div class="card-icon">💰</div>
+        <div class="card-body">
+          <strong>Tariffs hit goods. Services? Not so much.</strong>
+          <p>Here's India's quiet superpower: the U.S. tariff war targets physical goods — cars, steel, textiles. Software, BPO, and IT services cross borders as data. India's <strong>$205 billion services exports</strong> have continued to grow even as goods exports stumbled.</p>
+        </div>
+      </div>
+      <div class="card opp">
+        <div class="card-icon">🌍</div>
+        <div class="card-body">
+          <strong>India is friends with everyone</strong>
+          <p>Because India has refused to fully align with any single power bloc, it can do business with the U.S., the Gulf, Russia, and the EU simultaneously. As the world fragments, this "strategic autonomy" opens new markets in the <strong>Middle East, Africa, and Southeast Asia</strong>.</p>
+        </div>
+      </div>
+      <div class="card opp">
+        <div class="card-icon">📱</div>
+        <div class="card-body">
+          <strong>India's own digital economy is booming</strong>
+          <p>With 1.4 billion people increasingly online, Indian IT firms no longer depend solely on foreign clients. Domestic IT revenues hit <strong>$58 billion in FY2025</strong>, growing 7%. Fintech, healthtech, and edtech are creating a services boom at home.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>India already hosts 45% of all Global Capability Centres worldwide — and the pipeline is only growing as Western firms accelerate their exit from China.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: RISKS -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">Part III</div>
+    <h2>The Warnings India Can't Ignore ⚠️</h2>
+    <p>It's not all smooth sailing. The same shifts creating opportunity also carry real risk.</p>
+
+    <div class="cards">
+      <div class="card risk">
+        <div class="card-icon">📉</div>
+        <div class="card-body">
+          <strong>America's wallet is getting tighter</strong>
+          <p>About <strong>55% of India's IT exports</strong> go to the U.S. When the American economy slows — and it has — companies freeze IT spending. Infosys and Wipro both reported flat or negative growth expectations for 2026. This is the single biggest near-term risk.</p>
+        </div>
+      </div>
+      <div class="card risk">
+        <div class="card-icon">⚙️</div>
+        <div class="card-body">
+          <strong>AI can take jobs, not just create them</strong>
+          <p>The same AI wave creating demand for Indian engineers is automating the bread-and-butter work — routine coding, customer support, data entry — that built India's BPO empire. The sector must <strong>move up the value chain fast</strong>, or risk being hollowed out from below.</p>
+        </div>
+      </div>
+      <div class="card risk">
+        <div class="card-icon">🤝</div>
+        <div class="card-body">
+          <strong>Being friends with everyone has a price</strong>
+          <p>India's non-alignment is being tested. The U.S. literally tied trade tariffs to India's energy choices — forcing it to stop buying Russian oil as part of the February 2026 deal. Future pressure could force <strong>harder choices that damage other relationships</strong>.</p>
+        </div>
+      </div>
+      <div class="card risk">
+        <div class="card-icon">🌿</div>
+        <div class="card-body">
+          <strong>Europe's green rules are coming for vendors</strong>
+          <p>The EU's Carbon Border Adjustment Mechanism is now live. While it targets goods today, European clients are increasingly extending <strong>sustainability requirements to their service vendors</strong>. Indian firms supporting carbon-heavy industries may face new compliance costs.</p>
+        </div>
+      </div>
+      <div class="card risk">
+        <div class="card-icon">⚡</div>
+        <div class="card-body">
+          <strong>The competition is catching up</strong>
+          <p>Vietnam, the Philippines, Poland, and Mexico are aggressively courting the same outsourcing dollars. They often have <strong>better trade deals</strong> with Western countries. And as Indian tech salaries rise, the cost advantage that once set India apart is compressing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: SUMMARY TABLE -->
+<div class="container">
+  <div class="section">
+    <div class="section-label">Part IV</div>
+    <h2>The Snapshot: Wins vs. Watch-Outs</h2>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Geopolitical Shift</th>
+          <th>✅ Opportunity</th>
+          <th>⚠️ Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>U.S.–China Decoupling</td>
+          <td>GCC expansion, China+1 routing</td>
+          <td>Pressure to pick sides</td>
+        </tr>
+        <tr>
+          <td>AI &amp; Tech Competition</td>
+          <td>AI services, deep-tech exports</td>
+          <td>Automation of BPO jobs</td>
+        </tr>
+        <tr>
+          <td>U.S. Tariff Policy</td>
+          <td>Services bypass goods tariffs</td>
+          <td>Client budget cuts, U.S. slowdown</td>
+        </tr>
+        <tr>
+          <td>Rise of Multipolarity</td>
+          <td>New markets: Gulf, Africa, SEA</td>
+          <td>Forced strategic concessions</td>
+        </tr>
+        <tr>
+          <td>Supply Chain Rewiring</td>
+          <td>Nearshoring support services</td>
+          <td>Competition from Vietnam, Mexico</td>
+        </tr>
+        <tr>
+          <td>EU Green Regulations</td>
+          <td>ESG advisory services demand</td>
+          <td>Vendor sustainability requirements</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CONCLUSION -->
+<div class="conclusion">
+  <div class="conclusion-inner">
+    <div class="section-label" style="color:var(--orange);">Conclusion</div>
+    <h2>So What Does India Do <em>Now?</em></h2>
+    <p>India has been here before. Y2K, the 2008 financial crisis, COVID-19 — each time the world went sideways, India's service sector adapted and emerged stronger.</p>
+    <p>But this moment is different in scale. <strong>The moves that worked for the last 30 years</strong> — cheap labour, English fluency, large workforce — won't be enough for the next 30. India needs to race up the value chain: deeper AI capability, higher-skilled talent, diversified markets, and smarter diplomacy.</p>
+    <p>The good news? India has everything it needs to do exactly that. The question is whether it moves fast enough.</p>
+
+    <div class="pullquote" style="margin:40px 0 0; background:#1A1208; border:1px solid #2A2218;">
+      <p style="color:#EDE7DC;">This is India's decade to define. The world is being reshuffled — and India holds some very good cards.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Sources: NASSCOM FY2025 IT Report · Council on Foreign Relations · East Asia Forum · CSIS India Strategic Choices Report (Jan 2026) · Observer Research Foundation</p>
+  <p style="margin-top:8px; color:#3A3228;">© 2026 India Business Review · Geopolitics &amp; Growth Series</p>
+</div>
+
+</body>
+</html>
