@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Your Brand Before AI Does It For You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-2: #1c2129;
+      --border: #30363d;
+      --border-subtle: #21262d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+      --accent: #f0883e;
+      --accent-soft: rgba(240, 136, 62, 0.12);
+      --accent-glow: rgba(240, 136, 62, 0.06);
+      --green: #3fb950;
+      --blue: #58a6ff;
+      --tag-bg: rgba(88, 166, 255, 0.1);
+      --tag-color: #58a6ff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Top nav bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .topbar-left .repo {
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .topbar-left .sep { color: var(--text-muted); }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      background: var(--surface);
+    }
+
+    .badge.star { color: #d29922; border-color: rgba(210, 153, 34, 0.3); background: rgba(210, 153, 34, 0.08); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(240, 136, 62, 0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(88, 166, 255, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      border: 1px solid rgba(88, 166, 255, 0.2);
+    }
+
+    .tag.orange {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(240, 136, 62, 0.25);
+    }
+
+    .hero h1 {
+      font-family: 'Newsreader', serif;
+      font-weight: 500;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      max-width: 720px;
+      margin: 0 auto 16px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 0 auto 28px;
+      font-weight: 300;
+      font-style: italic;
+      font-family: 'Newsreader', serif;
+    }
+
+    .hero-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero-footer span { display: flex; align-items: center; gap: 5px; }
+
+    /* Layout */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+
+    /* Article */
+    article { min-width: 0; }
+
+    .lead {
+      font-family: 'Newsreader', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 32px 0;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card:hover { border-color: var(--accent); }
+
+    .stat-card .num {
+      font-family: 'Newsreader', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    article h2 {
+      font-family: 'Newsreader', serif;
+      font-size: 1.65rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      letter-spacing: -0.01em;
+    }
+
+    article h2:first-of-type { margin-top: 8px; }
+
+    article h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 32px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pillar-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(240, 136, 62, 0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    article p {
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+      font-size: 15.5px;
+    }
+
+    article p strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    article p em { color: var(--text-primary); font-style: italic; }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 20px;
+      margin: 24px 0;
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--text-primary);
+    }
+
+    .formula-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    .ai-cant-list {
+      list-style: none;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ai-cant-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      transition: border-color 0.2s;
+    }
+
+    .ai-cant-list li:hover { border-color: var(--border); }
+
+    .ai-cant-list li strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .x-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(248, 81, 73, 0.15);
+      border: 1px solid rgba(248, 81, 73, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 10px;
+      color: #f85149;
+      margin-top: 1px;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    @media (max-width: 600px) { .action-grid { grid-template-columns: 1fr; } .stat-row { grid-template-columns: 1fr; } }
+
+    .action-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .action-card h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .action-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .action-card ul li {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .action-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 11px;
+      top: 2px;
+    }
+
+    .closing {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+      margin: 40px 0 0;
+      text-align: center;
+    }
+
+    .closing p {
+      font-family: 'Newsreader', serif;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .closing .subtext {
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #0d1117;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .cta-btn:hover { opacity: 0.88; }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .sidebar-card h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toc-list li a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 6px;
+      border-radius: 5px;
+      transition: all 0.15s;
+    }
+
+    .toc-list li a:hover {
+      color: var(--text-primary);
+      background: var(--surface-2);
+    }
+
+    .toc-list li a::before {
+      content: '#';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .sidebar-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ss-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .ss-row .key { color: var(--text-muted); }
+    .ss-row .val { color: var(--text-primary); font-weight: 500; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .ss-row .val.green { color: var(--green); }
+
+    .divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 36px 0;
+    }
+
+    /* footer */
+    .post-footer {
+      padding: 24px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top nav -->
+  <nav class="topbar">
+    <div class="topbar-left">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" style="color:#8b949e"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span class="repo">personal-brand-in-ai-era</span>
+      <span class="sep">/</span>
+      <span>README.md</span>
+    </div>
+    <div class="topbar-right">
+      <span class="badge star">★ 2.4k</span>
+      <span class="badge">Fork 318</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-meta">
+      <span class="tag orange">AI &amp; Work</span>
+      <span class="tag">Personal Brand</span>
+      <span class="tag">Career</span>
+    </div>
+    <h1>Build Your Brand Before <em>AI</em> Does It For You</h1>
+    <p class="hero-subtitle">In a world where AI can do almost everything — your humanity is the one thing it can't replicate.</p>
+    <div class="hero-footer">
+      <span>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 8a3 3 0 100-6 3 3 0 000 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3z"/></svg>
+        Editorial Team
+      </span>
+      <span>· March 7, 2026</span>
+      <span>· 8 min read</span>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <div class="layout">
+    <article>
+
+      <p class="lead">Here's something nobody wants to say out loud: AI isn't just changing how we work. It's quietly deciding who gets to keep working.</p>
+
+      <p>Klarna replaced the equivalent of 700 full-time employees with AI. Salesforce trimmed its customer support team from 9,000 to 5,000. Across industries, roles that once took teams of people are now handled by a model running on a server somewhere.</p>
+
+      <p>The World Economic Forum estimates 92 million jobs will be displaced by 2030. And 44% of core professional skills will need to change within five years. <strong>That's not a distant problem. That's Tuesday.</strong></p>
+
+      <div class="stat-row">
+        <div class="stat-card"><span class="num">92M</span><span class="label">jobs displaced by 2030 (WEF)</span></div>
+        <div class="stat-card"><span class="num">44%</span><span class="label">of core skills changing in 5 years</span></div>
+        <div class="stat-card"><span class="num">170M</span><span class="label">new roles expected to emerge</span></div>
+      </div>
+
+      <p>But here's the part that usually gets buried in the doom: 170 million new jobs are expected to emerge in that same period. The economy isn't collapsing. It's reshuffling. And the people who land well on the other side share one thing — <strong>they've built a brand that's genuinely theirs.</strong></p>
+
+      <h2>Why Your Brand Matters More Now Than Ever</h2>
+
+      <p>AI can write the report. It can draft the email, build the deck, analyze the data, and generate the strategy memo — faster than you, and without taking a lunch break. What it can't do is be <em>you</em>.</p>
+
+      <p>It can't walk into a room carrying ten years of hard-won experience. It can't hold a genuinely unpopular opinion because it lived through the consequences of the alternative. It can't build the kind of trust that comes from consistently showing up, doing good work, and being the person someone calls when things get complicated.</p>
+
+      <div class="callout">"What remains uniquely human is judgment, creativity, situational awareness, and the ability to connect with other people." — McKinsey</div>
+
+      <p>As AI floods the internet with content that is technically correct but emotionally empty, <strong>the rarest thing online is now a genuine human voice.</strong> 92% of professionals consider a strong personal brand critical for career advancement. 78% of top earners attribute most of their opportunities directly to a clearly defined one. That's not a coincidence. That's a signal.</p>
+
+      <h2>Let's Redefine "Personal Brand"</h2>
+
+      <p>When most people hear "personal brand," they think: LinkedIn hustle culture. Daily posting. Aesthetic headshots. Follower counts. That's not what we're talking about.</p>
+
+      <p>A real personal brand in 2026 is simpler and harder than that. It's <strong>a clear, consistent reputation built around what you genuinely know and how you actually help people.</strong> Nothing more. Nothing performed.</p>
+
+      <p>Google's E-E-A-T framework — Experience, Expertise, Authoritativeness, Trustworthiness — now applies to individuals just as much as companies. Your digital footprint is your new résumé. AI tools and real people alike check it before they trust you, hire you, or recommend you. The shift happening right now is from <em>performance</em> to <em>ownership</em>.</p>
+
+      <h2>5 Ways to Build a Brand That Holds Up</h2>
+
+      <h3><span class="pillar-num">01</span> Get Specific — Uncomfortably Specific</h3>
+      <p>Broad is forgettable. Specific is what people remember and repeat. There's a big difference between "I help businesses grow" and "I help early-stage fintech founders close their first 50 enterprise clients." The second one has a face, a problem, and a promise.</p>
+      <div class="formula-block">→ "I help [specific person] achieve [specific outcome] through [your distinct approach]."</div>
+      <p>The more specific you are, the more magnetic you become — because you stop speaking to everyone and start actually reaching someone.</p>
+
+      <h3><span class="pillar-num">02</span> Let Your Story Do the Heavy Lifting</h3>
+      <p>People don't trust polished personas. They trust people who've been through something and come out smarter for it. Your pivots, your failures, the time you got it completely wrong — that's not baggage. That's material.</p>
+      <p>Share what you've actually learned. Take a stance on something you care about. Let people see the thinking behind the work, not just the finished product.</p>
+
+      <h3><span class="pillar-num">03</span> Go Deep on One Channel, Not Thin Across All</h3>
+      <p>You don't need to be everywhere. You need to matter <em>somewhere</em>. Pick the one or two platforms where your audience actually spends time. A focused newsletter, a strong LinkedIn presence, a podcast with a loyal niche — any of these beats posting everywhere and resonating nowhere.</p>
+
+      <h3><span class="pillar-num">04</span> Use AI to Amplify You — Not Replace You</h3>
+      <p>AI is genuinely useful for structuring ideas, repurposing content, researching topics, and editing drafts. That's leverage. Use it. But the moment AI starts forming your perspective — deciding what you believe, what you stand for, how you sound — you've handed over the one thing that made your brand worth having.</p>
+      <p>Train your tools on your writing. Brief them on your values. Let them handle the mechanical work so you can focus on the thinking that only you can do.</p>
+
+      <h3><span class="pillar-num">05</span> Build Trust First, Visibility Second</h3>
+      <p>Being seen is easy now. AI can generate content at scale. What's genuinely rare is being <em>trusted</em>. A small, deeply engaged audience that trusts you will outperform a large, passive one every time — in opportunities, referrals, and staying power.</p>
+
+      <div class="divider"></div>
+
+      <h2>What AI Actually Can't Touch</h2>
+      <ul class="ai-cant-list">
+        <li><span class="x-icon">✕</span><div><strong>Read a room</strong> Understanding what's really going on beneath the surface of a conversation.</div></li>
+        <li><span class="x-icon">✕</span><div><strong>Make the call under uncertainty</strong> Judgment in ambiguous, high-stakes situations with real consequences.</div></li>
+        <li><span class="x-icon">✕</span><div><strong>Build earned trust</strong> The kind that takes years of consistency — not a convincing bio.</div></li>
+        <li><span class="x-icon">✕</span><div><strong>Hold a genuinely original point of view</strong> Shaped by real failure and hard-won experience.</div></li>
+        <li><span class="x-icon">✕</span><div><strong>Connect emotionally</strong> In a way that actually lands with another human being.</div></li>
+      </ul>
+
+      <p>These aren't soft skills. Organizations with highly engaged, human-led teams see 23% higher profitability (Gallup). These advantages don't disappear with automation — they compound.</p>
+
+      <div class="divider"></div>
+
+      <h2>Start Small, But Start Now</h2>
+      <div class="action-grid">
+        <div class="action-card">
+          <h4>// This Week</h4>
+          <ul>
+            <li>Google yourself — does what comes up match how you want to be known?</li>
+            <li>Write one sentence: who you help, what you help them do, how you do it differently.</li>
+            <li>Post one genuine, specific thing in your area of expertise.</li>
+          </ul>
+        </div>
+        <div class="action-card">
+          <h4>// This Month</h4>
+          <ul>
+            <li>Choose one platform. Commit to 90 days of consistent presence.</li>
+            <li>Start documenting your work publicly — even in short, imperfect form.</li>
+            <li>Train your AI tools on your voice. Feed them your best writing.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="closing">
+        <p>"Your personal brand is the moat that AI cannot cross."</p>
+        <p class="subtext">Build that signal now. Make it specific, make it real, and let it compound. The window is open.</p>
+        <a href="#" class="cta-btn">Drop a Comment →</a>
+      </div>
+
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h4>Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#">Why Your Brand Matters</a></li>
+          <li><a href="#">Redefining Personal Brand</a></li>
+          <li><a href="#">5 Ways to Build It</a></li>
+          <li><a href="#">What AI Can't Touch</a></li>
+          <li><a href="#">Start Now</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h4>By the Numbers</h4>
+        <div class="sidebar-stat">
+          <div class="ss-row"><span class="key">Read time</span><span class="val">~8 min</span></div>
+          <div class="ss-row"><span class="key">Published</span><span class="val">Mar 7, 2026</span></div>
+          <div class="ss-row"><span class="key">Jobs displaced</span><span class="val" style="color:#f85149">92M</span></div>
+          <div class="ss-row"><span class="key">Jobs emerging</span><span class="val green">170M</span></div>
+          <div class="ss-row"><span class="key">Brand matters to</span><span class="val green">92%</span></div>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h4>Tags</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span class="tag">AI</span>
+          <span class="tag">Branding</span>
+          <span class="tag orange">2026</span>
+          <span class="tag">Career</span>
+          <span class="tag">Leadership</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="post-footer">
+    <span>© 2026</span>
+    <span>·</span>
+    <span>personal-brand-in-ai-era</span>
+    <span>·</span>
+    <span>MIT License</span>
+  </footer>
+
+</body>
+</html>
