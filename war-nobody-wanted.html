@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The War Nobody Wanted — What It Means for India</title>
+  <meta name="description" content="Israel, Iran, America, a dead billionaire's files, and India — somehow — right in the middle of all of it. A plain-language read with numbers you'll actually feel." />
+  <meta property="og:title" content="The War Nobody Wanted (And Everyone Saw Coming)" />
+  <meta property="og:description" content="What the Israel–Iran–US conflict actually means for India — in numbers you'll feel at the pump, in your EMI, and in your family's remittances." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:        #1a1208;
+      --ink-mid:    #3d3020;
+      --ink-soft:   #7a6a52;
+      --ink-faint:  #b5a48c;
+      --paper:      #f9f5ee;
+      --paper-warm: #f2ead8;
+      --paper-card: #fffef9;
+      --saffron:    #d4611a;
+      --saffron-lt: #f0a060;
+      --navy:       #1c3356;
+      --navy-lt:    #2e5080;
+      --red:        #b83232;
+      --green:      #2d6a4f;
+      --rule:       #d4c9b0;
+      --mono:       'JetBrains Mono', monospace;
+      --serif:      'Source Serif 4', Georgia, serif;
+      --display:    'Playfair Display', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, var(--saffron), var(--red));
+      width: 0%; z-index: 100; transition: width 0.1s linear;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-texture {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+      pointer-events: none;
+    }
+    .header-inner {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 40px 64px;
+    }
+    .kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--saffron-lt);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .kicker::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--saffron-lt);
+    }
+    h1.headline {
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    h1.headline em {
+      font-style: italic;
+      color: var(--saffron-lt);
+    }
+    .subhead {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+    }
+    .meta-item {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .meta-item span { color: rgba(255,255,255,0.7); }
+
+    /* ── FEATURE STAT STRIP ── */
+    .stat-strip {
+      background: var(--saffron);
+      padding: 0;
+      overflow: hidden;
+    }
+    .stat-strip-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .strip-stat {
+      padding: 28px 24px 28px 0;
+      border-right: 1px solid rgba(255,255,255,0.25);
+    }
+    .strip-stat:last-child { border-right: none; padding-left: 24px; }
+    .strip-stat:first-child { padding-left: 0; }
+    .strip-num {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .strip-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 40px;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: var(--paper-warm);
+      border-left: 4px solid var(--saffron);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      border-radius: 0 4px 4px 0;
+    }
+    .toc-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+    .toc ol li {
+      counter-increment: toc;
+      margin-bottom: 8px;
+    }
+    .toc ol li::before {
+      content: counter(toc, decimal-leading-zero) ". ";
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--saffron);
+      margin-right: 4px;
+    }
+    .toc a {
+      color: var(--ink-mid);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .toc a:hover { color: var(--saffron); border-color: var(--saffron); }
+
+    /* Section headings */
+    .section { margin-bottom: 64px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    h2.section-title {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Body text */
+    p { margin-bottom: 1.4em; color: var(--ink-mid); font-weight: 300; }
+    p strong { font-weight: 600; color: var(--ink); }
+
+    /* Snark callout */
+    .snark {
+      border-left: 3px solid var(--saffron-lt);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: rgba(212, 97, 26, 0.04);
+    }
+    .snark p {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin: 0;
+      font-weight: 400;
+    }
+
+    /* Stat cards */
+    .stat-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0;
+      margin: 36px 0;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--paper-card);
+      box-shadow: 0 2px 16px rgba(28,51,86,0.07);
+    }
+    .stat-card-num {
+      background: var(--navy);
+      color: #fff;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      text-align: center;
+    }
+    .stat-card-num .num {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .stat-card-num.saffron-bg { background: var(--saffron); }
+    .stat-card-num.green-bg   { background: var(--green); }
+    .stat-card-num.red-bg     { background: var(--red); }
+    .stat-card-body {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+    }
+    .stat-card-body p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--ink-mid);
+    }
+    .stat-card-body p strong { color: var(--ink); }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 48px -20px;
+      padding: 40px 48px;
+      background: var(--ink);
+      color: #fff;
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      font-family: var(--display);
+      font-size: 8rem;
+      line-height: 0.7;
+      color: var(--saffron);
+      position: absolute;
+      top: 24px; left: 32px;
+      opacity: 0.4;
+    }
+    .pull-quote p {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #fff;
+      font-weight: 400;
+      line-height: 1.5;
+      margin: 0;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    /* Pro/con grid */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .col-head {
+      padding: 16px 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      font-weight: 600;
+    }
+    .col-head.green { background: var(--green); }
+    .col-head.red   { background: var(--red); }
+    .col-items { padding: 8px 0; background: var(--paper-card); }
+    .col-item {
+      padding: 10px 20px;
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+    }
+    .col-item:last-child { border-bottom: none; }
+    .col-item .icon { flex-shrink: 0; color: var(--ink-faint); }
+    .col-item.green-col .icon { color: var(--green); }
+    .col-item.red-col   .icon { color: var(--red); }
+
+    /* Prep section */
+    .prep-group { margin-bottom: 40px; }
+    .prep-group h3 {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .prep-list { list-style: none; }
+    .prep-list li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      border-bottom: 1px solid rgba(212,193,176,0.3);
+      font-weight: 300;
+    }
+    .prep-list li:last-child { border-bottom: none; }
+    .prep-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--saffron);
+      font-family: var(--mono);
+    }
+
+    /* Epstein box */
+    .epstein-box {
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      border-top: 4px solid var(--ink-soft);
+      padding: 32px;
+      margin: 32px 0;
+      border-radius: 0 0 4px 4px;
+    }
+    .epstein-box .box-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+    .epstein-box p { font-size: 0.95rem; margin-bottom: 0.8em; }
+    .epstein-box p:last-child { margin-bottom: 0; }
+
+    /* Final verdict */
+    .verdict {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f2040 100%);
+      color: #fff;
+      padding: 48px 48px;
+      margin: 48px -20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .verdict::before {
+      content: 'INDIA';
+      position: absolute;
+      right: -20px; bottom: -40px;
+      font-family: var(--display);
+      font-size: 10rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .verdict h2 {
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .verdict p {
+      color: rgba(255,255,255,0.75);
+      max-width: 640px;
+      font-weight: 300;
+      position: relative;
+    }
+    .verdict .verdict-snark {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.06);
+      border-left: 3px solid var(--saffron-lt);
+      position: relative;
+    }
+    .verdict .verdict-snark p {
+      font-style: italic;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    /* Sources */
+    .sources {
+      border-top: 1px solid var(--rule);
+      margin-top: 64px;
+      padding-top: 32px;
+    }
+    .sources-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 14px;
+    }
+    .sources p {
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.35);
+      padding: 32px 40px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.22s; }
+    .fade-up-d3 { animation-delay: 0.34s; }
+    .fade-up-d4 { animation-delay: 0.46s; }
+
+    /* Responsive */
+    @media (max-width: 680px) {
+      .header-inner { padding: 48px 24px 40px; }
+      .content-wrap { padding: 40px 24px; }
+      .stat-strip-inner { grid-template-columns: 1fr; }
+      .strip-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 16px 0; }
+      .strip-stat:last-child { border-bottom: none; }
+      .stat-card { grid-template-columns: 1fr; }
+      .stat-card-num { min-width: unset; padding: 18px; }
+      .two-col { grid-template-columns: 1fr; }
+      .pull-quote, .verdict { margin-left: 0; margin-right: 0; padding: 28px 24px; }
+      h1.headline { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ── HEADER ─────────────────────────────────────────── -->
+<header>
+  <div class="header-texture"></div>
+  <div class="header-inner">
+    <div class="kicker fade-up">Independent Analysis &nbsp;·&nbsp; March 2026</div>
+    <h1 class="headline fade-up fade-up-d1">
+      The War Nobody Wanted<br>
+      <em>(And Everyone Saw Coming)</em>
+    </h1>
+    <p class="subhead fade-up fade-up-d2">
+      Israel, Iran, America, a dead billionaire's files, and India — 
+      somehow — right in the middle of all of it. A plain-language read 
+      with numbers you'll actually feel.
+    </p>
+    <div class="meta-row fade-up fade-up-d3">
+      <div class="meta-item">By <span>Independent Observer</span></div>
+      <div class="meta-item">Read time <span>~12 min</span></div>
+      <div class="meta-item">Published <span>March 9, 2026</span></div>
+      <div class="meta-item">Topic <span>Geopolitics &amp; India</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ── STAT STRIP ─────────────────────────────────────── -->
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="strip-stat">
+      <div class="strip-num">₹13–14B</div>
+      <div class="strip-label">added to import bill per $10/barrel crude rise</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-num">9 Million</div>
+      <div class="strip-label">Indians in the Gulf — right now</div>
+    </div>
+    <div class="strip-stat">
+      <div class="strip-num">45 Days</div>
+      <div class="strip-label">India's Hormuz crude buffer — that's it</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTENT ────────────────────────────────────────── -->
+<div class="content-wrap">
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">In this piece</div>
+    <ol>
+      <li><a href="#whathappened">What's actually happening</a></li>
+      <li><a href="#america">America is in this — and that changes things</a></li>
+      <li><a href="#epstein">The Epstein files. Yes, we're going there.</a></li>
+      <li><a href="#india">What this means for India — in numbers</a></li>
+      <li><a href="#scorecard">The honest scorecard</a></li>
+      <li><a href="#prepare">What can actually be done</a></li>
+    </ol>
+  </nav>
+
+  <!-- OPENER -->
+  <p>Let's start with the obvious: if you're an average Indian trying to make sense of what's happening between Israel, Iran, and the US right now — and wondering why your petrol price just quietly went up again — you're asking exactly the right questions.</p>
+  <p>This isn't a foreign affairs briefing for diplomats. It's for anyone paying attention, mildly suspicious of official explanations, and living in a country that is — <strong>somehow</strong> — right in the crossfire of a war it had absolutely nothing to do with starting.</p>
+
+  <!-- ── 1 ── -->
+  <div class="section" id="whathappened">
+    <div class="section-label">01 — Background</div>
+    <h2 class="section-title">What's Actually Happening</h2>
+
+    <p>Israel and Iran have been in a slow-motion confrontation for decades — proxy wars, assassinations, cyberattacks, the occasional missile exchange. Most of it was kept just below the boiling point. The world got so used to the temperature that they stopped noticing it was rising.</p>
+    <p>That changed in 2025 when Israel struck Iranian nuclear sites, and escalated dramatically in early 2026 when the United States joined in. On February 28, 2026, the US and Israel launched coordinated strikes on Iran. The Iranian Supreme Leader was killed. Iran responded with hundreds of missiles targeting Israeli cities and US military bases across the Gulf.</p>
+    <p>Nine days in, the conflict is still active. And the Strait of Hormuz — that narrow 33-kilometre sliver of water between Iran and Oman — is effectively in crisis.</p>
+
+    <div class="stat-card">
+      <div class="stat-card-num">
+        <div class="num">20%</div>
+      </div>
+      <div class="stat-card-body">
+        <p>of all the world's oil passes through the Strait of Hormuz every single day — about <strong>20.9 million barrels</strong>. India is the second-largest destination of that flow, at <strong>14.7% of total Hormuz exports</strong>. When that waterway stalls, we feel it — at the pump, at the grocery store, on our EMI statements. <em>(US Energy Information Administration, Q1 2025)</em></p>
+      </div>
+    </div>
+
+    <div class="snark">
+      <p>The Strait of Hormuz is 33 kilometres wide at its narrowest point. That's roughly the distance between Connaught Place and Gurgaon. And it controls a fifth of the world's oil supply. Geography has always had a dark sense of humour.</p>
+    </div>
+  </div>
+
+  <!-- ── 2 ── -->
+  <div class="section" id="america">
+    <div class="section-label">02 — The US Factor</div>
+    <h2 class="section-title">America Is in This.<br>That Changes Things for Us.</h2>
+
+    <p>This isn't an Israel–Iran bilateral conflict that India can politely watch from a distance. <strong>The United States is a full co-belligerent</strong> — aircraft carriers, F-22s, coordinated targeting. The official framing: Iran was weeks away from a nuclear weapon and left no other option.</p>
+
+    <div class="snark">
+      <p>Iran has been "weeks away from a nuclear weapon" for roughly fifteen years, according to various Western intelligence assessments. At some point the timeline had to either arrive or be quietly retired.</p>
+    </div>
+
+    <p>The less official read: the Trump administration had domestic political reasons to look decisive at this exact moment, and a military win abroad is the oldest page in the playbook. That's not cynicism — it's just how geopolitics tends to work. Genuine strategic interests and domestic political convenience rarely conflict. They usually align perfectly, which is what makes motivations so hard to untangle.</p>
+
+    <div class="pull-quote">
+      <p>For India, the US being in this war changes the diplomatic equation considerably. Staying completely neutral now carries a cost it didn't carry before. Not choosing is itself a choice — and Washington notices.</p>
+    </div>
+
+    <p>India is increasingly embedded in American strategic frameworks — QUAD, defence deals, technology agreements, the I2U2 group with Israel and UAE. Every word India says — or doesn't say — in UN forums is now geopolitically loaded in ways it wasn't six months ago.</p>
+  </div>
+
+  <!-- ── 3 ── -->
+  <div class="section" id="epstein">
+    <div class="section-label">03 — The Uncomfortable Thread</div>
+    <h2 class="section-title">The Epstein Files.<br>Yes, We're Going There.</h2>
+
+    <p>Here's the thread running through every serious comment section since the bombs started falling: in early 2026, the US Department of Justice released millions of documents from the Jeffrey Epstein sex trafficking investigation. The files named politicians, businessmen, royals, and public figures across multiple countries. Interest was, predictably, enormous.</p>
+    <p>Then the strikes began. And searches for "Epstein files" fell off a cliff.</p>
+
+    <div class="snark">
+      <p>Coincidence is the word powerful people love most. It does so much heavy lifting.</p>
+    </div>
+
+    <div class="epstein-box">
+      <div class="box-title">What the evidence actually shows</div>
+      <p>The theory — that the war was timed partly to bury the Epstein story — is unproven in any documentary sense. No internal memo, no whistleblower testimony.</p>
+      <p>What <em>is</em> documented: a measurable, tracked collapse in media attention to the files the moment strikes began. What is real: both Trump and Netanyahu faced genuine domestic political pressure at the time. What is on record: Epstein's documented connections to intelligence networks — including, per FBI documents, Israeli intelligence — which adds an uncomfortable layer to a war Israel is leading.</p>
+      <p>The grounded version isn't that the war was <em>invented</em> as a distraction. It's that a war with genuine strategic rationale was also very convenient for several leaders at a very awkward moment. <strong>These things are not mutually exclusive.</strong></p>
+    </div>
+
+    <div class="snark">
+      <p>Take "pure distraction war" with salt. Take "pure coincidence" with equal salt. The truth lives in the uncomfortable middle — as most geopolitical truths do.</p>
+    </div>
+  </div>
+
+  <!-- ── 4 ── -->
+  <div class="section" id="india">
+    <div class="section-label">04 — The Real Impact</div>
+    <h2 class="section-title">What This Actually Means<br>for India — In Numbers</h2>
+
+    <p>Here's where it stops being abstract. India has the slightly exhausting distinction of having meaningful stakes in nearly every direction of this conflict — energy, diaspora, trade, defence, diplomacy. All of them are tugging simultaneously.</p>
+
+    <h3 style="font-family:var(--display); font-size:1.3rem; color:var(--saffron); margin: 40px 0 16px; font-weight:700;">The Petrol at Your Pump</h3>
+
+    <p>India imports <strong>nearly 88% of all the crude oil it uses</strong>. Domestically we produce a fraction of what we consume, and almost half of those imports come from the Middle East — through or near the Strait of Hormuz.</p>
+
+    <div class="stat-card">
+      <div class="stat-card-num saffron-bg">
+        <div class="num">₹13–14 Billion</div>
+      </div>
+      <div class="stat-card-body">
+        <p>Added to India's annual oil import bill for <strong>every $10 rise in crude prices</strong>. Brent has already crossed $80/barrel since the conflict began — up from the low $70s. SBI Research places the inflation impact at <strong>35–40 basis points per $10 rise</strong>. That's not a chart number. That's your grocery bill. <em>(ICRA Ltd / SBI Research)</em></p>
+      </div>
+    </div>
+
+    <div class="snark">
+      <p>Every $1 per barrel increase in oil adds roughly $2 billion to India's annual import bill. The next time someone says "the war is far away from us," hand them that sentence.</p>
+    </div>
+
+    <h3 style="font-family:var(--display); font-size:1.3rem; color:var(--navy); margin: 40px 0 16px; font-weight:700;">The 9 Million People Nobody's Talking Enough About</h3>
+
+    <p>India has more than 9 million citizens working in Gulf countries — the UAE, Saudi Arabia, Kuwait, Qatar, Oman, Bahrain. That's more people than the entire population of several Indian states. They are currently living and working in the blast radius of an active regional conflict.</p>
+
+    <div class="stat-card">
+      <div class="stat-card-num">
+        <div class="num">$51.4 Billion</div>
+      </div>
+      <div class="stat-card-body">
+        <p>What Gulf-based Indians sent home in remittances in FY2025 — <strong>nearly 38% of India's total remittance inflows of $135.4 billion</strong>. For context: India's entire trade surplus with the US was $58.2 billion in 2025. The Gulf diaspora is, in economic terms, a relationship of comparable scale. <em>(Citi Research / RBI data)</em></p>
+      </div>
+    </div>
+
+    <p>These aren't macro statistics. They're school fees. They're the down payment on a house in Kerala. They're the working capital of thousands of small businesses run by families waiting for a wire transfer every month.</p>
+
+    <div class="snark">
+      <p>India successfully airlifted 170,000 people from Kuwait during the 1990 Gulf War. That operation took months and was considered extraordinary. The scale today is roughly 50 times larger.</p>
+    </div>
+
+    <h3 style="font-family:var(--display); font-size:1.3rem; color:var(--green); margin: 40px 0 16px; font-weight:700;">India's Buffer — Tighter Than It Sounds</h3>
+
+    <div class="stat-card">
+      <div class="stat-card-num green-bg">
+        <div class="num">40–45 Days</div>
+      </div>
+      <div class="stat-card-body">
+        <p>How long India's combined crude reserves — strategic reserves at Mangalore, Padur, and Visakhapatnam plus commercial stocks — can cover Hormuz-dependent imports if flows are disrupted. <strong>After that, the picture gets uncomfortable.</strong> The global standard for energy security is 90 days. We are at half that. <em>(Kpler Research, March 2026)</em></p>
+      </div>
+    </div>
+
+    <p>Forty-five days sounds like a cushion. It isn't. If the conflict drags on — and Moody's has flagged a prolonged disruption scenario with Brent above $100 as a genuine possibility — India's buffer runs out before the crisis does.</p>
+  </div>
+
+  <!-- ── 5 ── -->
+  <div class="section" id="scorecard">
+    <div class="section-label">05 — The Honest View</div>
+    <h2 class="section-title">The Scorecard</h2>
+
+    <p>Not every consequence is bad. India's position — large enough to have real stakes everywhere, credible enough that every side still wants us — creates genuine opportunities alongside the risks. Here's the honest version of both.</p>
+
+    <div class="two-col">
+      <div>
+        <div class="col-head green">Things That Could Work in Our Favour</div>
+        <div class="col-items">
+          <div class="col-item green-col"><span class="icon">↑</span> Discounted Iranian crude — bought 20–30% below market in 2018–19 and could again</div>
+          <div class="col-item green-col"><span class="icon">↑</span> Deeper Israel defence ties: India is already one of Israel's top arms customers</div>
+          <div class="col-item green-col"><span class="icon">↑</span> India's "neutral honest broker" image gains rare global value</div>
+          <div class="col-item green-col"><span class="icon">↑</span> Pressure to build domestic energy — overdue but now unavoidable</div>
+          <div class="col-item green-col"><span class="icon">↑</span> FDI looking for stable destinations may increasingly land here</div>
+          <div class="col-item green-col"><span class="icon">↑</span> INSTC route via Iran/Russia gets urgent strategic attention</div>
+        </div>
+      </div>
+      <div>
+        <div class="col-head red">Things That Are Already Going Wrong</div>
+        <div class="col-items">
+          <div class="col-item red-col"><span class="icon">↓</span> Brent up from low $70s to $80+ — every $10 = ₹13–14B added to import bill</div>
+          <div class="col-item red-col"><span class="icon">↓</span> $51.4B in remittances at risk from 9M Gulf workers in conflict zone</div>
+          <div class="col-item red-col"><span class="icon">↓</span> India has ~40–45 days of Hormuz crude buffer — that's the entire cushion</div>
+          <div class="col-item red-col"><span class="icon">↓</span> Rupee under pressure as dollar demand for oil imports rises</div>
+          <div class="col-item red-col"><span class="icon">↓</span> Shipping rerouted around Africa — 10–15 extra days, 30–40% more freight cost</div>
+          <div class="col-item red-col"><span class="icon">↓</span> US may demand India choose: Iranian trade or American partnership</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6 ── -->
+  <div class="section" id="prepare">
+    <div class="section-label">06 — What To Do</div>
+    <h2 class="section-title">What Can Actually Be Done</h2>
+
+    <p>Preparedness isn't panic. It's the opposite — it's the thing that means you don't <em>have</em> to panic when things move fast.</p>
+
+    <div class="prep-group">
+      <h3>If You're the Government of India</h3>
+      <ul class="prep-list">
+        <li>Fill the strategic petroleum reserves now. At 40–45 days of buffer, we are <em>just-about-okay</em>, not comfortable. Push toward 90-day coverage — the global standard for a reason.</li>
+        <li>Get a written answer from Washington on Chabahar's sanction status this week, not next quarter. If the exemption is at risk, we need to know before the investment is stranded.</li>
+        <li>Activate Gulf diaspora protocols proactively. Don't wait for the crisis to deepen. The 1990 airlift was the blueprint — start planning at a scale that reflects 2026 reality.</li>
+        <li>Offer India as a neutral ceasefire venue. Even if it goes nowhere, the positioning builds diplomatic capital that pays returns for decades.</li>
+        <li>Use this crisis as the forcing function for energy transition that decades of comfortable talk haven't produced.</li>
+      </ul>
+    </div>
+
+    <div class="prep-group">
+      <h3>If You Run a Business</h3>
+      <ul class="prep-list">
+        <li>Hedge your energy exposure. Airlines, logistics, petrochemicals, manufacturing — anyone with fuel costs should have a hedging strategy active <em>now</em>. The window is narrowing.</li>
+        <li>Audit your Gulf supply chain dependencies. Map every supplier and customer in the region and identify alternatives in Southeast Asia, East Africa, and Latin America.</li>
+        <li>Take cybersecurity seriously. Iran runs sophisticated state-level cyber operations and they are currently highly motivated. Treat this as an active threat, not a theoretical one.</li>
+      </ul>
+    </div>
+
+    <div class="prep-group">
+      <h3>If You're an Individual</h3>
+      <ul class="prep-list">
+        <li>If you or family work in the Gulf: know your Indian embassy's emergency contacts. Keep 6 months' savings in a liquid Indian account accessible without you. Do not wait for your employer to act.</li>
+        <li>Gold remains the honest Indian's hedge against global disorder. Not fashionable advice. Keeps working anyway.</li>
+        <li>If you hold variable-rate loans: prepare for RBI rate pressure as inflation rises. Paying down high-interest debt now is the boring but correct call.</li>
+        <li>Get your news from multiple sources. The Epstein–Iran conspiracy space is flooded with credible-sounding misinformation, and so is the "everything is fine" official space. Read across both.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <h2>A Final Thought</h2>
+    <p>India is in an interesting position right now — not comfortable, but interesting. Large enough to have real stakes in every direction. Credible enough that every party still wants us on their side. That's actually a form of power, even if it comes with genuine headaches.</p>
+    <p style="margin-top:16px;">The goal isn't to pick the winning side in someone else's war. The goal is to emerge with our economy intact, our people safe, our partnerships strengthened, and our energy security finally taken seriously enough that the next Middle East crisis doesn't send us straight back to square one.</p>
+    <div class="verdict-snark">
+      <p>The world doesn't pause for us to figure out our position. But India has historically been pretty good at making decisions in motion. Here's hoping that talent hasn't quietly retired.</p>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <div class="sources-title">Sources &amp; Data</div>
+    <p>Statistics drawn from: US Energy Information Administration (Q1 2025) · ICRA Limited · SBI Research · Kpler Research (March 2026) · Reserve Bank of India · Citi Research · Moody's Analytics · Arab News · CNBC TV18. This piece reflects information available as of March 9, 2026. Not investment advice.</p>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<footer>
+  Independent Analysis &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Not a government pamphlet. Not a WhatsApp forward.
+</footer>
+
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const scrollHeight = doc.scrollHeight - doc.clientHeight;
+    const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // Intersection observer for stat cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.stat-card, .two-col, .epstein-box, .snark').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
