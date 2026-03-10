@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Money During a War — Snarky Solutions</title>
+<meta name="description" content="Markets are rattled, crude is spiking, and your WhatsApp is on fire. Here's a research-backed, no-jargon guide to protecting and growing your money as a middle-class Indian investor — data, not panic.">
+<meta property="og:title" content="Your Money During a War: What Should You Actually Do?">
+<meta property="og:description" content="30 years of data, one honest answer. A conversational guide for middle-class Indian investors navigating geopolitical uncertainty.">
+<meta property="og:image" content="https://solutionssnarky-droid.github.io/assets/war-money-og.png">
+<meta property="og:url" content="https://solutionssnarky-droid.github.io/your-money-during-war.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Money During a War: What Should You Actually Do?">
+<meta name="twitter:description" content="30 years of Indian market data says: don't panic. Here's what to actually do instead.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --ink: #1a1510;
+    --muted: #7a6e5e;
+    --accent: #bf5a1a;
+    --accent-soft: #fdf1e8;
+    --green: #2e6b3e;
+    --green-soft: #eaf3ec;
+    --red: #b83222;
+    --red-soft: #fdecea;
+    --blue: #1f5fa6;
+    --blue-soft: #e8f0fb;
+    --gold: #9a7010;
+    --gold-soft: #fdf7e4;
+    --border: #e4dcd0;
+    --chat-l: #f2ede6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:'Mulish',sans-serif; font-size:17px; line-height:1.85; }
+
+  /* NAV */
+  nav {
+    position:sticky; top:0; z-index:100;
+    background:rgba(250,248,244,0.95); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand { font-family:'Lora',serif; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none; }
+  .nav-brand span { color:var(--accent); }
+  .nav-links { display:flex; gap:24px; }
+  .nav-links a { font-size:13px; font-weight:600; color:var(--muted); text-decoration:none; letter-spacing:.04em; transition:color .2s; }
+  .nav-links a:hover { color:var(--accent); }
+
+  /* HERO */
+  .hero {
+    background:var(--ink);
+    color:#f5f0e8;
+    padding:80px 24px 64px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse at 80% 20%, rgba(191,90,26,.2) 0%, transparent 60%),
+               radial-gradient(ellipse at 10% 90%, rgba(46,107,62,.12) 0%, transparent 50%);
+    pointer-events:none;
+  }
+  .hero-inner { max-width:760px; margin:0 auto; position:relative; z-index:1; }
+  .hero-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+  .tag {
+    font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    padding:4px 12px; border-radius:100px;
+  }
+  .tag-orange { background:rgba(191,90,26,.2); color:#f0a060; }
+  .tag-green  { background:rgba(46,107,62,.2);  color:#80c890; }
+  .tag-blue   { background:rgba(31,95,166,.2);  color:#80b0e0; }
+  .hero h1 {
+    font-family:'Lora',serif; font-size:clamp(32px,6vw,60px);
+    font-weight:700; line-height:1.12; margin-bottom:22px;
+  }
+  .hero h1 em { font-style:italic; color:#f0a060; }
+  .hero-sub { font-size:18px; color:#b0a090; line-height:1.7; max-width:580px; margin-bottom:32px; }
+  .hero-meta { font-size:12px; color:#6a5a4a; letter-spacing:.08em; }
+  .hero-meta b { color:#d0c0a8; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background:#2a1e14; border-left:3px solid var(--blue);
+    color:#9ab0c8; font-size:13px; padding:12px 24px; text-align:center;
+  }
+
+  /* STAT STRIP */
+  .stat-strip {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--border); margin:28px 0;
+  }
+  .stat-cell {
+    padding:24px 16px; text-align:center;
+    border-right:1px solid var(--border);
+  }
+  .stat-cell:last-child { border-right:none; }
+  .stat-num { font-family:'Lora',serif; font-size:32px; font-weight:700; display:block; line-height:1.1; }
+  .stat-label { font-size:12px; color:var(--muted); display:block; margin-top:6px; line-height:1.4; }
+
+  /* LAYOUT */
+  .container { max-width:760px; margin:0 auto; padding:0 24px; }
+  section { padding:56px 0 40px; border-top:1px solid var(--border); }
+  section:first-of-type { border-top:none; }
+
+  /* SECTION TAG */
+  .section-tag {
+    font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  }
+  .section-tag::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  h2 { font-family:'Lora',serif; font-size:clamp(24px,4vw,36px); font-weight:700; line-height:1.22; margin-bottom:22px; }
+  p { margin-bottom:18px; color:#2e2416; }
+  p.lead { font-family:'Lora',serif; font-style:italic; font-size:19px; color:var(--ink); line-height:1.72; }
+
+  /* CHAT BUBBLES */
+  .chat { margin:28px 0; display:flex; flex-direction:column; gap:14px; }
+  .bubble-wrap { display:flex; gap:12px; }
+  .bubble-wrap.right { flex-direction:row-reverse; }
+  .bubble-avatar {
+    width:36px; height:36px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:16px; margin-top:4px;
+  }
+  .av-reader { background:#e8e0d4; }
+  .av-author { background:linear-gradient(135deg,var(--accent),#e08040); }
+  .bubble {
+    max-width:84%; padding:14px 18px; border-radius:16px;
+    font-size:16px; line-height:1.65;
+  }
+  .bubble-name { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .bubble.reader { background:var(--chat-l); border-bottom-left-radius:3px; font-style:italic; color:var(--ink); }
+  .bubble.author { background:var(--accent-soft); border-bottom-right-radius:3px; border-left:3px solid var(--accent); color:#3a1a08; }
+
+  /* CALLOUT */
+  .callout {
+    border-left:4px solid var(--accent); background:var(--accent-soft);
+    padding:16px 20px; margin:24px 0; border-radius:0 8px 8px 0;
+  }
+  .callout.green { border-color:var(--green); background:var(--green-soft); }
+  .callout.red   { border-color:var(--red);   background:var(--red-soft);   }
+  .callout.blue  { border-color:var(--blue);  background:var(--blue-soft);  }
+  .callout.gold  { border-color:var(--gold);  background:var(--gold-soft);  }
+  .callout-title { font-size:13px; font-weight:700; margin-bottom:6px; }
+  .callout p { font-size:15px; margin:0; }
+
+  /* STAT BOX */
+  .stat-box {
+    display:grid; grid-template-columns:140px 1fr;
+    border-left:4px solid var(--accent); background:var(--accent-soft);
+    margin:22px 0; border-radius:0 8px 8px 0; overflow:hidden;
+  }
+  .stat-box.green { border-color:var(--green); background:var(--green-soft); }
+  .stat-box.red   { border-color:var(--red);   background:var(--red-soft);   }
+  .stat-box.gold  { border-color:var(--gold);  background:var(--gold-soft);  }
+  .stat-box.blue  { border-color:var(--blue);  background:var(--blue-soft);  }
+  .stat-box-num {
+    padding:20px 12px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    border-right:1px solid var(--border);
+  }
+  .stat-box-num .n { font-family:'Lora',serif; font-size:30px; font-weight:700; line-height:1.1; color:var(--accent); }
+  .stat-box.green .n { color:var(--green); }
+  .stat-box.red   .n { color:var(--red);   }
+  .stat-box.gold  .n { color:var(--gold);  }
+  .stat-box.blue  .n { color:var(--blue);  }
+  .stat-box-num .lbl { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+  .stat-box-text { padding:18px 20px; font-size:15px; line-height:1.65; color:#2e2416; display:flex; align-items:center; }
+  .stat-box-text p { margin:0; }
+
+  /* HISTORY TABLE */
+  .history-table { width:100%; border-collapse:collapse; margin:28px 0; font-size:14px; }
+  .history-table th {
+    background:var(--ink); color:#e0d4c0;
+    font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    padding:12px 14px; text-align:left; font-weight:600;
+  }
+  .history-table td { padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .history-table tr:nth-child(even) td { background:#faf7f2; }
+  .history-table .ret-pos { color:var(--green); font-weight:700; }
+  .history-table .event-name { font-weight:700; font-size:15px; }
+  .history-table .event-desc { color:var(--muted); font-size:13px; margin-top:3px; }
+
+  /* SECTOR TABLE */
+  .sector-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:14px; }
+  .sector-table th {
+    background:var(--ink); color:#e0d4c0;
+    font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    padding:12px 14px; text-align:left; font-weight:600;
+  }
+  .sector-table td { padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .sector-table tr:nth-child(even) td { background:#faf7f2; }
+  .sector-name { font-weight:700; font-size:15px; }
+  .sector-desc { color:var(--muted); font-size:13px; margin-top:4px; line-height:1.55; }
+  .verdict {
+    display:inline-block; font-size:12px; font-weight:700;
+    padding:4px 12px; border-radius:100px; white-space:nowrap;
+  }
+  .v-buy    { background:var(--green-soft); color:var(--green); }
+  .v-watch  { background:#fff4e0; color:#8a5a10; }
+  .v-avoid  { background:var(--red-soft);   color:var(--red);   }
+
+  /* PORTFOLIO */
+  .alloc-list { margin:24px 0; display:flex; flex-direction:column; gap:14px; }
+  .alloc-item { display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid var(--border); }
+  .alloc-pct { font-family:'Lora',serif; font-size:28px; font-weight:700; flex-shrink:0; width:54px; text-align:right; line-height:1.1; }
+  .alloc-body h4 { font-size:15px; font-weight:700; margin-bottom:3px; }
+  .alloc-body p  { font-size:14px; color:var(--muted); margin:0; line-height:1.55; }
+
+  /* RULES */
+  .rules-list { margin:24px 0; }
+  .rule-item { display:flex; gap:20px; padding:20px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .rule-num { font-family:'Lora',serif; font-size:32px; font-weight:700; color:var(--accent); opacity:.35; line-height:1; flex-shrink:0; width:36px; text-align:center; padding-top:2px; }
+  .rule-body h4 { font-size:16px; font-weight:700; margin-bottom:5px; }
+  .rule-body p  { font-size:15px; color:var(--muted); margin:0; line-height:1.65; }
+
+  /* CLOSING */
+  .closing {
+    background:var(--ink); color:#f0e8dc;
+    border-radius:12px; padding:48px 40px; margin:48px 0; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .closing::before {
+    content:'₹'; position:absolute; font-family:'Lora',serif;
+    font-size:280px; color:rgba(191,90,26,.06);
+    top:-60px; right:-20px; line-height:1; pointer-events:none;
+  }
+  .closing h2 { color:#f0e8dc; font-size:26px; margin-bottom:14px; }
+  .closing p  { color:#907860; font-size:16px; max-width:480px; margin:0 auto 0; }
+
+  /* SOURCE NOTE */
+  .source-note { font-size:12px; color:var(--muted); font-style:italic; margin:4px 0 20px; }
+
+  /* FOOTER */
+  footer { border-top:1px solid var(--border); text-align:center; padding:32px 24px; font-size:13px; color:var(--muted); line-height:2; }
+  footer a { color:var(--accent); text-decoration:none; }
+
+  @media(max-width:600px){
+    .stat-strip { grid-template-columns:1fr 1fr; }
+    .stat-cell:nth-child(2) { border-right:none; }
+    .stat-box { grid-template-columns:110px 1fr; }
+    .closing { padding:32px 20px; }
+    .nav-links { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="https://solutionssnarky-droid.github.io/"><span>S.</span> SnarkySolutions</a>
+  <div class="nav-links">
+    <a href="https://solutionssnarky-droid.github.io/#posts">Blog</a>
+    <a href="https://github.com/solutionssnarky-droid">GitHub ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tags">
+      <span class="tag tag-orange">Personal Finance</span>
+      <span class="tag tag-green">India Investing</span>
+      <span class="tag tag-blue">Geopolitics</span>
+    </div>
+    <h1>Your Money During a War:<br><em>What Should You Actually Do?</em></h1>
+    <p class="hero-sub">Markets are rattled, crude is spiking, and your WhatsApp is on fire. Here's a research-backed, zero-jargon guide for every middle-class Indian investor — data, not panic.</p>
+    <p class="hero-meta"><b>March 10, 2026</b> &nbsp;·&nbsp; 12-min read &nbsp;·&nbsp; By Snarky Solutions &nbsp;·&nbsp; ⚠️ Educational only — not financial advice</p>
+  </div>
+</div>
+<div class="disclaimer">⚠️ &nbsp; This is educational content, not personalised financial advice. Consult a SEBI-registered advisor before investing.</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <!-- OPENING -->
+  <section style="border-top:none; padding-top:48px;">
+    <div class="section-tag">Let's Talk Honestly</div>
+    <h2>The headlines are scary. Your instinct to sell is probably wrong.</h2>
+
+    <div class="chat">
+      <div class="bubble-wrap">
+        <div class="bubble-avatar av-reader">🧑</div>
+        <div>
+          <div class="bubble-name">You, probably right now</div>
+          <div class="bubble reader">"The market is falling, there's a war going on, oil prices are through the roof... should I just pull my money out and wait for things to calm down?"</div>
+        </div>
+      </div>
+      <div class="bubble-wrap right">
+        <div class="bubble-avatar av-author">✍️</div>
+        <div style="text-align:right">
+          <div class="bubble-name">Honest answer</div>
+          <div class="bubble author">That feeling makes complete sense. But pulling out is almost certainly the wrong move — and 30 years of Indian market history backs that up. Let me show you why, and tell you what <em>actually</em> works instead.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead">First, take a breath. You are not alone in feeling anxious right now.</p>
+    <p>As of this week, the Nifty 50 is down roughly 4–5% from its recent peak. Brent crude briefly touched $120 before settling around $89. The rupee has weakened. And if you open WhatsApp right now, someone has definitely forwarded a "MARKETS CRASHING" video designed to make your heart race.</p>
+    <p>Here's what I want you to hold onto: <strong>India has been through this before. Multiple times. And every single time, the market came back — not eventually, not after a decade, but usually within weeks.</strong></p>
+
+    <!-- CURRENT SNAPSHOT -->
+    <div class="stat-strip">
+      <div class="stat-cell" style="background:#fdecea;">
+        <span class="stat-num" style="color:#b83222;">−4.6%</span>
+        <span class="stat-label">Nifty 50 drop, Feb–Mar 2026</span>
+      </div>
+      <div class="stat-cell" style="background:#fdf1e8;">
+        <span class="stat-num" style="color:#bf5a1a;">$89</span>
+        <span class="stat-label">Brent Crude (retreated from $120)</span>
+      </div>
+      <div class="stat-cell" style="background:#eaf3ec;">
+        <span class="stat-num" style="color:#2e6b3e;">+2.6%</span>
+        <span class="stat-label">Nifty Defence Index — only gainer</span>
+      </div>
+      <div class="stat-cell" style="background:#fdf7e4;">
+        <span class="stat-num" style="color:#9a7010;">+60%</span>
+        <span class="stat-label">Gold YTD gain in India, 2025</span>
+      </div>
+    </div>
+    <p class="source-note">Sources: NSE India, MCX, World Gold Council, Bloomberg — March 2026</p>
+  </section>
+
+  <!-- HISTORY -->
+  <section>
+    <div class="section-tag">Evidence, Not Opinion</div>
+    <h2>"But this time feels different…"</h2>
+
+    <p>I hear this every single time there's a crisis. And honestly? Every time <em>does</em> feel different when you're in the middle of it. Kargil felt catastrophic. Balakot had people convinced war was imminent. Russia's Ukraine invasion sent global markets into a tailspin.</p>
+    <p>So let's look at what actually happened to your money after each event. Not vibes — data.</p>
+
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>What Happened</th>
+          <th>12-Month Return</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="event-name">2008 Mumbai Attacks</div></td>
+          <td><div class="event-desc">Markets dropped ~2%. Many panicked and sold.</div></td>
+          <td class="ret-pos">+90% 🚀</td>
+          <td class="ret-pos">✓ Recovered</td>
+        </tr>
+        <tr>
+          <td><div class="event-name">2014 Crimea Crisis</div></td>
+          <td><div class="event-desc">Global uncertainty spiked. Indian markets wobbled for days.</div></td>
+          <td class="ret-pos">+31%</td>
+          <td class="ret-pos">✓ Recovered</td>
+        </tr>
+        <tr>
+          <td><div class="event-name">2019 Balakot Airstrike</div></td>
+          <td><div class="event-desc">Nifty barely blinked. Recovered the same week.</div></td>
+          <td class="ret-pos">+12%</td>
+          <td class="ret-pos">✓ Recovered</td>
+        </tr>
+        <tr>
+          <td><div class="event-name">2022 Ukraine War</div></td>
+          <td><div class="event-desc">Nifty fell ~5% on invasion day. Oil surged. Felt terrifying.</div></td>
+          <td class="ret-pos">Positive YoY</td>
+          <td class="ret-pos">✓ Recovered</td>
+        </tr>
+        <tr>
+          <td><div class="event-name">May 2025 Op. Sindoor</div></td>
+          <td><div class="event-desc">Nifty fell just 0.3%. FMCG and pharma barely moved.</div></td>
+          <td class="ret-pos">Quick recovery</td>
+          <td class="ret-pos">✓ Recovered</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout green">
+      <div class="callout-title">📌 The pattern is unmistakable</div>
+      <p>Geopolitical shocks are sharp but short. Investors who panic and sell miss the recovery. Investors who stay calm — or even add more — look back and call it a great buying opportunity. Every. Single. Time.</p>
+    </div>
+
+    <div class="chat" style="margin-top:32px;">
+      <div class="bubble-wrap">
+        <div class="bubble-avatar av-reader">🧑</div>
+        <div>
+          <div class="bubble-name">Fair point, but…</div>
+          <div class="bubble reader">"I have EMIs, a family to support. I can't just gamble on the market bouncing back. What's the actual risk to me right now?"</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:20px;font-style:italic;">That's the right question. Here's the honest answer:</p>
+
+    <div class="stat-box red">
+      <div class="stat-box-num"><span class="n">85%</span><span class="lbl">Oil Imported</span></div>
+      <div class="stat-box-text"><p>India imports over 85% of its crude oil. Every $10 rise in oil prices costs India an extra <strong>$15–20 billion a year</strong> and adds 0.35–0.5% to the current account deficit. Sustained crude above $100 is the real economic risk — not the geopolitical event itself.</p></div>
+    </div>
+
+    <div class="stat-box green" style="margin-top:12px;">
+      <div class="stat-box-num"><span class="n">−0.3%</span><span class="lbl">Op. Sindoor Impact</span></div>
+      <div class="stat-box-text"><p>The Nifty 50 fell just 0.3% the day of Operation Sindoor in May 2025. The "India-Pakistan war = market crash" fear is historically not supported by data.</p></div>
+    </div>
+
+    <div class="stat-box" style="margin-top:12px;">
+      <div class="stat-box-num"><span class="n">#1</span><span class="lbl">Biggest Risk</span></div>
+      <div class="stat-box-text"><p>SEBI data consistently shows retail investor returns lag index returns by <strong>2–5% annually</strong> — almost entirely because of panic selling during dips. You are the biggest risk to your own portfolio.</p></div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section>
+    <div class="section-tag">Where to Put Your Money</div>
+    <h2>Let's talk sectors — in plain language</h2>
+
+    <p>Not all sectors react the same to geopolitical stress. Some actively benefit. Here's the data-backed breakdown:</p>
+
+    <div class="stat-box" style="margin-bottom:16px;">
+      <div class="stat-box-num"><span class="n">₹6.81L Cr</span><span class="lbl">Defence Budget FY26</span></div>
+      <div class="stat-box-text"><p>India's defence allocation is ₹6,81,210 crore (~$78.6 billion) — the highest ever, and <strong>13.45% of the entire Union Budget</strong>. Capital expenditure alone: ₹1.8 lakh crore, up 4.65% YoY. Source: Ministry of Defence, PIB.</p></div>
+    </div>
+
+    <div class="stat-strip" style="margin-bottom:6px;">
+      <div class="stat-cell" style="background:#fdf1e8;">
+        <span class="stat-num" style="color:#bf5a1a;font-size:22px;">₹940Bn</span>
+        <span class="stat-label">HAL Order Book (FY24)</span>
+      </div>
+      <div class="stat-cell" style="background:#fdf1e8;">
+        <span class="stat-num" style="color:#bf5a1a;font-size:22px;">₹767Bn</span>
+        <span class="stat-label">BEL Order Book (FY24)</span>
+      </div>
+      <div class="stat-cell" style="background:#fdf1e8;">
+        <span class="stat-num" style="color:#bf5a1a;font-size:22px;">₹194Bn</span>
+        <span class="stat-label">BDL Order Book (FY24)</span>
+      </div>
+      <div class="stat-cell" style="background:#eaf3ec;">
+        <span class="stat-num" style="color:#2e6b3e;font-size:22px;">75%</span>
+        <span class="stat-label">Modernisation budget → domestic cos.</span>
+      </div>
+    </div>
+    <p class="source-note">Source: HAL, BEL, BDL Annual Reports FY24 | Ministry of Defence, Union Budget 2025-26</p>
+
+    <table class="sector-table">
+      <thead>
+        <tr>
+          <th>Sector & Rationale</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="sector-name">🛡️ Defence — HAL, BEL, BDL, Bharat Forge</div>
+            <div class="sector-desc">Budget up 9.5% to ₹6.81L Cr. HAL FY24 revenue ₹303.8Bn (+13% YoY). Only sector that rose in the current dip. 75% of modernisation funds earmarked for domestic companies.</div>
+          </td>
+          <td><span class="verdict v-buy">✅ Invest</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="sector-name">💊 Pharma — Sun Pharma, Dr. Reddy's, Cipla</div>
+            <div class="sector-desc">War or peace, medicine demand is inelastic. Sun Pharma net profit CAGR: 24.6% (2020–2024). Strong export pipelines. Defensive, globally diversified, resilient.</div>
+          </td>
+          <td><span class="verdict v-buy">✅ Safe Pick</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="sector-name">🛒 FMCG — ITC, HUL, Nestlé India</div>
+            <div class="sector-desc">People don't stop buying essentials in a crisis. ITC has grown dividends every year for over a decade. HUL was among the most stable stocks during Op. Sindoor.</div>
+          </td>
+          <td><span class="verdict v-buy">✅ Hold/Add</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="sector-name">🏦 Private Banks — HDFC, ICICI, Kotak</div>
+            <div class="sector-desc">BankNifty surged 16% in 2025. India's credit growth is demographic, not geopolitical. HDFC Bank serves 93 million customers. Stick to large, well-capitalised names.</div>
+          </td>
+          <td><span class="verdict v-buy">✅ Hold</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="sector-name">🥇 Gold — ETFs, Sovereign Gold Bonds</div>
+            <div class="sector-desc">Gold gained 60–66% in India in 2025 (World Gold Council). Gold ETF AUM hit record ₹1,021Bn by Oct 2025. SBI Gold ETF SIP returned 54.35% XIRR vs 2.93% for Nifty 50 ETF. Essential portfolio insurance.</div>
+          </td>
+          <td><span class="verdict v-buy">✅ Must Have</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="sector-name">✈️ Aviation, Paints, Oil-Dependent Sectors</div>
+            <div class="sector-desc">Aviation fuel is dollar-denominated. Asian Paints uses petrochemical feedstocks — squeezed when crude spikes. Not the time to add to these positions.</div>
+          </td>
+          <td><span class="verdict v-watch">⚠️ Wait & Watch</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- GOLD CALLOUT -->
+  <section>
+    <div class="section-tag">The Gold Case — By the Numbers</div>
+    <h2>Why gold is non-negotiable in 2026</h2>
+
+    <div class="stat-strip" style="margin-bottom:8px;">
+      <div class="stat-cell" style="background:#fdf7e4;">
+        <span class="stat-num" style="color:#9a7010;">+66%</span>
+        <span class="stat-label">Domestic gold price gain YTD 2025 (MCX)</span>
+      </div>
+      <div class="stat-cell" style="background:#fdf7e4;">
+        <span class="stat-num" style="color:#9a7010;">54.85%</span>
+        <span class="stat-label">Axis Gold ETF SIP XIRR (1 year)</span>
+      </div>
+      <div class="stat-cell" style="background:#faf7f2;">
+        <span class="stat-num" style="color:#7a6e5e;">2.93%</span>
+        <span class="stat-label">SBI Nifty 50 ETF SIP XIRR (same period)</span>
+      </div>
+      <div class="stat-cell" style="background:#eaf3ec;">
+        <span class="stat-num" style="color:#2e6b3e;">+49%</span>
+        <span class="stat-label">Growth in Gold ETF folios in India, 2025</span>
+      </div>
+    </div>
+    <p class="source-note">Source: World Gold Council Oct–Nov 2025 reports, BusinessToday, AMFI data</p>
+
+    <div class="callout gold">
+      <div class="callout-title">💡 What this means for your ₹10,000/month</div>
+      <p>A monthly SIP of ₹10,000 in SBI Gold ETF returned 54.35% XIRR over the past year, vs 2.93% from the Nifty 50 ETF. Gold ETF AUM in India hit a record ₹1,021 billion by October 2025 — fastest-growing gold ETF market in Asia. A 10–15% allocation is now standard financial planner advice.</p>
+    </div>
+    <p style="margin-top:16px;">One important caveat: experts unanimously warn against abandoning equity SIPs for gold. Gold's 2025 surge reflects unique circumstances. Long-term wealth creation still favours equity — gold's role is <em>insurance</em>, not engine.</p>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section>
+    <div class="section-tag">The Actual Portfolio</div>
+    <h2>A simple, sensible allocation for you</h2>
+
+    <div class="chat" style="margin-bottom:24px;">
+      <div class="bubble-wrap">
+        <div class="bubble-avatar av-reader">🧑</div>
+        <div>
+          <div class="bubble-name">Getting clearer, but…</div>
+          <div class="bubble reader">"What does an actual portfolio look like for someone like me — a salaried person with maybe ₹10,000–₹25,000 per month to invest?"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alloc-list">
+      <div class="alloc-item">
+        <div class="alloc-pct" style="color:#2e6b3e;">40%</div>
+        <div class="alloc-body">
+          <h4>Nifty 50 / Large-Cap Index Fund</h4>
+          <p>Your core engine. Keep SIPs running here no matter what. Nifty 50 has delivered ~12% CAGR over 20 years. Low cost, diversified, proven long-term compounder.</p>
+        </div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-pct" style="color:#bf5a1a;">20%</div>
+        <div class="alloc-body">
+          <h4>Defence / PSU Thematic Fund</h4>
+          <p>Direct play on India's ₹6.81L Cr defence budget. HAL order book ₹940Bn. BEL order book ₹767Bn. High conviction during geopolitical stress.</p>
+        </div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-pct" style="color:#9a7010;">15%</div>
+        <div class="alloc-body">
+          <h4>Gold ETF or Sovereign Gold Bond</h4>
+          <p>Portfolio insurance. SGBs earn 2.5% interest annually + price appreciation, tax-free at maturity. Gold CAGR over last decade: 10.5%+.</p>
+        </div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-pct" style="color:#1f5fa6;">15%</div>
+        <div class="alloc-body">
+          <h4>Pharma / Healthcare Fund</h4>
+          <p>Defensive buffer. Sun Pharma 24.6% profit CAGR (2020–24). BSE Healthcare Index Fund is the simplest, most diversified entry point.</p>
+        </div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-pct" style="color:#7a6e5e;">10%</div>
+        <div class="alloc-body">
+          <h4>PPF / Liquid Fund / Emergency Buffer</h4>
+          <p>Foundation of peace of mind. PPF: 7.1% tax-free, government-guaranteed. 6 months of expenses minimum before investing anything else. Non-negotiable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">💡 Pro tip on SIPs during a dip</div>
+      <p>Consider increasing your SIP by 10–20% during this correction. You're buying quality assets at a discount — this is precisely what rupee-cost averaging is designed for. A ₹10,000 SIP during the dip buys more units than the same amount at market peak.</p>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section>
+    <div class="section-tag">7 Things to Actually Do Right Now</div>
+    <h2>The golden rules — in plain English</h2>
+    <p>Forget complex strategies. Here are 7 clear, actionable things you can do this week:</p>
+
+    <div class="rules-list">
+      <div class="rule-item">
+        <div class="rule-num">1</div>
+        <div class="rule-body">
+          <h4>Do NOT stop your SIP</h4>
+          <p>Every time you skip a SIP in a down market, you miss buying cheap units. Over 10 years, investors who stay consistent with SIPs typically outperform lump-sum investors by 2–4%. This is non-negotiable.</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">2</div>
+        <div class="rule-body">
+          <h4>Check your emergency fund first</h4>
+          <p>You need 6 months of expenses in a liquid fund before anything else matters. If you don't have that, pause new equity investments and build it first. Period.</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">3</div>
+        <div class="rule-body">
+          <h4>Treat this dip as a buying opportunity</h4>
+          <p>Investors who added during the Ukraine war dip (−5%) were sitting on strong gains within 6 months. Deploy spare cash in tranches over 4–6 weeks. Don't try to time the exact bottom.</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">4</div>
+        <div class="rule-body">
+          <h4>Add some gold if you haven't already</h4>
+          <p>Gold ETF AUM at record ₹1,021 billion. Gold gained 66% in 2025. A 10–15% allocation takes 5 minutes to set up on Zerodha or Groww. SGBs are tax-free at maturity.</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">5</div>
+        <div class="rule-body">
+          <h4>Watch crude oil, not war headlines</h4>
+          <p>The real economic indicator for India is Brent Crude. Below $95–100: India handles it fine. Sustained above $110: revisit equity allocation. Every $10 rise = $15–20Bn extra import bill for India annually.</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">6</div>
+        <div class="rule-body">
+          <h4>Avoid adding to mid- and small-caps for now</h4>
+          <p>Nifty Midcap 150 dropped nearly 2x Nifty 50 during Operation Sindoor. Your existing SIPs? Keep them. But don't add new mid-cap exposure until things stabilise.</p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">7</div>
+        <div class="rule-body">
+          <h4>Put your phone down after checking once a week</h4>
+          <p>Research shows retail investors who check portfolios daily during downturns are 3× more likely to sell at a loss than those who check weekly. Seriously. Log off.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT NOT TO DO -->
+  <section>
+    <div class="section-tag">Common Traps</div>
+    <h2>"But my colleague said I should…"</h2>
+    <p>A quick debunking of the advice you're probably hearing right now:</p>
+
+    <div class="callout red" style="margin-bottom:12px;">
+      <div class="callout-title">🚫 "Move everything to cash and wait."</div>
+      <p>India's CPI inflation runs at ~4–5%. Cash earns 3–4%. That's a guaranteed real-return loss. And when things calm down, markets recover fast — you'll buy back at higher prices than you sold.</p>
+    </div>
+    <div class="callout red" style="margin-bottom:12px;">
+      <div class="callout-title">🚫 "Buy HAL and BEL now — defence is booming!"</div>
+      <p>HAL's stock already reflects its ₹940Bn order book. Chasing a 20–30% event-driven surge is speculation, not investing. Use a defence thematic mutual fund with staggered entry instead.</p>
+    </div>
+    <div class="callout red" style="margin-bottom:12px;">
+      <div class="callout-title">🚫 "I'll invest once the situation is clearer."</div>
+      <p>There is never clarity. Investors who waited for clarity after the 2008 Mumbai attacks missed a 90% rally in 12 months. When the situation is "clear", markets have already priced it in.</p>
+    </div>
+    <div class="callout red">
+      <div class="callout-title">🚫 "Let me put my emergency fund into this dip too."</div>
+      <p>No. Never. Your emergency fund is your lifeline — it must stay liquid and untouched, always. Mixing emergency funds with market investments is the fastest route to a forced sale at the worst possible time.</p>
+    </div>
+  </section>
+
+  <!-- INDIA MACRO -->
+  <section>
+    <div class="section-tag">The Big Picture</div>
+    <h2>India's structural story — unchanged</h2>
+
+    <div class="stat-strip" style="margin-bottom:8px;">
+      <div class="stat-cell" style="background:#e8f0fb;">
+        <span class="stat-num" style="color:#1f5fa6;font-size:26px;">$3.5T</span>
+        <span class="stat-label">India's GDP — world's 5th largest</span>
+      </div>
+      <div class="stat-cell" style="background:#eaf3ec;">
+        <span class="stat-num" style="color:#2e6b3e;">6.5–7%</span>
+        <span class="stat-label">Annual GDP growth rate</span>
+      </div>
+      <div class="stat-cell" style="background:#fdf1e8;">
+        <span class="stat-num" style="color:#bf5a1a;">#1</span>
+        <span class="stat-label">World's largest youth workforce</span>
+      </div>
+      <div class="stat-cell" style="background:#eaf3ec;">
+        <span class="stat-num" style="color:#2e6b3e;">10/11</span>
+        <span class="stat-label">Positive Sensex return years (2014–2024)</span>
+      </div>
+    </div>
+    <p class="source-note">Source: IMF World Economic Outlook 2025, BSE India, RBI Annual Report</p>
+
+    <p>India is not a geopolitical economy — it is a domestic consumption economy. 60% of India's GDP comes from private consumption, which continues to grow regardless of what happens in the Middle East or along the LAC.</p>
+    <p>The Sensex has delivered positive returns in ten out of the past eleven years — through pandemics, geopolitical crises, government changes, and global recessions. The compounding machine doesn't stop because of headlines.</p>
+
+    <div class="chat" style="margin-top:28px;">
+      <div class="bubble-wrap">
+        <div class="bubble-avatar av-reader">🧑</div>
+        <div>
+          <div class="bubble-name">One last question</div>
+          <div class="bubble reader">"Alright. I feel better. But just tell me honestly — is India going to be okay?"</div>
+        </div>
+      </div>
+      <div class="bubble-wrap right" style="margin-top:12px;">
+        <div class="bubble-avatar av-author">✍️</div>
+        <div style="text-align:right">
+          <div class="bubble-name">Honest answer</div>
+          <div class="bubble author">Yes — not because of blind optimism, but because of the data. Every crisis has passed. Every dip has recovered. The investors who stayed the course came out ahead every single time. And you will too — as long as you stay disciplined and don't let fear drive your decisions. India will be fine. 🇮🇳</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h2>Stay disciplined. Stay invested.<br>India will be fine.</h2>
+      <p style="margin-top:16px;">⚠️ This article is educational only and does not constitute financial advice. Please consult a SEBI-registered investment advisor before making investment decisions specific to your situation.</p>
+    </div>
+
+    <p class="source-note" style="margin-top:24px;text-align:center;">
+      Sources: Ministry of Defence PIB 2025-26 · World Gold Council Oct–Nov 2025 · BusinessToday · NSE India · AMFI · IMF WEO 2025 · HAL / BEL / BDL Annual Reports FY24 · BSE India · SBI Research · ICRA Ltd
+    </p>
+  </section>
+
+</div><!-- /container -->
+
+<footer>
+  <a href="https://solutionssnarky-droid.github.io/">Snarky Solutions</a> · © 2026 · Sharp takes on AI, money & the world<br>
+  <a href="https://solutionssnarky-droid.github.io/#posts">← Back to all posts</a>
+</footer>
+
+</body>
+</html>
