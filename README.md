@@ -1,47 +1,60 @@
-# Snarky Solutions
+# Snarky Solutions 🇮🇳✍️
 
-**Thinking Out Loud About AI & the Future**
+**Sharp takes on AI, geopolitics, personal finance, and building things that last.**
 
-Sharp takes on geopolitics, AI, personal branding, and building things that last in a world that won't sit still.
-
-🌐 **Live site:** [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io)
+Live at → [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io/)
 
 ---
 
 ## Posts
 
-| # | Title | Tags | Date |
-|---|-------|------|------|
-| 4 | [The War Nobody Wanted (And Everyone Saw Coming)](war-nobody-wanted.html) | Geopolitics · India · Middle East · Economy | Mar 9, 2026 |
-| 3 | [India Just Changed the Rules of Money. Here's How to Win.](india-finance-2026.html) | Personal Finance · India Economy · NRI | Mar 2026 |
-| 2 | [Build Your Brand Before AI Does It For You](blog-build-your-brand-ai.html) | AI & Work · Personal Brand · Career | Mar 7, 2026 |
-| 1 | [The World is Changing. Is India Ready?](india_geopolitics_blogpost.html) | Geopolitics · India · Global Strategy | Mar 2026 |
-
----
-
-## Latest
-
-### The War Nobody Wanted (And Everyone Saw Coming)
-
-> Israel, Iran, America, a dead billionaire's files, and India — somehow — right in the middle of all of it.
-
-What the Israel–Iran–US conflict actually means for India — in numbers you'll feel at the pump, in your EMI, and in your family's remittances.
-
-**The numbers that matter:**
-- ₹13–14 billion added to India's import bill per $10/barrel crude rise
-- 9 million Indians currently in the Gulf
-- $51.4 billion in annual remittances at risk
-- 45 days of Hormuz crude buffer — half the global standard
-
-→ [Read the post](war-nobody-wanted.html)
+| # | Title | Category | Date | Status |
+|---|-------|----------|------|--------|
+| 5 | [Your Money During a War — What Should You Actually Do?](your-money-during-war.html) | Personal Finance · Geopolitics | Mar 10, 2026 | ✅ Live |
+| 4 | [The War Nobody Wanted (And Everyone Saw Coming)](war-nobody-wanted.html) | Geopolitics | Mar 9, 2026 | ✅ Live |
+| 3 | [India Just Changed the Rules of Money. Here's How to Win.](india-finance-2026.html) | Personal Finance | Mar 2026 | ✅ Live |
+| 2 | [Build Your Brand Before AI Does It For You](blog-build-your-brand-ai.html) | AI & Work | Mar 7, 2026 | ✅ Live |
+| 1 | [The World is Changing. Is India Ready?](india_geopolitics_blogpost.html) | Geopolitics | Mar 2026 | ✅ Live |
 
 ---
 
 ## About
 
-This is an independent blog. No sponsors. No agenda beyond honest thinking. Stats sourced and cited. Opinions snarky but grounded.
+Snarky Solutions is an independent blog about the things that matter to working, thinking Indians in 2026 — the intersection of global events, money, AI, and building a life with intention.
 
-Built with plain HTML/CSS. No framework, no CMS, no bloat.
+No paywalls. No ads. No fluff.
+
+**Topics covered:**
+- 🌍 Geopolitics — how global events hit your daily life
+- 💰 Personal Finance — real advice for middle-class Indian investors
+- 🤖 AI & Work — what automation means for your career
+- 🧠 Personal Branding — building a voice that outlasts the algorithm
+
+---
+
+## Tech
+
+Static site. Pure HTML/CSS — no frameworks, no build step.
+Hosted free on **GitHub Pages**.
+
+---
+
+## Latest Post
+
+### Your Money During a War — What Should You Actually Do?
+*March 10, 2026 · Personal Finance · 12 min read*
+
+Markets are rattled, crude is spiking, and WhatsApp is on fire. A research-backed, conversational guide for middle-class Indian investors navigating geopolitical uncertainty.
+
+**Key stats covered:**
+- Nifty 50 drop: −4.6% (Feb–Mar 2026)
+- India defence budget FY26: ₹6.81 lakh crore (+9.5%)
+- Gold ETF returns: +66% YTD 2025 (MCX)
+- HAL order book: ₹940 billion | BEL: ₹767 billion
+- SBI Gold ETF SIP XIRR: 54.35% vs Nifty 50 ETF 2.93%
+- Historical: Mumbai attacks +90% (12-mo), Balakot +12%, Ukraine War positive YoY
+
+→ [Read post](https://solutionssnarky-droid.github.io/your-money-during-war.html)
 
 ---
 
