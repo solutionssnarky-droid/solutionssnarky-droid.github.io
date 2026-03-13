@@ -1,248 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snarky Solutions — Thinking Out Loud About AI & the Future</title>
-<meta name="description" content="Sharp takes on geopolitics, AI, personal branding, and building things that last in a world that won't sit still.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg:#faf8f4; --ink:#1a1510; --muted:#7a6e5e;
-    --accent:#bf5a1a; --accent-soft:#fdf1e8;
-    --green:#2e6b3e; --border:#e4dcd0;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { background:var(--bg); color:var(--ink); font-family:'Mulish',sans-serif; font-size:16px; line-height:1.75; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snarky Solutions — Thinking Out Loud About AI & the Future</title>
+  <meta name="description" content="Sharp takes on geopolitics, AI, personal branding, and building things that last in a world that won't sit still." />
+  <meta name="keywords" content="India AI, geopolitics India, personal finance India, NRI investing, Google Gemini, Microsoft Copilot, Snarky Solutions" />
+  <meta property="og:title" content="Snarky Solutions" />
+  <meta property="og:description" content="Sharp takes on AI, geopolitics & personal finance. No hype. A little snark." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://solutionssnarky-droid.github.io/" />
 
-  /* NAV */
-  nav {
-    position:sticky; top:0; z-index:100;
-    background:rgba(250,248,244,0.96); backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);
-    padding:14px 24px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .nav-brand { font-family:'Lora',serif; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none; }
-  .nav-brand span { color:var(--accent); }
-  .nav-links { display:flex; gap:24px; }
-  .nav-links a { font-size:13px; font-weight:600; color:var(--muted); text-decoration:none; letter-spacing:.04em; transition:color .2s; }
-  .nav-links a:hover { color:var(--accent); }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* HERO */
-  .hero { max-width:800px; margin:0 auto; padding:80px 24px 48px; }
-  .hero-status {
-    display:inline-flex; align-items:center; gap:8px;
-    background:var(--accent-soft); color:var(--accent);
-    font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-    padding:5px 14px; border-radius:100px; margin-bottom:24px;
-  }
-  .hero-status::before {
-    content:''; width:7px; height:7px; border-radius:50%;
-    background:var(--accent); display:block;
-    animation:pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-  .hero h1 { font-family:'Lora',serif; font-size:clamp(30px,6vw,54px); font-weight:700; line-height:1.15; margin-bottom:18px; }
-  .hero h1 em { font-style:italic; color:var(--accent); }
-  .hero-sub { font-size:17px; color:var(--muted); max-width:560px; margin-bottom:36px; line-height:1.7; }
-  .hero-stats { display:flex; gap:0; border:1px solid var(--border); border-radius:8px; overflow:hidden; width:fit-content; }
-  .hs { padding:14px 28px; text-align:center; border-right:1px solid var(--border); }
-  .hs:last-child { border-right:none; }
-  .hs-num { font-family:'Lora',serif; font-size:26px; font-weight:700; color:var(--ink); display:block; }
-  .hs-lbl { color:var(--muted); font-size:12px; }
+    :root {
+      --bg: #0f0f0f;
+      --surface: #161616;
+      --surface2: #1e1e1e;
+      --border: #2a2a2a;
+      --ink: #f0f0f0;
+      --muted: #888;
+      --accent: #e8ff00;
+      --accent-dim: rgba(232,255,0,0.08);
+      --green: #00e676;
+      --red: #ff5252;
+      --blue: #448aff;
+      --purple: #ce93d8;
+      --orange: #ffb74d;
+    }
 
-  /* POSTS */
-  .posts-section { max-width:800px; margin:0 auto; padding:0 24px 80px; }
-  .posts-header {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:32px 0 20px; border-bottom:2px solid var(--ink);
-  }
-  .posts-header h2 { font-family:'Lora',serif; font-size:22px; font-weight:700; }
-  .posts-count { font-size:13px; color:var(--muted); }
+    html { scroll-behavior: smooth; }
 
-  /* POST CARD */
-  .post-card {
-    display:grid; grid-template-columns:1fr auto;
-    gap:16px; padding:28px 0; border-bottom:1px solid var(--border);
-    text-decoration:none; color:inherit;
-  }
-  .post-card:hover .post-title { color:var(--accent); }
-  .post-card.featured {
-    background:var(--accent-soft);
-    margin:0 -20px; padding:28px 20px;
-    border-bottom:2px solid var(--accent);
-    border-radius:4px 4px 0 0;
-  }
-  .post-card.featured .post-title { color:var(--accent); }
-  .post-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:9px; }
-  .cat {
-    font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-    padding:3px 10px; border-radius:100px;
-  }
-  .cat-finance { background:#fdf1e8; color:var(--accent); }
-  .cat-geo     { background:#fdecea; color:#b83222; }
-  .cat-ai      { background:#e8f0fb; color:#1f5fa6; }
-  .post-date   { font-size:12px; color:var(--muted); }
-  .post-read   { font-size:12px; color:var(--muted); }
-  .new-badge   { font-size:10px; font-weight:700; background:var(--accent); color:#fff; padding:2px 9px; border-radius:100px; }
-  .post-title  { font-family:'Lora',serif; font-size:20px; font-weight:700; line-height:1.25; margin-bottom:8px; transition:color .2s; }
-  .post-title em { font-style:italic; }
-  .post-excerpt { font-size:14px; color:var(--muted); line-height:1.65; max-width:540px; }
-  .post-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
-  .post-tag { font-size:11px; color:var(--muted); background:#ece8e0; padding:2px 10px; border-radius:100px; }
-  .post-arrow { color:var(--accent); font-size:22px; align-self:center; opacity:0; transition:opacity .2s, transform .2s; }
-  .post-card:hover .post-arrow { opacity:1; transform:translateX(4px); }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 15px;
+      min-height: 100vh;
+    }
 
-  .coming-soon { text-align:center; padding:40px 0; color:var(--muted); font-size:14px; }
-  .coming-soon::before { content:'✦'; display:block; font-size:18px; margin-bottom:10px; color:var(--border); }
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,15,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  footer { border-top:1px solid var(--border); text-align:center; padding:32px 24px; font-size:13px; color:var(--muted); line-height:2; }
-  footer a { color:var(--accent); text-decoration:none; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-avatar {
+      width: 28px; height: 28px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px; color: #000; flex-shrink: 0;
+    }
+    .nav-name { font-weight: 600; font-size: 14px; color: var(--ink); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
 
-  @media(max-width:580px){
-    .post-card { grid-template-columns:1fr; }
-    .post-arrow { display:none; }
-    .nav-links { display:none; }
-    .hero-stats { flex-wrap:wrap; }
-  }
-</style>
+    .nav-dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 6px var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* HERO */
+    .hero { padding: 80px 32px 64px; max-width: 720px; margin: 0 auto; }
+
+    .hero-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 5px 14px 5px 10px;
+      font-size: 12px; color: var(--muted); margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700; line-height: 1.15;
+      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 520px; margin-bottom: 32px; }
+
+    .hero-stats { display: flex; align-items: center; gap: 28px; font-size: 13px; color: var(--muted); }
+    .hero-stats strong { color: var(--ink); font-size: 18px; font-weight: 700; display: block; }
+
+    /* POSTS */
+    #posts { max-width: 720px; margin: 0 auto; padding: 0 32px 80px; }
+
+    .posts-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
+    }
+    .posts-header h2 { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+    .posts-count { font-size: 12px; color: var(--muted); }
+
+    /* POST ITEM */
+    .post-item {
+      display: block; text-decoration: none; color: inherit;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+      transition: background 0.15s; position: relative;
+    }
+    .post-item:hover {
+      background: var(--accent-dim);
+      margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+      border-radius: 8px; border-bottom-color: transparent;
+    }
+
+    .post-item-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+
+    .cat-pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 4px; letter-spacing: 0.02em; }
+    .cat-finance { background: rgba(0,230,118,0.12); color: var(--green); }
+    .cat-geo     { background: rgba(255,82,82,0.12);  color: var(--red); }
+    .cat-ai      { background: rgba(68,138,255,0.12); color: var(--blue); }
+    .cat-brand   { background: rgba(206,147,216,0.12);color: var(--purple); }
+
+    .post-meta { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .post-meta-dot { opacity: 0.3; }
+
+    .badge-new {
+      background: var(--accent); color: #000;
+      font-size: 10px; font-weight: 800; padding: 2px 7px;
+      border-radius: 3px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    .post-item h3 {
+      font-size: 18px; font-weight: 600; line-height: 1.3;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px;
+    }
+    .post-item h3 em { font-style: italic; color: var(--accent); }
+
+    .post-item p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 580px; margin-bottom: 12px; }
+
+    .post-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag {
+      font-size: 11px; color: #555;
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 3px;
+    }
+
+    .post-arrow {
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      color: var(--muted); font-size: 18px;
+      opacity: 0; transition: opacity 0.15s, right 0.15s;
+    }
+    .post-item:hover .post-arrow { opacity: 1; right: 16px; }
+
+    .coming-soon { padding: 24px 0; font-size: 13px; color: #444; font-style: italic; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 32px; max-width: 720px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: #444;
+    }
+    footer a { color: #555; text-decoration: underline; }
+    footer a:hover { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .hero { padding: 52px 16px 44px; }
+      #posts { padding: 0 16px 60px; }
+      footer { padding: 20px 16px; flex-direction: column; gap: 8px; text-align: center; }
+      .post-arrow { display: none; }
+    }
+  </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-brand" href="https://solutionssnarky-droid.github.io/"><span>S.</span> SnarkySolutions</a>
+  <a href="/" class="nav-brand">
+    <div class="nav-avatar">S.</div>
+    <span class="nav-name">SnarkySolutions</span>
+  </a>
   <div class="nav-links">
     <a href="#posts">Blog</a>
-    <a href="https://github.com/solutionssnarky-droid" target="_blank">GitHub ↗</a>
+    <a href="https://github.com/solutionssnarky-droid" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
 </nav>
 
-<div class="hero">
-  <div class="hero-status">Active</div>
-  <h1>Thinking Out Loud About<br><em>AI & the Future</em></h1>
+<header class="hero">
+  <div class="hero-status">
+    <span class="nav-dot"></span>
+    Active
+  </div>
+  <h1>Thinking Out Loud About<br /><em>AI &amp; the Future</em></h1>
   <p class="hero-sub">Sharp takes on geopolitics, AI, personal branding, and building things that last in a world that won't sit still.</p>
   <div class="hero-stats">
-    <div class="hs"><span class="hs-num">5</span><span class="hs-lbl">Posts</span></div>
-    <div class="hs"><span class="hs-num">Active</span><span class="hs-lbl">Status</span></div>
-    <div class="hs"><span class="hs-num">Mar '26</span><span class="hs-lbl">Latest</span></div>
+    <div><strong>6</strong> Posts</div>
+    <div><strong>Active</strong> Status</div>
+    <div><strong>Mar '26</strong> Latest</div>
   </div>
-</div>
+</header>
 
-<div class="posts-section" id="posts">
+<section id="posts">
   <div class="posts-header">
-    <h2>All Posts · 5 articles</h2>
+    <h2>All Posts · 6 articles</h2>
     <span class="posts-count">Latest first</span>
   </div>
 
-  <!-- POST 5 — NEW | filename in repo: your-money-during-war-2.html -->
-  <a class="post-card featured" href="your-money-during-war-2.html">
-    <div>
+  <!-- NEW: Gemini vs Copilot -->
+  <a class="post-item" href="gemini-vs-copilot-2026.html">
+    <div class="post-item-top">
+      <span class="cat-pill cat-ai">AI &amp; Work</span>
       <div class="post-meta">
-        <span class="cat cat-finance">Personal Finance</span>
-        <span class="post-date">Mar 10, 2026</span>
-        <span class="post-read">· 12 min read</span>
-        <span class="new-badge">NEW</span>
-      </div>
-      <div class="post-title">Your Money During a War —<br><em>What Should You Actually Do?</em></div>
-      <div class="post-excerpt">Markets are rattled, crude is spiking, and your WhatsApp is on fire. A research-backed, no-jargon conversation for every middle-class Indian investor — 30 years of data, one honest answer. Defence budgets, gold ETF returns, sector picks, and 7 rules to live by.</div>
-      <div class="post-tags">
-        <span class="post-tag">India Investing</span>
-        <span class="post-tag">Geopolitics</span>
-        <span class="post-tag">Personal Finance</span>
-        <span class="post-tag">SIP</span>
-        <span class="post-tag">2026</span>
+        <span>Mar 13, 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span>8 min read</span>
+        <span class="post-meta-dot">·</span>
+        <span class="badge-new">NEW</span>
       </div>
     </div>
-    <div class="post-arrow">→</div>
+    <h3>Gemini's Glow-Up vs Copilot's <em>Struggle Bus</em></h3>
+    <p>Google Gemini is now inside Gmail, Docs, Sheets, Slides, Drive, and Chrome. Microsoft Copilot is technically there too — but only 8% of users choose it when given options. Stats, real INR pricing, honest pros &amp; cons, and who should use what.</p>
+    <div class="post-tags">
+      <span class="tag">Google Gemini</span>
+      <span class="tag">Microsoft Copilot</span>
+      <span class="tag">AI Tools</span>
+      <span class="tag">Google Workspace</span>
+      <span class="tag">2026</span>
+    </div>
+    <span class="post-arrow">→</span>
   </a>
 
-  <!-- POST 4 | filename: war-nobody-wanted.html -->
-  <a class="post-card" href="war-nobody-wanted.html">
-    <div>
+  <!-- Your Money During a War -->
+  <a class="post-item" href="your-money-during-war-2.html">
+    <div class="post-item-top">
+      <span class="cat-pill cat-finance">Personal Finance</span>
       <div class="post-meta">
-        <span class="cat cat-geo">Geopolitics</span>
-        <span class="post-date">Mar 9, 2026</span>
-        <span class="post-read">· 12 min read</span>
-      </div>
-      <div class="post-title">The War Nobody Wanted <em>(And Everyone Saw Coming)</em></div>
-      <div class="post-excerpt">Israel, Iran, America, a dead billionaire's files, and India — somehow — right in the middle of all of it. 9 million Indians. $51 billion in remittances. 45 days of oil buffer.</div>
-      <div class="post-tags">
-        <span class="post-tag">Geopolitics</span>
-        <span class="post-tag">India</span>
-        <span class="post-tag">Middle East</span>
-        <span class="post-tag">Economy</span>
+        <span>Mar 10, 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span>12 min read</span>
       </div>
     </div>
-    <div class="post-arrow">→</div>
+    <h3>Your Money During a War —<br /><em>What Should You Actually Do?</em></h3>
+    <p>Markets are rattled, crude is spiking, and your WhatsApp is on fire. A research-backed, no-jargon conversation for every middle-class Indian investor — 30 years of data, one honest answer. Defence budgets, gold ETF returns, sector picks, and 7 rules to live by.</p>
+    <div class="post-tags">
+      <span class="tag">India Investing</span>
+      <span class="tag">Geopolitics</span>
+      <span class="tag">Personal Finance</span>
+      <span class="tag">SIP</span>
+      <span class="tag">2026</span>
+    </div>
+    <span class="post-arrow">→</span>
   </a>
 
-  <!-- POST 3 | filename: india-finance-2026.html -->
-  <a class="post-card" href="india-finance-2026.html">
-    <div>
+  <!-- War Nobody Wanted -->
+  <a class="post-item" href="war-nobody-wanted.html">
+    <div class="post-item-top">
+      <span class="cat-pill cat-geo">Geopolitics</span>
       <div class="post-meta">
-        <span class="cat cat-finance">Personal Finance</span>
-        <span class="post-date">Mar 2026</span>
-        <span class="post-read">· 8 min read</span>
-      </div>
-      <div class="post-title">India Just Changed the Rules of <em>Money.</em> Here's How to Win.</div>
-      <div class="post-excerpt">Whether you live in Bengaluru or Berlin, these six financial shifts will touch your wallet. Most people won't see them coming.</div>
-      <div class="post-tags">
-        <span class="post-tag">Personal Finance</span>
-        <span class="post-tag">India Economy</span>
-        <span class="post-tag">NRI</span>
-        <span class="post-tag">2026</span>
+        <span>Mar 9, 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span>12 min read</span>
       </div>
     </div>
-    <div class="post-arrow">→</div>
+    <h3>The War Nobody Wanted <em>(And Everyone Saw Coming)</em></h3>
+    <p>Israel, Iran, America, a dead billionaire's files, and India — somehow — right in the middle of all of it. 9 million Indians. $51 billion in remittances. 45 days of oil buffer.</p>
+    <div class="post-tags">
+      <span class="tag">Geopolitics</span>
+      <span class="tag">India</span>
+      <span class="tag">Middle East</span>
+      <span class="tag">Economy</span>
+    </div>
+    <span class="post-arrow">→</span>
   </a>
 
-  <!-- POST 2 | filename: blog-build-your-brand-ai.html -->
-  <a class="post-card" href="blog-build-your-brand-ai.html">
-    <div>
+  <!-- India Finance 2026 -->
+  <a class="post-item" href="india-finance-2026.html">
+    <div class="post-item-top">
+      <span class="cat-pill cat-finance">Personal Finance</span>
       <div class="post-meta">
-        <span class="cat cat-ai">AI & Work</span>
-        <span class="post-date">Mar 7, 2026</span>
-        <span class="post-read">· 8 min read</span>
-      </div>
-      <div class="post-title">Build Your Brand Before <em>AI</em> Does It For You</div>
-      <div class="post-excerpt">In a world where AI can write your reports, draft your emails, and generate your strategy — the rarest thing left is a genuine human voice. Here's how to build one that holds up.</div>
-      <div class="post-tags">
-        <span class="post-tag">AI & Work</span>
-        <span class="post-tag">Personal Brand</span>
-        <span class="post-tag">Career</span>
+        <span>Mar 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span>8 min read</span>
       </div>
     </div>
-    <div class="post-arrow">→</div>
+    <h3>India Just Changed the Rules of <em>Money.</em> Here's How to Win.</h3>
+    <p>Whether you live in Bengaluru or Berlin, these six financial shifts will touch your wallet. Most people won't see them coming.</p>
+    <div class="post-tags">
+      <span class="tag">Personal Finance</span>
+      <span class="tag">India Economy</span>
+      <span class="tag">NRI</span>
+      <span class="tag">2026</span>
+    </div>
+    <span class="post-arrow">→</span>
   </a>
 
-  <!-- POST 1 | filename: india_geopolitics_blogpost.html -->
-  <a class="post-card" href="india_geopolitics_blogpost.html">
-    <div>
+  <!-- Build Your Brand -->
+  <a class="post-item" href="blog-build-your-brand-ai.html">
+    <div class="post-item-top">
+      <span class="cat-pill cat-ai">AI &amp; Work</span>
       <div class="post-meta">
-        <span class="cat cat-geo">Geopolitics</span>
-        <span class="post-date">Mar 2026</span>
-        <span class="post-read">· 8 min read</span>
-      </div>
-      <div class="post-title">The World is Changing. <em>Is India Ready?</em></div>
-      <div class="post-excerpt">How seismic shifts in global power — from U.S.–China rivalry to the AI race — are reshaping India's $205 billion service economy. The opportunities are enormous. So are the risks.</div>
-      <div class="post-tags">
-        <span class="post-tag">Geopolitics</span>
-        <span class="post-tag">India</span>
-        <span class="post-tag">Global Strategy</span>
+        <span>Mar 7, 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span>8 min read</span>
       </div>
     </div>
-    <div class="post-arrow">→</div>
+    <h3>Build Your Brand Before <em>AI</em> Does It For You</h3>
+    <p>In a world where AI can write your reports, draft your emails, and generate your strategy — the rarest thing left is a genuine human voice. Here's how to build one that holds up.</p>
+    <div class="post-tags">
+      <span class="tag">AI &amp; Work</span>
+      <span class="tag">Personal Brand</span>
+      <span class="tag">Career</span>
+    </div>
+    <span class="post-arrow">→</span>
   </a>
 
-  <div class="coming-soon">Next post coming soon — more sharp thinking on AI, work, and building something real</div>
-</div>
+  <!-- India Geopolitics -->
+  <a class="post-item" href="india_geopolitics_blogpost.html">
+    <div class="post-item-top">
+      <span class="cat-pill cat-geo">Geopolitics</span>
+      <div class="post-meta">
+        <span>Mar 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+    <h3>The World is Changing. <em>Is India Ready?</em></h3>
+    <p>How seismic shifts in global power — from U.S.–China rivalry to the AI race — are reshaping India's $205 billion service economy. The opportunities are enormous. So are the risks.</p>
+    <div class="post-tags">
+      <span class="tag">Geopolitics</span>
+      <span class="tag">India</span>
+      <span class="tag">Global Strategy</span>
+    </div>
+    <span class="post-arrow">→</span>
+  </a>
+
+  <p class="coming-soon">Next post coming soon — more sharp thinking on AI, work, and building something real</p>
+
+</section>
 
 <footer>
-  Snarky Solutions · © 2026 · <a href="https://solutionssnarky-droid.github.io/">solutionssnarky-droid.github.io</a><br>
-  <a href="https://github.com/solutionssnarky-droid" target="_blank">GitHub ↗</a>
+  <span>Snarky Solutions · © 2026 · <a href="https://solutionssnarky-droid.github.io">solutionssnarky-droid.github.io</a></span>
+  <a href="https://github.com/solutionssnarky-droid" target="_blank" rel="noopener">GitHub ↗</a>
 </footer>
 
 </body>
