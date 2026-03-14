@@ -1,67 +1,65 @@
-# Snarky Solutions 🇮🇳
+# Snarky Solutions 🔥
 
-> Thinking Out Loud About AI & the Future  
-> Sharp takes on geopolitics, AI, personal branding, and building things that last in a world that won't sit still.
+> **No fluff. Just sharp thinking.**
 
-**Live → [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io)**
+A blog for professionals who want real analysis — on careers, strategy, finance, and geopolitics — without the corporate-speak and without the hand-holding.
 
----
-
-## Posts
-
-| # | Date | Title | Category | File |
-|---|------|-------|----------|------|
-| 6 | Mar 13, 2026 | **Gemini's Glow-Up vs Copilot's Struggle Bus** 🆕 | AI & Work | [`gemini-vs-copilot-2026.html`](gemini-vs-copilot-2026.html) |
-| 5 | Mar 10, 2026 | Your Money During a War — What Should You Actually Do? | Personal Finance | [`your-money-during-war-2.html`](your-money-during-war-2.html) |
-| 4 | Mar 9, 2026 | The War Nobody Wanted (And Everyone Saw Coming) | Geopolitics | [`war-nobody-wanted.html`](war-nobody-wanted.html) |
-| 3 | Mar 2026 | India Just Changed the Rules of Money. Here's How to Win. | Personal Finance | [`india-finance-2026.html`](india-finance-2026.html) |
-| 2 | Mar 7, 2026 | Build Your Brand Before AI Does It For You | AI & Work | [`blog-build-your-brand-ai.html`](blog-build-your-brand-ai.html) |
-| 1 | Mar 2026 | The World is Changing. Is India Ready? | Geopolitics | [`india_geopolitics_blogpost.html`](india_geopolitics_blogpost.html) |
+🌐 **Live at:** [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io)
 
 ---
 
-## Latest — March 13, 2026
+## 📌 Latest Post
 
-### Gemini's Glow-Up vs Copilot's Struggle Bus
+### [You're Communicating. But Is Anyone Actually Receiving?](./strategic-communication-blog.html)
+*Strategic Communication · Emotional Intelligence · Mar 2026*
 
-Google Gemini is now inside Gmail, Docs, Sheets, Slides, Drive, Meet, and Chrome.  
-Microsoft Copilot is technically everywhere too — but **only 8% of users choose it** when given options.
+You prepared. You presented. You explained everything clearly. And the room still didn't move.
 
-Covers:
-- What actually changed, app by app
-- Honest pros & cons — no marketing spin
-- Real INR pricing (including the uncomfortable ₹2,500/user add-on number)
-- Who should use what, based on your actual situation
+This post covers the gap between talking and being heard — with a practical framework, real data, MBA-grade thinking, and an interactive self-assessment to show you exactly which type of communicator you are right now.
 
-→ [gemini-vs-copilot-2026.html](gemini-vs-copilot-2026.html)
+**Includes:** The 3-part leadership conversation script · EQ in high-pressure moments · Self-assessment with personalised result
 
 ---
 
-## Repo Structure
+## 📚 All Posts
 
-```
-/
-├── index.html                      # Homepage — all posts
-├── README.md                       # This file
-├── gemini-vs-copilot-2026.html     # AI at Work · Mar 13 2026 · NEW
-├── your-money-during-war-2.html    # Personal Finance · Mar 10 2026
-├── war-nobody-wanted.html          # Geopolitics · Mar 9 2026
-├── india-finance-2026.html         # Personal Finance · Mar 2026
-├── blog-build-your-brand-ai.html   # AI & Work · Mar 7 2026
-└── india_geopolitics_blogpost.html # Geopolitics · Mar 2026
-```
+| Post | Category | Description |
+|------|----------|-------------|
+| [You're Communicating. But Is Anyone Receiving?](./strategic-communication-blog.html) | Strategic Communication | EQ, frameworks, self-assessment for every professional |
+| [Build Your Brand With AI](./blog-build-your-brand-ai.html) | AI & Careers | How to build real visibility using AI tools |
+| [India's Financial Moves for 2026](./india-finance-2026.html) | Finance | What every Indian professional needs to know before FY2026 |
+| [India's Geopolitical Positioning](./india_geopolitics_blogpost.html) | Geopolitics | India's place in the new global power structure |
+| [The War Nobody Wanted](./war-nobody-wanted.html) | Global Affairs | Israel-Iran-US conflict and India's exposure |
+| [Your Money During a War](./your-money-during-war-2.html) | Personal Finance | Portfolio strategy when the world is volatile |
 
 ---
 
-## About
+## 🎯 What This Blog Is
 
-Independent blog. No sponsors. No affiliate links. No recycled press releases.  
-Written from Kolkata — read across India and by the diaspora worldwide.
+**Snarky Solutions** is written from the perspective of a working professional in India who is paying attention — to the world, to workplace dynamics, to money, and to the slow creep of AI into everything.
 
-**Topics:** AI & Work · Geopolitics · Personal Finance · Personal Branding  
-**Audience:** Indian professionals, NRIs, knowledge workers  
-**Tone:** Easy to read. A little snarky. Always with receipts.
+The tone is:
+- Direct, not diplomatic
+- Data-backed, not opinionated for the sake of it
+- Practical — there's always something you can actually do
+- Occasionally snarky, because some things deserve it
+
+The audience is anyone who wants to understand the real dynamics of their professional life — not just the LinkedIn-polished version of it.
 
 ---
 
-*Made in Kolkata. Read worldwide. 🇮🇳*
+## 🛠️ Built With
+
+- Pure HTML + CSS — no frameworks, no dependencies
+- Hosted on GitHub Pages
+- Designed to load fast and read well on any device
+
+---
+
+## ✍️ About
+
+Written by a Transition PMO professional with 14 years in IT services and BPM — with a parallel interest in AI, strategy, and making complex things legible to real people.
+
+---
+
+*© 2026 Snarky Solutions. Sharp thinking for professionals who are done being overlooked.*
