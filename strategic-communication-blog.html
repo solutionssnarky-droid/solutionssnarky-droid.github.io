@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Communicating. But Is Anyone Actually Receiving? | Snarky Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Epilogue:wght@300;400;500;600&family=Inconsolata:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0e0e0e;
+  --surface:   #161616;
+  --card:      #1e1e1e;
+  --border:    #2a2a2a;
+  --accent:    #e8c547;
+  --accent2:   #e05a3a;
+  --text:      #e8e2d9;
+  --muted:     #7a7570;
+  --soft:      #3a3530;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.blog-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+.blog-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 32px 64px;
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100px; right: -100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232,197,71,0.1);
+  border: 1px solid rgba(232,197,71,0.25);
+  color: var(--accent);
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+.category-pill::before { content: '●'; font-size: 6px; }
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.meta-row span { display: flex; align-items: center; gap: 6px; }
+
+/* ── BODY ── */
+.body-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* ── OPENING STORY ── */
+.story-block {
+  background: var(--card);
+  border-left: 3px solid var(--accent);
+  padding: 32px 36px;
+  margin: 0 0 48px;
+  position: relative;
+}
+.story-block::before {
+  content: 'SCENE';
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 14px;
+}
+.story-block p {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #cdc7be;
+}
+.story-block .scene-note {
+  margin-top: 16px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.88rem;
+  font-style: normal;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+/* ── PROSE ── */
+.prose { margin-bottom: 40px; }
+.prose p {
+  font-size: 1.02rem;
+  color: #cdc7be;
+  margin-bottom: 20px;
+  line-height: 1.85;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose em { color: var(--accent); font-style: italic; }
+
+/* ── SECTION HEADING ── */
+.section-head {
+  margin: 60px 0 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.section-head .s-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.section-head h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+/* ── SNARKY CALLOUT ── */
+.snarky {
+  background: rgba(224,90,58,0.08);
+  border: 1px solid rgba(224,90,58,0.2);
+  border-radius: 2px;
+  padding: 20px 24px;
+  margin: 28px 0;
+  font-size: 0.96rem;
+  color: #e8b0a0;
+  line-height: 1.65;
+}
+.snarky::before {
+  content: '↯ Snarky note:';
+  display: block;
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 8px;
+}
+
+/* ── PULL QUOTE ── */
+.pull {
+  margin: 40px -20px;
+  padding: 32px 36px;
+  border-top: 2px solid var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+.pull p {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.4;
+}
+.pull cite {
+  display: block;
+  margin-top: 12px;
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* ── STAT ROW ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 32px 0;
+}
+@media(max-width:560px){ .stat-row { grid-template-columns:1fr; } }
+.stat-box {
+  background: var(--card);
+  padding: 24px 18px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-box .n {
+  font-family: 'Fraunces', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-box .d {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.stat-box .src {
+  font-family: 'Inconsolata', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--soft);
+  text-transform: uppercase;
+  margin-top: 6px;
+  display: block;
+}
+
+/* ── SPLIT TABLE ── */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 28px 0;
+}
+@media(max-width:560px){ .split { grid-template-columns:1fr; } }
+.split-panel {
+  padding: 24px 22px;
+  border: 1px solid var(--border);
+}
+.split-panel.a { background: var(--surface); }
+.split-panel.b { background: var(--card); }
+.sp-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.split-panel.a .sp-label { color: var(--accent2); }
+.split-panel.b .sp-label { color: var(--accent); }
+.split-panel h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+.split-panel ul { list-style: none; }
+.split-panel ul li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding: 7px 0 7px 18px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  line-height: 1.5;
+}
+.split-panel ul li:last-child { border: none; }
+.split-panel.a ul li::before { content: '✕'; position: absolute; left:0; color: var(--accent2); font-size:0.75rem; }
+.split-panel.b ul li::before { content: '✓'; position: absolute; left:0; color: var(--accent); font-size:0.75rem; }
+
+/* ── INLINE HIGHLIGHT (kept for future use) ── */
+
+/* ── SELF ASSESSMENT ── */
+.quiz-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  margin: 40px 0;
+}
+.quiz-wrap .quiz-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.quiz-wrap .quiz-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+.q-item {
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.q-item:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.q-text {
+  font-size: 0.97rem;
+  color: var(--text);
+  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.q-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.q-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Epilogue', sans-serif;
+  font-size: 0.82rem;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.18s;
+  border-radius: 2px;
+}
+.q-btn:hover { border-color: var(--accent); color: var(--accent); }
+.q-btn.selected { background: rgba(232,197,71,0.1); border-color: var(--accent); color: var(--accent); }
+
+.quiz-result {
+  display: none;
+  margin-top: 28px;
+  padding: 24px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+}
+.quiz-result.show { display: block; }
+.result-type {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.result-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.result-text {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.result-action {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  color: #e8b060;
+  font-style: italic;
+}
+
+#quiz-cta {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  background: var(--accent);
+  color: #0e0e0e;
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+#quiz-cta:hover { opacity: 0.88; }
+
+/* ── FRAMEWORK CARDS ── */
+.fwork {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0;
+}
+@media(max-width:560px){ .fwork { grid-template-columns:1fr; } }
+.fc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 22px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.fc:hover { border-color: var(--accent); }
+.fc::after {
+  content: attr(data-n);
+  position: absolute;
+  bottom: -12px; right: 4px;
+  font-family: 'Fraunces', serif;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(232,197,71,0.05);
+  line-height: 1;
+  pointer-events: none;
+}
+.fc-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.fc h4 {
+  font-weight: 600;
+  font-size: 0.97rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.fc p {
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── SCRIPT CARDS ── */
+.script {
+  background: var(--surface);
+  border-left: 2px solid var(--accent);
+  padding: 24px 28px;
+  margin-bottom: 14px;
+}
+.sc-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.script h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.script p {
+  font-size: 0.92rem;
+  color: #9a9490;
+  line-height: 1.7;
+}
+.script p mark {
+  background: rgba(232,197,71,0.15);
+  color: var(--accent);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+.script .eq-whisper {
+  margin-top: 12px;
+  font-size: 0.83rem;
+  color: #5a8a7a;
+  font-style: italic;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+/* ── CLOSING CTA ── */
+.closing-cta {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 48px 36px;
+  margin-top: 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.closing-cta::before {
+  content: '?';
+  position: absolute;
+  font-family: 'Fraunces', serif;
+  font-size: 20rem;
+  font-weight: 900;
+  color: rgba(232,197,71,0.03);
+  top: -40px; left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  line-height: 1;
+}
+.closing-cta .cta-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  position: relative;
+}
+.closing-cta h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  position: relative;
+}
+.closing-cta h2 em { color: var(--accent); font-style: italic; }
+.closing-cta .big-q {
+  font-size: 1.1rem;
+  color: #9a9490;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto 28px;
+  position: relative;
+}
+.closing-cta .big-q strong { color: var(--text); }
+.reply-nudge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  position: relative;
+}
+.reply-nudge::before, .reply-nudge::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer .fname {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  color: var(--accent);
+  font-size: 1rem;
+}
+.footer .fright {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── SHARE BAR ── */
+.share-bar {
+  display: flex;
+  gap: 8px;
+  margin: 32px 0;
+  flex-wrap: wrap;
+}
+.share-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: all 0.18s;
+  border-radius: 2px;
+}
+.share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero, .body-wrap { animation: fadeIn 0.7s ease both; }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="blog-name">Snarky Solutions</div>
+  <div class="blog-tag">No fluff. Just sharp thinking.</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="category-pill">Strategic Communication</div>
+  <h1>You're <em>Communicating.</em><br>But Is Anyone<br>Actually Receiving?</h1>
+  <p class="hero-sub">You prepared. You presented. You explained everything. And still — the room didn't move. Here's what nobody told you about the gap between talking and being heard.</p>
+  <div class="meta-row">
+    <span>📖 12 min read</span>
+    <span>🧠 Includes self-assessment</span>
+    <span>💬 Leave your answer below</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body-wrap">
+
+  <!-- OPENING STORY -->
+  <div class="story-block">
+    <p>Picture this. You've spent three days preparing for this meeting. The numbers are solid. The risks are mapped. The recommendation is clear. You walk in, you present, you wait — and the senior leader glances up from their phone and says, "Can you send me a summary?"</p>
+    <p class="scene-note">You just gave them the summary. For 20 minutes. But here's the truth they won't tell you: the problem wasn't your preparation. It was the gap between what you communicated and what they were ready to receive. That gap has a name. And closing it is a learnable skill.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section-head">
+    <div class="s-label">01 · The real problem</div>
+    <h2>You Don't Have a Communication Problem.<br>You Have a Reception Problem.</h2>
+  </div>
+
+  <div class="prose">
+    <p>Here's the uncomfortable truth: most professionals are decent communicators. You know how to string sentences together. You can build a slide deck. You can write a coherent email. That's not the issue.</p>
+    <p>The issue is the <strong>value creation gap</strong> — the distance between the value you generate and the value your stakeholders actually perceive. You're creating it. They're not perceiving it. And the longer that gap exists, the more invisible your work becomes, no matter how good it actually is.</p>
+    <p>Think of it as a signal-to-noise problem. Your signal — your insight, your analysis, your recommendation — is strong. But the noise around it (wrong timing, wrong framing, wrong room) is drowning it out. Strategic communication is how you boost the signal and cut the noise. Not by working harder. By thinking differently about who is on the other side of the message.</p>
+    <p>And that's where <strong>Emotional Intelligence</strong> walks in and changes everything. Because you can have the best-structured argument in the room and still lose — if you didn't notice the CFO was distracted, or the stakeholder felt blindsided, or the leader needed to feel heard before they could hear you.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="n">80%</div>
+      <div class="d">of leaders think their comms are clear. Only 50% of their teams agree.</div>
+      <span class="src">Axios HQ · 2025</span>
+    </div>
+    <div class="stat-box">
+      <div class="n">$12,506</div>
+      <div class="d">lost per employee annually due to miscommunication in US businesses</div>
+      <span class="src">aaask · 2024</span>
+    </div>
+    <div class="stat-box">
+      <div class="n">3.5×</div>
+      <div class="d">more likely to outperform when communication is genuinely effective</div>
+      <span class="src">McKinsey</span>
+    </div>
+  </div>
+
+  <div class="snarky">
+    That 80/50 gap? That's not a coincidence. That's what happens when the person sending the message never asks the person receiving it if any of it actually landed. You can't assess your own communication from the inside. Reception is always defined by the receiver.
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section-head">
+    <div class="s-label">02 · The foundation nobody teaches</div>
+    <h2>EQ Isn't a Personality Trait.<br>It's the Operating System.</h2>
+  </div>
+
+  <div class="prose">
+    <p>Let's get one thing out of the way: Emotional Intelligence is not about being nice. It's not about being empathetic to the point of having no backbone. It's not soft — it is one of the most measurable, trainable capabilities in executive leadership, and the business schools that understand this have been building it into their core curriculum for two decades.</p>
+    <p>Goleman's five EQ domains — self-awareness, self-regulation, motivation, empathy, and social skill — are each doing a specific functional job in every conversation you have. Self-awareness is what stops you from delivering a high-pressure update when you're visibly stressed and projecting it onto the room. Empathy is what tells you that your client's frustration isn't really about the timeline — it's about feeling out of control of something they're accountable for. Social skill is what lets you earn the right to deliver hard news without destroying the relationship in the process.</p>
+    <p>Think of EQ as the operating system and strategic communication as the app. A brilliant app on a failing OS? It crashes. Every time.</p>
+    <p>The data is clear: leaders who consistently demonstrate empathy in how they communicate perform <strong>40% higher</strong> on coaching, stakeholder engagement, and decision quality. And 96% of professionals say they want more empathetic communication at work. They're not getting it — which means every time you bring it, you stand out.</p>
+  </div>
+
+  <div class="pull">
+    <p>"Data tells people what happened. Communication tells people what it means. Emotional intelligence tells you whether they're ready to hear it."</p>
+    <cite>The trifecta most professionals only hit one of</cite>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section-head">
+    <div class="s-label">03 · Two worlds, one professional</div>
+    <h2>What You Say Inside the House<br>vs. What You Say at the Door</h2>
+  </div>
+
+  <div class="prose">
+    <p>Here's a scenario. Your project is running two weeks behind. An internal dependency slipped, the risk was in your log but wasn't escalated in time, and one of your team members underdelivered. You now have two conversations ahead of you: one with your internal leadership, and one with your client.</p>
+    <p>Do both versions say the same thing? Absolutely not. Should both versions be honest? Absolutely yes. This isn't contradiction — this is the skill of shaping your message for the room you're in. The most consistently effective communicators understand that adapting your message isn't dishonesty. It's respect for your audience's context.</p>
+    <p>Think about it this way: you, as the professional closest to the work, always know more than your external stakeholders. Your job is not to share everything you know. Your job is to translate what is <em>relevant, actionable, and appropriate</em> for each room. Internally, you are an analyst — surface everything, hold nothing back. Externally, you are a narrator — lead with what they need to know and what you're doing about it.</p>
+    <p>Every external communication also spends or earns something invisible but enormously valuable: the accumulated trust and credibility that determines how much latitude your stakeholders will give you when things get hard. You want a lot of that in the bank before you ever need to draw on it.</p>
+  </div>
+
+  <div class="split">
+    <div class="split-panel a">
+      <div class="sp-label">What not to do — ever</div>
+      <h3>The Communication That Kills Careers</h3>
+      <ul>
+        <li>Dump raw data without a "so what"</li>
+        <li>Raise a problem with no recommendation attached</li>
+        <li>Over-explain your activity instead of your outcomes</li>
+        <li>Blame the room before they trust you</li>
+        <li>Deliver bad news without first reading the temperature</li>
+        <li>Lead with context when they need the conclusion</li>
+      </ul>
+    </div>
+    <div class="split-panel b">
+      <div class="sp-label">What actually moves rooms</div>
+      <h3>The Communication That Builds Reputation</h3>
+      <ul>
+        <li>Lead with the conclusion — evidence follows</li>
+        <li>Every problem arrives with a recommended path</li>
+        <li>Outcomes named, not activities listed</li>
+        <li>Acknowledge the emotion before addressing the fact</li>
+        <li>Frame risk with mitigation already attached</li>
+        <li>Make the decision you need from them obvious</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SELF ASSESSMENT -->
+  <div class="section-head">
+    <div class="s-label">04 · Mirror time</div>
+    <h2>Which Kind of Communicator<br>Are You, Actually?</h2>
+  </div>
+
+  <div class="prose">
+    <p>Before you read any further — stop for a moment. Because the frameworks only work if you know where you're starting from. This isn't a test with right answers. It's a mirror. Be honest with yourself.</p>
+  </div>
+
+  <div class="quiz-wrap">
+    <div class="quiz-title">The Communication Style Diagnostic</div>
+    <div class="quiz-sub">Pick the option that sounds most like you in a real, high-stakes professional moment. Not the version of you that you'd like to be — the version that actually showed up last week.</div>
+
+    <div class="q-item" data-q="0">
+      <div class="q-text">When you present in a leadership meeting, you typically start with…</div>
+      <div class="q-options">
+        <button class="q-btn" data-v="b" onclick="pick(this,0)">Background and context first</button>
+        <button class="q-btn" data-v="a" onclick="pick(this,0)">My main recommendation upfront</button>
+        <button class="q-btn" data-v="c" onclick="pick(this,0)">A summary of everything we've done</button>
+        <button class="q-btn" data-v="b" onclick="pick(this,0)">Data and charts, then the point</button>
+      </div>
+    </div>
+
+    <div class="q-item" data-q="1">
+      <div class="q-text">When something goes wrong on your work, your instinct is to…</div>
+      <div class="q-options">
+        <button class="q-btn" data-v="c" onclick="pick(this,1)">Fix it quietly and mention it later</button>
+        <button class="q-btn" data-v="a" onclick="pick(this,1)">Name it early with a mitigation plan</button>
+        <button class="q-btn" data-v="b" onclick="pick(this,1)">Explain what happened in detail first</button>
+        <button class="q-btn" data-v="c" onclick="pick(this,1)">Wait and see if it resolves itself</button>
+      </div>
+    </div>
+
+    <div class="q-item" data-q="2">
+      <div class="q-text">Before a high-stakes conversation, you typically think about…</div>
+      <div class="q-options">
+        <button class="q-btn" data-v="b" onclick="pick(this,2)">What I need to cover and say</button>
+        <button class="q-btn" data-v="a" onclick="pick(this,2)">What decision they need to make and how they're feeling</button>
+        <button class="q-btn" data-v="c" onclick="pick(this,2)">Whether I have all the data ready</button>
+        <button class="q-btn" data-v="b" onclick="pick(this,2)">How to explain everything clearly</button>
+      </div>
+    </div>
+
+    <div class="q-item" data-q="3">
+      <div class="q-text">When someone in the room challenges you publicly, you…</div>
+      <div class="q-options">
+        <button class="q-btn" data-v="c" onclick="pick(this,3)">Go quiet or defer quickly</button>
+        <button class="q-btn" data-v="b" onclick="pick(this,3)">Defend your position with more evidence</button>
+        <button class="q-btn" data-v="a" onclick="pick(this,3)">Get curious — ask what's driving the concern</button>
+        <button class="q-btn" data-v="b" onclick="pick(this,3)">Feel flustered but push through</button>
+      </div>
+    </div>
+
+    <div class="q-item" data-q="4">
+      <div class="q-text">After you send an important update or report, you…</div>
+      <div class="q-options">
+        <button class="q-btn" data-v="c" onclick="pick(this,4)">Wait to see if anyone responds</button>
+        <button class="q-btn" data-v="b" onclick="pick(this,4)">Hope it was clear enough</button>
+        <button class="q-btn" data-v="a" onclick="pick(this,4)">Follow up to confirm understanding and invite questions</button>
+        <button class="q-btn" data-v="c" onclick="pick(this,4)">Move on — it's their job to read it</button>
+      </div>
+    </div>
+
+    <button id="quiz-cta" onclick="showResult()">Show my communication type →</button>
+
+    <div class="quiz-result" id="result-a">
+      <div class="result-type">Your type · Strategic Communicator</div>
+      <div class="result-title">You're already thinking like this. Now sharpen the edge.</div>
+      <p class="result-text">You lead with outcomes, read the room, and own your narrative. That's rare — and it's why people trust you with complexity. The next level? Making sure your EQ isn't just reactive. Start using it proactively: before the meeting, map the emotional landscape of every key person in the room. What are they worried about? What do they need to believe? Build your communication from the answer.</p>
+      <p class="result-action">→ Focus area: Proactive empathy mapping before high-stakes conversations.</p>
+    </div>
+    <div class="quiz-result" id="result-b">
+      <div class="result-type">Your type · The Thorough Explainer</div>
+      <div class="result-title">You're trusted. But you're burying your own signal.</div>
+      <p class="result-text">You prepare well and communicate honestly — but you lead with evidence and context, not conclusions. This makes you credible but slow to land. Busy leaders stop listening before you get to the point. The fix is structural: flip your habit. Start with your recommendation, then offer the evidence as support for those who want to go deeper. Try it in your next email.</p>
+      <p class="result-action">→ Focus area: BLUF — Bottom Line Up Front. One week of starting every update with your conclusion first.</p>
+    </div>
+    <div class="quiz-result" id="result-c">
+      <div class="result-type">Your type · The Invisible Performer</div>
+      <div class="result-title">You're doing the work. But the room doesn't know it.</div>
+      <p class="result-text">You're cautious, careful, and tend to under-communicate. You fix things before people notice, which feels like efficiency but reads as absence. Your work is good — but it's not visible, and visibility matters. The shift isn't about self-promotion; it's about closing the value creation gap. People can only value what they can see. Start naming your outcomes out loud, proactively and briefly, before someone else defines your contribution for you.</p>
+      <p class="result-action">→ Focus area: One deliberate visibility moment per week — a brief update, a proactive share, a named outcome in a meeting.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section-head">
+    <div class="s-label">05 · In the room</div>
+    <h2>The Three-Part Script That Works<br>in Every Leadership Conversation</h2>
+  </div>
+
+  <div class="prose">
+    <p>Here's the thing about senior leadership conversations: they fail for one of three reasons. You led with activity instead of outcomes. You brought a problem without a recommendation. Or you completely misread the emotional temperature of the room and delivered the right message at exactly the wrong moment.</p>
+    <p>What you're building — slowly, update by update, conversation by conversation — is the kind of presence that makes senior leaders think: <em>this person is safe to give more to.</em> Not confidence as a personality trait. Presence as a structural choice: how you enter a room, what you lead with, how you hold the narrative when challenged. And it starts with one question you should answer before every leadership interaction: <em>"What decision does this person need to make — and how are they feeling about it right now?"</em></p>
+  </div>
+
+  <div class="script">
+    <div class="sc-label">Part 1 · Situational Control</div>
+    <h4>Give them the assurance before they have to ask for it.</h4>
+    <p>"We are <mark>in control of / managing a defined deviation in</mark> [key area]. The most significant moving piece is [specific item], addressed through [specific action]. Here's where we stand against the plan."</p>
+    <div class="eq-whisper">EQ note: Leaders fear loss of control above almost everything else. Your first job is to restore that feeling — before you introduce any complexity. Assurance opens ears.</div>
+  </div>
+
+  <div class="script">
+    <div class="sc-label">Part 2 · Forward Visibility</div>
+    <h4>Tell them what's coming before it arrives.</h4>
+    <p>"In the next <mark>[2–4 weeks]</mark>, the area that needs your awareness is [risk]. If [condition] occurs, the impact is [consequence]. My recommendation: [specific action]. I need a decision from you on [specific point] by [specific date]."</p>
+    <div class="eq-whisper">EQ note: Frame the ask as enabling their decision — not dumping your problem on them. People act faster when they feel agency, not burden. Watch how the energy in the room shifts.</div>
+  </div>
+
+  <div class="script">
+    <div class="sc-label">Part 3 · Efficiency Signal</div>
+    <h4>Let your outcomes do the talking.</h4>
+    <p>"Since our last conversation, we resolved [X], removing [specific risk]. The team has [specific outcome]. We are <mark>[ahead of / aligned to / revising]</mark> baseline because [clear reason]."</p>
+    <div class="eq-whisper">EQ note: Never say "I worked very hard." Show the result, let them form the opinion. Telling people to admire you creates resistance. Evidence creates belief — and belief is what gets you the next role.</div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section-head">
+    <div class="s-label">06 · The moments that matter most</div>
+    <h2>Four Situations Where EQ Either<br>Builds or Burns Your Reputation</h2>
+  </div>
+
+  <div class="prose">
+    <p>You can prepare perfectly and still have your professional reputation shaped by an unscripted, pressured, uncomfortable moment you didn't see coming. Research from Harvard Business School shows that it's precisely these moments — the ones you didn't plan for — that disproportionately define how you're remembered. The differentiator in every one of them? How well you regulate yourself while still moving the situation forward.</p>
+  </div>
+
+  <div class="fwork">
+    <div class="fc" data-n="1">
+      <div class="fc-label">🔥 When things go wrong</div>
+      <h4>Acknowledge before you explain.</h4>
+      <p>People in distress cannot process information until they feel heard. One sentence of genuine acknowledgement opens every door. Defending before acknowledging closes them all.</p>
+    </div>
+    <div class="fc" data-n="2">
+      <div class="fc-label">❓ When you don't know the answer</div>
+      <h4>"I'll give you the right answer, not the fast one."</h4>
+      <p>Bluffing is far more damaging than a gap. Intellectual honesty is a trust deposit — but only if you follow through with the answer you promised, at the time you promised it.</p>
+    </div>
+    <div class="fc" data-n="3">
+      <div class="fc-label">⚡ When someone challenges you publicly</div>
+      <h4>Get curious. Don't get defensive.</h4>
+      <p>"That's a fair challenge — can you help me understand what's driving the concern?" Disarms the confrontation. Often reveals information you actually needed. Signals maturity to every observer.</p>
+    </div>
+    <div class="fc" data-n="4">
+      <div class="fc-label">🤐 When the room goes quiet</div>
+      <h4>Silence is thinking. Don't interrupt it.</h4>
+      <p>Low-EQ professionals rush to fill silence and often undermine their own position. Wait. Then ask a specific question. The answer will tell you everything about how the room actually received you.</p>
+    </div>
+  </div>
+
+  <div class="snarky">
+    The room going quiet after you speak is not rejection. It is often the sound of people actually thinking about what you just said — which means you said something worth thinking about. The professionals who fill that silence immediately are the ones who are too anxious to let their own point land.
+  </div>
+
+  <!-- SHARE BAR -->
+  <div class="share-bar">
+    <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>this.textContent='✓ Copied!')">↗ Copy link</button>
+    <button class="share-btn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href))">LinkedIn</button>
+    <button class="share-btn" onclick="window.open('https://twitter.com/intent/tweet?text=You%27re+communicating.+But+is+anyone+receiving%3F+Great+read+on+strategic+comms+%2B+EQ&url='+encodeURIComponent(window.location.href))">X / Twitter</button>
+    <button class="share-btn" onclick="window.open('whatsapp://send?text=Read this — really good on strategic communication and EQ: '+encodeURIComponent(window.location.href))">WhatsApp</button>
+  </div>
+
+  <!-- CLOSING CTA -->
+  <div class="closing-cta">
+    <div class="cta-tag">Before you go · Your turn</div>
+    <h2>What's the Conversation<br>You've Been <em>Avoiding?</em></h2>
+    <p class="big-q">Every professional reading this right now has one. A feedback conversation they've been softening. A leadership update they've been delaying. A relationship at work where the communication has drifted into pretence. <strong>What would change if you applied even one idea from this piece to that conversation — this week?</strong></p>
+    <div class="reply-nudge">Drop your answer in the comments below</div>
+  </div>
+
+</div><!-- /body-wrap -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="fname">Snarky Solutions</div>
+  <div class="fright">Sharp thinking for professionals who are done being overlooked</div>
+</div>
+
+<script>
+const answers = new Array(5).fill(null);
+
+function pick(btn, qIndex) {
+  const opts = btn.closest('.q-item').querySelectorAll('.q-btn');
+  opts.forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  answers[qIndex] = btn.getAttribute('data-v');
+}
+
+function showResult() {
+  const filled = answers.filter(a => a !== null).length;
+  if (filled < 3) {
+    document.getElementById('quiz-cta').textContent = 'Please answer at least 3 questions →';
+    return;
+  }
+  const counts = { a: 0, b: 0, c: 0 };
+  answers.forEach(a => { if (a) counts[a]++; });
+  const winner = Object.entries(counts).sort((x, y) => y[1] - x[1])[0][0];
+
+  ['a','b','c'].forEach(t => {
+    const el = document.getElementById('result-' + t);
+    el.classList.remove('show');
+  });
+  document.getElementById('result-' + winner).classList.add('show');
+  document.getElementById('result-' + winner).scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.getElementById('quiz-cta').textContent = '✓ Your type revealed above';
+}
+</script>
+
+</body>
+</html>
