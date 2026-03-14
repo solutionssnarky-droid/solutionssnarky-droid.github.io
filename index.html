@@ -1,356 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Snarky Solutions — Thinking Out Loud About AI & the Future</title>
-  <meta name="description" content="Sharp takes on geopolitics, AI, personal branding, and building things that last in a world that won't sit still." />
-  <meta name="keywords" content="India AI, geopolitics India, personal finance India, NRI investing, Google Gemini, Microsoft Copilot, Snarky Solutions" />
-  <meta property="og:title" content="Snarky Solutions" />
-  <meta property="og:description" content="Sharp takes on AI, geopolitics & personal finance. No hype. A little snark." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://solutionssnarky-droid.github.io/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snarky Solutions — No Fluff. Just Sharp Thinking.</title>
+<meta name="description" content="Sharp, data-backed analysis on careers, strategy, finance, and geopolitics. For professionals who are done being overlooked.">
+<meta property="og:title" content="Snarky Solutions">
+<meta property="og:description" content="No fluff. Just sharp thinking.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Epilogue:wght@300;400;500;600&family=Inconsolata:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #0e0e0e;
+  --surface: #161616;
+  --card:    #1a1a1a;
+  --border:  #262626;
+  --accent:  #e8c547;
+  --red:     #e05a3a;
+  --text:    #e8e2d9;
+  --muted:   #6a6560;
+  --soft:    #2e2a26;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* NAV */
+nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 
-    :root {
-      --bg: #0f0f0f;
-      --surface: #161616;
-      --surface2: #1e1e1e;
-      --border: #2a2a2a;
-      --ink: #f0f0f0;
-      --muted: #888;
-      --accent: #e8ff00;
-      --accent-dim: rgba(232,255,0,0.08);
-      --green: #00e676;
-      --red: #ff5252;
-      --blue: #448aff;
-      --purple: #ce93d8;
-      --orange: #ffb74d;
-    }
+/* HERO STRIP */
+.hero-strip {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 72px 48px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-strip::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent 60%);
+}
+.hero-strip::after {
+  content: 'SS';
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Fraunces', serif;
+  font-size: 18rem;
+  font-weight: 900;
+  color: rgba(232,197,71,0.025);
+  pointer-events: none;
+  line-height: 1;
+}
+.hero-inner { max-width: 720px; position: relative; }
+.hero-eyebrow {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--accent); }
+.hero-strip h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text);
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+.hero-strip h1 em { font-style: italic; color: var(--accent); }
+.hero-strip p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.7;
+}
 
-    html { scroll-behavior: smooth; }
+/* MAIN GRID */
+.main { max-width: 1160px; margin: 0 auto; padding: 64px 48px; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
-      font-size: 15px;
-      min-height: 100vh;
-    }
+/* FEATURED POST */
+.featured-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.featured-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(15,15,15,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 32px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.featured-card {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2px;
+  margin-bottom: 64px;
+  text-decoration: none;
+  color: inherit;
+}
+@media(max-width:860px){ .featured-card { grid-template-columns: 1fr; } }
+.featured-card:hover .fc-title { color: var(--accent); }
+.fc-content {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-right: none;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s;
+}
+.featured-card:hover .fc-content { border-color: var(--accent); }
+.fc-img {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.fc-img svg { width: 100%; height: 100%; }
+.fc-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.fc-new {
+  display: inline-block;
+  background: var(--accent);
+  color: #0e0e0e;
+  font-family: 'Inconsolata', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  margin-left: 8px;
+  font-weight: 500;
+}
+.fc-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 16px;
+  transition: color 0.2s;
+}
+.fc-desc {
+  font-size: 0.93rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.fc-meta {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--soft);
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.fc-read {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 24px;
+  display: flex; align-items: center; gap: 8px;
+}
+.fc-read::after { content: '→'; transition: transform 0.2s; }
+.featured-card:hover .fc-read::after { transform: translateX(4px); }
 
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-avatar {
-      width: 28px; height: 28px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 13px; color: #000; flex-shrink: 0;
-    }
-    .nav-name { font-weight: 600; font-size: 14px; color: var(--ink); }
-    .nav-links { display: flex; align-items: center; gap: 24px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--ink); }
+/* POST GRID */
+.posts-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.posts-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    .nav-dot {
-      width: 7px; height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      display: inline-block;
-      box-shadow: 0 0 6px var(--green);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2px;
+}
 
-    /* HERO */
-    .hero { padding: 80px 32px 64px; max-width: 720px; margin: 0 auto; }
+.post-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.post-card:hover { border-color: var(--accent); }
+.post-card:hover .pc-title { color: var(--accent); }
+.pc-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pc-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.pc-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.65;
+  flex: 1;
+}
+.pc-meta {
+  font-family: 'Inconsolata', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--soft);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 4px;
+}
 
-    .hero-status {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 20px; padding: 5px 14px 5px 10px;
-      font-size: 12px; color: var(--muted); margin-bottom: 28px;
-    }
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+.f-logo { font-family: 'Fraunces', serif; font-weight: 900; color: var(--accent); font-size: 1rem; }
+.f-right { font-family: 'Inconsolata', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700; line-height: 1.15;
-      letter-spacing: -0.03em; color: var(--ink); margin-bottom: 20px;
-    }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-
-    .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 520px; margin-bottom: 32px; }
-
-    .hero-stats { display: flex; align-items: center; gap: 28px; font-size: 13px; color: var(--muted); }
-    .hero-stats strong { color: var(--ink); font-size: 18px; font-weight: 700; display: block; }
-
-    /* POSTS */
-    #posts { max-width: 720px; margin: 0 auto; padding: 0 32px 80px; }
-
-    .posts-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
-    }
-    .posts-header h2 { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
-    .posts-count { font-size: 12px; color: var(--muted); }
-
-    /* POST ITEM */
-    .post-item {
-      display: block; text-decoration: none; color: inherit;
-      padding: 24px 0; border-bottom: 1px solid var(--border);
-      transition: background 0.15s; position: relative;
-    }
-    .post-item:hover {
-      background: var(--accent-dim);
-      margin: 0 -16px; padding-left: 16px; padding-right: 16px;
-      border-radius: 8px; border-bottom-color: transparent;
-    }
-
-    .post-item-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
-
-    .cat-pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 4px; letter-spacing: 0.02em; }
-    .cat-finance { background: rgba(0,230,118,0.12); color: var(--green); }
-    .cat-geo     { background: rgba(255,82,82,0.12);  color: var(--red); }
-    .cat-ai      { background: rgba(68,138,255,0.12); color: var(--blue); }
-    .cat-brand   { background: rgba(206,147,216,0.12);color: var(--purple); }
-
-    .post-meta { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-    .post-meta-dot { opacity: 0.3; }
-
-    .badge-new {
-      background: var(--accent); color: #000;
-      font-size: 10px; font-weight: 800; padding: 2px 7px;
-      border-radius: 3px; letter-spacing: 0.05em; text-transform: uppercase;
-    }
-
-    .post-item h3 {
-      font-size: 18px; font-weight: 600; line-height: 1.3;
-      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px;
-    }
-    .post-item h3 em { font-style: italic; color: var(--accent); }
-
-    .post-item p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 580px; margin-bottom: 12px; }
-
-    .post-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .tag {
-      font-size: 11px; color: #555;
-      background: var(--surface2); border: 1px solid var(--border);
-      padding: 2px 8px; border-radius: 3px;
-    }
-
-    .post-arrow {
-      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-      color: var(--muted); font-size: 18px;
-      opacity: 0; transition: opacity 0.15s, right 0.15s;
-    }
-    .post-item:hover .post-arrow { opacity: 1; right: 16px; }
-
-    .coming-soon { padding: 24px 0; font-size: 13px; color: #444; font-style: italic; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 32px; max-width: 720px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 12px; color: #444;
-    }
-    footer a { color: #555; text-decoration: underline; }
-    footer a:hover { color: var(--muted); }
-
-    @media (max-width: 600px) {
-      nav { padding: 0 16px; }
-      .hero { padding: 52px 16px 44px; }
-      #posts { padding: 0 16px 60px; }
-      footer { padding: 20px 16px; flex-direction: column; gap: 8px; text-align: center; }
-      .post-arrow { display: none; }
-    }
-  </style>
+@keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+.main { animation: fadeIn 0.6s ease both; }
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-brand">
-    <div class="nav-avatar">S.</div>
-    <span class="nav-name">SnarkySolutions</span>
-  </a>
-  <div class="nav-links">
-    <a href="#posts">Blog</a>
-    <a href="https://github.com/solutionssnarky-droid" target="_blank" rel="noopener">GitHub ↗</a>
-  </div>
+  <a class="logo" href="index.html">Snarky Solutions</a>
+  <span class="nav-tag">No fluff. Just sharp thinking.</span>
 </nav>
 
-<header class="hero">
-  <div class="hero-status">
-    <span class="nav-dot"></span>
-    Active
+<div class="hero-strip">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Est. 2024</div>
+    <h1>Sharp takes.<br><em>Real stakes.</em></h1>
+    <p>Analysis on careers, strategy, finance, and geopolitics — written for professionals who are done being overlooked and want to actually understand the world they're operating in.</p>
   </div>
-  <h1>Thinking Out Loud About<br /><em>AI &amp; the Future</em></h1>
-  <p class="hero-sub">Sharp takes on geopolitics, AI, personal branding, and building things that last in a world that won't sit still.</p>
-  <div class="hero-stats">
-    <div><strong>6</strong> Posts</div>
-    <div><strong>Active</strong> Status</div>
-    <div><strong>Mar '26</strong> Latest</div>
+</div>
+
+<div class="main">
+
+  <!-- FEATURED -->
+  <div class="featured-label">Latest post</div>
+  <a class="featured-card" href="strategic-communication-blog.html">
+    <div class="fc-content">
+      <div>
+        <div class="fc-tag">Strategic Communication <span class="fc-new">New</span></div>
+        <div class="fc-title">You're Communicating. But Is Anyone Actually Receiving?</div>
+        <div class="fc-desc">You prepared. You presented. You explained everything clearly. And the room still didn't move. Here's what nobody told you about the gap between talking and being heard — and the emotional intelligence that closes it.</div>
+      </div>
+      <div>
+        <div class="fc-meta">
+          <span>📖 12 min read</span>
+          <span>🧠 Self-assessment included</span>
+          <span>Mar 2026</span>
+        </div>
+        <div class="fc-read">Read the post</div>
+      </div>
+    </div>
+    <div class="fc-img">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280">
+        <defs>
+          <linearGradient id="cbg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0e0e0e"/>
+            <stop offset="100%" style="stop-color:#1a1410"/>
+          </linearGradient>
+        </defs>
+        <rect width="420" height="280" fill="url(#cbg)"/>
+        <line x1="0" y1="40" x2="420" y2="40" stroke="#fff" stroke-width="0.3" opacity="0.06"/>
+        <line x1="0" y1="110" x2="420" y2="110" stroke="#fff" stroke-width="0.3" opacity="0.06"/>
+        <line x1="0" y1="180" x2="420" y2="180" stroke="#fff" stroke-width="0.3" opacity="0.06"/>
+        <line x1="0" y1="250" x2="420" y2="250" stroke="#fff" stroke-width="0.3" opacity="0.06"/>
+        <line x1="70" y1="0" x2="70" y2="280" stroke="#fff" stroke-width="0.3" opacity="0.06"/>
+        <line x1="210" y1="0" x2="210" y2="280" stroke="#fff" stroke-width="0.3" opacity="0.06"/>
+        <line x1="350" y1="0" x2="350" y2="280" stroke="#fff" stroke-width="0.3" opacity="0.06"/>
+        <line x1="28" y1="26" x2="180" y2="26" stroke="#e8c547" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="28" cy="26" r="2.5" fill="#e8c547" opacity="0.7"/>
+        <text x="28" y="88" font-family="Georgia,serif" font-size="32" font-weight="bold" fill="#f0ebe3">You're</text>
+        <text x="28" y="128" font-family="Georgia,serif" font-size="32" font-weight="bold" fill="#e8c547" font-style="italic">Communicating.</text>
+        <text x="28" y="168" font-family="Georgia,serif" font-size="26" font-weight="bold" fill="#f0ebe3">But is anyone</text>
+        <text x="28" y="205" font-family="Georgia,serif" font-size="26" font-weight="bold" fill="#e05a3a" font-style="italic">receiving?</text>
+        <rect x="280" y="50" width="118" height="60" rx="3" fill="#1e1e1e" stroke="#2a2a2a"/>
+        <rect x="280" y="50" width="2.5" height="60" fill="#e8c547"/>
+        <text x="292" y="76" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#e8c547">80%</text>
+        <text x="292" y="93" font-family="Arial,sans-serif" font-size="9" fill="#7a7570">leaders vs teams</text>
+        <text x="292" y="103" font-family="monospace" font-size="7" fill="#3a3530">AXIOS HQ 2025</text>
+        <rect x="280" y="124" width="118" height="60" rx="3" fill="#1e1e1e" stroke="#2a2a2a"/>
+        <rect x="280" y="124" width="2.5" height="60" fill="#e05a3a"/>
+        <text x="292" y="150" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#e05a3a">3.5×</text>
+        <text x="292" y="167" font-family="Arial,sans-serif" font-size="9" fill="#7a7570">outperform rate</text>
+        <text x="292" y="177" font-family="monospace" font-size="7" fill="#3a3530">McKINSEY</text>
+        <text x="28" y="258" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#e8c547">Snarky Solutions</text>
+      </svg>
+    </div>
+  </a>
+
+  <!-- ARCHIVE -->
+  <div class="posts-label">All posts</div>
+  <div class="posts-grid">
+
+    <a class="post-card" href="blog-build-your-brand-ai.html">
+      <div class="pc-tag">AI &amp; Careers</div>
+      <div class="pc-title">Build Your Brand With AI</div>
+      <div class="pc-desc">How professionals can leverage AI tools to build a credible, visible personal brand without spending hours they don't have.</div>
+      <div class="pc-meta">📖 Read post &nbsp;→</div>
+    </a>
+
+    <a class="post-card" href="india-finance-2026.html">
+      <div class="pc-tag">India · Finance</div>
+      <div class="pc-title">India's Financial Moves for 2026</div>
+      <div class="pc-desc">The tax changes, investment shifts, and money decisions every Indian professional needs to understand before the new financial year hits.</div>
+      <div class="pc-meta">📖 Read post &nbsp;→</div>
+    </a>
+
+    <a class="post-card" href="india_geopolitics_blogpost.html">
+      <div class="pc-tag">Geopolitics</div>
+      <div class="pc-title">India's Geopolitical Positioning</div>
+      <div class="pc-desc">Where India actually stands in the new global power structure — and what that means for your work, money, and future.</div>
+      <div class="pc-meta">📖 Read post &nbsp;→</div>
+    </a>
+
+    <a class="post-card" href="war-nobody-wanted.html">
+      <div class="pc-tag">Global Affairs</div>
+      <div class="pc-title">The War Nobody Wanted</div>
+      <div class="pc-desc">A clear-eyed look at the Israel-Iran-US conflict and the ripple effects hitting India — from oil prices to IT sector exposure.</div>
+      <div class="pc-meta">📖 Read post &nbsp;→</div>
+    </a>
+
+    <a class="post-card" href="your-money-during-war-2.html">
+      <div class="pc-tag">Personal Finance</div>
+      <div class="pc-title">Your Money During a War</div>
+      <div class="pc-desc">When the world is volatile, your portfolio strategy needs to be sharper than ever. What to hold, what to reconsider, and what to ignore.</div>
+      <div class="pc-meta">📖 Read post &nbsp;→</div>
+    </a>
+
   </div>
-</header>
-
-<section id="posts">
-  <div class="posts-header">
-    <h2>All Posts · 6 articles</h2>
-    <span class="posts-count">Latest first</span>
-  </div>
-
-  <!-- NEW: Gemini vs Copilot -->
-  <a class="post-item" href="gemini-vs-copilot-2026.html">
-    <div class="post-item-top">
-      <span class="cat-pill cat-ai">AI &amp; Work</span>
-      <div class="post-meta">
-        <span>Mar 13, 2026</span>
-        <span class="post-meta-dot">·</span>
-        <span>8 min read</span>
-        <span class="post-meta-dot">·</span>
-        <span class="badge-new">NEW</span>
-      </div>
-    </div>
-    <h3>Gemini's Glow-Up vs Copilot's <em>Struggle Bus</em></h3>
-    <p>Google Gemini is now inside Gmail, Docs, Sheets, Slides, Drive, and Chrome. Microsoft Copilot is technically there too — but only 8% of users choose it when given options. Stats, real INR pricing, honest pros &amp; cons, and who should use what.</p>
-    <div class="post-tags">
-      <span class="tag">Google Gemini</span>
-      <span class="tag">Microsoft Copilot</span>
-      <span class="tag">AI Tools</span>
-      <span class="tag">Google Workspace</span>
-      <span class="tag">2026</span>
-    </div>
-    <span class="post-arrow">→</span>
-  </a>
-
-  <!-- Your Money During a War -->
-  <a class="post-item" href="your-money-during-war-2.html">
-    <div class="post-item-top">
-      <span class="cat-pill cat-finance">Personal Finance</span>
-      <div class="post-meta">
-        <span>Mar 10, 2026</span>
-        <span class="post-meta-dot">·</span>
-        <span>12 min read</span>
-      </div>
-    </div>
-    <h3>Your Money During a War —<br /><em>What Should You Actually Do?</em></h3>
-    <p>Markets are rattled, crude is spiking, and your WhatsApp is on fire. A research-backed, no-jargon conversation for every middle-class Indian investor — 30 years of data, one honest answer. Defence budgets, gold ETF returns, sector picks, and 7 rules to live by.</p>
-    <div class="post-tags">
-      <span class="tag">India Investing</span>
-      <span class="tag">Geopolitics</span>
-      <span class="tag">Personal Finance</span>
-      <span class="tag">SIP</span>
-      <span class="tag">2026</span>
-    </div>
-    <span class="post-arrow">→</span>
-  </a>
-
-  <!-- War Nobody Wanted -->
-  <a class="post-item" href="war-nobody-wanted.html">
-    <div class="post-item-top">
-      <span class="cat-pill cat-geo">Geopolitics</span>
-      <div class="post-meta">
-        <span>Mar 9, 2026</span>
-        <span class="post-meta-dot">·</span>
-        <span>12 min read</span>
-      </div>
-    </div>
-    <h3>The War Nobody Wanted <em>(And Everyone Saw Coming)</em></h3>
-    <p>Israel, Iran, America, a dead billionaire's files, and India — somehow — right in the middle of all of it. 9 million Indians. $51 billion in remittances. 45 days of oil buffer.</p>
-    <div class="post-tags">
-      <span class="tag">Geopolitics</span>
-      <span class="tag">India</span>
-      <span class="tag">Middle East</span>
-      <span class="tag">Economy</span>
-    </div>
-    <span class="post-arrow">→</span>
-  </a>
-
-  <!-- India Finance 2026 -->
-  <a class="post-item" href="india-finance-2026.html">
-    <div class="post-item-top">
-      <span class="cat-pill cat-finance">Personal Finance</span>
-      <div class="post-meta">
-        <span>Mar 2026</span>
-        <span class="post-meta-dot">·</span>
-        <span>8 min read</span>
-      </div>
-    </div>
-    <h3>India Just Changed the Rules of <em>Money.</em> Here's How to Win.</h3>
-    <p>Whether you live in Bengaluru or Berlin, these six financial shifts will touch your wallet. Most people won't see them coming.</p>
-    <div class="post-tags">
-      <span class="tag">Personal Finance</span>
-      <span class="tag">India Economy</span>
-      <span class="tag">NRI</span>
-      <span class="tag">2026</span>
-    </div>
-    <span class="post-arrow">→</span>
-  </a>
-
-  <!-- Build Your Brand -->
-  <a class="post-item" href="blog-build-your-brand-ai.html">
-    <div class="post-item-top">
-      <span class="cat-pill cat-ai">AI &amp; Work</span>
-      <div class="post-meta">
-        <span>Mar 7, 2026</span>
-        <span class="post-meta-dot">·</span>
-        <span>8 min read</span>
-      </div>
-    </div>
-    <h3>Build Your Brand Before <em>AI</em> Does It For You</h3>
-    <p>In a world where AI can write your reports, draft your emails, and generate your strategy — the rarest thing left is a genuine human voice. Here's how to build one that holds up.</p>
-    <div class="post-tags">
-      <span class="tag">AI &amp; Work</span>
-      <span class="tag">Personal Brand</span>
-      <span class="tag">Career</span>
-    </div>
-    <span class="post-arrow">→</span>
-  </a>
-
-  <!-- India Geopolitics -->
-  <a class="post-item" href="india_geopolitics_blogpost.html">
-    <div class="post-item-top">
-      <span class="cat-pill cat-geo">Geopolitics</span>
-      <div class="post-meta">
-        <span>Mar 2026</span>
-        <span class="post-meta-dot">·</span>
-        <span>8 min read</span>
-      </div>
-    </div>
-    <h3>The World is Changing. <em>Is India Ready?</em></h3>
-    <p>How seismic shifts in global power — from U.S.–China rivalry to the AI race — are reshaping India's $205 billion service economy. The opportunities are enormous. So are the risks.</p>
-    <div class="post-tags">
-      <span class="tag">Geopolitics</span>
-      <span class="tag">India</span>
-      <span class="tag">Global Strategy</span>
-    </div>
-    <span class="post-arrow">→</span>
-  </a>
-
-  <p class="coming-soon">Next post coming soon — more sharp thinking on AI, work, and building something real</p>
-
-</section>
+</div>
 
 <footer>
-  <span>Snarky Solutions · © 2026 · <a href="https://solutionssnarky-droid.github.io">solutionssnarky-droid.github.io</a></span>
-  <a href="https://github.com/solutionssnarky-droid" target="_blank" rel="noopener">GitHub ↗</a>
+  <div class="f-logo">Snarky Solutions</div>
+  <div class="f-right">Sharp thinking for professionals who are done being overlooked</div>
 </footer>
 
 </body>
