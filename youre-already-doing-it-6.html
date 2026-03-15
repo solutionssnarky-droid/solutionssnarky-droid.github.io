@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>You're Already Doing It. You Just Don't Call It Global Citizenship. | Snarky Solutions</title>
+<meta name="description" content="The unofficial financial playbook that globally-minded professionals already use — without the ideology. Currency hedges, portable skills, diaspora networks and what individuals can and cannot replicate from global institutions."/>
+<meta property="og:title" content="You're Already Doing It. You Just Don't Call It Global Citizenship."/>
+<meta property="og:description" content="Smart financial moves you're already making that are quietly global citizen behaviour. And the gaps no personal portfolio can fill."/>
+<meta property="og:image" content="feature-already-doing-it.svg"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="feature-already-doing-it.svg"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #f7f4ee;
+  --ink: #1a1510;
+  --ink2: #2e2820;
+  --warm: #ede9e0;
+  --border: #d4cec0;
+  --rust: #b94a1a;
+  --rust-light: #e05a22;
+  --rust-pale: #fde8de;
+  --green: #1a5c3a;
+  --green-light: #2a7a50;
+  --green-pale: #e0f0e8;
+  --amber: #c47a10;
+  --amber-pale: #fdf0d8;
+  --muted: #7a7060;
+  --card: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS ── */
+#prog {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--rust), var(--amber));
+  z-index: 9999; width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(247,244,238,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--ink);
+  padding: 0.9rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 5rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Halftone texture */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* Diagonal accent bar */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; right: -5%;
+  width: 45%; height: 100%;
+  background: linear-gradient(135deg, transparent 40%, rgba(180,74,26,0.12) 100%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--rust-light);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+  opacity: 0;
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 2rem; height: 1px;
+  background: var(--rust-light);
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+h1 .accent { color: var(--rust-light); }
+h1 .ital { font-style: italic; font-weight: 600; }
+
+.hero-deck {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  color: rgba(247,244,238,0.65);
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.35s ease both;
+}
+
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: rgba(247,244,238,0.35);
+  letter-spacing: 0.1em;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+.hero-meta span { color: rgba(224,90,34,0.8); }
+
+/* ── ARTICLE ── */
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 7rem;
+}
+
+/* ── TYPOGRAPHY ── */
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 4.5rem 0 1.2rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+h2 .r { color: var(--rust); }
+h2 .g { color: var(--green); }
+h2 .a { color: var(--amber); }
+
+h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--rust);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 3rem 0 0.8rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  color: var(--ink2);
+  font-size: 1.04rem;
+  line-height: 1.82;
+}
+
+p strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ── LEAD / INTRO ── */
+.lead {
+  font-size: 1.18rem;
+  font-style: italic;
+  color: var(--ink2);
+  border-left: 3px solid var(--rust);
+  padding-left: 1.5rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+}
+
+/* ── SNARKY CALLOUT ── */
+.snarky {
+  background: var(--rust-pale);
+  border: 1px solid #f0c0a8;
+  border-left: 4px solid var(--rust-light);
+  padding: 1.3rem 1.8rem;
+  margin: 2.5rem 0;
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  font-size: 0.97rem;
+  color: #5a2010;
+  position: relative;
+}
+.snarky-icon {
+  font-style: normal;
+  font-size: 1rem;
+  margin-right: 0.4rem;
+}
+
+/* ── PULL QUOTE ── */
+blockquote {
+  border: none;
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 0;
+  margin: 3.5rem 0;
+}
+blockquote p {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+}
+blockquote cite {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  font-style: normal;
+}
+
+/* ── RISK TABLE ── */
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5rem 0;
+  font-size: 0.93rem;
+}
+.risk-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 0.7rem 1rem;
+  border-bottom: 2px solid var(--ink);
+  background: var(--warm);
+}
+.risk-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink2);
+  vertical-align: top;
+}
+.risk-table tr:last-child td { border-bottom: none; }
+.risk-table .risk-name {
+  font-weight: 600;
+  color: var(--ink);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.88rem;
+}
+.badge {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+.badge-high { background: #fde0d8; color: #8b2010; }
+.badge-med  { background: #fdf0d8; color: #7a4a00; }
+.badge-low  { background: #e0f0e8; color: #1a5c3a; }
+
+/* ── PLAYBOOK CARDS ── */
+.playbook {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 2.5rem 0;
+}
+@media(max-width:580px) { .playbook { grid-template-columns: 1fr; } }
+
+.pb-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.6rem;
+  border-top: 3px solid var(--rust);
+  transition: box-shadow 0.2s;
+}
+.pb-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+.pb-card.green { border-top-color: var(--green-light); }
+.pb-card.amber { border-top-color: var(--amber); }
+
+.pb-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--rust);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.pb-card.green .pb-label { color: var(--green-light); }
+.pb-card.amber .pb-label { color: var(--amber); }
+
+.pb-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.pb-body {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+.pb-examples {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.pb-ex {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  background: var(--warm);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  color: var(--ink2);
+}
+
+/* ── STAT STRIP ── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 0;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 3rem 0;
+}
+@media(max-width:500px) { .stat-strip { grid-template-columns: 1fr; } }
+
+.stat-item {
+  padding: 1.8rem 1.4rem;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-n {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--rust);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.stat-l {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* ── ACTION LIST ── */
+.action-list {
+  margin: 1.5rem 0 2.5rem;
+  counter-reset: action;
+}
+.action-item {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.4rem;
+  align-items: flex-start;
+}
+.action-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1.2;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: right;
+}
+.action-body { flex: 1; }
+.action-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.action-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+/* ── LIMITS BOX ── */
+.limits {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin: 3.5rem 0;
+}
+.limits h3 {
+  color: var(--rust-light);
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+.limits p { color: rgba(247,244,238,0.7); margin-bottom: 1.2rem; }
+.limits p:last-child { margin-bottom: 0; }
+.limits strong { color: var(--bg); }
+.limit-item {
+  display: flex; gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+.limit-icon {
+  font-size: 1.1rem; flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.limit-text {
+  font-size: 0.93rem;
+  color: rgba(247,244,238,0.65);
+  line-height: 1.65;
+}
+.limit-text strong { color: rgba(247,244,238,0.9); }
+
+/* ── INR CALLOUT ── */
+.inr-box {
+  background: var(--green-pale);
+  border: 1px solid #a8d8b8;
+  border-left: 4px solid var(--green-light);
+  border-radius: 0 8px 8px 0;
+  padding: 1.5rem 1.8rem;
+  margin: 2.5rem 0;
+}
+.inr-box p { color: #1a3a28; margin-bottom: 0.8rem; font-size: 0.95rem; }
+.inr-box p:last-child { margin-bottom: 0; }
+.inr-box strong { color: var(--green); }
+
+/* ── CONCLUSION ── */
+.conclusion {
+  border-top: 3px solid var(--ink);
+  padding-top: 3rem;
+  margin-top: 4rem;
+}
+.conclusion h2 { margin-top: 0; }
+
+/* ── SHARE ── */
+.share {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: var(--warm);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.share p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.share-row { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+.s-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.2rem;
+  border-radius: 4px;
+  border: 1.5px solid;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.s-btn:hover { transform: translateY(-2px); }
+.s-li  { color: #0077b5; border-color: #0077b5; }
+.s-li:hover  { background:#0077b5; color:white; }
+.s-x   { color: var(--ink); border-color: var(--ink); }
+.s-x:hover   { background:var(--ink); color:var(--bg); }
+.s-wa  { color: #25d366; border-color:#25d366; }
+.s-wa:hover  { background:#25d366; color:white; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(247,244,238,0.35);
+  text-align: center;
+  padding: 3rem 2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  line-height: 2.2;
+}
+footer a { color: var(--rust-light); text-decoration: none; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:none; }
+}
+.reveal { opacity: 1 !important; transform: none !important; }
+
+@media(max-width:640px) {
+  h1 { font-size: 2.2rem; }
+  .hero { padding: 3.5rem 1.5rem 3rem; }
+  .article { padding: 3rem 1.5rem 5rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav>
+  <a href="./" class="nav-brand">⬡ Snarky Solutions</a>
+  <span class="nav-tag">Personal Finance · Geopolitics</span>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">The Unofficial Playbook</div>
+    <h1>You're Already<br/><span class="ital">Doing</span> It.<br/>You Just Don't<br/><span class="accent">Call It</span> Global<br/>Citizenship.</h1>
+    <p class="hero-deck">Smart financial moves that quietly hedge against a broken world — and the honest truth about what no personal portfolio can fix.</p>
+    <div class="hero-meta">
+      <span>By <span>Snarky Solutions</span></span>
+      <span>March <span>2026</span></span>
+      <span>~<span>10 min</span> read</span>
+      <span>Tag: <span>Finance · Geopolitics · India</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- FEATURE IMAGE -->
+<div style="background:#0a0806; line-height:0;">
+  <img
+    src="feature-already-doing-it.svg"
+    alt="You're Already Doing It — Feature Image showing a gold coin stack with currency symbols and key stats"
+    style="width:100%; max-height:480px; object-fit:cover; object-position:center; display:block; opacity:0.96;"
+  />
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <p class="lead reveal">Nobody woke up one morning and said "I shall now practise global citizenship through my investment portfolio." But millions of people — especially in India — are doing exactly that, quietly, practically, without the label.</p>
+
+  <p class="reveal">Last week we imagined a world where global citizenship became institutional reality. Today we're doing something more immediately useful: looking at the financial behaviours smart people already practise that <strong>replicate the protective logic of global citizenship</strong> at the personal level.</p>
+
+  <p class="reveal">Because here's the thing — the world isn't waiting for the UN to sort itself out. And neither should your money.</p>
+
+  <div class="snarky reveal">
+    <span class="snarky-icon">💡</span>Sending money to your NRI cousin, buying a US index fund on Vested, getting your kid a foreign degree — that's not just smart parenting or savvy investing. That's quietly diversifying your civilisational risk. Congratulations. You're a reluctant global citizen.
+  </div>
+
+  <!-- SECTION 1: THE HIDDEN RISKS -->
+  <h2 class="reveal">First — The <span class="r">Hidden Costs</span> of Thinking Only Locally</h2>
+
+  <p class="reveal">Before the playbook, let's name what most middle-class Indian professionals are actually exposed to without realising it. These aren't dramatic risks. They're slow, invisible ones. The kind that don't show up until they do — all at once.</p>
+
+  <div class="reveal">
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th>Risk Type</th>
+        <th>What It Means For You</th>
+        <th>Severity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="risk-name">Currency Concentration</td>
+        <td>All savings in INR. Rupee depreciates ~3–4% annually vs USD on average. ₹1 crore today = ₹74L in real USD terms in 10 years if trend holds.</td>
+        <td><span class="badge badge-high">High</span></td>
+      </tr>
+      <tr>
+        <td class="risk-name">Single-Market Investment</td>
+        <td>Only Indian equities, FDs, gold. One domestic event — political, regulatory, financial — hits your entire net worth simultaneously.</td>
+        <td><span class="badge badge-high">High</span></td>
+      </tr>
+      <tr>
+        <td class="risk-name">Regulatory Dependency</td>
+        <td>One government controls all your tax treatment, capital movement, and savings instruments. Policy shifts have no buffer.</td>
+        <td><span class="badge badge-med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="risk-name">Career Geography Lock-in</td>
+        <td>Skills only valued locally. If your sector slows in India — IT, BFSI, BPM — options narrow fast with no international mobility.</td>
+        <td><span class="badge badge-med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="risk-name">Inflation Asymmetry</td>
+        <td>You consume globally priced goods (tech, education abroad, healthcare) but earn domestic returns. Gap widens over time.</td>
+        <td><span class="badge badge-med">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="risk-name">Geopolitical Exposure</td>
+        <td>India's trade, energy, and IT revenues are deeply tied to US-China tensions, Middle East stability, and global demand. You feel this even if you never leave India.</td>
+        <td><span class="badge badge-low">Structural</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="reveal">None of these are catastrophic in isolation. Stacked together, over a 20-year horizon, they quietly hollow out wealth that looks solid on paper.</p>
+
+  <div class="stat-strip reveal">
+    <div class="stat-item">
+      <span class="stat-n">₹3.4L</span>
+      <span class="stat-l">Rupee depreciation cost per ₹10L saved in FD over 10 years (vs USD-equivalent)</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-n">68%</span>
+      <span class="stat-l">Indian household savings held in physical assets or FDs — lowest international diversification</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-n">$32B</span>
+      <span class="stat-l">India remittances received annually — the world's largest informal cross-border wealth network</span>
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE PLAYBOOK -->
+  <h2 class="reveal">The <span class="g">Unofficial Playbook</span> — What You're Already Doing</h2>
+
+  <p class="reveal">Here's the validation you didn't know you needed. These are behaviours already widespread among India's professional and aspirational middle class — each one quietly replicating a benefit that global citizenship institutions are supposed to provide.</p>
+
+  <h3 class="reveal">Level 1 — Investment Diversification</h3>
+
+  <div class="playbook reveal">
+    <div class="pb-card">
+      <div class="pb-label">Currency Hedge</div>
+      <div class="pb-title">International Mutual Funds & Direct Equity</div>
+      <div class="pb-body">Buying US or global index exposure via platforms like Vested, INDmoney, or international funds offered by Mirae, PPFAS, Franklin. Your rupee buys dollars working for you abroad.</div>
+      <div class="pb-examples">
+        <span class="pb-ex">Vested / INDmoney</span>
+        <span class="pb-ex">PPFAS Flexi Cap</span>
+        <span class="pb-ex">Mirae US Top 50</span>
+      </div>
+    </div>
+    <div class="pb-card amber">
+      <div class="pb-label">Inflation Hedge</div>
+      <div class="pb-title">Gold — The Original Global Asset</div>
+      <div class="pb-body">Gold is globally priced in USD. Every gram of gold you own is denominated in the world's reserve currency. Indians have intuitively understood this for centuries. It's not superstition — it's portfolio theory.</div>
+      <div class="pb-examples">
+        <span class="pb-ex">Sovereign Gold Bonds</span>
+        <span class="pb-ex">Gold ETFs</span>
+        <span class="pb-ex">Digital Gold</span>
+      </div>
+    </div>
+    <div class="pb-card green">
+      <div class="pb-label">Real Asset Diversification</div>
+      <div class="pb-title">NRI Accounts & Foreign Currency Holdings</div>
+      <div class="pb-body">NRE accounts earn INR returns but the principal is freely repatriable in any currency. FCNR deposits are held in foreign currency entirely. Even if you live in India, these give you a genuine multi-currency position.</div>
+      <div class="pb-examples">
+        <span class="pb-ex">NRE FD</span>
+        <span class="pb-ex">FCNR Deposits</span>
+        <span class="pb-ex">LRS Investments</span>
+      </div>
+    </div>
+    <div class="pb-card">
+      <div class="pb-label">Equity Abroad</div>
+      <div class="pb-title">Employee Stock in Global Companies</div>
+      <div class="pb-body">If you work for an MNC and receive RSUs or ESOPs denominated in USD, GBP, or EUR — you already hold internationally diversified equity compensation. Many IT professionals sit on this quietly.</div>
+      <div class="pb-examples">
+        <span class="pb-ex">RSUs (USD)</span>
+        <span class="pb-ex">ESOPs in foreign cos</span>
+        <span class="pb-ex">ESPP plans</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="reveal">Level 2 — Human Capital Diversification</h3>
+
+  <div class="playbook reveal">
+    <div class="pb-card green">
+      <div class="pb-label">Career Mobility</div>
+      <div class="pb-title">Skills That Travel Without a Visa</div>
+      <div class="pb-body">Cloud architecture, financial modelling, legal practice, medicine, design, data science — these skills have global demand curves, not just local ones. Building them is literally investing in a portable career.</div>
+      <div class="pb-examples">
+        <span class="pb-ex">AWS / GCP certs</span>
+        <span class="pb-ex">CFA / ACCA</span>
+        <span class="pb-ex">PMP / Prince2</span>
+        <span class="pb-ex">AI / ML credentials</span>
+      </div>
+    </div>
+    <div class="pb-card amber">
+      <div class="pb-label">Human Capital Export</div>
+      <div class="pb-title">Sending Children Abroad for Education</div>
+      <div class="pb-body">An international degree isn't just education — it's a geopolitical hedge on your family's future. Your child acquires skills, networks, and potentially residency rights in a different economy. The most expensive investment most Indian families make is also one of their most globally strategic ones.</div>
+      <div class="pb-examples">
+        <span class="pb-ex">US / UK / Canada</span>
+        <span class="pb-ex">Germany / Australia</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="reveal">Level 3 — Network & Remittance Capital</h3>
+
+  <p class="reveal">This is the one nobody talks about in financial planning circles, but it might be India's most powerful informal global citizenship mechanism.</p>
+
+  <div class="inr-box reveal">
+    <p><strong>India receives $32 billion in remittances annually</strong> — the largest remittance inflow in the world. This is diaspora capital: money earned in USD, GBP, AED flowing into Indian families, funding education, property, healthcare, and investment.</p>
+    <p>But it's not just money. It's <strong>opportunity arbitrage</strong>. A cousin in the US refers you to a project. An aunt in London connects your startup to a client. A friend in Dubai forwards a job listing. This informal network is India's most functional version of global citizenship — operating silently, effectively, at scale.</p>
+    <p>If you have this network and aren't actively cultivating it as an asset, you're leaving enormous value on the table.</p>
+  </div>
+
+  <blockquote class="reveal">
+    <p>The Indian diaspora isn't just a cultural fact. It's a distributed financial instrument — the world's largest informal cross-border wealth network. And most people who benefit from it don't think of it as strategy.</p>
+    <cite>— Snarky Solutions, probably annoying someone at a dinner party right now</cite>
+  </blockquote>
+
+  <!-- SECTION 3: WHAT TO DO NOW -->
+  <h2 class="reveal">The <span class="a">Practical Action List</span> — Starting This Week</h2>
+
+  <p class="reveal">If you're a working professional in India — especially in IT, BFSI, BPM, or consulting — here's an honest prioritised list of moves that cost little to nothing to start but compound meaningfully over time.</p>
+
+  <div class="action-list reveal">
+    <div class="action-item">
+      <div class="action-num">01</div>
+      <div class="action-body">
+        <div class="action-title">Open an international investing account</div>
+        <div class="action-desc">Vested, INDmoney, or a direct LRS remittance to a global broker. Start with even ₹5,000/month in a US total market ETF. The amount matters less than the habit and the currency diversification it creates from day one. The RBI's Liberalised Remittance Scheme (LRS) allows up to $250,000 per year.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">02</div>
+      <div class="action-body">
+        <div class="action-title">Audit your gold holding — and frame it correctly</div>
+        <div class="action-desc">If you hold gold jewellery, SGBs, or ETFs, you already own a globally priced, USD-correlated asset. Move from physical to Sovereign Gold Bonds where possible — same global hedge, plus 2.5% interest from the government, plus capital gains tax advantage.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">03</div>
+      <div class="action-body">
+        <div class="action-title">Get one internationally recognised certification in your field</div>
+        <div class="action-desc">PMP, ACCA, CFA, AWS, Azure, Google Cloud, SHRM — whichever is relevant to your profession. This isn't resume decoration. It's proof of portable competence that an employer in Singapore, Dubai, or London can evaluate without knowing your college.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">04</div>
+      <div class="action-body">
+        <div class="action-title">Build your LinkedIn to be readable outside India</div>
+        <div class="action-desc">Most Indian professionals' LinkedIn profiles are written for a domestic recruiter. Reframe your experience using outcomes, not activities. Reference global frameworks, tools, and client types. If you've worked on a project that touched a US, EU, or UK client — name it. You are more internationally relevant than your profile suggests.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">05</div>
+      <div class="action-body">
+        <div class="action-title">Map and activate your diaspora network deliberately</div>
+        <div class="action-desc">Make a literal list: who do you know abroad, what do they do, when did you last speak? Treat this as a living asset. One warm introduction from a cousin in the US can be worth more than six months of cold applications. Mutual value exchange is the key — share information, opportunities, and resources reciprocally.</div>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">06</div>
+      <div class="action-body">
+        <div class="action-title">If you have children — start an education abroad fund now</div>
+        <div class="action-desc">A US undergraduate degree today costs $200,000–$300,000 all-in. In 15 years, at current rupee depreciation trends, that's significantly more in INR terms. Dedicated forex-denominated savings or USD-denominated insurance products started early can partially hedge this. At minimum, build the fund in USD, not rupees.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: THE HONEST LIMITS -->
+  <div class="limits reveal">
+    <h3>The Hard Truth — What You Can't Hedge Personally</h3>
+    <p>This is where intellectual honesty matters. The individual playbook above is real and valuable. But it has a ceiling. There are civilisational risks that <strong>no personal portfolio, diaspora network, or international certification can protect you from.</strong></p>
+    <div class="limit-item">
+      <div class="limit-icon">🌡️</div>
+      <div class="limit-text"><strong>Climate disruption:</strong> No investment diversifies against monsoon failure, flooding of coastal cities, or heatwave-driven agricultural collapse at scale. If Chennai floods or the Gangetic plain dries — your gold ETF doesn't help the farmer or the city.</div>
+    </div>
+    <div class="limit-item">
+      <div class="limit-icon">🦠</div>
+      <div class="limit-text"><strong>Pandemic-scale events:</strong> COVID taught us that a pathogen can shut down the global economy in 6 weeks. No individual hedge survives that intact. The only protection is coordinated global health infrastructure — which requires, yes, institutional global citizenship.</div>
+    </div>
+    <div class="limit-item">
+      <div class="limit-icon">🤖</div>
+      <div class="limit-text"><strong>AI-driven displacement at scale:</strong> If automation eliminates 30% of white-collar jobs globally within a decade, individual upskilling helps at the margins. The structural response — reskilling systems, income support, new economic models — requires governance at a scale individuals cannot provide.</div>
+    </div>
+    <div class="limit-item">
+      <div class="limit-icon">☢️</div>
+      <div class="limit-text"><strong>Geopolitical escalation:</strong> A serious India-Pakistan, US-China, or Russia-NATO escalation doesn't care about your portfolio diversification. It reprices everything simultaneously. The only hedge is prevention — which is a collective, institutional problem.</div>
+    </div>
+    <p>The individual playbook reduces your <strong>personal exposure</strong>. It doesn't reduce the <strong>civilisational risk</strong>. Both matter. That's exactly why personal action and institutional global citizenship are complements — not substitutes.</p>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <h2 class="reveal">So What Are You, <span class="r">Really?</span></h2>
+
+    <p class="reveal">You're someone navigating a fractured world with limited institutional support and good instincts. You buy gold because your grandmother said to — and she was right. You encourage your kid's international ambitions because opportunity has a geography — and you know it. You diversify your investments because concentration risk feels wrong — and it is.</p>
+
+    <p class="reveal">None of this required a passport endorsement or a UN resolution. It required <strong>clear-eyed thinking about risk and the long game.</strong></p>
+
+    <p class="reveal">The irony is rich: the people who most loudly reject "global citizenship" as elitist or idealistic are often quietly practising its financial logic every month — through their SIPs in US funds, their FCNR deposits, their children studying in Toronto.</p>
+
+    <p class="reveal">Call it what you want. The planet doesn't care about the label. It just cares whether you showed up with a plan.</p>
+
+    <blockquote class="reveal" style="margin-top:3rem;">
+      <p>The individual playbook buys you time and options. The institutional version saves the game entirely. You need both — and right now, only one of them is actually in your hands.</p>
+      <cite>— Snarky Solutions · solutionssnarky-droid.github.io</cite>
+    </blockquote>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share reveal">
+    <p>If this changed how you see your own finances — share it</p>
+    <div class="share-row">
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=youre-already-doing-it.html" target="_blank" class="s-btn s-li">LinkedIn</a>
+      <a href="https://twitter.com/intent/tweet?text=You%27re%20already%20practising%20global%20citizenship%20through%20your%20finances.%20You%20just%20don%27t%20call%20it%20that.&url=./" target="_blank" class="s-btn s-x">X / Twitter</a>
+      <a href="https://wa.me/?text=This%20reframed%20how%20I%20think%20about%20my%20investments%3A%20youre-already-doing-it.html" target="_blank" class="s-btn s-wa">WhatsApp</a>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <div><a href="./">⬡ Snarky Solutions</a> · solutionssnarky-droid.github.io</div>
+  <div>Opinions are free. The planet isn't. · © 2026</div>
+</footer>
+
+<script>
+// Progress bar
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  prog.style.width = (window.scrollY / total * 100) + '%';
+});
+
+
+</script>
+</body>
+</html>
