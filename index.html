@@ -4,485 +4,619 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Snarky Solutions — No Fluff. Just Sharp Thinking.</title>
-<meta name="description" content="Sharp analysis on careers, strategy, finance, and geopolitics — written for professionals who are done being overlooked."/>
+<meta name="description" content="Sharp analysis on careers, strategy, finance, and geopolitics — for professionals who are done being overlooked."/>
 <meta property="og:title" content="Snarky Solutions"/>
-<meta property="og:description" content="No fluff. Just sharp thinking. Analysis on careers, strategy, finance, and geopolitics."/>
-<meta property="og:url" content="https://solutionssnarky-droid.github.io/"/>
+<meta property="og:description" content="No fluff. Just sharp thinking."/>
 <meta property="og:type" content="website"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<!-- Match the exact fonts from strategic-communication-blog -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
 <style>
-:root {
-  --ink: #0e0c0a;
-  --paper: #faf7f2;
-  --warm: #f5f0e8;
-  --gold: #b8860b;
-  --gold-light: #d4a017;
-  --gold-pale: #f0e0a0;
-  --teal: #1a6b5a;
-  --teal-light: #2d9b82;
-  --muted: #7a7060;
-  --border: #ddd5c0;
-  --surface: #ede8de;
-  --ink-light: #3a3028;
+/* ════════════════════════════════
+   DESIGN TOKENS — match strategic-communication-blog
+   Dark background, white text, coral/amber accent,
+   clean editorial with numbered sections
+════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+:root{
+  /* Core palette from the live blog */
+  --bg:       #0f1117;
+  --bg2:      #161820;
+  --bg3:      #1e2028;
+  --surface:  #252830;
+  --border:   #2e3140;
+  --border-l: #3a3d50;
+
+  /* Text */
+  --white:  #f4f4f6;
+  --white2: #d8d9e0;
+  --muted:  #8a8b96;
+  --dim:    #5a5b66;
+
+  /* Accents */
+  --coral:  #e8604a;  /* primary CTA / highlight */
+  --amber:  #d4a830;  /* secondary gold */
+  --teal:   #3ab8a0;  /* tertiary */
+  --coral-l:#ff7a62;
+
+  --max: 980px;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  line-height: 1.75;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image:
-    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(184,134,11,0.06) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 70% at 85% 95%, rgba(26,107,90,0.04) 0%, transparent 55%);
-  pointer-events: none; z-index: 0;
+
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 
 /* ── NAV ── */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(250,247,242,0.93);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,17,23,0.97);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
 }
-.brand {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 2rem;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-  font-size: 0.78rem;
-  color: var(--muted);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: color 0.2s;
+.brand{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.76rem;
+  font-weight:500;
+  color:var(--white);
+  letter-spacing:0.08em;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
 }
-.nav-links a:hover { color: var(--gold); }
-@media(max-width:640px) { .nav-links { display: none; } }
+.brand-dot{
+  width:8px;height:8px;
+  background:var(--coral);
+  border-radius:50%;
+  display:inline-block;
+}
+.brand-sub{
+  font-size:0.62rem;
+  color:var(--muted);
+  font-weight:400;
+  letter-spacing:0.04em;
+}
+.nav-links{
+  display:flex;gap:1.8rem;list-style:none;
+}
+.nav-links a{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;
+  color:var(--muted);
+  text-decoration:none;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  transition:color 0.18s;
+}
+.nav-links a:hover{color:var(--white);}
+@media(max-width:600px){.nav-links{display:none;}}
+
+/* ── PAGE WRAPPER ── */
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 2rem;
+}
 
 /* ── HERO ── */
-.site-hero {
-  position: relative;
-  padding: 6rem 2.5rem 5rem;
-  max-width: 960px;
-  margin: 0 auto;
-  z-index: 1;
+.hero{
+  padding:5.5rem 0 4rem;
+  border-bottom:1px solid var(--border);
+  margin-bottom:3.5rem;
 }
-.est-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--muted);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 1.4rem;
-  display: flex; align-items: center; gap: 0.7rem;
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;
+  color:var(--coral);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin-bottom:1.8rem;
 }
-.est-tag::before { content:''; width:1.5rem; height:1px; background:var(--border); }
-.site-hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.2rem;
+.hero-tag::before{
+  content:'';
+  width:1.8rem;height:1px;
+  background:var(--coral);
+  opacity:0.6;
 }
-.site-hero h1 em { font-style: italic; color: var(--gold); }
-.site-hero p {
-  font-size: 1.05rem;
-  color: var(--muted);
-  max-width: 540px;
-  font-weight: 300;
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,6vw,5rem);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  margin-bottom:1.2rem;
+  color:var(--white);
 }
-
-/* ── WRAPPER ── */
-.wrapper {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 2.5rem 6rem;
-  position: relative; z-index: 1;
+.hero h1 em{
+  font-style:italic;
+  color:var(--coral);
+}
+.hero p{
+  font-size:1.02rem;
+  color:var(--muted);
+  max-width:520px;
+  line-height:1.8;
 }
 
 /* ── SECTION LABEL ── */
-.section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--gold);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  display: flex; align-items: center; gap: 1rem;
+.label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.58rem;
+  color:var(--muted);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.8rem;
 }
-.section-label::after { content:''; flex:1; height:1px; background:var(--border); }
-
-/* ── FEATURED POST ── */
-.featured {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 4rem;
-  background: var(--warm);
-  text-decoration: none;
-  color: inherit;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.featured:hover {
-  box-shadow: 0 12px 40px rgba(184,134,11,0.12);
-  transform: translateY(-3px);
-}
-@media(max-width:680px) { .featured { grid-template-columns: 1fr; } }
-
-.featured-img {
-  position: relative;
-  overflow: hidden;
-  min-height: 280px;
-  background: #0d1b2e;
-}
-.featured-img svg {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.featured-img .img-placeholder {
-  width: 100%; height: 100%; min-height: 280px;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #0d1b2e 0%, #060d18 60%, #020609 100%);
+.label::after{
+  content:'';flex:1;height:1px;background:var(--border);
 }
 
-.featured-body {
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+/* ── FEATURED CARD ── */
+.featured{
+  display:grid;
+  grid-template-columns:380px 1fr;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:2.5rem;
+  text-decoration:none;
+  color:inherit;
+  background:var(--bg2);
+  transition:border-color 0.2s, box-shadow 0.25s, transform 0.25s;
 }
-.featured-meta {
-  display: flex; gap: 0.8rem; flex-wrap: wrap;
-  margin-bottom: 1rem;
+.featured:hover{
+  border-color:var(--border-l);
+  box-shadow:0 8px 40px rgba(0,0,0,0.4);
+  transform:translateY(-3px);
 }
-.tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.7rem;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  color: var(--muted);
-}
-.tag.new { background: var(--gold); color: white; border-color: var(--gold); }
-.tag.teal { border-color: var(--teal-light); color: var(--teal); }
+@media(max-width:680px){.featured{grid-template-columns:1fr;}}
 
-.featured-body h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.75rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 0.8rem;
-  color: var(--ink);
+/* Visual pane */
+.f-vis{
+  min-height:260px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.featured-body h2 em { font-style: italic; color: var(--gold); }
+.f-vis svg{width:100%;height:100%;display:block;}
 
-.featured-body p {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
+/* Text pane */
+.f-body{
+  padding:2rem 2.2rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.85rem;
+  border-left:1px solid var(--border);
+}
+@media(max-width:680px){.f-body{border-left:none;border-top:1px solid var(--border);}}
+
+.f-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+
+.tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.54rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0.22rem 0.65rem;
+  border-radius:4px;
+  border:1px solid var(--border-l);
+  color:var(--muted);
+  background:var(--bg3);
+}
+.t-new{
+  background:var(--coral);
+  color:#fff;
+  border-color:var(--coral);
+}
+.t-coral{border-color:rgba(232,96,74,0.4);color:var(--coral-l);}
+.t-amber{border-color:rgba(212,168,48,0.4);color:var(--amber);}
+.t-teal{border-color:rgba(58,184,160,0.4);color:var(--teal);}
+
+.f-body h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;
+  font-weight:700;
+  line-height:1.22;
+  color:var(--white);
+}
+.f-body h2 em{font-style:italic;color:var(--coral);}
+
+.f-body p{
+  font-size:0.9rem;
+  color:var(--muted);
+  line-height:1.7;
+  flex:1;
 }
 
-.read-info {
-  display: flex; gap: 1.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
+.f-meta{
+  display:flex;gap:1.2rem;flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.54rem;
+  color:var(--dim);
+  letter-spacing:0.05em;
 }
 
-.read-link {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(184,134,11,0.3);
-  padding-bottom: 0.1rem;
-  transition: border-color 0.2s;
+.rlink{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--coral);
+  text-decoration:none;
+  padding:0.5rem 1.1rem;
+  border:1px solid rgba(232,96,74,0.35);
+  border-radius:4px;
+  background:rgba(232,96,74,0.06);
+  width:fit-content;
+  transition:all 0.18s;
 }
-.read-link:hover { border-color: var(--gold); }
-.read-link::after { content: '→'; }
+.rlink:hover{
+  background:rgba(232,96,74,0.14);
+  border-color:var(--coral);
+  gap:0.8rem;
+}
+.rlink::after{content:'→';}
 
-/* ── ALL POSTS GRID ── */
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+/* ── STATS ROW (on featured card) ── */
+.f-stats{
+  display:flex;gap:1.5rem;
+  padding-top:0.5rem;
+  border-top:1px solid var(--border);
 }
-@media(max-width:720px) { .posts-grid { grid-template-columns: 1fr 1fr; } }
-@media(max-width:460px) { .posts-grid { grid-template-columns: 1fr; } }
+.f-stat .n{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--coral);
+  display:block;
+  line-height:1;
+}
+.f-stat .l{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.52rem;
+  color:var(--dim);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  margin-top:0.2rem;
+}
 
-.post-card {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  background: var(--warm);
-  transition: box-shadow 0.25s, transform 0.25s;
-  display: flex; flex-direction: column;
+/* ── POSTS GRID ── */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-bottom:5rem;
 }
-.post-card:hover {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+@media(max-width:740px){.grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:460px){.grid{grid-template-columns:1fr;}}
+
+.card{
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg2);
+  padding:1.5rem;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color 0.18s, box-shadow 0.2s, transform 0.2s;
 }
-.post-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-.post-cat {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
-  color: var(--teal);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
+.card:hover{
+  border-color:var(--border-l);
+  box-shadow:0 4px 24px rgba(0,0,0,0.35);
+  transform:translateY(-2px);
 }
-.post-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--ink);
-  margin-bottom: 0.6rem;
-  flex: 1;
+.c-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.54rem;
+  color:var(--dim);
+  letter-spacing:0.1em;
+  margin-bottom:0.8rem;
+  display:flex;align-items:center;gap:0.6rem;
 }
-.post-card p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 1.2rem;
+.c-num::after{content:'';flex:1;height:1px;background:var(--border);}
+.c-cat{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.52rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  margin-bottom:0.5rem;
 }
-.post-link {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-decoration: none;
-  display: flex; align-items: center; gap: 0.3rem;
-  transition: gap 0.2s;
+.c-cat.coral{color:var(--coral);}
+.c-cat.amber{color:var(--amber);}
+.c-cat.teal {color:var(--teal);}
+.c-cat.muted{color:var(--muted);}
+
+.card h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;
+  font-weight:700;
+  line-height:1.3;
+  color:var(--white);
+  margin-bottom:0.6rem;
 }
-.post-link:hover { gap: 0.6rem; }
+.card p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.65;
+  margin-bottom:1rem;
+  flex:1;
+}
+.c-link{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.54rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--coral);
+  text-decoration:none;
+  margin-top:auto;
+  display:flex;align-items:center;gap:0.3rem;
+  transition:gap 0.18s;
+}
+.c-link:hover{gap:0.6rem;}
 
 /* ── FOOTER ── */
-footer {
-  background: var(--ink);
-  color: rgba(250,247,242,0.4);
-  text-align: center;
-  padding: 3rem 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  line-height: 2;
+footer{
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  color:var(--dim);
+  padding:3rem 2rem;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.58rem;
+  letter-spacing:0.1em;
+  line-height:2.4;
 }
-footer a { color: var(--gold); text-decoration: none; }
-footer .tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: rgba(250,247,242,0.25);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0;
+footer a{color:var(--muted);text-decoration:none;transition:color 0.18s;}
+footer a:hover{color:var(--white);}
+.f-brand{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--white2);
+  margin-bottom:0.5rem;
+  display:block;
+  letter-spacing:0;
+  font-weight:700;
 }
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(16px); }
-  to   { opacity:1; transform:none; }
-}
-.site-hero > * { animation: fadeUp 0.6s ease both; }
-.site-hero > *:nth-child(1) { animation-delay:0.05s; }
-.site-hero > *:nth-child(2) { animation-delay:0.15s; }
-.site-hero > *:nth-child(3) { animation-delay:0.25s; }
 </style>
 </head>
 <body>
 
+<!-- ── NAV ── -->
 <nav>
-  <a href="https://solutionssnarky-droid.github.io/index.html" class="brand">⬡ Snarky Solutions</a>
-  <ul class="nav-links">
-    <li><a href="#">Geopolitics</a></li>
-    <li><a href="#">Finance</a></li>
-    <li><a href="#">Careers</a></li>
-    <li><a href="#">AI & Future</a></li>
-  </ul>
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-dot"></span>
+      Snarky Solutions
+      <span class="brand-sub">· No fluff. Just sharp thinking.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Geopolitics</a></li>
+      <li><a href="#">Finance</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">AI &amp; Future</a></li>
+    </ul>
+  </div>
 </nav>
 
-<section class="site-hero">
-  <div class="est-tag">Est. 2024</div>
-  <h1>Sharp takes. <em>Real stakes.</em></h1>
-  <p>Analysis on careers, strategy, finance, and geopolitics — written for professionals who are done being overlooked and want to actually understand the world they're operating in.</p>
-</section>
+<div class="wrap">
 
-<div class="wrapper">
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-tag">Est. 2024</div>
+    <h1>Sharp takes.<br/><em>Real stakes.</em></h1>
+    <p>Analysis on careers, strategy, finance, and geopolitics — written for professionals who are done being overlooked and want to understand the world they're actually operating in.</p>
+  </section>
 
-  <!-- FEATURED: NEW POST -->
-  <div class="section-label">Latest Post</div>
+  <!-- ── FEATURED POST 1 ── -->
+  <div class="label">Latest Post</div>
 
-  <a href="https://solutionssnarky-droid.github.io/youre-already-doing-it.html" class="featured">
-    <div class="featured-img">
-      <div class="img-placeholder">
-        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" width="600" height="360" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="fp-bg" cx="30%" cy="40%" r="80%">
-              <stop offset="0%" stop-color="#1a1510"/>
-              <stop offset="100%" stop-color="#0a0806"/>
-            </radialGradient>
-          </defs>
-          <rect width="600" height="360" fill="url(#fp-bg)"/>
-          <!-- Halftone dots -->
-          <g opacity="0.06" fill="#f7f4ee">
-            <circle cx="24" cy="24" r="1.5"/><circle cx="72" cy="24" r="1.5"/><circle cx="120" cy="24" r="1.5"/><circle cx="168" cy="24" r="1.5"/><circle cx="216" cy="24" r="1.5"/><circle cx="264" cy="24" r="1.5"/><circle cx="312" cy="24" r="1.5"/><circle cx="360" cy="24" r="1.5"/><circle cx="408" cy="24" r="1.5"/><circle cx="456" cy="24" r="1.5"/><circle cx="504" cy="24" r="1.5"/><circle cx="552" cy="24" r="1.5"/>
-            <circle cx="48" cy="48" r="1.5"/><circle cx="96" cy="48" r="1.5"/><circle cx="144" cy="48" r="1.5"/><circle cx="192" cy="48" r="1.5"/><circle cx="240" cy="48" r="1.5"/><circle cx="288" cy="48" r="1.5"/><circle cx="336" cy="48" r="1.5"/><circle cx="384" cy="48" r="1.5"/><circle cx="432" cy="48" r="1.5"/><circle cx="480" cy="48" r="1.5"/><circle cx="528" cy="48" r="1.5"/><circle cx="576" cy="48" r="1.5"/>
-            <circle cx="24" cy="72" r="1.5"/><circle cx="72" cy="72" r="1.5"/><circle cx="120" cy="72" r="1.5"/><circle cx="168" cy="72" r="1.5"/><circle cx="216" cy="72" r="1.5"/><circle cx="264" cy="72" r="1.5"/>
-            <circle cx="24" cy="312" r="1.5"/><circle cx="72" cy="312" r="1.5"/><circle cx="120" cy="312" r="1.5"/><circle cx="168" cy="312" r="1.5"/>
-            <circle cx="48" cy="336" r="1.5"/><circle cx="96" cy="336" r="1.5"/><circle cx="144" cy="336" r="1.5"/>
-          </g>
-          <!-- Diagonal rust accent -->
-          <polygon points="600,0 600,360 380,360 600,0" fill="#b94a1a" opacity="0.1"/>
-          <!-- Currency symbols floating -->
-          <text x="60" y="160" font-family="Georgia,serif" font-size="48" fill="#c9a84c" opacity="0.12">₹</text>
-          <text x="160" y="260" font-family="Georgia,serif" font-size="36" fill="#c9a84c" opacity="0.08">$</text>
-          <text x="80" y="310" font-family="Georgia,serif" font-size="28" fill="#c9a84c" opacity="0.07">£</text>
-          <text x="200" y="120" font-family="Georgia,serif" font-size="22" fill="#c9a84c" opacity="0.06">€</text>
-          <!-- Main headline -->
-          <text x="40" y="130" font-family="Arial Black,sans-serif" font-size="32" font-weight="900" fill="#f7f4ee" letter-spacing="-0.5">YOU'RE ALREADY</text>
-          <text x="40" y="172" font-family="Georgia,serif" font-size="36" font-style="italic" fill="#e05a22">Doing It.</text>
-          <text x="40" y="218" font-family="Arial Black,sans-serif" font-size="22" font-weight="900" fill="#f7f4ee" opacity="0.7">YOU JUST DON'T</text>
-          <text x="40" y="252" font-family="Arial Black,sans-serif" font-size="22" font-weight="900" fill="#f7f4ee" opacity="0.7">CALL IT THAT.</text>
-          <!-- Divider -->
-          <line x1="40" y1="268" x2="280" y2="268" stroke="#b94a1a" stroke-width="2" opacity="0.6"/>
-          <!-- Sub -->
-          <text x="40" y="292" font-family="monospace" font-size="9" fill="#7a7060" letter-spacing="1.5">PERSONAL FINANCE · GEOPOLITICS · 2026</text>
-          <!-- Right side: coin stack visual -->
-          <circle cx="460" cy="200" r="55" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.2"/>
-          <circle cx="460" cy="200" r="42" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.15"/>
-          <circle cx="460" cy="200" r="30" fill="#c9a84c" opacity="0.1"/>
-          <text x="460" y="208" font-family="Georgia,serif" font-size="28" fill="#c9a84c" opacity="0.6" text-anchor="middle">₹</text>
-          <text x="460" y="270" font-family="monospace" font-size="8" fill="#7a7060" text-anchor="middle" letter-spacing="1">SNARKY SOLUTIONS</text>
-        </svg>
-      </div>
+  <a href="youre-already-doing-it.html" class="featured">
+    <div class="f-vis" style="background:linear-gradient(150deg,#161208 0%,#0a0905 100%);min-height:280px;">
+      <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <!-- Vertical left rule -->
+        <line x1="32" y1="28" x2="32" y2="252" stroke="#2e2820" stroke-width="2"/>
+        <!-- Section number -->
+        <text x="20" y="46" font-family="JetBrains Mono,monospace" font-size="10" fill="#4a4030" letter-spacing="1">01</text>
+        <!-- Main headline -->
+        <text x="52" y="108" font-family="Arial Black,sans-serif" font-size="44" font-weight="900" fill="#f4f4f6" letter-spacing="-1">YOU'RE</text>
+        <text x="52" y="158" font-family="Arial Black,sans-serif" font-size="44" font-weight="900" fill="#f4f4f6" letter-spacing="-1">ALREADY</text>
+        <!-- Rule -->
+        <line x1="52" y1="172" x2="350" y2="172" stroke="#2e2820" stroke-width="1.5"/>
+        <!-- Italic display -->
+        <text x="50" y="232" font-family="Georgia,serif" font-size="52" font-style="italic" font-weight="bold" fill="#e8604a">Doing It.</text>
+        <!-- Bottom label -->
+        <text x="52" y="262" font-family="JetBrains Mono,monospace" font-size="9" fill="#4a4030" letter-spacing="2">PERSONAL FINANCE · INDIA</text>
+      </svg>
     </div>
-    <div class="featured-body">
-      <div>
-        <div class="featured-meta">
-          <span class="tag new">New</span>
-          <span class="tag teal">Finance</span>
-          <span class="tag">India</span>
-        </div>
-        <h2>You're Already Doing It. You Just Don't <em>Call It</em> Global Citizenship.</h2>
-        <p>The unofficial financial playbook smart Indian professionals already run — currency hedges, portable skills, diaspora networks. And the honest ceiling no portfolio can break through.</p>
-        <div class="read-info">
-          <span>📖 10 min read</span>
-          <span>💰 Personal Finance</span>
-          <span>Mar 2026</span>
-        </div>
+    <div class="f-body">
+      <div class="f-tags">
+        <span class="tag t-new">New</span>
+        <span class="tag t-coral">Finance</span>
+        <span class="tag t-amber">India</span>
       </div>
-      <a href="https://solutionssnarky-droid.github.io/youre-already-doing-it.html" class="read-link">Read the post</a>
+      <h2>You're Already Doing It. You Just Don't <em>Call It</em> Global Citizenship.</h2>
+      <p>The unofficial financial playbook smart Indian professionals already run — currency hedges, portable skills, diaspora networks. And the honest ceiling no personal portfolio can break through.</p>
+      <div class="f-stats">
+        <div class="f-stat"><span class="n">$32B</span><span class="l">India remittances / yr</span></div>
+        <div class="f-stat"><span class="n">3–4%</span><span class="l">INR depreciation / yr</span></div>
+        <div class="f-stat"><span class="n">$250K</span><span class="l">Your LRS limit</span></div>
+      </div>
+      <div class="f-meta">
+        <span>📖 10 min read</span>
+        <span>💰 Personal Finance</span>
+        <span>Mar 2026</span>
+      </div>
+      <a href="youre-already-doing-it.html" class="rlink">Read the post</a>
     </div>
   </a>
 
-  <!-- ALL POSTS -->
-  <div class="section-label">All Posts</div>
+  <!-- ── FEATURED POST 2 ── -->
+  <div class="label">Also This Week</div>
 
-  <div class="posts-grid">
-
-    <a href="https://solutionssnarky-droid.github.io/global-citizen-blog.html" class="post-card">
-      <div class="post-card-body">
-        <div class="post-cat">Geopolitics · Speculative</div>
-        <h3>What If We All Chose Earth?</h3>
-        <p>A speculative timeline of a world where global citizenship became institutional reality. Real tradeoffs. No sugarcoating.</p>
-        <span class="post-link">Read post →</span>
+  <a href="global-citizen-blog.html" class="featured">
+    <div class="f-vis" style="background:linear-gradient(150deg,#090e18 0%,#050810 100%);min-height:280px;">
+      <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <radialGradient id="eg" cx="42%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#52aada"/>
+            <stop offset="45%" stop-color="#1e5ea0"/>
+            <stop offset="100%" stop-color="#040e22"/>
+          </radialGradient>
+          <clipPath id="ec"><circle cx="90" cy="140" r="78"/></clipPath>
+        </defs>
+        <!-- Section number -->
+        <text x="20" y="46" font-family="JetBrains Mono,monospace" font-size="10" fill="#1e2e50" letter-spacing="1">02</text>
+        <!-- Earth -->
+        <circle cx="90" cy="140" r="86" fill="#081228" opacity="0.7"/>
+        <circle cx="90" cy="140" r="78" fill="url(#eg)"/>
+        <g clip-path="url(#ec)" opacity="0.65">
+          <ellipse cx="86"  cy="112" rx="18" ry="14" fill="#3a8a48"/>
+          <ellipse cx="90"  cy="158" rx="14" ry="26" fill="#4a9a3a"/>
+          <ellipse cx="124" cy="118" rx="28" ry="20" fill="#3a8a48"/>
+          <ellipse cx="58"  cy="148" rx="10" ry="24" fill="#4a9a3a" opacity="0.8"/>
+          <path d="M90,62 Q142,90 142,140 Q142,190 90,218 Q108,180 104,140 Q100,100 90,62Z" fill="#030912" opacity="0.55"/>
+        </g>
+        <circle cx="90" cy="140" r="78" fill="none" stroke="#5ab0e0" stroke-width="1.5" opacity="0.25"/>
+        <!-- Network lines -->
+        <line x1="168" y1="140" x2="238" y2="98"  stroke="#d4a830" stroke-width="1"   stroke-dasharray="4,3" opacity="0.6"/>
+        <line x1="168" y1="140" x2="255" y2="170" stroke="#d4a830" stroke-width="1"   stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="168" y1="140" x2="222" y2="60"  stroke="#d4a830" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.4"/>
+        <line x1="168" y1="140" x2="258" y2="218" stroke="#3ab8a0" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.4"/>
+        <circle cx="238" cy="98"  r="3.5" fill="#d4a830" opacity="0.9"/>
+        <circle cx="255" cy="170" r="3.5" fill="#3ab8a0" opacity="0.9"/>
+        <circle cx="222" cy="60"  r="3"   fill="#d4a830" opacity="0.7"/>
+        <circle cx="258" cy="218" r="3"   fill="#3ab8a0" opacity="0.65"/>
+        <!-- Headline text -->
+        <text x="188" y="110" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="#f4f4f6" letter-spacing="-0.5">WHAT IF</text>
+        <text x="188" y="142" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="#f4f4f6" letter-spacing="-0.5">WE ALL</text>
+        <line x1="188" y1="152" x2="368" y2="152" stroke="#1e2e50" stroke-width="1.5"/>
+        <text x="186" y="196" font-family="Georgia,serif" font-size="30" font-style="italic" fill="#d4a830">Chose Earth?</text>
+        <text x="188" y="222" font-family="JetBrains Mono,monospace" font-size="8" fill="#3a5070" letter-spacing="1.5">GEOPOLITICS · SPECULATIVE</text>
+      </svg>
+    </div>
+    <div class="f-body">
+      <div class="f-tags">
+        <span class="tag t-new">New</span>
+        <span class="tag t-teal">Geopolitics</span>
+        <span class="tag">Speculative</span>
       </div>
+      <h2>What If We All <em>Chose Earth?</em></h2>
+      <p>A speculative deep-dive into a world where global citizenship became actual operating infrastructure for humanity. Real timeline. Real institutions. Real tradeoffs. No sugarcoating.</p>
+      <div class="f-stats">
+        <div class="f-stat"><span class="n" style="color:var(--teal);">2.1°C</span><span class="l">Warming held</span></div>
+        <div class="f-stat"><span class="n" style="color:var(--teal);">680M</span><span class="l">Lifted from poverty</span></div>
+        <div class="f-stat"><span class="n" style="color:var(--teal);">73%</span><span class="l">Faster response</span></div>
+      </div>
+      <div class="f-meta">
+        <span>📖 12 min read</span>
+        <span>🌍 What-If Wednesday</span>
+        <span>Mar 2026</span>
+      </div>
+      <a href="global-citizen-blog.html" class="rlink">Read the post</a>
+    </div>
+  </a>
+
+  <!-- ── ALL POSTS GRID ── -->
+  <div class="label">All Posts</div>
+
+  <div class="grid">
+
+    <a href="strategic-communication-blog.html" class="card">
+      <div class="c-num">03</div>
+      <div class="c-cat coral">Careers · Leadership</div>
+      <h3>You're Communicating. But Is Anyone Actually Receiving?</h3>
+      <p>The gap between talking and being heard — and the emotional intelligence that closes it.</p>
+      <span class="c-link">Read post →</span>
     </a>
 
-    <a href="https://solutionssnarky-droid.github.io/strategic-communication-blog.html" class="post-card">
-      <div class="post-card-body">
-        <div class="post-cat">Careers · Leadership</div>
-        <h3>You're Communicating. But Is Anyone Actually Receiving?</h3>
-        <p>The gap between talking and being heard — and the emotional intelligence that closes it.</p>
-        <span class="post-link">Read post →</span>
-      </div>
+    <a href="blog-build-your-brand-ai.html" class="card">
+      <div class="c-num">04</div>
+      <div class="c-cat amber">AI &amp; Careers</div>
+      <h3>Build Your Brand With AI</h3>
+      <p>Leverage AI tools to build a credible, visible personal brand without hours you don't have.</p>
+      <span class="c-link">Read post →</span>
     </a>
 
-    <a href="https://solutionssnarky-droid.github.io/blog-build-your-brand-ai.html" class="post-card">
-      <div class="post-card-body">
-        <div class="post-cat">AI & Careers</div>
-        <h3>Build Your Brand With AI</h3>
-        <p>How professionals can leverage AI tools to build a credible, visible personal brand without hours they don't have.</p>
-        <span class="post-link">Read post →</span>
-      </div>
+    <a href="india-finance-2026.html" class="card">
+      <div class="c-num">05</div>
+      <div class="c-cat coral">India · Finance</div>
+      <h3>India's Financial Moves for 2026</h3>
+      <p>Tax changes, investment shifts, and money decisions every Indian professional needs to understand.</p>
+      <span class="c-link">Read post →</span>
     </a>
 
-    <a href="https://solutionssnarky-droid.github.io/india-finance-2026.html" class="post-card">
-      <div class="post-card-body">
-        <div class="post-cat">India · Finance</div>
-        <h3>India's Financial Moves for 2026</h3>
-        <p>The tax changes, investment shifts, and money decisions every Indian professional needs to understand before the new financial year hits.</p>
-        <span class="post-link">Read post →</span>
-      </div>
+    <a href="india_geopolitics_blogpost.html" class="card">
+      <div class="c-num">06</div>
+      <div class="c-cat teal">Geopolitics</div>
+      <h3>India's Geopolitical Positioning</h3>
+      <p>Where India actually stands in the new global power structure — and what it means for your future.</p>
+      <span class="c-link">Read post →</span>
     </a>
 
-    <a href="https://solutionssnarky-droid.github.io/india_geopolitics_blogpost.html" class="post-card">
-      <div class="post-card-body">
-        <div class="post-cat">Geopolitics</div>
-        <h3>India's Geopolitical Positioning</h3>
-        <p>Where India actually stands in the new global power structure — and what that means for your work, money, and future.</p>
-        <span class="post-link">Read post →</span>
-      </div>
+    <a href="war-nobody-wanted.html" class="card">
+      <div class="c-num">07</div>
+      <div class="c-cat muted">Global Affairs</div>
+      <h3>The War Nobody Wanted</h3>
+      <p>The Israel-Iran-US conflict and its ripple effects hitting India — from oil prices to IT exposure.</p>
+      <span class="c-link">Read post →</span>
     </a>
 
-    <a href="https://solutionssnarky-droid.github.io/war-nobody-wanted.html" class="post-card">
-      <div class="post-card-body">
-        <div class="post-cat">Global Affairs</div>
-        <h3>The War Nobody Wanted</h3>
-        <p>A clear-eyed look at the Israel-Iran-US conflict and the ripple effects hitting India — from oil prices to IT sector exposure.</p>
-        <span class="post-link">Read post →</span>
-      </div>
-    </a>
-
-    <a href="https://solutionssnarky-droid.github.io/your-money-during-war-2.html" class="post-card">
-      <div class="post-card-body">
-        <div class="post-cat">Personal Finance</div>
-        <h3>Your Money During a War</h3>
-        <p>When the world is volatile, your portfolio strategy needs to be sharper than ever. What to hold, what to reconsider, and what to ignore.</p>
-        <span class="post-link">Read post →</span>
-      </div>
+    <a href="your-money-during-war-2.html" class="card">
+      <div class="c-num">08</div>
+      <div class="c-cat amber">Personal Finance</div>
+      <h3>Your Money During a War</h3>
+      <p>When the world is volatile, your portfolio needs to be sharper. What to hold, what to drop.</p>
+      <span class="c-link">Read post →</span>
     </a>
 
   </div>
 
-</div>
+</div><!-- /wrap -->
 
+<!-- ── FOOTER ── -->
 <footer>
-  <div class="tagline">Sharp thinking for professionals who are done being overlooked.</div>
-  <div><a href="https://solutionssnarky-droid.github.io">⬡ Snarky Solutions</a> &nbsp;·&nbsp; solutionssnarky-droid.github.io &nbsp;·&nbsp; Est. 2024</div>
+  <span class="f-brand">Snarky Solutions</span>
+  <div>
+    <a href="index.html">Home</a>
+    &nbsp;·&nbsp;
+    <a href="strategic-communication-blog.html">Careers</a>
+    &nbsp;·&nbsp;
+    <a href="india-finance-2026.html">Finance</a>
+    &nbsp;·&nbsp;
+    <a href="india_geopolitics_blogpost.html">Geopolitics</a>
+  </div>
+  <div style="margin-top:0.6rem;">
+    solutionssnarky-droid.github.io &nbsp;·&nbsp; Est. 2024 &nbsp;·&nbsp; No fluff. Just sharp thinking.
+  </div>
 </footer>
 
 </body>
