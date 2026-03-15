@@ -179,7 +179,8 @@ nav{
 /* ── FEATURED CARD ── */
 .featured{
   display:grid;
-  grid-template-columns:380px 1fr;
+  grid-template-columns:1fr;
+  border-left:3px solid var(--coral);
   border:1px solid var(--border);
   border-radius:12px;
   overflow:hidden;
@@ -197,24 +198,17 @@ nav{
 @media(max-width:680px){.featured{grid-template-columns:1fr;}}
 
 /* Visual pane */
-.f-vis{
-  min-height:260px;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.f-vis svg{width:100%;height:100%;display:block;}
+
 
 /* Text pane */
 .f-body{
-  padding:2rem 2.2rem;
+  padding:2.4rem 2.6rem;
   display:flex;
   flex-direction:column;
   gap:0.85rem;
-  border-left:1px solid var(--border);
 }
-@media(max-width:680px){.f-body{border-left:none;border-top:1px solid var(--border);}}
+
+
 
 .f-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
 
@@ -440,23 +434,6 @@ footer a:hover{color:var(--white);}
   <div class="label">Latest Post</div>
 
   <a href="youre-already-doing-it.html" class="featured">
-    <div class="f-vis" style="background:linear-gradient(150deg,#161208 0%,#0a0905 100%);min-height:280px;">
-      <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-        <!-- Vertical left rule -->
-        <line x1="32" y1="28" x2="32" y2="252" stroke="#2e2820" stroke-width="2"/>
-        <!-- Section number -->
-        <text x="20" y="46" font-family="JetBrains Mono,monospace" font-size="10" fill="#4a4030" letter-spacing="1">01</text>
-        <!-- Main headline -->
-        <text x="52" y="108" font-family="Arial Black,sans-serif" font-size="44" font-weight="900" fill="#f4f4f6" letter-spacing="-1">YOU'RE</text>
-        <text x="52" y="158" font-family="Arial Black,sans-serif" font-size="44" font-weight="900" fill="#f4f4f6" letter-spacing="-1">ALREADY</text>
-        <!-- Rule -->
-        <line x1="52" y1="172" x2="350" y2="172" stroke="#2e2820" stroke-width="1.5"/>
-        <!-- Italic display -->
-        <text x="50" y="232" font-family="Georgia,serif" font-size="52" font-style="italic" font-weight="bold" fill="#e8604a">Doing It.</text>
-        <!-- Bottom label -->
-        <text x="52" y="262" font-family="JetBrains Mono,monospace" font-size="9" fill="#4a4030" letter-spacing="2">PERSONAL FINANCE · INDIA</text>
-      </svg>
-    </div>
     <div class="f-body">
       <div class="f-tags">
         <span class="tag t-new">New</span>
@@ -483,46 +460,6 @@ footer a:hover{color:var(--white);}
   <div class="label">Also This Week</div>
 
   <a href="global-citizen-blog.html" class="featured">
-    <div class="f-vis" style="background:linear-gradient(150deg,#090e18 0%,#050810 100%);min-height:280px;">
-      <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <radialGradient id="eg" cx="42%" cy="40%" r="60%">
-            <stop offset="0%" stop-color="#52aada"/>
-            <stop offset="45%" stop-color="#1e5ea0"/>
-            <stop offset="100%" stop-color="#040e22"/>
-          </radialGradient>
-          <clipPath id="ec"><circle cx="90" cy="140" r="78"/></clipPath>
-        </defs>
-        <!-- Section number -->
-        <text x="20" y="46" font-family="JetBrains Mono,monospace" font-size="10" fill="#1e2e50" letter-spacing="1">02</text>
-        <!-- Earth -->
-        <circle cx="90" cy="140" r="86" fill="#081228" opacity="0.7"/>
-        <circle cx="90" cy="140" r="78" fill="url(#eg)"/>
-        <g clip-path="url(#ec)" opacity="0.65">
-          <ellipse cx="86"  cy="112" rx="18" ry="14" fill="#3a8a48"/>
-          <ellipse cx="90"  cy="158" rx="14" ry="26" fill="#4a9a3a"/>
-          <ellipse cx="124" cy="118" rx="28" ry="20" fill="#3a8a48"/>
-          <ellipse cx="58"  cy="148" rx="10" ry="24" fill="#4a9a3a" opacity="0.8"/>
-          <path d="M90,62 Q142,90 142,140 Q142,190 90,218 Q108,180 104,140 Q100,100 90,62Z" fill="#030912" opacity="0.55"/>
-        </g>
-        <circle cx="90" cy="140" r="78" fill="none" stroke="#5ab0e0" stroke-width="1.5" opacity="0.25"/>
-        <!-- Network lines -->
-        <line x1="168" y1="140" x2="238" y2="98"  stroke="#d4a830" stroke-width="1"   stroke-dasharray="4,3" opacity="0.6"/>
-        <line x1="168" y1="140" x2="255" y2="170" stroke="#d4a830" stroke-width="1"   stroke-dasharray="4,3" opacity="0.5"/>
-        <line x1="168" y1="140" x2="222" y2="60"  stroke="#d4a830" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.4"/>
-        <line x1="168" y1="140" x2="258" y2="218" stroke="#3ab8a0" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.4"/>
-        <circle cx="238" cy="98"  r="3.5" fill="#d4a830" opacity="0.9"/>
-        <circle cx="255" cy="170" r="3.5" fill="#3ab8a0" opacity="0.9"/>
-        <circle cx="222" cy="60"  r="3"   fill="#d4a830" opacity="0.7"/>
-        <circle cx="258" cy="218" r="3"   fill="#3ab8a0" opacity="0.65"/>
-        <!-- Headline text -->
-        <text x="188" y="110" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="#f4f4f6" letter-spacing="-0.5">WHAT IF</text>
-        <text x="188" y="142" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="#f4f4f6" letter-spacing="-0.5">WE ALL</text>
-        <line x1="188" y1="152" x2="368" y2="152" stroke="#1e2e50" stroke-width="1.5"/>
-        <text x="186" y="196" font-family="Georgia,serif" font-size="30" font-style="italic" fill="#d4a830">Chose Earth?</text>
-        <text x="188" y="222" font-family="JetBrains Mono,monospace" font-size="8" fill="#3a5070" letter-spacing="1.5">GEOPOLITICS · SPECULATIVE</text>
-      </svg>
-    </div>
     <div class="f-body">
       <div class="f-tags">
         <span class="tag t-new">New</span>
