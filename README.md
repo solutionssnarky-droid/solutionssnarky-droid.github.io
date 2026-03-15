@@ -1,65 +1,55 @@
-# Snarky Solutions 🔥
+# ⬡ Snarky Solutions
 
-> **No fluff. Just sharp thinking.**
+**No fluff. Just sharp thinking.**
 
-A blog for professionals who want real analysis — on careers, strategy, finance, and geopolitics — without the corporate-speak and without the hand-holding.
+Live at → [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io)
 
-🌐 **Live at:** [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io)
-
----
-
-## 📌 Latest Post
-
-### [You're Communicating. But Is Anyone Actually Receiving?](./strategic-communication-blog.html)
-*Strategic Communication · Emotional Intelligence · Mar 2026*
-
-You prepared. You presented. You explained everything clearly. And the room still didn't move.
-
-This post covers the gap between talking and being heard — with a practical framework, real data, MBA-grade thinking, and an interactive self-assessment to show you exactly which type of communicator you are right now.
-
-**Includes:** The 3-part leadership conversation script · EQ in high-pressure moments · Self-assessment with personalised result
+Analysis on careers, strategy, finance, and geopolitics — written for professionals who are done being overlooked and want to actually understand the world they're operating in.
 
 ---
 
-## 📚 All Posts
+## 📄 Posts
 
-| Post | Category | Description |
-|------|----------|-------------|
-| [You're Communicating. But Is Anyone Receiving?](./strategic-communication-blog.html) | Strategic Communication | EQ, frameworks, self-assessment for every professional |
-| [Build Your Brand With AI](./blog-build-your-brand-ai.html) | AI & Careers | How to build real visibility using AI tools |
-| [India's Financial Moves for 2026](./india-finance-2026.html) | Finance | What every Indian professional needs to know before FY2026 |
-| [India's Geopolitical Positioning](./india_geopolitics_blogpost.html) | Geopolitics | India's place in the new global power structure |
-| [The War Nobody Wanted](./war-nobody-wanted.html) | Global Affairs | Israel-Iran-US conflict and India's exposure |
-| [Your Money During a War](./your-money-during-war-2.html) | Personal Finance | Portfolio strategy when the world is volatile |
-
----
-
-## 🎯 What This Blog Is
-
-**Snarky Solutions** is written from the perspective of a working professional in India who is paying attention — to the world, to workplace dynamics, to money, and to the slow creep of AI into everything.
-
-The tone is:
-- Direct, not diplomatic
-- Data-backed, not opinionated for the sake of it
-- Practical — there's always something you can actually do
-- Occasionally snarky, because some things deserve it
-
-The audience is anyone who wants to understand the real dynamics of their professional life — not just the LinkedIn-polished version of it.
+| Title | Category | File | Date |
+|-------|----------|------|------|
+| **You're Already Doing It. You Just Don't Call It Global Citizenship.** | Finance · Geopolitics | `youre-already-doing-it.html` | Mar 2026 |
+| What If We All Chose Earth? | Geopolitics · Speculative | `global-citizen-blog.html` | Mar 2026 |
+| You're Communicating. But Is Anyone Actually Receiving? | Careers · Leadership | `strategic-communication-blog.html` | Mar 2026 |
+| Build Your Brand With AI | AI & Careers | `blog-build-your-brand-ai.html` | 2026 |
+| India's Financial Moves for 2026 | India · Finance | `india-finance-2026.html` | 2026 |
+| India's Geopolitical Positioning | Geopolitics | `india_geopolitics_blogpost.html` | Mar 2026 |
+| The War Nobody Wanted | Global Affairs | `war-nobody-wanted.html` | 2026 |
+| Your Money During a War | Personal Finance | `your-money-during-war-2.html` | 2026 |
 
 ---
 
-## 🛠️ Built With
+## 🗂️ Site Files
 
-- Pure HTML + CSS — no frameworks, no dependencies
-- Hosted on GitHub Pages
-- Designed to load fast and read well on any device
+| File | Purpose |
+|------|---------|
+| `index.html` | Homepage — featured post + all posts grid |
+| `README.md` | This file |
+| `global-citizen-blog.html` | Latest post — Global Citizenship speculative deep-dive |
+| `feature-global-citizen.svg` | Feature image for the Global Citizen post |
+| `strategic-communication-blog.html` | Strategic Communication post |
+| `blog-build-your-brand-ai.html` | AI Personal Brand post |
+| `india-finance-2026.html` | India Finance 2026 post |
+| `india_geopolitics_blogpost.html` | India Geopolitics post |
+| `war-nobody-wanted.html` | Israel-Iran-US conflict post |
+| `your-money-during-war-2.html` | Personal finance during conflict post |
+
+---
+
+## 🎨 Design System
+
+- **Fonts:** Cormorant Garamond (display) · Outfit (body) · JetBrains Mono (labels/code)
+- **Palette:** Cream paper `#faf7f2` · Gold `#b8860b` · Teal `#1a6b5a` · Warm ink `#0e0c0a`
+- **Style:** Editorial · Warm · High-contrast · Snarky voice
 
 ---
 
 ## ✍️ About
 
-Written by a Transition PMO professional with 14 years in IT services and BPM — with a parallel interest in AI, strategy, and making complex things legible to real people.
+Snarky Solutions is an independent analysis blog covering geopolitics, personal finance, AI, and career strategy — with an Indian professional perspective and zero tolerance for vague thinking.
 
----
-
-*© 2026 Snarky Solutions. Sharp thinking for professionals who are done being overlooked.*
+*Opinions are free. The planet isn't.*
