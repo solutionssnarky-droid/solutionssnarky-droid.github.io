@@ -10,7 +10,7 @@ Sharp, honest takes on work, career growth, geopolitics, finance, and the messy 
 
 ## Latest Post
 
-### [You Can't Read the Room If You Can't Read Yourself](./read-the-room-v3.html)
+### [You Can't Read the Room If You Can't Read Yourself](https://solutionssnarky-droid.github.io/read-the-room-v3-1.html)
 *March 2026 · Self-Awareness · Professional Edge · 9 min read*
 
 Competent. Experienced. Still hitting invisible walls. The gap isn't your skill set — it's the one root skill nobody put in your job description. Includes the **SER Framework** (Self → Emotion → Response): three questions, two minutes, before every interaction that matters.
@@ -21,7 +21,7 @@ Competent. Experienced. Still hitting invisible walls. The gap isn't your skill 
 
 | Post | Category | Date | Read Time |
 |------|----------|------|-----------|
-| [You Can't Read the Room If You Can't Read Yourself](./read-the-room-v3.html) | Self-Awareness · Career | Mar 2026 | 9 min |
+| [You Can't Read the Room If You Can't Read Yourself](https://solutionssnarky-droid.github.io/read-the-room-v3-1.html) | Self-Awareness · Career | Mar 2026 | 9 min |
 | [India Between the Lines: What the New World Order Actually Means for Us](#) | Geopolitics | Feb 2026 | 10 min |
 | [Your Money in 2026: The Changes Nobody Explained Properly](#) | Finance | Jan 2026 | 8 min |
 | [When the Market Dips, Most People Do the Worst Possible Thing](#) | Finance · Market Volatility | Dec 2025 | 7 min |
@@ -53,7 +53,7 @@ The voice: a smart, experienced peer talking to another smart, experienced peer.
 ```
 /
 ├── index.html                        ← Blog homepage
-├── read-the-room-v3.html             ← Latest: Self-Awareness post
+├── read-the-room-v3-1.html             ← Latest: Self-Awareness post (live)
 ├── feature-image.html                ← Latest post feature image (1080×1080)
 ├── README.md                         ← This file
 └── [previous posts...]
