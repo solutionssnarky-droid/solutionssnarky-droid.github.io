@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Can't Read the Room If You Can't Read Yourself | Snarky Solutions</title>
+  <meta name="description" content="Mid-career, competent, still hitting invisible walls. Self-awareness is the root skill that makes every professional interaction sharper." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #111013;
+      --bg2:       #18151c;
+      --bg3:       #1e1a24;
+      --border:    #2a2530;
+      --border2:   #332e3c;
+      --coral:     #FF6B6B;
+      --coral-dim: rgba(255,107,107,0.12);
+      --yellow:    #FFD93D;
+      --ylw-dim:   rgba(255,217,61,0.12);
+      --lavender:  #C4AAFF;
+      --lav-dim:   rgba(196,170,255,0.12);
+      --pink:      #FF80C8;
+      --pink-dim:  rgba(255,128,200,0.12);
+      --text:      #F0EBF8;
+      --text-mid:  #A89FBB;
+      --text-muted:#6B6278;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── FLOATING BLOBS (bg atmosphere) ── */
+    .blobs {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.2;
+      animation: blobFloat 18s ease-in-out infinite;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--coral); top: -150px; right: -100px; animation-delay: 0s; }
+    .blob-2 { width: 400px; height: 400px; background: var(--lavender); bottom: 10%; left: -100px; animation-delay: -6s; }
+    .blob-3 { width: 300px; height: 300px; background: var(--yellow); top: 45%; right: 10%; animation-delay: -12s; }
+
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(30px,-20px) scale(1.05); }
+      66%      { transform: translate(-20px,15px) scale(0.97); }
+    }
+
+    /* All content above blobs */
+    header, section, article, footer, .opening-blast { position: relative; z-index: 1; }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      position: sticky; top: 0; z-index: 200;
+      height: 58px;
+      background: rgba(17,16,19,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.15rem;
+      text-decoration: none;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--coral); font-style: italic; }
+
+    .nav-pills { display: flex; gap: 8px; }
+    .nav-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px 12px;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .nav-pill:hover { color: var(--coral); border-color: var(--coral-dim); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 48px 72px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Decorative floating stickers */
+    .sticker {
+      position: absolute;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      padding: 7px 16px;
+      white-space: nowrap;
+      animation: stickerWobble 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .sticker-1 { top: 60px; right: 80px; background: var(--coral-dim); border: 1px solid rgba(255,107,107,0.3); color: var(--coral); animation-delay: 0s; transform: rotate(-4deg); }
+    .sticker-2 { top: 130px; right: 40px; background: var(--ylw-dim); border: 1px solid rgba(255,217,61,0.3); color: var(--yellow); animation-delay: -1.5s; transform: rotate(3deg); }
+    .sticker-3 { bottom: 80px; right: 100px; background: var(--lav-dim); border: 1px solid rgba(196,170,255,0.3); color: var(--lavender); animation-delay: -3s; transform: rotate(-2deg); }
+
+    @keyframes stickerWobble {
+      0%,100% { transform: rotate(-4deg) translateY(0); }
+      50%      { transform: rotate(-4deg) translateY(-6px); }
+    }
+    .sticker-2 { animation-name: stickerWobble2; }
+    @keyframes stickerWobble2 {
+      0%,100% { transform: rotate(3deg) translateY(0); }
+      50%      { transform: rotate(3deg) translateY(-5px); }
+    }
+    .sticker-3 { animation-name: stickerWobble3; }
+    @keyframes stickerWobble3 {
+      0%,100% { transform: rotate(-2deg) translateY(0); }
+      50%      { transform: rotate(-2deg) translateY(-7px); }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--coral-dim);
+      border: 1px solid rgba(255,107,107,0.25);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 32px;
+      animation: fadeUp .6s ease both .1s;
+    }
+    .hero-eyebrow::before { content: '✦'; font-size: 0.7rem; }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      max-width: 800px;
+      animation: fadeUp .7s ease both .2s;
+    }
+
+    .hero-title .accent { color: var(--coral); font-style: italic; }
+    .hero-title .accent-y { color: var(--yellow); }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-top: 28px;
+      font-weight: 400;
+      animation: fadeUp .7s ease both .35s;
+    }
+
+    .hero-footer {
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 44px;
+      animation: fadeUp .7s ease both .5s;
+    }
+
+    .tag-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .tag-pill.coral { background: var(--coral-dim); border: 1px solid rgba(255,107,107,0.25); color: var(--coral); }
+    .tag-pill.yellow { background: var(--ylw-dim); border: 1px solid rgba(255,217,61,0.25); color: var(--yellow); }
+    .tag-pill.lav { background: var(--lav-dim); border: 1px solid rgba(196,170,255,0.25); color: var(--lavender); }
+    .tag-pill.pink { background: var(--pink-dim); border: 1px solid rgba(255,128,200,0.25); color: var(--pink); }
+
+    /* ── OPENING BLAST ── */
+    .opening-blast {
+      background: linear-gradient(135deg, #1c1525, #160f1e);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 48px;
+      position: relative; overflow: hidden;
+    }
+
+    .opening-blast::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(255,107,107,0.07) 0%, transparent 60%);
+    }
+
+    .opening-blast-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    .opening-blast p {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+      line-height: 1.6;
+      max-width: 720px;
+      color: var(--text);
+    }
+    .opening-blast strong { color: var(--coral); font-style: normal; font-weight: 700; }
+
+    /* ── ARTICLE ── */
+    .article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 48px 96px;
+    }
+
+    .article > p { margin-bottom: 1.6em; color: var(--text-mid); }
+    .article > p strong { color: var(--text); font-weight: 600; }
+
+    /* ── SECTION HEADER ── */
+    .section-block { margin: 80px 0 32px; }
+
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-tag.s1 { background: var(--coral-dim); border: 1px solid rgba(255,107,107,0.2); color: var(--coral); }
+    .section-tag.s2 { background: var(--ylw-dim); border: 1px solid rgba(255,217,61,0.2); color: var(--yellow); }
+    .section-tag.s3 { background: var(--lav-dim); border: 1px solid rgba(196,170,255,0.2); color: var(--lavender); }
+    .section-tag.s4 { background: var(--pink-dim); border: 1px solid rgba(255,128,200,0.2); color: var(--pink); }
+    .section-tag.s5 { background: var(--coral-dim); border: 1px solid rgba(255,107,107,0.2); color: var(--coral); }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .section-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    /* ── SCENE CARD ── */
+    .scene {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 40px 0;
+      position: relative;
+    }
+    .scene::before {
+      content: '💡 Scenario';
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .scene p { color: var(--text-muted) !important; font-size: .95rem; margin-bottom: .8em; }
+    .scene p:last-child { margin-bottom: 0 !important; }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      margin: 52px 0;
+      padding: 32px 36px;
+      background: linear-gradient(135deg, rgba(255,107,107,0.07), rgba(255,128,200,0.05));
+      border-left: 4px solid var(--coral);
+      border-radius: 0 12px 12px 0;
+      position: relative;
+    }
+    .pull-quote::before { content: '"'; position: absolute; top: -10px; left: 28px; font-family: 'Fraunces', serif; font-size: 5rem; color: rgba(255,107,107,0.2); line-height: 1; pointer-events: none; }
+    .pull-quote p { font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(1.05rem, 2.3vw, 1.35rem); line-height: 1.55; color: var(--text) !important; margin: 0 !important; position: relative; z-index: 1; }
+    .pull-quote em { color: var(--coral); font-style: normal; font-weight: 700; }
+
+    /* ── CALLOUT CARD ── */
+    .callout {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 40px 0;
+    }
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .callout-label::before { content: '◆'; font-size: .5rem; }
+    .callout p { font-size: .93rem; color: var(--text-muted) !important; margin: 0 !important; line-height: 1.75; }
+
+    /* ── FRAMEWORK ── */
+    .framework {
+      margin: 52px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .framework-head {
+      background: linear-gradient(135deg, #1f1629, #170f22);
+      padding: 32px 36px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .framework-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .framework-name span { color: var(--lavender); font-style: italic; }
+    .framework-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+    .framework-chip {
+      background: var(--lav-dim);
+      border: 1px solid rgba(196,170,255,0.25);
+      color: var(--lavender);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      align-self: center;
+    }
+    .fw-step {
+      background: var(--bg2);
+      padding: 28px 36px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 20px;
+      transition: background .2s;
+    }
+    .fw-step:last-child { border-bottom: none; }
+    .fw-step:hover { background: var(--bg3); }
+
+    .fw-letter {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .fw-letter.s { background: var(--coral-dim); color: var(--coral); border: 1px solid rgba(255,107,107,0.25); }
+    .fw-letter.e { background: var(--ylw-dim); color: var(--yellow); border: 1px solid rgba(255,217,61,0.25); }
+    .fw-letter.r { background: var(--lav-dim); color: var(--lavender); border: 1px solid rgba(196,170,255,0.25); }
+
+    .fw-q-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .fw-q-body { font-size: .88rem; color: var(--text-muted); line-height: 1.72; }
+
+    /* ── SCENARIOS ── */
+    .scenarios { display: flex; flex-direction: column; gap: 16px; margin: 44px 0; }
+    .scenario-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .scenario-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .scenario-header {
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .scenario-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .scenario-card:nth-child(1) .scenario-dot { background: var(--coral); box-shadow: 0 0 8px rgba(255,107,107,.5); }
+    .scenario-card:nth-child(2) .scenario-dot { background: var(--yellow); box-shadow: 0 0 8px rgba(255,217,61,.5); }
+    .scenario-card:nth-child(3) .scenario-dot { background: var(--lavender); box-shadow: 0 0 8px rgba(196,170,255,.5); }
+    .scenario-card:nth-child(4) .scenario-dot { background: var(--pink); box-shadow: 0 0 8px rgba(255,128,200,.5); }
+    .scenario-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text);
+    }
+    .scenario-body { padding: 20px 28px; }
+    .scenario-body p { font-size: .9rem; color: var(--text-muted) !important; margin: 0 !important; line-height: 1.72; }
+
+    /* ── OUTCOMES GRID ── */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 36px 0;
+    }
+    .outcome-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 22px;
+      transition: transform .2s, border-color .2s;
+    }
+    .outcome-card:hover { transform: translateY(-3px); }
+    .outcome-card:nth-child(1):hover { border-color: rgba(255,107,107,.35); }
+    .outcome-card:nth-child(2):hover { border-color: rgba(255,217,61,.35); }
+    .outcome-card:nth-child(3):hover { border-color: rgba(196,170,255,.35); }
+    .outcome-card:nth-child(4):hover { border-color: rgba(255,128,200,.35); }
+    .outcome-card:nth-child(5):hover { border-color: rgba(255,107,107,.35); }
+    .outcome-card:nth-child(6):hover { border-color: rgba(255,217,61,.35); }
+    .outcome-emoji { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+    .outcome-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--text);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .outcome-desc { font-size: .82rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── CLOSING ── */
+    .closing {
+      margin-top: 80px;
+      padding: 48px 40px;
+      background: linear-gradient(135deg, #1c1525, #160f1e);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 10% 100%, rgba(255,107,107,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .closing > p { font-size: 1rem; line-height: 1.85; color: var(--text-mid); margin-bottom: 1.4em; position: relative; z-index: 1; }
+    .closing-final {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-top: 36px;
+      line-height: 1.3;
+      position: relative; z-index: 1;
+    }
+    .closing-final span { color: var(--coral); }
+    .closing-sig {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      position: relative; z-index: 1;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      position: relative; z-index: 1;
+    }
+    footer .logo { font-size: 1rem; }
+    footer .copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--text-muted); letter-spacing: .1em; text-transform: uppercase; }
+
+    /* ── DIVIDER ── */
+    .wave-divider { text-align: center; font-size: 1.2rem; letter-spacing: .5em; color: var(--border2); margin: 12px 0; user-select: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+
+    /* SCROLL REVEAL handled by JS */
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .masthead { padding: 0 20px; }
+      .nav-pills { display: none; }
+      .hero { padding: 56px 20px 52px; }
+      .sticker { display: none; }
+      .opening-blast { padding: 40px 20px; }
+      .article { padding: 52px 20px 72px; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px 20px; }
+      .closing { padding: 36px 24px; }
+      .fw-step { grid-template-columns: 52px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND BLOBS -->
+  <div class="blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <a href="index.html" class="logo">Snarky<span>Solutions</span></a>
+    <nav class="nav-pills">
+      <a href="#" class="nav-pill">Self-Awareness</a>
+      <a href="#" class="nav-pill">Career Growth</a>
+      <a href="#" class="nav-pill">People Skills</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="sticker sticker-1">✦ Mid-career</div>
+    <div class="sticker sticker-2">Root skill 🧠</div>
+    <div class="sticker sticker-3">9 min read ✶</div>
+
+    <div class="hero-eyebrow">Self-Awareness &nbsp;·&nbsp; Professional Edge</div>
+
+    <h1 class="hero-title">
+      You Can't Read<br>
+      the <span class="accent">Room</span> If You<br>
+      Can't Read <span class="accent-y">Yourself</span>
+    </h1>
+
+    <p class="hero-desc">Competent. Experienced. Still hitting invisible walls in rooms and relationships. The gap isn't your skill set — it's the one thing nobody put in your job description.</p>
+
+    <div class="hero-footer">
+      <span class="tag-pill coral">✦ March 2026</span>
+      <span class="tag-pill yellow">Snarky Solutions</span>
+      <span class="tag-pill lav">9 min read</span>
+      <span class="tag-pill pink">PMO · Mid-Career · People</span>
+    </div>
+  </section>
+
+  <!-- OPENING BLAST -->
+  <div class="opening-blast">
+    <div class="opening-blast-inner">
+      <p>You have the experience. The track record. You've managed the escalations, delivered the transitions, held rooms together when they were falling apart. And yet — there's a stakeholder you can never quite land. A team dynamic that keeps resetting. A conversation that never goes the way you planned. <strong>The gap isn't your competence. It's your visibility into yourself.</strong></p>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <article class="article">
+
+    <p>Self-awareness has a branding problem. It sounds like something you do on a yoga retreat, not something that decides whether your next stakeholder review goes well or sideways. So we skip it, or we outsource it to annual feedback cycles, or we assume we already have it because we're self-critical enough.</p>
+    <p>Here's what's actually true: <strong>you can only see in other people what you've first seen in yourself.</strong> That's not philosophy — that's a professional mechanism. And once you understand it, you stop being confused by why certain interactions keep going wrong.</p>
+
+    <div class="wave-divider">· · ·</div>
+
+    <!-- SECTION 1 -->
+    <div class="section-block" data-reveal>
+      <div class="section-tag s1">✦ Part One</div>
+      <h2 class="section-title">Why Competence Hits a Ceiling</h2>
+      <div class="section-sub">The invisible wall mid-career professionals keep finding</div>
+    </div>
+
+    <p>Early career, output is everything. You execute, you deliver, you hit the numbers — and that's rewarded accordingly.</p>
+    <p>Mid-career, the game changes. Now you're being evaluated on something harder to measure: <strong>how you move through people.</strong> How you read a room before you speak. How you handle someone who's defensive without making them more so. How you adapt your approach when the same message keeps missing the same person.</p>
+
+    <div class="scene" data-reveal>
+      <p>You've prepared thoroughly. You know your material cold. You walk in confident. And somehow — the stakeholder pushes back harder than the data warrants. The team doesn't respond the way you expected. The conversation derails and you couldn't course-correct.</p>
+      <p>You leave wondering what you missed. The answer is usually not in the room. It's in the mirror.</p>
+    </div>
+
+    <p>What separates professionals who break through this ceiling from those who keep bumping against it isn't more expertise. It's <strong>the ability to understand what's driving the humans in the room</strong> — including themselves.</p>
+
+    <div class="pull-quote" data-reveal>
+      <p>You cannot decode someone else's behaviour until you've <em>learned to decode your own.</em> Every blind spot you carry about yourself is a blind spot about others, too.</p>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-block" data-reveal>
+      <div class="section-tag s2">✦ Part Two</div>
+      <h2 class="section-title">How the Mechanism Actually Works</h2>
+      <div class="section-sub">The direct link between knowing yourself and reading others</div>
+    </div>
+
+    <p>Your patterns of behaviour were built in response to specific experiences. The defensiveness when someone questions your process. The impatience when a meeting goes in circles. The tendency to over-explain when you feel your credibility is on the line. These aren't random — they're <strong>learned responses with roots.</strong></p>
+    <p>Here's the professional implication: <strong>other people have the same thing going on.</strong> The stakeholder who pushes back on every recommendation isn't being difficult — they're running a pattern. The colleague who shuts down in conflict isn't weak — pattern. The manager who micromanages isn't paranoid — pattern.</p>
+
+    <div class="callout" data-reveal>
+      <div class="callout-label">The Mechanism</div>
+      <p>When you understand what triggers you and why — you develop a map. Not just of yourself, but of human behaviour generally. You start recognising in others what you've already examined in yourself: the fear underneath the pushback, the unmet need underneath the silence, the insecurity underneath the overconfidence. You stop being surprised. You start being strategic.</p>
+    </div>
+
+    <p>This is why emotionally intelligent professionals seem to "read minds." They don't. They've done enough inner accounting to recognise the patterns in others — because they've already seen those exact patterns in themselves.</p>
+
+    <!-- SECTION 3 — FRAMEWORK -->
+    <div class="section-block" data-reveal>
+      <div class="section-tag s3">✦ Part Three</div>
+      <h2 class="section-title">The SER Framework</h2>
+      <div class="section-sub">Three questions. Two minutes. Before every interaction that matters.</div>
+    </div>
+
+    <p>You don't need a therapy session before every meeting. You need a consistent, lightweight practice that you'll actually use. This is it.</p>
+
+    <div class="framework" data-reveal>
+      <div class="framework-head">
+        <div>
+          <div class="framework-name">The <span>SER</span> Framework</div>
+          <div class="framework-hint">Self · Emotion · Response &nbsp;—&nbsp; use before any high-stakes interaction</div>
+        </div>
+        <div class="framework-chip">3 Q's · 2 min</div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter s">S</div>
+        <div>
+          <div class="fw-q-title">Self — What am I bringing into this room?</div>
+          <div class="fw-q-body">What's your state walking in? Rushed, defensive, under-prepared, overconfident? This isn't about peak condition — it's about honesty so your baseline doesn't hijack you mid-conversation. A person who knows they're irritable that day leads very differently from one who doesn't.</div>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter e">E</div>
+        <div>
+          <div class="fw-q-title">Emotion — What might they be carrying?</div>
+          <div class="fw-q-body">What do you know about this person's pressures, history with this topic, relationship to authority? What emotional register are they likely in — and what does that mean for how you frame, sequence, and deliver? This is where your self-knowledge becomes other-knowledge: you've felt this before, you know what it sounds like, you know what it needs.</div>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter r">R</div>
+        <div>
+          <div class="fw-q-title">Response — What does this moment actually need from me?</div>
+          <div class="fw-q-body">Not what you planned. Not your default. What does this specific situation need? Sometimes directness. Sometimes patience. Sometimes shutting up earlier than feels comfortable. Professionals who adapt in real time to what a room needs — rather than running their default script — are the ones who consistently get outcomes.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Two minutes before a meeting. Three honest questions. That's the whole practice. The insight compounds — you notice patterns in yourself faster, which means you read others faster, which means your interventions land cleaner.</p>
+
+    <!-- SECTION 4 — SCENARIOS -->
+    <div class="section-block" data-reveal>
+      <div class="section-tag s4">✦ Part Four</div>
+      <h2 class="section-title">Where This Plays Out</h2>
+      <div class="section-sub">Four real situations — and what changes when SER is running</div>
+    </div>
+
+    <div class="scenarios" data-reveal>
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-dot"></div>
+          <div class="scenario-title">The Stakeholder Who Pushes Back on Everything</div>
+        </div>
+        <div class="scenario-body">
+          <p><strong style="color:var(--coral);">Before SER:</strong> You defend harder — more data, more justification. <strong style="color:var(--text);">After SER:</strong> You recognise their pushback is about control, not content. You give them a decision point early so they don't feel steamrolled. The resistance drops without changing your recommendation at all.</p>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-dot"></div>
+          <div class="scenario-title">The Team Member Who Won't Engage</div>
+        </div>
+        <div class="scenario-body">
+          <p><strong style="color:var(--yellow);">Before SER:</strong> You read silence as disengagement and escalate pressure. <strong style="color:var(--text);">After SER:</strong> You recognise it as a signal — possibly fear of being wrong in public, possibly unaddressed conflict. You create a safer channel. You get the real story. You solve the actual problem.</p>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-dot"></div>
+          <div class="scenario-title">The Feedback That Never Lands</div>
+        </div>
+        <div class="scenario-body">
+          <p><strong style="color:var(--lavender);">Before SER:</strong> Same message, same delivery, same confusion about why nothing changes. <strong style="color:var(--text);">After SER:</strong> You notice you're delivering it when frustrated — your tone is off before you start. You change the timing and register. The same words land completely differently.</p>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-header">
+          <div class="scenario-dot"></div>
+          <div class="scenario-title">The Negotiation That Keeps Stalling</div>
+        </div>
+        <div class="scenario-body">
+          <p><strong style="color:var(--pink);">Before SER:</strong> You interpret stalling as obstruction and push harder. <strong style="color:var(--text);">After SER:</strong> You identify their hesitation as an unspoken risk — because you've felt that exact hesitation before. You name the unspoken concern out loud. The negotiation unsticks.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5 — OUTCOMES -->
+    <div class="section-block" data-reveal>
+      <div class="section-tag s5">✦ Part Five</div>
+      <h2 class="section-title">What Actually Changes</h2>
+      <div class="section-sub">Six concrete outcomes when this becomes a professional habit</div>
+    </div>
+
+    <p>This isn't a soft play. Here's what measurably, visibly shifts when self-awareness becomes practice rather than an occasional weekend thought.</p>
+
+    <div class="outcomes-grid" data-reveal>
+      <div class="outcome-card">
+        <span class="outcome-emoji">⚡</span>
+        <div class="outcome-title">Faster Conflict Resolution</div>
+        <div class="outcome-desc">You stop solving the surface argument and start addressing the underlying dynamic. Conflicts that used to cycle for weeks resolve in one well-framed conversation.</div>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-emoji">🎯</span>
+        <div class="outcome-title">Sharper Stakeholder Management</div>
+        <div class="outcome-desc">You stop being surprised by resistance. You anticipate what the room needs before walking in — and adjust before it goes sideways, not after.</div>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-emoji">🧘</span>
+        <div class="outcome-title">Less Reactivity, More Strategy</div>
+        <div class="outcome-desc">The gap between trigger and response gets longer. Fewer decisions made in the heat of the moment that you have to walk back. You become the steadiest person in difficult rooms.</div>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-emoji">💬</span>
+        <div class="outcome-title">Feedback That Actually Lands</div>
+        <div class="outcome-desc">You read the person in front of you — their state, their defences, their needs — and calibrate before you speak. Your feedback stops being a monologue.</div>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-emoji">🤝</span>
+        <div class="outcome-title">Stronger Team Trust</div>
+        <div class="outcome-desc">People who feel genuinely seen — not managed, not processed — show up differently. Self-aware leaders build safer teams without ever using that phrase in a meeting.</div>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-emoji">🚀</span>
+        <div class="outcome-title">Career Ceiling Removed</div>
+        <div class="outcome-desc">The roles above you aren't about more technical skill. They're about navigating complexity and people under pressure. This is exactly the muscle that gets you through the ceiling.</div>
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <div class="closing" data-reveal>
+      <p>Here's the honest version: building self-awareness as a professional practice isn't glamorous work. There's no certification for it. Nobody claps at your next performance review because you paused before responding to a difficult stakeholder.</p>
+      <p>But you know it's working because the room starts going differently. The difficult stakeholder becomes navigable. The stuck team starts moving. The conversation you were dreading goes better than expected — and you know exactly why, because you went in prepared.</p>
+      <p>You didn't get luckier. You got more legible — to yourself first, and then to everyone else. Everything you're already good at gets sharper when this one is working. That's not motivation-poster logic. That's just how it compounds.</p>
+      <div class="closing-final">The room becomes readable<br>the moment <span>you</span> do.</div>
+      <div class="closing-sig">— Snarky Solutions &nbsp;·&nbsp; Because someone needed to say it plainly.</div>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="logo">Snarky<span>Solutions</span></a>
+    <div class="copy">© 2026 · Real Talk. No Filter. Actionable.</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveal = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          reveal.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.07 });
+
+    document.querySelectorAll('[data-reveal], .section-block, .scene, .pull-quote, .callout, .framework, .scenarios, .outcomes-grid, .closing').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .65s ease, transform .65s ease';
+      reveal.observe(el);
+    });
+  </script>
+</body>
+</html>
