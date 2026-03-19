@@ -1,64 +1,106 @@
-# ⬡ Snarky Solutions
+# Snarky Solutions 🔥
 
-**No fluff. Just sharp thinking.**
+> Real Talk. No Filter. Actionable.
 
-🌐 Live at → [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io)
+Sharp, honest takes on work, career growth, geopolitics, finance, and the messy middle of modern professional life — written from Kolkata, for people who are done being talked down to by advice that was never road-tested in the real world.
 
-Analysis on careers, strategy, finance, and geopolitics — written for professionals who are done being overlooked and want to actually understand the world they're operating in.
-
----
-
-## 📄 Posts
-
-| # | Title | Category | File | Date | Status |
-|---|-------|----------|------|------|--------|
-| 1 | **You're Already Doing It. You Just Don't Call It Global Citizenship.** | Personal Finance · India | `youre-already-doing-it.html` | Mar 2026 | ✅ Live |
-| 2 | **What If We All Chose Earth?** | Geopolitics · Speculative | `global-citizen-blog.html` | Mar 2026 | ✅ Live |
-| 3 | You're Communicating. But Is Anyone Actually Receiving? | Careers · Leadership | `strategic-communication-blog.html` | Mar 2026 | ✅ Live |
-| 4 | Build Your Brand With AI | AI & Careers | `blog-build-your-brand-ai.html` | 2026 | ✅ Live |
-| 5 | India's Financial Moves for 2026 | India · Finance | `india-finance-2026.html` | 2026 | ✅ Live |
-| 6 | India's Geopolitical Positioning | Geopolitics | `india_geopolitics_blogpost.html` | Mar 2026 | ✅ Live |
-| 7 | The War Nobody Wanted | Global Affairs | `war-nobody-wanted.html` | 2026 | ✅ Live |
-| 8 | Your Money During a War | Personal Finance | `your-money-during-war-2.html` | 2026 | ✅ Live |
+🌐 **Live at:** [solutionssnarky-droid.github.io](https://solutionssnarky-droid.github.io)
 
 ---
 
-## 🗂️ Site Files
+## Latest Post
 
-| File | Purpose |
-|------|---------|
-| `index.html` | Homepage — two featured posts + all posts grid |
-| `README.md` | This file |
-| `youre-already-doing-it.html` | Post #1 — Personal finance & global citizenship |
-| `global-citizen-blog.html` | Post #2 — Speculative global citizenship timeline |
-| `strategic-communication-blog.html` | Post #3 — Strategic communication & EQ |
-| `blog-build-your-brand-ai.html` | Post #4 — AI personal branding |
-| `india-finance-2026.html` | Post #5 — India finance 2026 |
-| `india_geopolitics_blogpost.html` | Post #6 — India geopolitics |
-| `war-nobody-wanted.html` | Post #7 — Israel-Iran-US conflict |
-| `your-money-during-war-2.html` | Post #8 — Personal finance during conflict |
-| `feature-global-citizen.svg` | Feature image — Chose Earth post |
-| `feature-already-doing-it.svg` | Feature image — Already Doing It post |
+### [You Can't Read the Room If You Can't Read Yourself](./read-the-room-v3.html)
+*March 2026 · Self-Awareness · Professional Edge · 9 min read*
+
+Competent. Experienced. Still hitting invisible walls. The gap isn't your skill set — it's the one root skill nobody put in your job description. Includes the **SER Framework** (Self → Emotion → Response): three questions, two minutes, before every interaction that matters.
 
 ---
 
-## 🎨 Design System
+## All Posts
 
-- **Fonts:** Cormorant Garamond (display) · Outfit (body) · JetBrains Mono (labels)
-- **Palette:** Cream `#faf7f2` · Gold `#b8860b` · Teal `#1a6b5a` · Ink `#0e0c0a`
-- **Layout:** Max-width 960px, 2rem padding, sticky nav, responsive grid
-- **Cards:** Border radius 10–12px, hover lift + shadow
-- **All links:** Relative paths (works on GitHub Pages without domain changes)
-
----
-
-## ✍️ Voice & Style
-
-- Snarky, data-backed, solution-oriented
-- Indian professional perspective — present but not flag-waving
-- Accessible analysis on complex topics
-- No fluff. No vague thinking. No sugarcoating.
+| Post | Category | Date | Read Time |
+|------|----------|------|-----------|
+| [You Can't Read the Room If You Can't Read Yourself](./read-the-room-v3.html) | Self-Awareness · Career | Mar 2026 | 9 min |
+| [India Between the Lines: What the New World Order Actually Means for Us](#) | Geopolitics | Feb 2026 | 10 min |
+| [Your Money in 2026: The Changes Nobody Explained Properly](#) | Finance | Jan 2026 | 8 min |
+| [When the Market Dips, Most People Do the Worst Possible Thing](#) | Finance · Market Volatility | Dec 2025 | 7 min |
+| [India's IT Sector in a Shifting World: Opportunity or Vulnerability?](#) | India · IT Services | Nov 2025 | 9 min |
+| [The Conflict Nobody Wants to Name and What It Costs India](#) | Geopolitics · Israel · Iran | Oct 2025 | 11 min |
+| [Your Job in 2030 Doesn't Look Like Your Job in 2024](#) | Career · AI | Sep 2025 | 6 min |
 
 ---
 
-*Opinions are free. The planet isn't. · Est. 2024*
+## About This Blog
+
+**Snarky Solutions** is an independent blog covering the intersection of professional growth, self-awareness, Indian geopolitics, and personal finance — with the kind of directness that most people reserve for private conversations.
+
+The voice: a smart, experienced peer talking to another smart, experienced peer. Not a coach. Not a consultant. Not a LinkedIn thought leader. Just someone who has been in the room and has thoughts about what actually works.
+
+**Topics covered:**
+- Professional growth and self-awareness for mid-career professionals
+- Indian geopolitics and what it means practically for people living it
+- Personal finance and market trends through an Indian lens
+- AI's real impact on careers and work — grounded, not hyped
+- Leadership, PMO, governance — the stuff they don't teach you
+
+**Written by:** A Transition PMO with 14+ years across IT Services, BPM, and Retail — based in Kolkata, India.
+
+---
+
+## Blog Structure
+
+```
+/
+├── index.html                        ← Blog homepage
+├── read-the-room-v3.html             ← Latest: Self-Awareness post
+├── feature-image.html                ← Latest post feature image (1080×1080)
+├── README.md                         ← This file
+└── [previous posts...]
+```
+
+---
+
+## Design System
+
+The blog uses a consistent dark-themed design system across all posts:
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| Background | `#111013` | Page base |
+| Surface | `#18151c` | Cards, callouts |
+| Coral | `#FF6B6B` | Primary accent, CTAs |
+| Yellow | `#FFD93D` | Secondary accent |
+| Lavender | `#C4AAFF` | Tertiary accent |
+| Pink | `#FF80C8` | Fourth accent |
+| Text | `#F0EBF8` | Body copy |
+
+**Fonts:** Fraunces (headers) · Plus Jakarta Sans (body) · DM Mono (labels)
+
+---
+
+## Deployment
+
+This blog is deployed via **GitHub Pages** using the `main` branch root directory.
+
+**To add a new post:**
+1. Upload the new HTML file to the repository root via GitHub web UI
+2. Update `index.html` — add the post to the featured card or posts grid
+3. Update this `README.md` — add a row to the posts table
+
+**No build step. No CLI required. Just upload and push.**
+
+---
+
+## Content Themes
+
+Posts follow one of four templates:
+
+- **Analysis posts** — Geopolitical or financial deep-dives with Indian context. Data-backed, snarky observer lens, never flag-waving.
+- **Career posts** — Professional growth, self-awareness, leadership. Peer-to-peer tone, real scenarios, usable frameworks.
+- **Market posts** — Finance, investment, economic shifts. Accessible, non-preachy, no "consult your advisor" filler.
+- **Trend posts** — AI, future of work, sector shifts. Grounded takes, no hype, actionable perspective.
+
+---
+
+*© 2026 Snarky Solutions · Kolkata, India*
