@@ -10,10 +10,10 @@ Sharp, honest takes on work, career growth, geopolitics, finance, and the messy 
 
 ## Latest Post
 
-### [You Can't Read the Room If You Can't Read Yourself](https://solutionssnarky-droid.github.io/read-the-room-v3-1.html)
-*March 2026 · Self-Awareness · Professional Edge · 9 min read*
+### [Washington Made a Move. Your Career Felt It. Now What?](https://solutionssnarky-droid.github.io/washington-FINAL.html)
+*March 2026 · AI & Geopolitics · India · 9 min read*
 
-Competent. Experienced. Still hitting invisible walls. The gap isn't your skill set — it's the one root skill nobody put in your job description. Includes the **SER Framework** (Self → Emotion → Response): three questions, two minutes, before every interaction that matters.
+The White House just rewrote the AI rulebook. Multi-agent systems moved from pilot to production at scale. Whether you're in Bengaluru, London, Pune, or a Noida boardroom — the industry that built modern urban India shifted underneath you this week.
 
 ---
 
@@ -21,6 +21,8 @@ Competent. Experienced. Still hitting invisible walls. The gap isn't your skill 
 
 | Post | Category | Date | Read Time |
 |------|----------|------|-----------|
+| [Washington Made a Move. Your Career Felt It. Now What?](https://solutionssnarky-droid.github.io/washington-FINAL.html) | AI & Geopolitics · India | Mar 2026 | 9 min |
+| [You Won That Interview Six Months Ago. So Why Does Nothing Feel Settled?](https://solutionssnarky-droid.github.io/interview-won-six-months-ago.html) | Career · Job Market | Mar 2026 | 8 min |
 | [You Can't Read the Room If You Can't Read Yourself](https://solutionssnarky-droid.github.io/read-the-room-v3-1.html) | Self-Awareness · Career | Mar 2026 | 9 min |
 | [India Between the Lines: What the New World Order Actually Means for Us](#) | Geopolitics | Feb 2026 | 10 min |
 | [Your Money in 2026: The Changes Nobody Explained Properly](#) | Finance | Jan 2026 | 8 min |
@@ -52,10 +54,11 @@ The voice: a smart, experienced peer talking to another smart, experienced peer.
 
 ```
 /
-├── index.html                        ← Blog homepage
-├── read-the-room-v3-1.html             ← Latest: Self-Awareness post (live)
-├── feature-image.html                ← Latest post feature image (1080×1080)
-├── README.md                         ← This file
+├── index.html                              ← Blog homepage
+├── washington-FINAL.html                   ← Latest: AI & Geopolitics · India (live)
+├── interview-won-six-months-ago.html       ← Career · Job Market (live)
+├── read-the-room-v3-1.html                 ← Self-Awareness post (live)
+├── README.md                               ← This file
 └── [previous posts...]
 ```
 
