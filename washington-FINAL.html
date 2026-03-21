@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Washington Made a Move. Your Career Felt It. | Snarky Solutions</title>
+<meta name="description" content="The White House just rewrote the AI rulebook. AI agents are taking over enterprise workflows. And whether you're in Bengaluru, London, Pune, or a Noida boardroom — this one's about you." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #FAF6EF;
+  --champagne: #F3EAD8;
+  --warm-white: #FFFDF9;
+  --gold: #C9A84C;
+  --gold-light: #E2C070;
+  --gold-pale: rgba(201,168,76,0.12);
+  --blush: #D4A0A4;
+  --ink: #18120C;
+  --ink-mid: #2E2018;
+  --ink-soft: #5C4A38;
+  --muted: #9C8870;
+  --muted-light: #C4B49E;
+  --green: #2D6E4E;
+  --red: #A93226;
+  --amber: #C0762A;
+  --rule: rgba(201,168,76,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* ─── PROGRESS BAR ─── */
+#progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--blush), var(--gold-light));
+  z-index: 9999; transition: width 0.08s linear;
+}
+
+/* ─── SITE HEADER ─── */
+.site-header {
+  background: var(--ink);
+  padding: 1rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0; z-index: 200;
+  border-bottom: 1px solid rgba(201,168,76,0.35);
+}
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.45rem; letter-spacing: 0.14em;
+  color: var(--gold); text-decoration: none;
+}
+.header-right {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--ink);
+  min-height: 88vh;
+  display: flex; align-items: flex-end;
+  padding: 0 0 4rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 75% 25%, rgba(201,168,76,0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 15% 70%, rgba(212,160,164,0.07) 0%, transparent 60%);
+}
+.hero-grid-line {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 900px; margin: 0 auto; padding: 0 2.5rem;
+  width: 100%;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0; animation: riseIn 0.8s 0.3s forwards;
+}
+.tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.28em;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.5);
+  padding: 0.28rem 0.8rem;
+}
+.hero-date { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 700; line-height: 1.08;
+  color: var(--cream);
+  margin-bottom: 1.6rem;
+  opacity: 0; animation: riseIn 0.8s 0.5s forwards;
+}
+.hero h1 .line-gold { color: var(--gold-light); display: block; }
+.hero h1 .line-blush { color: var(--blush); font-style: italic; display: block; }
+
+.hero-deck {
+  font-size: 1.1rem; color: var(--muted-light);
+  max-width: 580px; line-height: 1.75;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: riseIn 0.8s 0.7s forwards;
+}
+
+.hero-meta {
+  display: flex; gap: 2rem; flex-wrap: wrap;
+  font-size: 0.76rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  opacity: 0; animation: riseIn 0.8s 0.9s forwards;
+}
+
+/* ─── SCROLL INDICATOR ─── */
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  opacity: 0; animation: riseIn 1s 1.4s forwards;
+}
+.scroll-hint span { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+/* ─── ARTICLE ─── */
+.article {
+  max-width: 800px; margin: 0 auto;
+  padding: 5rem 2.5rem;
+}
+
+/* ─── SCENE OPENER ─── */
+.scene-opener {
+  position: relative;
+  padding: 3rem 2.5rem;
+  margin: 0 -2.5rem 4rem;
+  background: var(--warm-white);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.scene-opener::before {
+  content: 'RIGHT NOW';
+  position: absolute; top: -0.6rem; left: 2.5rem;
+  background: var(--warm-white);
+  padding: 0 0.6rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.3em;
+  color: var(--gold);
+}
+.scene-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-style: italic;
+  color: var(--ink-soft); line-height: 1.8;
+}
+.scene-text strong { font-style: normal; color: var(--ink); font-weight: 600; }
+
+/* ─── REVEAL SECTIONS ─── */
+.reveal {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.js-animate .reveal {
+  opacity: 0; transform: translateY(30px);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ─── SECTION ANATOMY ─── */
+.section { margin: 4.5rem 0; }
+
+.section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.3em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3.8vw, 2.7rem);
+  font-weight: 700; line-height: 1.18;
+  color: var(--ink); margin-bottom: 1.4rem;
+}
+h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; font-weight: 600;
+  color: var(--ink); margin: 2rem 0 0.7rem;
+}
+
+p { color: var(--ink-soft); font-size: 1rem; margin-bottom: 1.3rem; }
+p:last-child { margin-bottom: 0; }
+
+strong { color: var(--ink); font-weight: 500; }
+
+/* ─── RULE ─── */
+hr { border: none; border-top: 1px solid var(--rule); margin: 3.5rem 0; }
+.ornament { text-align: center; color: var(--gold); letter-spacing: 0.6em; font-size: 0.9rem; margin: 2.5rem 0; }
+
+/* ─── TRUTH CALLOUT ─── */
+.truth-block {
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem 1.8rem;
+  margin: 2.2rem 0;
+  background: var(--gold-pale);
+}
+.truth-block p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-style: italic;
+  color: var(--ink-mid); line-height: 1.65;
+  margin: 0;
+}
+.truth-block p strong { font-style: normal; }
+
+/* ─── DATA STATS ─── */
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+@media(max-width:560px){ .stats-row { grid-template-columns: 1fr; } }
+.stat {
+  background: var(--warm-white);
+  padding: 1.6rem 1.2rem; text-align: center;
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem; letter-spacing: 0.04em;
+  color: var(--gold); display: block;
+  line-height: 1;
+}
+.stat-desc {
+  font-size: 0.78rem; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+  margin-top: 0.4rem; line-height: 1.4;
+}
+
+/* ─── PRO/CON GRID ─── */
+.pc-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin: 2rem 0;
+}
+@media(max-width:580px){ .pc-grid { grid-template-columns: 1fr; } }
+.pc-card {
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--rule);
+  background: var(--warm-white);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pc-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.06); }
+.pc-card.good { border-top: 2px solid var(--green); }
+.pc-card.bad  { border-top: 2px solid var(--red); }
+.pc-pill {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.22em;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 0.7rem;
+  border-radius: 1px;
+}
+.pc-card.good .pc-pill { background: rgba(45,110,78,0.1); color: var(--green); }
+.pc-card.bad  .pc-pill { background: rgba(169,50,38,0.1); color: var(--red); }
+.pc-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 0.5rem; line-height: 1.3;
+}
+.pc-card p { font-size: 0.9rem; color: var(--ink-soft); margin: 0; line-height: 1.6; }
+
+/* ─── DARK INDIA SECTION ─── */
+.india-band {
+  background: var(--ink);
+  margin: 4rem -2.5rem;
+  padding: 4rem 2.5rem;
+  border-top: 1px solid rgba(201,168,76,0.3);
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  position: relative; overflow: hidden;
+}
+.india-band::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 70% at 80% 20%, rgba(201,168,76,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.india-band .section-label { color: var(--gold-light); }
+.india-band h2 { color: var(--cream); }
+.india-band h3 { color: #D4C4B0; margin-top: 2.5rem; }
+.india-band p { color: #A09080; }
+.india-band hr { border-color: rgba(201,168,76,0.15); }
+.india-band .truth-block { background: rgba(201,168,76,0.07); border-color: var(--gold); }
+.india-band .truth-block p { color: #C8B49A; }
+.india-band .stats-row { background: rgba(201,168,76,0.15); }
+.india-band .stat { background: rgba(255,255,255,0.03); }
+.india-band .stat-desc { color: #786858; }
+
+/* ─── MIRROR PERSONAS ─── */
+.mirror-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: rgba(201,168,76,0.2);
+  border: 1px solid rgba(201,168,76,0.2);
+  margin: 2.5rem 0;
+}
+@media(max-width:580px){ .mirror-grid { grid-template-columns: 1fr; } }
+.mirror-card {
+  background: rgba(255,255,255,0.03);
+  padding: 1.6rem;
+}
+.mirror-who {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.25em;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.mirror-fear {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1rem;
+  color: #B0A090; margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+.mirror-truth { font-size: 0.88rem; color: #907E6C; line-height: 1.6; }
+
+/* ─── THE MOVE ─── */
+.move-section {
+  background: var(--warm-white);
+  margin: 4rem -2.5rem 0;
+  padding: 4rem 2.5rem;
+  border-top: 2px solid var(--gold);
+  position: relative;
+}
+.move-section::before {
+  content: 'YOUR MOVE';
+  position: absolute; top: -0.75rem; left: 2.5rem;
+  background: var(--cream);
+  padding: 0 0.8rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.3em;
+  color: var(--gold);
+}
+.move-section h2 { color: var(--ink); margin-bottom: 0.5rem; }
+.move-section > p { color: var(--ink-soft); margin-bottom: 2.5rem; }
+
+.move-cards {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+@media(max-width:600px){ .move-cards { grid-template-columns: 1fr; } }
+.move-card {
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 1.8rem;
+  background: var(--cream);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.move-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.08); }
+.move-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--blush));
+}
+.move-who {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.25em;
+  color: var(--muted); margin-bottom: 0.5rem;
+}
+.move-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.8rem; line-height: 1.25;
+}
+.move-card p { font-size: 0.9rem; color: var(--ink-soft); margin: 0; line-height: 1.65; }
+.move-card p + p { margin-top: 0.6rem; }
+.move-em {
+  display: inline-block;
+  background: var(--gold-pale);
+  border-left: 2px solid var(--gold);
+  padding: 0.4rem 0.7rem;
+  font-size: 0.83rem;
+  color: var(--ink-soft);
+  margin-top: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ─── CLOSER ─── */
+.closer {
+  border: 1px solid var(--gold);
+  padding: 3rem;
+  margin: 4rem 0 2rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--gold-pale) 0%, transparent 50%);
+}
+.closer::before {
+  content: '"';
+  position: absolute; top: -1.2rem; left: 50%; transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; line-height: 1;
+  color: var(--gold);
+  background: var(--cream);
+  padding: 0 0.5rem;
+}
+.closer-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-style: italic; font-weight: 400;
+  color: var(--ink); line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+.closer-byline {
+  font-size: 0.8rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ─── SHARE ─── */
+.share {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: 2rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+}
+.share-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.15em;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid currentColor;
+  background: transparent; cursor: pointer;
+  text-decoration: none; transition: all 0.18s ease;
+  border-radius: 1px;
+}
+.share-btn:hover { background: currentColor; color: white; }
+.btn-li { color: #0A66C2; }
+.btn-tw { color: #1DA1F2; }
+.btn-cp { color: var(--gold); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(201,168,76,0.3);
+  font-size: 0.78rem; color: var(--muted);
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+/* ─── KEYFRAMES ─── */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Fallback: ensure hero content always becomes visible */
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow, .hero h1, .hero-deck, .hero-meta, .scroll-hint {
+    opacity: 1 !important; transform: none !important; animation: none !important;
+  }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://solutionssnarky-droid.github.io" class="logo">Snarky Solutions</a>
+  <span class="header-right">Sharp takes. Real answers. No fluff.</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-line"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">AI &amp; Geopolitics</span>
+      <span class="tag">India</span>
+      <span class="hero-date">March 2026</span>
+    </div>
+    <h1>
+      Washington Made a Move.
+      <span class="line-gold">Your Career Felt It.</span>
+      <span class="line-blush">Now What?</span>
+    </h1>
+    <p class="hero-deck">The White House just rewrote the AI rulebook. AI agents are inside every major enterprise. And whether you're in Bengaluru, London, Pune, or a boardroom in Noida — this story is about you.</p>
+    <div class="hero-meta">
+      <span>⏱ 9 min read</span>
+      <span>📍 IT · BPM · Careers · India</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<main class="article">
+
+  <!-- THE SCENE -->
+  <div class="scene-opener reveal">
+    <p class="scene-text">
+      <strong>Somewhere in Bengaluru right now,</strong> a project manager is staring at a Teams message that reads "restructuring update — please hold."<br><br>
+      <strong>In London,</strong> an NRI is watching the Rupee ticker with one eye and their savings account with the other, doing the mental math on what 92 to the dollar means for the flat their parents just finished paying off.<br><br>
+      <strong>In Pune,</strong> a 27-year-old is Googling "AI agent jobs India 2026" at 11pm, three tabs open, none of them reassuring.<br><br>
+      <strong>And in a Noida boardroom,</strong> a Delivery Manager is being asked to present an "AI-augmented delivery" strategy by next Friday — for a concept they encountered for the first time last Tuesday.<br><br>
+      Washington just made a move that sits in the middle of all four of those moments. Let's talk about what it actually means — not for a press release. For you.
+    </p>
+  </div>
+
+  <!-- WHAT HAPPENED -->
+  <div class="section reveal">
+    <div class="section-label">The Situation</div>
+    <h2>What Washington Did — In Plain English</h2>
+    <p>On March 20, 2026, the Trump Administration released its National AI Policy Framework — a seven-pillar blueprint that covers child safety, intellectual property, fraud prevention, innovation enablement, and most significantly, a federal standard designed to override all state-level AI laws across America.</p>
+    <p>Translation: one rulebook for the entire United States AI industry, written with the explicit goal of winning the tech race against China and getting out of the way of Big Tech doing what Big Tech does.</p>
+
+    <div class="truth-block">
+      <p>This framework isn't neutral policy. It is a deliberate choice to prioritise American AI dominance over citizen accountability — and every enterprise that outsources work to India just got a clearer map of where they're heading.</p>
+    </div>
+
+    <p>Simultaneously — and this part barely made the headlines — AI agents stopped being a pilot programme. Multi-agent systems moved from the lab into production at scale across Fortune 500 companies. These aren't chatbots. These are systems that open emails, pull contracts, draft responses, update databases, log risks, and schedule follow-ups — without a human touching any of it.</p>
+    <p>Two seismic shifts. Same week. Same industry that built modern urban India.</p>
+  </div>
+
+  <hr>
+
+  <!-- PROS / CONS -->
+  <div class="section reveal">
+    <div class="section-label">The Honest Assessment</div>
+    <h2>What the Framework Gets Right — And Gets Very Wrong</h2>
+
+    <div class="pc-grid">
+      <div class="pc-card good">
+        <div class="pc-pill">Works</div>
+        <h4>One Rulebook Removes the Chaos</h4>
+        <p>50 different state AI laws would have paralysed enterprise procurement. A unified federal standard makes decisions faster — and capital follows clarity.</p>
+      </div>
+      <div class="pc-card good">
+        <div class="pc-pill">Works</div>
+        <h4>Child Safety &amp; Fraud Are Real Wins</h4>
+        <p>Age verification, deepfake countermeasures, anti-fraud tools — these provisions are genuinely useful and hard to argue against regardless of your politics.</p>
+      </div>
+      <div class="pc-card good">
+        <div class="pc-pill">Works</div>
+        <h4>Workforce Investment Is Explicitly Named</h4>
+        <p>The framework calls Congress to fund AI skills training. It won't be enough. But it is an acknowledgement that disruption without retraining is a political time bomb.</p>
+      </div>
+      <div class="pc-card good">
+        <div class="pc-pill">Works</div>
+        <h4>The China Logic Is Sound</h4>
+        <p>This is the one area with genuine strategic clarity. China moves with centralised speed. America needed a clean lane to sprint in. This framework opens it.</p>
+      </div>
+      <div class="pc-card bad">
+        <div class="pc-pill">Fails</div>
+        <h4>Protects Companies More Than Citizens</h4>
+        <p>Liability shields for AI developers. No new oversight body. No enforcement teeth. We watched this play out with social media — and that story hasn't ended well.</p>
+      </div>
+      <div class="pc-card bad">
+        <div class="pc-pill">Fails</div>
+        <h4>State Protections Get Wiped Out</h4>
+        <p>States had built smart targeted laws — deepfake regulations, hiring bias protections. Those get overridden by a federal standard that isn't equally strong yet. There's a dangerous gap in the middle.</p>
+      </div>
+      <div class="pc-card bad">
+        <div class="pc-pill">Fails</div>
+        <h4>Copyright Gets Punted to the Courts</h4>
+        <p>The framework refuses to resolve the ongoing battles between AI companies and creators. Courts move in years. AI moves in months. That's not a solution — that's avoidance dressed in legal language.</p>
+      </div>
+      <div class="pc-card bad">
+        <div class="pc-pill">Fails</div>
+        <h4>No Enforcement = No Accountability</h4>
+        <p>Guidelines without a governing body are wishes on official letterhead. Who investigates violations? Nobody has a clean answer to that question.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <!-- INDIA SECTION -->
+  <div class="india-band reveal">
+
+    <div class="section-label">The Part That Actually Matters For Us</div>
+    <h2>India Is Standing in the Blast Radius</h2>
+    <p>Let's not dance around it. India built its middle class on one genius idea: deliver US-quality work at a fraction of US labour costs. That idea created the skylines of Bengaluru and Hyderabad, funded crores of home loans, and sent millions of children to universities their parents only dreamed of.</p>
+    <p>AI agents just made the core of that idea structurally obsolete.</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-num">$300B</span>
+        <div class="stat-desc">India's IT-BPM<br>industry value</div>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5.8M</span>
+        <div class="stat-desc">IT jobs facing<br>disruption risk</div>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2.3%</span>
+        <div class="stat-desc">Projected IT hiring<br>growth in 2026</div>
+      </div>
+    </div>
+
+    <div class="truth-block">
+      <p>"2.3% hiring growth in a sector that was growing at 15–20% annually a decade ago is not a slowdown. It is a structural warning signal being dressed up in optimistic language."</p>
+    </div>
+
+    <h3>The Rupee, The Remittance, The Reality</h3>
+    <p>The macroeconomic exposure is real and immediate. India's IT exports anchor the Rupee and offset its chronic trade deficit. The Rupee hit record lows near 90–92 against the dollar in early 2026, with the RBI intervening repeatedly. If IT exports contract meaningfully — not collapse, just contract — the ripple effects touch fuel prices, import costs, household savings, and everything that depends on a stable currency.</p>
+    <p>NRIs sending money home already feel this on every transfer. That's not coincidence. That's causation.</p>
+
+    <hr>
+
+    <h3>The Four Faces of This Crisis</h3>
+    <p>This isn't one crisis. It's four simultaneous ones, landing on four different people.</p>
+
+    <div class="mirror-grid">
+      <div class="mirror-card">
+        <div class="mirror-who">The Mid-Career Pro · Bengaluru / Hyderabad</div>
+        <div class="mirror-fear">"I've spent 10 years building this. Am I suddenly not enough?"</div>
+        <div class="mirror-truth">Your experience isn't worthless — but the role it fits is being redefined underneath you in real time. The question isn't whether to change. It's whether you move first or wait to be moved.</div>
+      </div>
+      <div class="mirror-card">
+        <div class="mirror-who">The NRI · London / Toronto / Dubai</div>
+        <div class="mirror-fear">"I left to build stability. Is everything I built back home unravelling?"</div>
+        <div class="mirror-truth">The family's FD isn't in danger today. But the structural pressure on India's forex and the Rupee's trajectory are not temporary. This deserves a real conversation, not reassurance.</div>
+      </div>
+      <div class="mirror-card">
+        <div class="mirror-who">The Young Professional · Pune / Noida / Chennai</div>
+        <div class="mirror-fear">"Should I pivot? To what? Nobody is telling me where to go."</div>
+        <div class="mirror-truth">The path forward exists. It's just not going to be handed to you in an appraisal cycle. The ones who win from here are the ones who build something visible before anyone asks them to.</div>
+      </div>
+      <div class="mirror-card">
+        <div class="mirror-who">The Manager / Leader · Everywhere</div>
+        <div class="mirror-fear">"I'm being asked to lead through something I barely understand."</div>
+        <div class="mirror-truth">You don't need to be the AI expert in the room. You need to be the person who can govern it, translate it for stakeholders, and build the human layer around it. That skill hasn't been automated. Yet.</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <h3>But India Is Also Playing Offence</h3>
+    <p>It would be dishonest to stop at the threat. India's private sector is responding — not fast enough, not uniformly, but genuinely.</p>
+    <p>Yotta Data Services is building the Shakti Cloud on 20,000+ NVIDIA Blackwell GPUs. L&T is constructing gigawatt-scale AI factories in Chennai and Mumbai. Tata and Reliance/Jio are partnering with NVIDIA on supercomputing infrastructure. The Global Capability Centre model — 1,700+ GCCs employing 1.9 million people — is evolving from cost centre to <em>strategic intelligence hub</em> for the world's largest companies.</p>
+    <p>India also introduced new IT Rules amendments in February 2026 requiring mandatory watermarking and immutable metadata for AI-generated content — a pragmatic regulatory approach that keeps innovation open while targeting real-world harm.</p>
+    <p>The window is open. The question is whether enough people walk through it before it closes.</p>
+
+  </div>
+
+  <!-- THE MOVE -->
+  <div class="move-section reveal">
+    <div class="section-label">The Part Most Posts Skip</div>
+    <h2>Here's What You Actually Do Now</h2>
+    <p>Not "upskill in AI." Not "stay curious." Real, specific moves — by who you are.</p>
+
+    <div class="move-cards">
+
+      <div class="move-card reveal">
+        <div class="move-who">If you're mid-career IT/BPM · 5–15 years experience</div>
+        <h4>Your reskilling window is 18 months, not 5 years.</h4>
+        <p>Don't try to learn AI broadly. Learn to <em>govern</em> it. AI governance, agentic workflow design, RAID management for human-AI hybrid teams — this is where your decade of experience becomes an unfair advantage, not a liability.</p>
+        <div class="move-em">Start with: one AI governance certification + one internal AI pilot you lead, not just participate in.</div>
+      </div>
+
+      <div class="move-card reveal">
+        <div class="move-who">If you're an NRI · abroad watching India</div>
+        <h4>Stop treating the Rupee as background noise.</h4>
+        <p>The currency pressure is structural, not seasonal. If your family's savings are entirely in fixed deposits in a single bank, that deserves an actual conversation — not because crisis is imminent, but because financial literacy is care.</p>
+        <div class="move-em">Action: Have a frank conversation about diversification with family. It's not pessimism — it's responsibility.</div>
+      </div>
+
+      <div class="move-card reveal">
+        <div class="move-who">If you're early career · 2–6 years in</div>
+        <h4>The worst thing you can do is wait for your company to train you.</h4>
+        <p>They won't — not fast enough, not specifically enough. Build one AI-powered project publicly. A blog. A tool. An automated workflow with a write-up. Make it visible. That portfolio beats any certification in a job interview right now.</p>
+        <div class="move-em">Start this weekend. Seriously. One small visible thing beats ten courses nobody can see.</div>
+      </div>
+
+      <div class="move-card reveal">
+        <div class="move-who">If you're a manager or leader · any level</div>
+        <h4>You don't need to code. You need to govern.</h4>
+        <p>The teams that win have leaders who can set guardrails for AI agents the same way they set KPIs for people. Learn the language of agentic AI — not to become technical, but to stop being the person in the room who can't ask the right questions.</p>
+        <div class="move-em">Read one thing about AI governance this week. One. Start the vocabulary before the pressure arrives.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CLOSER QUOTE -->
+  <div class="closer reveal">
+    <p class="closer-quote">The people who will be fine aren't the ones who understand every algorithm. They're the ones who understand that waiting is itself a choice — and it is not a neutral one.</p>
+    <div class="closer-byline">— Snarky Solutions · March 2026</div>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share reveal">
+    <span>Found this useful?</span>
+    <a class="share-btn btn-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https://solutionssnarky-droid.github.io" target="_blank">Share on LinkedIn</a>
+    <a class="share-btn btn-tw" href="https://twitter.com/intent/tweet?text=Washington+Made+a+Move.+Your+Career+Felt+It.&url=https://solutionssnarky-droid.github.io" target="_blank">Post on X</a>
+    <button class="share-btn btn-cp" onclick="navigator.clipboard.writeText(window.location.href).then(()=>this.textContent='Copied ✓').catch(()=>{})">Copy Link</button>
+  </div>
+
+</main>
+
+<footer>
+  <p><a href="https://solutionssnarky-droid.github.io">Snarky Solutions</a> — Sharp takes for professionals who don't have time for fluff.</p>
+  <p style="margin-top:0.5rem; font-size:0.72rem;">© 2026 Snarky Solutions. All rights reserved.</p>
+</footer>
+
+<script>
+  // Reading progress
+  window.addEventListener('scroll', () => {
+    const d = document.documentElement;
+    const pct = d.scrollTop / (d.scrollHeight - d.clientHeight);
+    document.getElementById('progress').style.width = (pct * 100) + '%';
+  });
+
+  // Progressive reveal — only hide elements if JS is confirmed working
+  document.body.classList.add('js-animate');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.05 });
+  // Trigger elements already in view immediately
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('in');
+    } else {
+      obs.observe(el);
+    }
+  });
+
+  // Safety net: force all animated elements visible after 1.5s
+  // in case IntersectionObserver or animations fail (local file, slow load, etc.)
+  setTimeout(() => {
+    document.querySelectorAll('.reveal, .hero-eyebrow, .hero h1, .hero-deck, .hero-meta, .scroll-hint').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }, 1500);
+</script>
+</body>
+</html>
