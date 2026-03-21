@@ -4,577 +4,846 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Snarky Solutions — Real Talk. No Filter. Actionable.</title>
-  <meta name="description" content="Snarky Solutions — sharp takes on professional growth, self-awareness, geopolitics, finance and the messy middle of modern work. Written for people who are tired of advice that sounds good but does nothing." />
+  <meta name="description" content="Sharp, honest takes on work, money, geopolitics and the messy middle of modern professional life — written from Kolkata, for people who are done being talked down to." />
+  <meta property="og:title" content="Snarky Solutions — Real Talk. No Filter. Actionable." />
+  <meta property="og:description" content="Sharp takes for mid-career professionals tired of advice that sounds good and does absolutely nothing." />
+  <meta property="og:url" content="https://solutionssnarky-droid.github.io" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:        #111013;
-      --bg2:       #18151c;
-      --bg3:       #1e1a24;
-      --border:    #2a2530;
-      --border2:   #332e3c;
-      --coral:     #FF6B6B;
-      --coral-dim: rgba(255,107,107,0.12);
-      --yellow:    #FFD93D;
-      --ylw-dim:   rgba(255,217,61,0.12);
-      --lavender:  #C4AAFF;
-      --lav-dim:   rgba(196,170,255,0.12);
-      --pink:      #FF80C8;
-      --pink-dim:  rgba(255,128,200,0.12);
-      --text:      #F0EBF8;
-      --text-mid:  #A89FBB;
-      --text-muted:#6B6278;
+      --bg: #111013;
+      --surface: #18151c;
+      --surface-2: #1e1a24;
+      --coral: #FF6B6B;
+      --yellow: #FFD93D;
+      --lavender: #C4AAFF;
+      --pink: #FF80C8;
+      --text: #F0EBF8;
+      --text-muted: #9b93a8;
+      --text-dim: #6b6275;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.14);
+      --font-head: 'Fraunces', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
     }
 
-    /* ── BLOBS ── */
-    .blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(110px); opacity: 0.15; animation: blobFloat 22s ease-in-out infinite; }
-    .b1 { width: 600px; height: 600px; background: var(--coral); top: -200px; right: -150px; }
-    .b2 { width: 450px; height: 450px; background: var(--lavender); bottom: 0; left: -100px; animation-delay: -7s; }
-    .b3 { width: 280px; height: 280px; background: var(--yellow); top: 55%; right: 8%; animation-delay: -14s; }
-    @keyframes blobFloat { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(25px,-18px) scale(1.04)} 66%{transform:translate(-18px,12px) scale(.97)} }
-
-    header, section, div, footer { position: relative; z-index: 1; }
-
-    /* ── MASTHEAD ── */
-    .masthead {
-      position: sticky; top: 0; z-index: 200;
-      height: 58px;
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: rgba(17,16,19,0.92);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 0 52px;
-      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
     }
-    .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.15rem; text-decoration: none; color: var(--text); letter-spacing: -0.01em; }
-    .logo span { color: var(--coral); font-style: italic; }
-    .nav { display: flex; gap: 6px; }
-    .nav-pill { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); background: transparent; border: 1px solid var(--border); border-radius: 100px; padding: 5px 14px; text-decoration: none; transition: all .2s; }
-    .nav-pill:hover, .nav-pill.active { color: var(--coral); border-color: rgba(255,107,107,0.3); background: var(--coral-dim); }
 
-    /* ── HERO ── */
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span { color: var(--coral); }
+
+    .nav-filters {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-filters a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0.8rem;
+      border-radius: 100px;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+    }
+
+    .nav-filters a:hover,
+    .nav-filters a.active {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    /* ── HERO ────────────────────────────── */
     .hero {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 80px 52px 64px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 48px;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 5vw, 3rem);
     }
 
-    .hero-left {}
-
-    .hero-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--coral-dim); border: 1px solid rgba(255,107,107,0.22);
-      border-radius: 100px; padding: 6px 16px;
-      font-family: 'DM Mono', monospace; font-size: 0.6rem;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral);
-      margin-bottom: 28px;
-      animation: fadeUp .6s ease both .1s;
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .hero-title {
-      font-family: 'Fraunces', serif; font-weight: 900;
-      font-size: clamp(3.2rem, 7vw, 5.8rem);
-      line-height: 0.97; letter-spacing: -0.04em;
-      animation: fadeUp .7s ease both .2s;
-    }
-    .hero-title em { color: var(--coral); font-style: italic; }
-    .hero-title .stroke { color: transparent; -webkit-text-stroke: 2px var(--yellow); display: block; }
-
-    .hero-right {
-      animation: fadeUp .7s ease both .35s;
-      padding-bottom: 8px;
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--coral);
     }
 
-    .hero-desc {
-      font-size: 0.95rem; color: var(--text-muted);
-      line-height: 1.75; max-width: 280px;
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
       font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
     }
 
-    .hero-stat {
-      margin-top: 24px;
-      display: flex; flex-direction: column; gap: 10px;
+    .hero h1 em {
+      font-style: italic;
+      color: var(--yellow);
     }
 
-    .stat-item {
-      display: flex; align-items: center; gap: 10px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
       color: var(--text-muted);
     }
-    .stat-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .stat-dot.coral { background: var(--coral); box-shadow: 0 0 6px rgba(255,107,107,.5); }
-    .stat-dot.ylw   { background: var(--yellow); box-shadow: 0 0 6px rgba(255,217,61,.5); }
-    .stat-dot.lav   { background: var(--lavender); box-shadow: 0 0 6px rgba(196,170,255,.5); }
-    .stat-dot.pink  { background: var(--pink); box-shadow: 0 0 6px rgba(255,128,200,.5); }
 
-    /* ── DIVIDER ── */
-    .divider {
-      max-width: 1100px; margin: 0 auto;
-      padding: 0 52px;
-      border-top: 1px solid var(--border);
-    }
+    .pill-coral { border-color: rgba(255,107,107,0.3); color: var(--coral); }
+    .pill-yellow { border-color: rgba(255,217,61,0.3); color: var(--yellow); }
+    .pill-lavender { border-color: rgba(196,170,255,0.3); color: var(--lavender); }
+    .pill-pink { border-color: rgba(255,128,200,0.3); color: var(--pink); }
 
-    /* ── SECTION HEADER ── */
-    .section-head {
-      max-width: 1100px; margin: 0 auto;
-      padding: 0 52px;
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 24px; margin-top: 52px;
-    }
+    /* ── SECTION LABELS ──────────────────── */
     .section-label {
-      font-family: 'DM Mono', monospace; font-size: 0.6rem;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
-      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
-    .section-label::before { content: ''; width: 20px; height: 1px; background: var(--coral); }
-    .view-all { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color .2s; }
-    .view-all:hover { color: var(--coral); }
 
-    /* ── FEATURED CARD (text-only, wide) ── */
-    .featured-wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px 64px; }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── MAIN LAYOUT ─────────────────────── */
+    .main-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem) 5rem;
+    }
+
+    /* ── FEATURED POST ───────────────────── */
+    .featured-post {
+      margin-bottom: 4rem;
+    }
 
     .featured-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 44px 52px;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: transform .25s, box-shadow .25s, border-color .25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .featured-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--coral), var(--pink), var(--lavender));
-    }
-    .featured-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 95% 10%, rgba(255,107,107,0.06) 0%, transparent 55%);
-      pointer-events: none;
-    }
-    .featured-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.35); border-color: rgba(255,107,107,0.25); }
-
-    .featured-top {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-    .f-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      border-radius: 100px; padding: 5px 14px;
-      font-family: 'DM Mono', monospace; font-size: 0.58rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .f-pill.coral { background: var(--coral-dim); border: 1px solid rgba(255,107,107,0.25); color: var(--coral); }
-    .f-pill.new   { background: var(--ylw-dim); border: 1px solid rgba(255,217,61,0.25); color: var(--yellow); }
-
-    .featured-title {
-      font-family: 'Fraunces', serif; font-weight: 900;
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      line-height: 1.1; letter-spacing: -0.03em;
-      color: var(--text); margin-bottom: 16px;
-      position: relative; z-index: 1;
-    }
-    .featured-title em { color: var(--coral); font-style: italic; }
-
-    .featured-excerpt {
-      font-size: 0.97rem; color: var(--text-muted);
-      line-height: 1.75; max-width: 720px;
-      position: relative; z-index: 1;
-    }
-
-    .featured-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
-      margin-top: 36px; padding-top: 28px;
-      border-top: 1px solid var(--border);
-      position: relative; z-index: 1;
-    }
-    .featured-meta {
-      font-family: 'DM Mono', monospace; font-size: 0.6rem;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
-      display: flex; align-items: center; gap: 16px;
-    }
-    .featured-meta span { display: flex; align-items: center; gap: 6px; }
-
-    .read-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--coral); color: #fff;
-      border-radius: 100px; padding: 10px 24px;
-      font-family: 'DM Mono', monospace; font-size: 0.62rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; font-weight: 500;
-      transition: background .2s, transform .2s;
-    }
-    .read-btn:hover { background: #ff5252; transform: scale(1.03); }
-    .read-btn::after { content: '→'; }
-
-    /* ── POSTS LIST ── */
-    .posts-wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px 80px; }
-
-    .posts-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      min-height: unset;
+      text-decoration: none;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      position: relative;
+    }
+
+    .featured-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .featured-card-visual {
+      background: linear-gradient(135deg, #1a1520 0%, #221d2e 50%, #1a2030 100%);
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    .featured-card-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(255,107,107,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 70%, rgba(196,170,255,0.1) 0%, transparent 60%);
+    }
+
+    .featured-visual-label {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--coral);
+      border: 1px solid rgba(255,107,107,0.3);
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      background: rgba(17,16,19,0.6);
+    }
+
+    .featured-glyph {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      font-family: var(--font-head);
+      font-size: 8rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,107,107,0.08);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .featured-card-body {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .tag-sep { color: var(--border); }
+
+    .tag-new {
+      background: var(--coral);
+      color: #111013;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.6rem;
+    }
+
+    .featured-card-body h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .featured-card-body h2 em {
+      font-style: italic;
+      color: var(--coral);
+    }
+
+    .featured-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-meta {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .read-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--coral);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s ease;
+    }
+
+    .read-link:hover { gap: 0.7rem; }
+
+    /* ── ALL POSTS GRID ──────────────────── */
+    .posts-grid {
+      display: grid;
+      gap: 0;
     }
 
     .post-row {
       display: grid;
-      grid-template-columns: 48px 1fr auto;
-      align-items: center;
-      gap: 24px;
-      padding: 24px 28px;
+      grid-template-columns: 3rem 1fr auto;
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
       border-bottom: 1px solid var(--border);
       text-decoration: none;
-      color: inherit;
-      transition: background .2s;
-    }
-    .post-row:last-child { border-bottom: none; }
-    .post-row:hover { background: var(--bg2); }
-    .post-row:hover .pr-arrow { color: var(--coral); transform: translateX(4px); }
-
-    .pr-num {
-      font-family: 'Fraunces', serif; font-weight: 900;
-      font-size: 1.4rem; line-height: 1;
-      color: var(--border2);
-      transition: color .2s;
-      text-align: center;
-    }
-    .post-row:hover .pr-num { color: var(--coral); }
-
-    .pr-body {}
-    .pr-tag {
-      display: inline-flex; border-radius: 100px;
-      padding: 3px 10px; margin-bottom: 8px;
-      font-family: 'DM Mono', monospace; font-size: 0.54rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      width: fit-content;
-    }
-    .pt-coral { background: var(--coral-dim); color: var(--coral); border: 1px solid rgba(255,107,107,0.2); }
-    .pt-lav   { background: var(--lav-dim);   color: var(--lavender); border: 1px solid rgba(196,170,255,0.2); }
-    .pt-ylw   { background: var(--ylw-dim);   color: var(--yellow); border: 1px solid rgba(255,217,61,0.2); }
-    .pt-pink  { background: var(--pink-dim);  color: var(--pink); border: 1px solid rgba(255,128,200,0.2); }
-
-    .pr-title {
-      font-family: 'Fraunces', serif; font-weight: 700;
-      font-size: 1.05rem; line-height: 1.3;
-      letter-spacing: -0.01em; color: var(--text);
-    }
-    .pr-excerpt {
-      font-size: 0.82rem; color: var(--text-muted);
-      line-height: 1.6; margin-top: 6px;
+      transition: background 0.2s ease;
+      border-radius: 8px;
+      margin: 0 -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    .pr-right {
-      display: flex; flex-direction: column;
-      align-items: flex-end; gap: 10px;
-      flex-shrink: 0; min-width: 90px;
+    .post-row:hover {
+      background: var(--surface);
     }
-    .pr-date { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-align: right; }
-    .pr-time { font-family: 'DM Mono', monospace; font-size: 0.54rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
-    .pr-arrow { font-size: 0.9rem; color: var(--border2); transition: color .2s, transform .2s; }
 
-    /* ── ABOUT STRIP ── */
-    .about-strip {
-      max-width: 1100px; margin: 0 auto 80px;
-      padding: 0 52px;
+    .post-row:first-child {
+      border-top: 1px solid var(--border);
     }
-    .about-inner {
-      background: linear-gradient(135deg, #1c1525, #170f22);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 44px 52px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 28px;
-      position: relative; overflow: hidden;
+
+    .post-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      padding-top: 0.2rem;
     }
-    .about-inner::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 90% 50%, rgba(196,170,255,0.07) 0%, transparent 60%);
+
+    .post-content { flex: 1; }
+
+    .post-category {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.35rem;
+    }
+
+    .post-title {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    .post-excerpt {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .post-aside {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+      padding-top: 0.2rem;
+      min-width: 80px;
+    }
+
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+
+    .post-read {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+
+    .post-arrow {
+      font-size: 0.8rem;
+      color: var(--border-hover);
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .post-row:hover .post-arrow {
+      color: var(--coral);
+      transform: translateX(3px);
+    }
+
+    .post-new-badge {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--coral);
+      color: #111013;
+      padding: 0.15rem 0.45rem;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* disabled / no link posts */
+    .post-row.no-link {
+      cursor: default;
       pointer-events: none;
     }
-    .about-text { position: relative; z-index: 1; max-width: 580px; }
-    .about-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender); margin-bottom: 10px; }
-    .about-title { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--text); margin-bottom: 10px; }
-    .about-title em { color: var(--coral); font-style: italic; }
-    .about-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
-    .about-cta {
-      position: relative; z-index: 1;
-      background: var(--text); color: var(--bg);
-      border-radius: 100px; padding: 12px 26px;
-      font-family: 'DM Mono', monospace; font-size: 0.62rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; font-weight: 500;
-      transition: background .2s, transform .2s; white-space: nowrap;
-    }
-    .about-cta:hover { background: var(--coral); color: #fff; transform: scale(1.03); }
 
-    /* ── FOOTER ── */
+    .post-row.no-link .post-title {
+      color: var(--text-muted);
+    }
+
+    .post-row.no-link .post-arrow {
+      opacity: 0.3;
+    }
+
+    /* ── ABOUT ───────────────────────────── */
+    .about-section {
+      margin-top: 5rem;
+      padding: 2.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    .about-section h3 {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .about-section h3 em {
+      font-style: italic;
+      color: var(--lavender);
+    }
+
+    .about-section p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .about-stat {
+      text-align: center;
+    }
+
+    .about-stat-num {
+      font-family: var(--font-head);
+      font-size: 3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--lavender);
+      line-height: 1;
+    }
+
+    .about-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+
+    /* ── FOOTER ──────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 32px 52px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      margin-top: 5rem;
     }
-    .footer-logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.05rem; text-decoration: none; color: var(--text); }
-    .footer-logo span { color: var(--coral); font-style: italic; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-link { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color .2s; }
-    .footer-link:hover { color: var(--coral); }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: var(--text-muted); letter-spacing: .08em; text-transform: uppercase; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 28px; }
-      .hero-right { display: none; }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    @media (max-width: 640px) {
-      .masthead { padding: 0 20px; }
-      .hero, .featured-wrap, .posts-wrap, .about-strip, footer { padding-left: 20px; padding-right: 20px; }
-      .section-head { padding-left: 20px; padding-right: 20px; }
-      .about-inner { padding: 32px 24px; }
-      .featured-card { padding: 28px 24px; }
-      .nav { display: none; }
-      .post-row { grid-template-columns: 36px 1fr; }
-      .pr-right { display: none; }
+
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-logo span { color: var(--coral); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+
+    /* ── RESPONSIVE ──────────────────────── */
+    @media (max-width: 768px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-card-visual {
+        min-height: 200px;
+      }
+
+      .nav-filters {
+        display: none;
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .post-row {
+        grid-template-columns: 2.5rem 1fr;
+      }
+
+      .post-aside {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="blobs">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-  </div>
-
-  <!-- MASTHEAD -->
-  <header class="masthead">
-    <a href="index.html" class="logo">Snarky<span>Solutions</span></a>
-    <nav class="nav">
-      <a href="#" class="nav-pill active">All</a>
-      <a href="#" class="nav-pill">Career</a>
-      <a href="#" class="nav-pill">Geopolitics</a>
-      <a href="#" class="nav-pill">Finance</a>
-      <a href="#" class="nav-pill">India</a>
-    </nav>
-  </header>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="https://solutionssnarky-droid.github.io/index.html" class="nav-logo">Snarky<span>Solutions</span></a>
+      <ul class="nav-filters">
+        <li><a href="#" class="active">All</a></li>
+        <li><a href="#">Career</a></li>
+        <li><a href="#">Geopolitics</a></li>
+        <li><a href="#">Finance</a></li>
+        <li><a href="#">India</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-label">✦ Real Talk. No Filter. Actionable.</div>
-      <h1 class="hero-title">
-        Sharp takes.<br>
-        <em>Zero</em> fluff.<br>
-        <span class="stroke">Actually useful.</span>
-      </h1>
+  <header class="hero">
+    <p class="hero-eyebrow">Real Talk. No Filter. Actionable.</p>
+    <h1>Sharp takes. <em>Zero</em> fluff. Actually useful.</h1>
+    <p class="hero-sub">For mid-career professionals tired of advice that sounds good and does absolutely nothing. Written from the trenches, not the TED stage.</p>
+    <div class="hero-pills">
+      <span class="pill pill-coral">Self-Awareness &amp; Career</span>
+      <span class="pill pill-yellow">Finance &amp; Markets</span>
+      <span class="pill pill-lavender">India &amp; Geopolitics</span>
+      <span class="pill pill-pink">AI &amp; Future of Work</span>
     </div>
-    <div class="hero-right">
-      <p class="hero-desc">For mid-career professionals tired of advice that sounds good and does absolutely nothing. Written from the trenches, not the TED stage.</p>
-      <div class="hero-stat">
-        <div class="stat-item"><div class="stat-dot coral"></div>Self-Awareness & Career</div>
-        <div class="stat-item"><div class="stat-dot ylw"></div>Finance & Markets</div>
-        <div class="stat-item"><div class="stat-dot lav"></div>India & Geopolitics</div>
-        <div class="stat-item"><div class="stat-dot pink"></div>AI & Future of Work</div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- FEATURED POST -->
+    <section class="featured-post">
+      <p class="section-label">Latest Post</p>
+      <a class="featured-card" href="https://solutionssnarky-droid.github.io/washington-FINAL.html">
+        <div class="featured-card-body">
+          <div class="featured-tags">
+            <span class="tag tag-new">New ✶</span>
+            <span class="tag">AI &amp; Geopolitics</span>
+            <span class="tag-sep">·</span>
+            <span class="tag">India</span>
+          </div>
+          <h2>Washington Made a Move. Your Career <em>Felt It.</em> Now What?</h2>
+          <p class="featured-desc">The White House just rewrote the AI rulebook. Multi-agent systems moved from pilot to production at scale. Whether you're in Bengaluru, London, Pune, or a boardroom in Noida — the industry that built modern urban India shifted underneath you this week.</p>
+          <div class="featured-meta">
+            <span>March 2026</span>
+            <span>·</span>
+            <span>9 min read</span>
+            <span>·</span>
+            <span>IT · BPM · Careers · India</span>
+          </div>
+          <span class="read-link">Read Now →</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- ALL POSTS -->
+    <section>
+      <p class="section-label">All Posts</p>
+      <div class="posts-grid">
+
+        <!-- 01 — washington (new) -->
+        <a class="post-row" href="https://solutionssnarky-droid.github.io/washington-FINAL.html">
+          <span class="post-number">01</span>
+          <div class="post-content">
+            <div class="post-category">AI &amp; Geopolitics · India</div>
+            <div class="post-title">Washington Made a Move. Your Career Felt It. Now What?</div>
+            <div class="post-excerpt">One federal AI framework, one week of agentic AI going live at scale, and four very different people whose professional lives just got complicated in the same direction.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-new-badge">New</span>
+            <span class="post-date">Mar 2026</span>
+            <span class="post-read">9 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- 02 — interview (new) ⚠️ PLACEHOLDER — confirm title/desc -->
+        <a class="post-row" href="https://solutionssnarky-droid.github.io/interview-won-six-months-ago.html">
+          <span class="post-number">02</span>
+          <div class="post-content">
+            <div class="post-category">Career · Job Market</div>
+            <div class="post-title">You Won That Interview Six Months Ago. So Why Does Nothing Feel Settled?</div>
+            <div class="post-excerpt">Landing the role was the easy part. What nobody tells you about the six months after — when the market has shifted, the job has quietly changed, and you're still figuring out if you're ahead or behind.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-new-badge">New</span>
+            <span class="post-date">Mar 2026</span>
+            <span class="post-read">8 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- 03 — read the room -->
+        <a class="post-row" href="https://solutionssnarky-droid.github.io/read-the-room-v3-1.html">
+          <span class="post-number">03</span>
+          <div class="post-content">
+            <div class="post-category">Self-Awareness · Career Growth</div>
+            <div class="post-title">You Can't Read the Room If You Can't Read Yourself</div>
+            <div class="post-excerpt">The root skill that upgrades every professional interaction — and why competent people keep ignoring it. Includes the SER Framework: three questions, two minutes.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-date">Mar 2026</span>
+            <span class="post-read">9 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- 04 — India Between the Lines -->
+        <div class="post-row no-link">
+          <span class="post-number">04</span>
+          <div class="post-content">
+            <div class="post-category">Geopolitics</div>
+            <div class="post-title">India Between the Lines: What the New World Order Actually Means for Us</div>
+            <div class="post-excerpt">While the world picks sides, India is playing a different game. Here's what's really happening — and what it means for your money, career, and future.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-date">Feb 2026</span>
+            <span class="post-read">10 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- 05 — Your Money in 2026 -->
+        <div class="post-row no-link">
+          <span class="post-number">05</span>
+          <div class="post-content">
+            <div class="post-category">Finance</div>
+            <div class="post-title">Your Money in 2026: The Changes Nobody Explained Properly</div>
+            <div class="post-excerpt">New tax rules, shifting markets, a rupee doing interesting things. What actually changed for the Indian professional and what to do about it.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-date">Jan 2026</span>
+            <span class="post-read">8 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- 06 — When the Market Dips -->
+        <div class="post-row no-link">
+          <span class="post-number">06</span>
+          <div class="post-content">
+            <div class="post-category">Finance · Markets</div>
+            <div class="post-title">When the Market Dips, Most People Do the Worst Possible Thing</div>
+            <div class="post-excerpt">Not investment advice. An honest look at why smart people panic-sell, what the data says, and the two moves worth considering.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-date">Dec 2025</span>
+            <span class="post-read">7 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- 07 — India's IT Sector -->
+        <div class="post-row no-link">
+          <span class="post-number">07</span>
+          <div class="post-content">
+            <div class="post-category">India · IT Services</div>
+            <div class="post-title">India's IT Sector in a Shifting World: Opportunity or Vulnerability?</div>
+            <div class="post-excerpt">AI is eating entry-level jobs, the US is unpredictable, and Indian IT is navigating all of it in real time. A clear-eyed look at where things actually stand.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-date">Nov 2025</span>
+            <span class="post-read">9 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- 08 — The Conflict Nobody Wants to Name -->
+        <div class="post-row no-link">
+          <span class="post-number">08</span>
+          <div class="post-content">
+            <div class="post-category">Geopolitics · India</div>
+            <div class="post-title">The Conflict Nobody Wants to Name and What It Costs India</div>
+            <div class="post-excerpt">Oil prices, trade routes, foreign policy tightrope. The Israel-Iran tension has an India chapter that isn't getting enough attention.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-date">Oct 2025</span>
+            <span class="post-read">11 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </div>
+
+        <!-- 09 — Your Job in 2030 -->
+        <div class="post-row no-link">
+          <span class="post-number">09</span>
+          <div class="post-content">
+            <div class="post-category">Career · AI</div>
+            <div class="post-title">Your Job in 2030 Doesn't Look Like Your Job in 2024</div>
+            <div class="post-excerpt">AI isn't replacing jobs wholesale — it's replacing the parts of your job you were least proud of. Here's how to stay ahead without losing your mind.</div>
+          </div>
+          <div class="post-aside">
+            <span class="post-date">Sep 2025</span>
+            <span class="post-read">6 min</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="divider"></div>
-
-  <!-- FEATURED POST -->
-  <div class="section-head">
-    <div class="section-label">Latest Post</div>
-  </div>
-
-  <div class="featured-wrap">
-    <a href="https://solutionssnarky-droid.github.io/read-the-room-v3-1.html" class="featured-card">
-      <div class="featured-top">
-        <div class="f-pill coral">✦ Self-Awareness</div>
-        <div class="f-pill coral">Career Growth</div>
-        <div class="f-pill new">New ✶</div>
+    <!-- ABOUT -->
+    <section class="about-section">
+      <div>
+        <p class="about-eyebrow">✦ About this blog</p>
+        <h3>Snarky<em>Solutions</em> — what is this, exactly?</h3>
+        <p>Sharp, honest takes on work, money, geopolitics and the messy middle of modern professional life — written from Kolkata, for people who are done being talked down to by advice that was never road-tested in the real world.</p>
       </div>
-      <div class="featured-title">
-        You Can't Read the <em>Room</em><br>If You Can't Read Yourself
+      <div class="about-stat">
+        <div class="about-stat-num">9</div>
+        <div class="about-stat-label">Posts &amp; counting</div>
       </div>
-      <div class="featured-excerpt">
-        Competent. Experienced. Still hitting invisible walls in rooms and relationships. The gap isn't your skill set — it's the one root skill nobody put in your job description. Includes the SER Framework: three questions, two minutes, before every high-stakes interaction that matters.
-      </div>
-      <div class="featured-bottom">
-        <div class="featured-meta">
-          <span>March 2026</span>
-          <span>·</span>
-          <span>9 min read</span>
-          <span>·</span>
-          <span>PMO · Mid-Career · People Skills</span>
-        </div>
-        <a href="https://solutionssnarky-droid.github.io/read-the-room-v3-1.html" class="read-btn">Read Now</a>
-      </div>
-    </a>
-  </div>
+    </section>
 
-  <!-- ALL POSTS -->
-  <div class="section-head">
-    <div class="section-label">All Posts</div>
-    <a href="#" class="view-all">Archive →</a>
-  </div>
-
-  <div class="posts-wrap">
-    <div class="posts-list">
-
-      <a href="https://solutionssnarky-droid.github.io/read-the-room-v3-1.html" class="post-row">
-        <div class="pr-num">01</div>
-        <div class="pr-body">
-          <div class="pr-tag pt-coral">Self-Awareness</div>
-          <div class="pr-title">You Can't Read the Room If You Can't Read Yourself</div>
-          <div class="pr-excerpt">The root skill that upgrades every professional interaction — and why competent people keep ignoring it.</div>
-        </div>
-        <div class="pr-right">
-          <div class="pr-date">Mar 2026</div>
-          <div class="pr-time">9 min</div>
-          <div class="pr-arrow">→</div>
-        </div>
-      </a>
-
-      <a href="#" class="post-row">
-        <div class="pr-num">02</div>
-        <div class="pr-body">
-          <div class="pr-tag pt-lav">Geopolitics</div>
-          <div class="pr-title">India Between the Lines: What the New World Order Actually Means for Us</div>
-          <div class="pr-excerpt">While the world picks sides, India is playing a different game. Here's what's really happening — and what it means for your money, career, and future.</div>
-        </div>
-        <div class="pr-right">
-          <div class="pr-date">Feb 2026</div>
-          <div class="pr-time">10 min</div>
-          <div class="pr-arrow">→</div>
-        </div>
-      </a>
-
-      <a href="#" class="post-row">
-        <div class="pr-num">03</div>
-        <div class="pr-body">
-          <div class="pr-tag pt-ylw">Finance</div>
-          <div class="pr-title">Your Money in 2026: The Changes Nobody Explained Properly</div>
-          <div class="pr-excerpt">New tax rules, shifting markets, a rupee doing interesting things. What actually changed for the Indian professional and what to do about it.</div>
-        </div>
-        <div class="pr-right">
-          <div class="pr-date">Jan 2026</div>
-          <div class="pr-time">8 min</div>
-          <div class="pr-arrow">→</div>
-        </div>
-      </a>
-
-      <a href="#" class="post-row">
-        <div class="pr-num">04</div>
-        <div class="pr-body">
-          <div class="pr-tag pt-pink">Finance · Markets</div>
-          <div class="pr-title">When the Market Dips, Most People Do the Worst Possible Thing</div>
-          <div class="pr-excerpt">Not investment advice. An honest look at why smart people panic-sell, what the data says, and the two moves worth considering.</div>
-        </div>
-        <div class="pr-right">
-          <div class="pr-date">Dec 2025</div>
-          <div class="pr-time">7 min</div>
-          <div class="pr-arrow">→</div>
-        </div>
-      </a>
-
-      <a href="#" class="post-row">
-        <div class="pr-num">05</div>
-        <div class="pr-body">
-          <div class="pr-tag pt-coral">India · IT Services</div>
-          <div class="pr-title">India's IT Sector in a Shifting World: Opportunity or Vulnerability?</div>
-          <div class="pr-excerpt">AI is eating entry-level jobs, the US is unpredictable, and Indian IT is navigating all of it in real time. A clear-eyed look at where things actually stand.</div>
-        </div>
-        <div class="pr-right">
-          <div class="pr-date">Nov 2025</div>
-          <div class="pr-time">9 min</div>
-          <div class="pr-arrow">→</div>
-        </div>
-      </a>
-
-      <a href="#" class="post-row">
-        <div class="pr-num">06</div>
-        <div class="pr-body">
-          <div class="pr-tag pt-lav">Geopolitics · India</div>
-          <div class="pr-title">The Conflict Nobody Wants to Name and What It Costs India</div>
-          <div class="pr-excerpt">Oil prices, trade routes, foreign policy tightrope. The Israel-Iran tension has an India chapter that isn't getting enough attention.</div>
-        </div>
-        <div class="pr-right">
-          <div class="pr-date">Oct 2025</div>
-          <div class="pr-time">11 min</div>
-          <div class="pr-arrow">→</div>
-        </div>
-      </a>
-
-      <a href="#" class="post-row">
-        <div class="pr-num">07</div>
-        <div class="pr-body">
-          <div class="pr-tag pt-ylw">Career · AI</div>
-          <div class="pr-title">Your Job in 2030 Doesn't Look Like Your Job in 2024</div>
-          <div class="pr-excerpt">AI isn't replacing jobs wholesale — it's replacing the parts of your job you were least proud of. Here's how to stay ahead without losing your mind.</div>
-        </div>
-        <div class="pr-right">
-          <div class="pr-date">Sep 2025</div>
-          <div class="pr-time">6 min</div>
-          <div class="pr-arrow">→</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ABOUT STRIP -->
-  <div class="about-strip">
-    <div class="about-inner">
-      <div class="about-text">
-        <div class="about-eyebrow">✦ About this blog</div>
-        <div class="about-title">Snarky<em>Solutions</em> — what is this, exactly?</div>
-        <div class="about-desc">Sharp, honest takes on work, money, geopolitics and the messy middle of modern professional life — written from Kolkata, for people who are done being talked down to by advice that was never road-tested in the real world.</div>
-      </div>
-      <a href="#" class="about-cta">More About This Blog →</a>
-    </div>
-  </div>
+  </main>
 
   <!-- FOOTER -->
   <footer>
-    <a href="index.html" class="footer-logo">Snarky<span>Solutions</span></a>
-    <div class="footer-links">
-      <a href="#" class="footer-link">LinkedIn</a>
-      <a href="#" class="footer-link">X / Twitter</a>
-      <a href="#" class="footer-link">Instagram</a>
+    <div class="footer-inner">
+      <a href="https://solutionssnarky-droid.github.io/index.html" class="footer-logo">Snarky<span>Solutions</span></a>
+      <ul class="footer-links">
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">X / Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+      <span class="footer-copy">© 2026 · solutionssnarky-droid.github.io</span>
     </div>
-    <div class="footer-copy">© 2026 · solutionssnarky-droid.github.io</div>
   </footer>
 
 </body>
