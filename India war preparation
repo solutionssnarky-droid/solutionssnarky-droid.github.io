@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>India Is Not Going to War. But It's Preparing for One. | Snarky Solutions</title>
+  <meta name="description" content="Missiles fly. Your LPG bill follows. Here's everything you need to know — with the numbers that mainstream panic forgot to mention."/>
+  <meta property="og:title" content="India Is Not Going to War. But It's Preparing for One."/>
+  <meta property="og:description" content="Missiles fly. Your LPG bill follows. The numbers mainstream panic forgot."/>
+  <meta property="og:type" content="article"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:    #080808;
+      --charcoal: #111111;
+      --ash:      #1c1c1c;
+      --smoke:    #2a2a2a;
+      --iron:     #3d3d3d;
+      --fog:      #888;
+      --silver:   #c8c8c4;
+      --white:    #f0ece4;
+      --red:      #c0392b;
+      --red-dark: #7d1a12;
+      --red-glow: rgba(192,57,43,0.14);
+      --amber:    #d4a017;
+      --amber-d:  rgba(212,160,23,0.11);
+      --blue:     #4a90c4;
+      --blue-d:   rgba(74,144,196,0.1);
+      --F: 'Bebas Neue',sans-serif;
+      --S: 'Cormorant Garamond',serif;
+      --B: 'DM Sans',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--white);font-family:var(--B);font-size:17px;line-height:1.76;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+    /* Progress */
+    #pb{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--red-dark),var(--red));z-index:1000;transition:width .1s linear}
+
+    /* Noise */
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.024;pointer-events:none;z-index:0}
+
+    /* Side label */
+    .site-label{position:fixed;right:1.4rem;top:50%;transform:translateY(-50%) rotate(90deg);font-family:var(--F);font-size:.6rem;letter-spacing:.45em;color:var(--iron);text-transform:uppercase;z-index:10;user-select:none}
+
+    /* ── HERO ── */
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 clamp(1.5rem,8vw,7rem) clamp(3rem,6vh,5rem);overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.017) 40px,rgba(255,255,255,.017) 41px),repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(255,255,255,.011) 80px,rgba(255,255,255,.011) 81px);pointer-events:none}
+    .hero::after{content:'';position:absolute;top:-80px;right:-80px;width:540px;height:540px;background:radial-gradient(circle at 60% 40%,rgba(192,57,43,.24) 0%,transparent 70%);pointer-events:none;animation:pulse 7s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+    .hero-meta{position:relative;z-index:1;font-family:var(--B);font-size:.68rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--red);margin-bottom:1.4rem;display:flex;align-items:center;gap:1rem}
+    .hero-meta::before{content:'';display:inline-block;width:2.4rem;height:1px;background:var(--red)}
+    .hero h1{position:relative;z-index:1;font-family:var(--F);font-size:clamp(3.2rem,10vw,8.5rem);line-height:.92;letter-spacing:.02em;color:var(--white);max-width:18ch;margin-bottom:2rem}
+    .hero h1 em{font-style:normal;color:var(--red)}
+    .hero-sub{position:relative;z-index:1;font-family:var(--S);font-size:clamp(1.05rem,2vw,1.32rem);font-style:italic;color:var(--silver);max-width:60ch;line-height:1.62;border-left:2px solid var(--red);padding-left:1.4rem;margin-bottom:3rem}
+    .hero-rule{position:relative;z-index:1;display:flex;align-items:center;gap:1rem;color:var(--fog);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
+    .hero-rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--iron),transparent)}
+
+    /* ── MAIN ── */
+    main{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:clamp(3rem,7vh,6rem) clamp(1.5rem,6vw,3rem)}
+
+    /* Reveal */
+    .section{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;margin-bottom:4.5rem}
+    .section.visible{opacity:1;transform:none}
+
+    /* Section head */
+    .section-label{font-family:var(--B);font-size:.63rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--red);margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--ash)}
+    h2{font-family:var(--F);font-size:clamp(1.9rem,4.5vw,3rem);letter-spacing:.04em;line-height:1.05;color:var(--white);margin-bottom:1.6rem}
+    h3{font-family:var(--S);font-size:1.35rem;font-weight:600;color:var(--amber);margin:2rem 0 .7rem}
+    p{font-family:var(--B);font-weight:300;color:var(--silver);margin-bottom:1.1rem}
+    strong{font-weight:500;color:var(--white)}
+
+    /* ── STAT STRIP ── */
+    .stat-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--iron);border:1px solid var(--iron);margin:2.5rem 0}
+    .stat-cell{background:var(--charcoal);padding:1.6rem 1.2rem;text-align:center}
+    .stat-num{font-family:var(--F);font-size:2.6rem;line-height:1;letter-spacing:.04em;margin-bottom:.25rem}
+    .stat-num.red{color:var(--red)}
+    .stat-num.amber{color:var(--amber)}
+    .stat-num.blue{color:var(--blue)}
+    .stat-num.white{color:var(--white)}
+    .stat-label{font-size:.72rem;font-weight:400;color:var(--fog);letter-spacing:.08em;line-height:1.4}
+    .stat-source{font-size:.58rem;color:var(--iron);margin-top:.5rem;letter-spacing:.05em}
+
+    /* ── CALLOUT ── */
+    .callout{border:1px solid var(--red-dark);background:var(--red-glow);border-left:3px solid var(--red);padding:1.6rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden}
+    .callout::before{content:'!';position:absolute;top:-.4rem;right:1rem;font-family:var(--F);font-size:5rem;color:var(--red-dark);opacity:.25;line-height:1}
+    .callout p{font-family:var(--S);font-size:1.15rem;font-style:italic;color:var(--white);margin:0;position:relative}
+
+    /* ── AMBER NOTE ── */
+    .amber-note{border:1px solid rgba(212,160,23,.25);background:var(--amber-d);border-left:3px solid var(--amber);padding:1.4rem 1.8rem;margin:2rem 0}
+    .amber-note p{font-family:var(--S);font-size:1.05rem;color:var(--white);margin:0;font-style:italic}
+
+    /* ── PULL QUOTE ── */
+    .pull-quote{margin:3rem 0;padding:0 0 0 2rem;border-left:2px solid var(--red)}
+    .pull-quote p{font-family:var(--S);font-size:1.4rem;font-style:italic;color:var(--white);line-height:1.55;margin:0}
+
+    /* ── SCENARIOS ── */
+    .scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--iron);border:1px solid var(--iron);margin:2rem 0 3rem}
+    .scenario{background:var(--charcoal);padding:1.8rem 1.4rem;position:relative}
+    .snum{font-family:var(--F);font-size:3.5rem;color:var(--ash);line-height:1;margin-bottom:.4rem;-webkit-text-stroke:1px var(--iron)}
+    .scenario h4{font-family:var(--B);font-size:.75rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:.8rem}
+    .scenario p{font-size:.86rem;color:var(--fog);margin:0;line-height:1.6}
+    .stag{position:absolute;top:1rem;right:1rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:.18rem .55rem;border:1px solid}
+    .tl{color:var(--red);border-color:var(--red-dark);background:var(--red-glow)}
+    .tp{color:var(--amber);border-color:rgba(212,160,23,.3);background:var(--amber-d)}
+    .te{color:var(--fog);border-color:var(--iron)}
+
+    /* ── ACTION LIST ── */
+    .act-list{list-style:none;margin:1.5rem 0 2rem}
+    .act-list li{padding:1.2rem 0 1.2rem 1.8rem;border-bottom:1px solid var(--ash);position:relative;font-weight:300;color:var(--silver)}
+    .act-list li::before{content:'▸';position:absolute;left:0;color:var(--red);font-size:.75rem;top:1.35rem}
+    .act-list li strong{display:block;font-family:var(--S);font-size:1.08rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
+
+    /* ── DATA ROW ── */
+    .data-row{display:flex;align-items:center;gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--ash)}
+    .data-big{font-family:var(--F);font-size:2.4rem;color:var(--red);flex-shrink:0;min-width:5rem;letter-spacing:.04em}
+    .data-text{font-size:.9rem;color:var(--silver);line-height:1.5}
+    .data-text em{color:var(--fog);font-style:normal;font-size:.8rem;display:block;margin-top:.2rem}
+
+    /* ── PREP GRID ── */
+    .prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--iron);border:1px solid var(--iron);margin:1.5rem 0}
+    .prep-cell{background:var(--charcoal);padding:1.5rem}
+    .prep-cell h4{font-family:var(--B);font-size:.68rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;margin-bottom:.9rem}
+    .pc-h h4{color:var(--silver)}
+    .pc-s h4{color:var(--red)}
+    .pc-b h4{color:var(--amber)}
+    .pc-g h4{color:var(--blue)}
+    .prep-cell ul{list-style:none}
+    .prep-cell ul li{font-size:.86rem;color:var(--fog);padding:.32rem 0 .32rem 1rem;position:relative;line-height:1.5}
+    .prep-cell ul li::before{content:'—';position:absolute;left:0;color:var(--iron)}
+
+    /* ── MYTH BLOCK ── */
+    .myth-row{display:flex;align-items:flex-start;gap:1.2rem;padding:1rem 0;border-bottom:1px solid var(--ash)}
+    .myth-x{font-family:var(--F);font-size:1.8rem;color:var(--red);line-height:1;flex-shrink:0;width:2rem;text-align:center}
+    .myth-t{font-size:.93rem;color:var(--fog);margin:0;line-height:1.6;padding-top:.22rem}
+
+    /* ── MANIFESTO ── */
+    .manifesto{text-align:center;padding:5rem 2rem;border-top:1px solid var(--ash);position:relative}
+    .manifesto::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:60px;height:3px;background:var(--red)}
+    .big-line{font-family:var(--F);font-size:clamp(2.6rem,7vw,5rem);line-height:1;letter-spacing:.06em;margin-bottom:.3rem}
+    .big-line span{color:var(--red)}
+    .manifesto p{font-family:var(--S);font-style:italic;font-size:1.12rem;color:var(--fog);max-width:48ch;margin:1.8rem auto 0}
+
+    /* ── DIVIDER ── */
+    hr{border:none;border-top:1px solid var(--ash);margin:3rem 0}
+
+    /* ── OPENER ── */
+    .opener{text-align:center;padding:3rem 0 4rem}
+    .opener p{font-family:var(--S);font-size:clamp(1.2rem,2.5vw,1.55rem);font-style:italic;color:var(--silver);line-height:1.65;max-width:44ch;margin:0 auto 1.1rem}
+    .opener .punch{font-family:var(--F);font-size:clamp(1.8rem,4.5vw,2.8rem);font-style:normal;color:var(--white);letter-spacing:.04em;margin-top:.5rem}
+
+    /* Footer */
+    footer{text-align:center;padding:2rem;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--iron);border-top:1px solid var(--ash)}
+    footer a{color:var(--red-dark);text-decoration:none}
+
+    @media(max-width:620px){
+      .prep-grid{grid-template-columns:1fr}
+      .scenarios{grid-template-columns:1fr}
+      .site-label{display:none}
+      .hero h1{font-size:3rem}
+      .stat-strip{grid-template-columns:1fr 1fr}
+      .data-row{flex-direction:column;gap:.5rem}
+    }
+  </style>
+</head>
+<body>
+<div id="pb"></div>
+<div class="site-label">Snarky Solutions</div>
+
+<!-- ── HERO ────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-meta">Geopolitics &amp; Your Wallet · March 2026</div>
+  <h1>India Is Not Going to <em>War.</em><br>But It Is Preparing for One.</h1>
+  <p class="hero-sub">
+    Missiles are flying in the Middle East. Your LPG bill is flying too. Here's everything you need to know — with the numbers mainstream panic forgot to mention.
+  </p>
+  <div class="hero-rule">Snarky Solutions · 10 min read · Geopolitics + Energy</div>
+</section>
+
+<main>
+
+<!-- ── OPENER ──────────────────────────────── -->
+<div class="opener section">
+  <p>Somewhere in the Middle East, history is being rewritten in smoke and fire.</p>
+  <p>Somewhere in India, your LPG cylinder is quietly testing both your patience and your budget.</p>
+  <p class="punch">Welcome to Globalization.<br>The war isn't yours. The bill absolutely is.</p>
+</div>
+
+<hr>
+
+<!-- ── SECTION 1: THE NUMBERS ──────────────── -->
+<div class="section">
+  <p class="section-label">The Hard Numbers First</p>
+  <h2>Before the Opinion — The Data</h2>
+
+  <p>Let's start where the WhatsApp forwards never do: with verified, sourced statistics that explain exactly how exposed India is — and exactly how much the government has already done about it.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <div class="stat-num red">88%</div>
+      <div class="stat-label">Of India's crude oil is imported. We make almost none ourselves.</div>
+      <div class="stat-source">Source: Ministry of Petroleum, Rajya Sabha, March 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num amber">5.5M</div>
+      <div class="stat-label">Barrels of crude oil India consumes every single day</div>
+      <div class="stat-source">Source: India Briefing / MoP&NG, March 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num white">$110B</div>
+      <div class="stat-label">Spent on oil imports in just 11 months of FY 2025–26</div>
+      <div class="stat-source">Source: Rajya Sabha data, March 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num blue">41</div>
+      <div class="stat-label">Countries India now sources crude from — up from 27 a decade ago</div>
+      <div class="stat-source">Source: PM Modi, Rajya Sabha address, March 2026</div>
+    </div>
+  </div>
+
+  <p>And then there's the strait nobody could stop talking about.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <div class="stat-num red">20M</div>
+      <div class="stat-label">Barrels per day transited the Strait of Hormuz in 2025 — 20% of all global oil consumption</div>
+      <div class="stat-source">Source: U.S. EIA / IEA, 2025–26</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num amber">84%</div>
+      <div class="stat-label">Of all Hormuz crude flows head to Asian markets. Japan, Korea, India, China — all of us.</div>
+      <div class="stat-source">Source: U.S. EIA, 2024</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num red">90%</div>
+      <div class="stat-label">Of India's LPG imports — your cooking gas — normally passes through the Strait of Hormuz</div>
+      <div class="stat-source">Source: PIB, Government of India, March 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num white">$113</div>
+      <div class="stat-label">Price of India's crude basket on March 11, 2026 — up from $62–70 just weeks earlier</div>
+      <div class="stat-source">Source: India Briefing, March 2026</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>Over 90% of your cooking gas is imported through one 21-mile-wide chokepoint. That's not a supply chain. That's a single point of failure dressed up as infrastructure.</p>
+  </div>
+</div>
+
+<!-- ── SECTION 2: NOT OUR WAR ─────────────── -->
+<div class="section">
+  <p class="section-label">Context First</p>
+  <h2>The War That's Not Ours — But Still Bills Us</h2>
+
+  <p>Let's be unambiguous, because social media has once again confused alarm with information:</p>
+
+  <div class="callout">
+    <p>India is <strong>not</strong> going to war. India is preparing to deal with what war <em>brings</em>. That difference is everything.</p>
+  </div>
+
+  <p>The ongoing conflict in West Asia is not India's battlefield. But it sits squarely on India's energy lifeline. Half of our oil imports — 2.6 million barrels a day — were coming from Gulf countries that route through the Strait of Hormuz. When Operation Epic Fury was launched on February 28, 2026, and Iran effectively closed the strait, India didn't just face a news headline. It faced a supply chain emergency in slow motion.</p>
+
+  <div class="pull-quote">
+    <p>The war isn't knocking at your door. It's quietly letting itself into your monthly budget and rearranging the furniture.</p>
+  </div>
+
+  <p>No soldier. No siren. No drama. Just energy prices, supply tightening, and inflation — the slowest, sneakiest casualty of someone else's conflict. The tanker war-risk insurance premium surged over <strong>500%</strong> overnight. That cost doesn't stay at sea. It lands in your grocery bill.</p>
+
+  <p>And yet — India was not caught entirely flat-footed. Here's what changed fast.</p>
+
+  <div class="data-row">
+    <div class="data-big">70%</div>
+    <div class="data-text">Of India's crude imports now arrive via routes <em>outside</em> the Strait of Hormuz — up from 55% just before the crisis. The government pivoted in real time.
+    <em>Source: Ministry of Petroleum Joint Secretary, Inter-Ministerial Briefing, March 11, 2026</em></div>
+  </div>
+  <div class="data-row">
+    <div class="data-big">25%</div>
+    <div class="data-text">Increase in domestic LPG production after government issued emergency orders diverting propane and butane streams to household supply.
+    <em>Source: PIB Press Release, March 2026</em></div>
+  </div>
+  <div class="data-row">
+    <div class="data-big">74 days</div>
+    <div class="data-text">India's combined oil reserve buffer — strategic reserves + OMC commercial stocks. The IEA recommends 90. We're at 74. Not perfect, but not helpless.
+    <em>Source: FM Nirmala Sitharaman, March 2026</em></div>
+  </div>
+  <div class="data-row">
+    <div class="data-big">28</div>
+    <div class="data-text">Indian-flagged vessels currently operating in the Persian Gulf, with 778 Indian seafarers onboard. All monitored 24×7 by a dedicated government control room.
+    <em>Source: Directorate General of Shipping, March 2026</em></div>
+  </div>
+</div>
+
+<!-- ── SECTION 3: SCENARIOS ───────────────── -->
+<div class="section">
+  <p class="section-label">Risk Mapping</p>
+  <h2>How Bad Can This Get? Three Scenarios, No Hysteria.</h2>
+
+  <p>Let's run the scenarios like adults — not like prime-time news anchors whose job is to keep you watching.</p>
+
+  <div class="scenarios">
+    <div class="scenario">
+      <div class="snum">01</div>
+      <span class="stag tl">Most Likely</span>
+      <h4>Prolonged Conflict</h4>
+      <p>Oil prices stay elevated. HSBC estimates a 25-bps GDP drag if gas supply shortfall lasts one quarter. Inflation creeps. Life continues, with tighter margins and more creative household budgeting.</p>
+    </div>
+    <div class="scenario">
+      <div class="snum">02</div>
+      <span class="stag tp">Possible</span>
+      <h4>Regional Escalation</h4>
+      <p>Supply chains get disrupted further. Industrial gas cuts (already underway at 35% for refineries) widen. Fertiliser production affected. Food prices follow. Painful, but manageable.</p>
+    </div>
+    <div class="scenario">
+      <div class="snum">03</div>
+      <span class="stag te">Tail Risk</span>
+      <h4>Sustained Closure</h4>
+      <p>Trade routes blocked for months. Global oil shock. India's 74-day buffer gets tested. Our Americas/Russia pivot becomes load-bearing. This is the scenario the government is quietly preparing for.</p>
+    </div>
+  </div>
+
+  <p>Notice the common thread. None of these scenarios involve Indian troops. All of them involve Indian households. <strong>The battlefield is economic. So your preparation should be too.</strong></p>
+
+  <div class="amber-note">
+    <p>India currently holds ~332 million active LPG connections. The domestic LPG system has roughly 18 days of inventory cover. That buffer is useful against short disruptions — but it is not designed for a sustained blockade. This is why the government moved to maximize domestic LPG production immediately.</p>
+  </div>
+</div>
+
+<!-- ── SECTION 4: GOVT ACTIONS ────────────── -->
+<div class="section">
+  <p class="section-label">What's Actually Happening</p>
+  <h2>The Government's War Room. Here's the Actual Inventory.</h2>
+
+  <p>This is where it gets interesting — and more reassuring than the noise suggests. PM Modi addressed both Houses of Parliament. Seven empowered inter-ministerial groups have been constituted. Here's what's actually been deployed:</p>
+
+  <ul class="act-list">
+    <li>
+      <strong>24×7 Energy Control Room</strong>
+      A round-the-clock monitoring system for petroleum stocks, vessel movements, and fuel availability has been operational since February 28, 2026. Not theatre. Actual infrastructure.
+    </li>
+    <li>
+      <strong>Natural Gas Control Order — March 9, 2026</strong>
+      Invoked under the Essential Commodities Act. CNG and domestic PNG: 100% supply. Tea and manufacturing industries: 80% of average. Fertiliser plants: 70%. Refineries and petrochemicals: 65% — to protect household priority.
+    </li>
+    <li>
+      <strong>LPG Maximisation Order — March 8, 2026</strong>
+      All refineries and petrochemical units directed to divert propane, butane, and butenes to the LPG pool. Result: domestic LPG production up 25%. Entire domestic output redirected to household consumers.
+    </li>
+    <li>
+      <strong>Energy Pivot to 41 Supplier Countries</strong>
+      India is actively securing crude from USA, Nigeria, Angola, Canada, Colombia, Brazil, and Mexico — in addition to Russia, which accounts for roughly one-third of current imports. New LNG cargoes sourced and en route.
+    </li>
+    <li>
+      <strong>Strategic Petroleum Reserve Status</strong>
+      SPR at 64% capacity — 3.372 MMT out of 5.33 MMT — providing roughly 9.5 days of emergency cover (at full capacity). Phase II expansion approved: Chandikhol and Padur additions will add 6.5 MMT. Completion: 2030.
+    </li>
+    <li>
+      <strong>Diplomatic Multi-Alignment</strong>
+      India maintains active channels with all parties. No sides. Only interests. PM Modi has spoken to leaders across the conflict zone. One crore Indians living in Gulf countries are being monitored for safety through embassy networks.
+    </li>
+  </ul>
+
+  <div class="amber-note">
+    <p>India's inflation rate stands at approximately 2.75% — among the lowest of any major economy during this crisis. Cushioned by Russian crude imports, fuel tax flexibility, and regulated LPG pricing, retail fuel costs remain controlled — for now.</p>
+  </div>
+</div>
+
+<!-- ── SECTION 5: COVID PREP ──────────────── -->
+<div class="section">
+  <p class="section-label">The Phrase That Broke The Internet</p>
+  <h2>"COVID-Like Preparation." Here's What That Actually Means.</h2>
+
+  <p>When leadership mentioned preparing the way we did during COVID, a thousand breathless threads erupted. Let's decode this calmly.</p>
+
+  <p>During COVID, India constituted <strong>empowered groups</strong> of senior officers who cut through bureaucracy, made rapid decisions, and operated with cross-ministerial authority. Seven such groups have now been constituted again — covering supply chains, fuel, fertilisers, gas, and inflation. That's the reference.</p>
+
+  <div class="prep-grid">
+    <div class="prep-cell pc-h">
+      <h4>It Does NOT Mean</h4>
+      <ul>
+        <li>Lockdowns returning</li>
+        <li>Movement restrictions</li>
+        <li>Business shutdowns</li>
+        <li>Rationing announcements</li>
+        <li>Curfews of any kind</li>
+      </ul>
+    </div>
+    <div class="prep-cell pc-b">
+      <h4>It DOES Mean</h4>
+      <ul>
+        <li>Coordinated inter-agency response</li>
+        <li>Empowered decision-making groups</li>
+        <li>Supply continuity mechanisms</li>
+        <li>Proactive — not reactive — governance</li>
+        <li>Learning from the last crisis</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>Competent crisis management often looks alarming from the outside, because it involves admitting publicly that a crisis exists. The alternative — pretending nothing is happening — is far more dangerous. Choose your discomfort.</p>
+</div>
+
+<!-- ── SECTION 6: PREP ─────────────────────── -->
+<div class="section">
+  <p class="section-label">Your Action Plan</p>
+  <h2>What Smart Indians Do When the World Gets Complicated</h2>
+
+  <p>Here's the real talk — without the dramatic underscore.</p>
+
+  <div class="prep-grid">
+    <div class="prep-cell pc-h">
+      <h4>For Daily Households</h4>
+      <ul>
+        <li>Stock essentials for 1–2 weeks maximum</li>
+        <li>Track LPG usage; book cylinders in advance</li>
+        <li>Monitor government announcements — not forwards</li>
+      </ul>
+    </div>
+    <div class="prep-cell pc-s">
+      <h4>For Salaried Professionals</h4>
+      <ul>
+        <li>Build / strengthen your emergency fund</li>
+        <li>Audit discretionary spending now</li>
+        <li>Stay relevant — economic slowdowns reward skills</li>
+      </ul>
+    </div>
+    <div class="prep-cell pc-b">
+      <h4>For Business Owners</h4>
+      <ul>
+        <li>Protect cash flow — aggressively</li>
+        <li>Diversify your supplier base</li>
+        <li>Model for 15–20% cost fluctuation buffer</li>
+      </ul>
+    </div>
+    <div class="prep-cell pc-g">
+      <h4>For Families with Gulf Connections</h4>
+      <ul>
+        <li>Stay informed via embassy channels</li>
+        <li>Keep documents and contacts current</li>
+        <li>Prepare for possible temporary disruption</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 7: MYTH BUSTING ───────────── -->
+<div class="section">
+  <p class="section-label">Shutting Down the Noise</p>
+  <h2>Things You Absolutely Do Not Need to Do.</h2>
+
+  <p>In the interest of everyone's blood pressure and pantry space:</p>
+
+  <div class="myth-row"><span class="myth-x">✕</span><p class="myth-t">Hoard months of rations. The government has 74 days of oil reserves, active supplier pivots, and a functioning distribution system. You don't need to build a bunker in your kitchen.</p></div>
+  <div class="myth-row"><span class="myth-x">✕</span><p class="myth-t">Withdraw all your money from the bank. India's inflation is 2.75%. The RBI is monitoring. Bank runs are self-fulfilling prophecies. Don't start one.</p></div>
+  <div class="myth-row"><span class="myth-x">✕</span><p class="myth-t">Forward every BREAKING WhatsApp message. That is not awareness. That is noise production. Verify before you amplify — your family's anxiety will thank you.</p></div>
+  <div class="myth-row"><span class="myth-x">✕</span><p class="myth-t">Assume India is entering the war. The PM addressed Parliament. The government's stated position: manage the impact, protect citizens, maintain neutrality. No declaration. No deployment.</p></div>
+  <div class="myth-row"><span class="myth-x">✕</span><p class="myth-t">Panic-book 10 LPG cylinders. The government has mandated 100% domestic consumer priority. Hoarding removes cylinders from neighbours who need them today.</p></div>
+</div>
+
+<!-- ── CLOSING ─────────────────────────────── -->
+<div class="manifesto section">
+  <div class="big-line">STAY<br><span>AWARE.</span></div>
+  <div class="big-line">STAY<br><span>PREPARED.</span></div>
+  <div class="big-line">STAY<br><span>CALM.</span></div>
+  <p>
+    This is not a crisis of panic. It's a test of national and personal preparedness. India is doing what it should: staying out of the war while building defences against its consequences. Seven empowered groups. 41 supplier nations. 25% more domestic LPG. 24×7 monitoring.
+  </p>
+  <p>
+    The government is doing its job. Your job is simpler: stay informed, prepare intelligently, and refuse to be the person who makes this worse by panicking.
+  </p>
+  <p>
+    Because in situations like these, the real difference isn't who panics first. It's who <em>adapts best.</em>
+  </p>
+</div>
+
+</main>
+
+<footer>
+  <p>© 2026 <a href="https://solutionssnarky-droid.github.io">Snarky Solutions</a> &nbsp;·&nbsp; Geopolitics without the drama &nbsp;·&nbsp; Opinions are free. Fuel isn't.</p>
+</footer>
+
+<script>
+  const pb = document.getElementById('pb');
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    const t = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = ((s/t)*100)+'%';
+  });
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.07});
+  document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
