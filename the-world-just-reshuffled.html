@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The World Just Reshuffled. India Got the Best Hand. | Snarky Solutions</title>
+<meta name="description" content="China is quietly eating America's lunch. Israel is becoming the new geopolitical quarterback. And India? India just sat down at every single table. Here's what no one is telling you — and why it matters for your career and wallet." />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d0b09;
+    --surface: #141210;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --champagne: #f5ede0;
+    --blush: #d4a096;
+    --cream: #faf6f0;
+    --muted: #7a7068;
+    --border: rgba(201,168,76,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Progress Bar */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--blush));
+    width: 0%; z-index: 1000; transition: width 0.1s linear;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--champagne);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    overflow-x: hidden;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 1.2rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,11,9,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+  }
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.18em;
+    font-size: 1.1rem;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 8vw 8vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 70% at 20% 80%, rgba(212,160,150,0.06) 0%, transparent 70%),
+      linear-gradient(180deg, #0d0b09 0%, #0a0806 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: linear-gradient(180deg, transparent 0%, black 40%, black 70%, transparent 100%);
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+    position: relative;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .hero-title .accent { color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    font-style: italic;
+    color: var(--blush);
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    position: relative;
+  }
+  .hero-meta {
+    display: flex; gap: 2.5rem; align-items: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+  }
+  .hero-meta span { color: var(--gold-light); }
+
+  /* Article layout */
+  article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 6rem 2rem 8rem;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 0.75;
+    float: left;
+    margin: 0.05em 0.12em 0 0;
+    color: var(--gold);
+  }
+
+  p { margin-bottom: 1.6rem; color: var(--champagne); }
+
+  /* Section headers */
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 2rem;
+  }
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin: 2.5rem 0 0.8rem;
+    font-style: italic;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 0 1.2rem 2rem;
+    margin: 3rem 0;
+    background: rgba(201,168,76,0.04);
+  }
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Stat cards */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin: 3rem 0;
+  }
+  .stat-card {
+    background: rgba(201,168,76,0.05);
+    border: 1px solid var(--border);
+    padding: 1.6rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Power table */
+  .power-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2.5rem 0;
+    font-size: 0.9rem;
+  }
+  .power-table th {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    color: var(--gold);
+    text-align: left;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .power-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    color: var(--champagne);
+    vertical-align: top;
+  }
+  .power-table tr:hover td {
+    background: rgba(201,168,76,0.04);
+  }
+  .power-table .flag { font-size: 1.3rem; }
+
+  /* Callout box */
+  .callout {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(212,160,150,0.05));
+    border: 1px solid var(--border);
+    padding: 2rem 2.2rem;
+    margin: 3rem 0;
+    position: relative;
+  }
+  .callout-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .callout h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+  }
+  .callout p { margin: 0; font-size: 0.95rem; }
+
+  /* Section divider */
+  .divider {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin: 4rem 0;
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  /* Highlight text */
+  .hl { color: var(--gold-light); font-weight: 500; }
+  .hl-blush { color: var(--blush); }
+
+  /* Career bullets */
+  .career-list {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+  }
+  .career-list li {
+    padding: 1rem 1.2rem 1rem 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--champagne);
+  }
+  .career-list li::before {
+    content: '→';
+    position: absolute; left: 1rem;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .career-list li:last-child { border-bottom: none; }
+  .career-list strong { color: var(--gold-light); }
+
+  /* Footer / Share */
+  .share-section {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .share-section p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--blush);
+    margin-bottom: 1.5rem;
+  }
+  .share-buttons {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+  .share-btn {
+    padding: 0.7rem 1.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--champagne);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .share-btn:hover {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+  }
+  .share-btn.primary {
+    background: rgba(201,168,76,0.12);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  /* Back to top */
+  #back-top {
+    position: fixed; bottom: 2rem; right: 2rem;
+    width: 44px; height: 44px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; transition: opacity 0.3s, background 0.3s;
+    z-index: 99;
+  }
+  #back-top.show { opacity: 1; }
+  #back-top:hover { background: var(--gold); color: var(--bg); }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.2rem; }
+    .hero { padding: 0 5vw 10vh; }
+    article { padding: 4rem 1.2rem 6rem; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <a class="nav-brand" href="#">Snarky Solutions</a>
+  <span class="nav-tag">Geopolitics · March 2026</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">Geopolitics</div>
+  <h1 class="hero-title">
+    The World Just<br><span class="accent">Reshuffled.</span><br>India Got<br>The Best Hand.
+  </h1>
+  <p class="hero-subtitle">China is quietly eating America's lunch. Israel is becoming the world's new geopolitical quarterback. And India? India just sat down at every single table simultaneously. Here's what no one is telling you — and why it matters for your career and your wallet.</p>
+  <div class="hero-meta">
+    <span>By Snarky Solutions</span>
+    <span>·</span>
+    <span>March 28, 2026</span>
+    <span>·</span>
+    <span style="color:var(--muted)">12 min read</span>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<article>
+
+  <!-- ACT 1 -->
+  <div class="reveal">
+    <div class="section-label">Act I</div>
+    <h2>America Is Still The Boss. Technically.</h2>
+  </div>
+
+  <p class="dropcap reveal">Let's be honest. Nobody's officially announced that America is in decline. The US GDP is still $29 trillion. The dollar still runs the world. Hollywood still manufactures dreams in bulk. But here's what's quietly happening underneath all that muscle-flexing: the rules of the game changed, and America didn't notice it was playing a different sport.</p>
+
+  <p class="reveal">The US and China are currently in the most consequential strategic rivalry of the century. But forget warships and missiles for a second. The real war — the one that actually determines who runs the world in 2040 — is being fought in <span class="hl">chip factories, trade agreements, rare earth mines, and AI data centres</span>.</p>
+
+  <div class="pull-quote reveal">
+    <p>"Trade talks have become the arms control of the 21st century. The side that controls the supply chain controls the century."</p>
+  </div>
+
+  <p class="reveal">After an explosive tariff war in early 2025, Trump and Xi stared into the economic abyss — and both blinked. They negotiated a ceasefire of sorts. But make no mistake: this pause is tactical. China's long game is as patient as a 5,000-year-old civilisation has a right to be.</p>
+
+  <div class="stat-grid reveal">
+    <div class="stat-card">
+      <div class="stat-number">74%</div>
+      <div class="stat-label">Of global large-scale solar & wind capacity being built by China</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">$29T</div>
+      <div class="stat-label">US GDP — still the world's largest, but the gap is closing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">40%</div>
+      <div class="stat-label">Of global trade flows through India's Indian Ocean sea lanes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">43%</div>
+      <div class="stat-label">Of experts name the South China Sea as the next military flashpoint</div>
+    </div>
+  </div>
+
+  <p class="reveal">China isn't trying to beat America in a fist fight. It's trying to make America irrelevant — slowly, structurally, and very deliberately. It's cornered the world's rare earth supply. It's building the infrastructure of the clean energy future. It's positioning its digital yuan to chip away at dollar dominance. This is geopolitical judo, not boxing.</p>
+
+  <div class="divider reveal">Act II</div>
+
+  <!-- ACT 2 -->
+  <div class="reveal">
+    <div class="section-label">The Plot Twist Nobody Saw Coming</div>
+    <h2>Israel Is Not America's Junior Partner Anymore.</h2>
+  </div>
+
+  <p class="reveal">Here's a theory gaining serious traction in strategic circles — and once you hear it, you can't unhear it: <span class="hl">Israel is becoming the world's new geopolitical quarterback.</span></p>
+
+  <p class="reveal">For decades, the story was simple: Israel exists because America protects it. But after Israel's stunning air campaign against Iran in June 2025, the dynamic flipped — possibly permanently. For the first time in history, America joined Israel in prosecuting a war. Not the other way around. Let that settle in.</p>
+
+  <div class="callout reveal">
+    <div class="callout-icon">🇮🇱</div>
+    <h4>The Israeli Economic Miracle — During A War</h4>
+    <p>In January 2026, Moody's revised Israel's economic outlook from <em>negative</em> to <em>stable</em>. The Bank of Israel projects <strong style="color:var(--gold-light)">5.2% GDP growth in 2026</strong>, with foreign exchange reserves sitting at <strong style="color:var(--gold-light)">$233 billion</strong> and unemployment at a remarkably low <strong style="color:var(--gold-light)">3%</strong>. An economy that grows during a multi-front war isn't just resilient — it's strategically extraordinary.</p>
+  </div>
+
+  <p class="reveal">And then there's the defence export story. Germany just signed a $6.5 billion Arrow 3 missile defence contract with Israel — the largest defence export in Israeli history. European countries are publicly restricting trade with Israel in one channel while quietly deepening defence ties in another. Why? Because no one can afford to replace Israeli suppliers. The tech is too good, and the alternatives don't exist.</p>
+
+  <p class="reveal">The theory isn't that Israel replaces the USA. It's more subtle and more interesting: <span class="hl">Israel has become indispensable to whoever leads the West.</span> It's the kingmaker role — not the throne. And in a multipolar world, that's actually more powerful than sitting on top.</p>
+
+  <div class="pull-quote reveal">
+    <p>"America now wants to be part of Israel's success story — not the other way around. The junior partner just got promoted."</p>
+  </div>
+
+  <div class="divider reveal">Act III</div>
+
+  <!-- ACT 3 -->
+  <div class="reveal">
+    <div class="section-label">And Then There's India</div>
+    <h2>The Only Country Sitting At Every Single Table.</h2>
+  </div>
+
+  <p class="reveal">Here is a sentence that should probably be taught in every school in the country: <span class="hl-blush">India is the only nation on Earth that is simultaneously a key partner of the US, China, Russia, the EU, the Gulf states, and the Global South.</span> Not because India is indecisive. Because India is playing a completely different game — and it's winning.</p>
+
+  <p class="reveal">The strategy has a name: <strong>Multi-Alignment</strong>. And it is as elegant as it sounds. Rather than picking a side in a binary Cold War, India is deliberately building leverage with every major power simultaneously — and using each relationship to negotiate better terms with all the others.</p>
+
+  <div class="callout reveal">
+    <div class="callout-icon">🧭</div>
+    <h4>India's Simultaneous Table Stakes in 2026</h4>
+    <p><strong style="color:var(--gold-light)">Quad (US, Japan, Australia)</strong> — strategic military alignment against China.<br><br>
+    <strong style="color:var(--gold-light)">BRICS+</strong> — India holds the 2026 presidency, leading 10 nations including China and Russia.<br><br>
+    <strong style="color:var(--gold-light)">EU Trade Deal</strong> — landmark agreement finalized January 2026.<br><br>
+    <strong style="color:var(--gold-light)">Pax Silica (AI + semiconductors)</strong> — invited into the US-led initiative as a strategic tech partner.<br><br>
+    <strong style="color:var(--gold-light)">Russian energy imports</strong> — continued quietly, providing India cheap oil and strategic maneuverability.
+    </p>
+  </div>
+
+  <p class="reveal">At the UN, PM Modi is now calling for urgent reform of the Security Council and WTO — framing them as "outdated structures." He rebranded BRICS as a vehicle for "humanity first" — and the Global South listened. This is not the India of 1991, begging the IMF for a bailout. This is a country that has figured out that <span class="hl">strategic ambiguity, deployed at scale, is its own form of superpower.</span></p>
+
+  <div class="stat-grid reveal">
+    <div class="stat-card">
+      <div class="stat-number">10</div>
+      <div class="stat-label">Nations in BRICS+ that India now leads as 2026 President</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">$6.5B</div>
+      <div class="stat-label">Germany's Arrow 3 deal — Israel's largest defence export ever</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5.2%</div>
+      <div class="stat-label">Israel's projected GDP growth in 2026 — during active warfare</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">$233B</div>
+      <div class="stat-label">Israel's foreign exchange reserves — Jan 2026</div>
+    </div>
+  </div>
+
+  <!-- Power table -->
+  <div class="reveal" style="overflow-x:auto;">
+    <table class="power-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Strategy</th>
+          <th>Wildcard Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="flag">🇺🇸</span> USA</td>
+          <td>Still dominant but retreating from "world policeman" role. Fighting on trade, tech, and proxy fronts simultaneously.</td>
+          <td>Domestic political fracture; tariff chaos undermining alliances</td>
+        </tr>
+        <tr>
+          <td><span class="flag">🇨🇳</span> China</td>
+          <td>Patient accumulation. Rare earths, clean energy, digital currency, and proxy wars.</td>
+          <td>Taiwan miscalculation; property sector implosion</td>
+        </tr>
+        <tr>
+          <td><span class="flag">🇮🇱</span> Israel</td>
+          <td>Indispensable to Western security. Kingmaker via defence tech, cyber, AI chips, missile systems.</td>
+          <td>Overextension; regional blowback if Iran regime falls chaotically</td>
+        </tr>
+        <tr>
+          <td><span class="flag">🇮🇳</span> India</td>
+          <td>Multi-alignment. Partner to everyone. Leverage everywhere. BRICS president + Quad member simultaneously.</td>
+          <td>China border tension; overdependence on Russian defence tech</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider reveal">So What Does This Mean For You?</div>
+
+  <!-- ACT 4 -->
+  <div class="reveal">
+    <div class="section-label">The Part Your LinkedIn Algorithm Is Missing</div>
+    <h2>The Structural Tailwind Blowing Right At Indian Professionals.</h2>
+  </div>
+
+  <p class="reveal">Here's the thing about geopolitics — it always lands on someone's salary slip eventually. The power shift happening right now isn't just an intellectual exercise. It's a career reshaping event for every Indian professional in IT services, consulting, finance, and governance. And most people have no idea it's happening.</p>
+
+  <p class="reveal">The old model was simple: Indian talent = cheap delivery. Offshore. Scalable. Replaceable. The new model, emerging right now from the wreckage of US-China decoupling, is different: <span class="hl">Indian talent = strategic partner.</span> In AI. In semiconductor supply chains. In program governance for billion-dollar transitions. The upgrade is happening — the question is whether you're positioned to capture it.</p>
+
+  <h3>Where the Opportunities Are Actually Landing</h3>
+
+  <ul class="career-list reveal">
+    <li><strong>AI & Semiconductor Roles:</strong> India's invitation into the US-led "Pax Silica" initiative signals massive western demand for Indian engineers in AI architecture, chip design, and supply chain security — roles that command 40–60% salary premiums over traditional IT roles.</li>
+    <li><strong>Consulting & Big 4 Expansion:</strong> As Indian firms become embedded in Western security and compliance supply chains, program governance and transition management roles are escalating from back-office support to C-suite adjacency. The PMO function is being revalued — fast.</li>
+    <li><strong>EU-India Trade Corridor:</strong> The landmark EU-India trade deal of January 2026 is opening a flood of new project governance, regulatory compliance, and transition management roles between Indian delivery centres and European clients — particularly in Germany, France, and the Netherlands.</li>
+    <li><strong>Defence & Aerospace:</strong> India's accelerating military modernisation is creating a civilian consulting ecosystem around defence project governance, procurement management, and vendor transition. PSU and Tier-1 consulting firms are both hiring.</li>
+    <li><strong>GCC Boom:</strong> Global Capability Centres — the upgraded version of "offshore offices" — are multiplying in Bengaluru, Hyderabad, Pune, and Mumbai. The talent profile they're hiring is shifting: less data entry, more strategic delivery leadership.</li>
+  </ul>
+
+  <div class="pull-quote reveal">
+    <p>"The upgrade from 'India delivery centre' to 'India strategic partner' is already underway. The only question is: are you being upgraded with it — or left at the old price point?"</p>
+  </div>
+
+  <p class="reveal">And if you're an investor, the macro trade is clear: <span class="hl">Defence, semiconductors, rare earth processing, and Tier-1 commercial real estate</span> are the four sectors where India's geopolitical moment converts into rupee returns. HAL, BEL, Mazagon Dock. The India Semiconductor Mission. The cities where GCCs are landing. These aren't tips — they're structural inevitabilities.</p>
+
+  <div class="callout reveal">
+    <div class="callout-icon">💡</div>
+    <h4>The One-Line Summary of Everything Above</h4>
+    <p>The world is fracturing into a multipolar web. China wins the supply chain. Israel wins the defence tech. The US still owns the narrative — for now. And India? India is the only player with chips at every table, a seat in every room, and a population that is about to become the world's most sought-after strategic asset. <strong style="color:var(--gold-light)">Position accordingly.</strong></p>
+  </div>
+
+  <p class="reveal" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--blush); margin-top: 3rem;">History doesn't announce itself. It just quietly rearranges the furniture while you're arguing about the headlines. The furniture is being rearranged. Are you watching?</p>
+
+  <!-- Share -->
+  <div class="share-section reveal">
+    <p>If this made you think, it'll make someone else think too. Share it.</p>
+    <div class="share-buttons">
+      <a class="share-btn primary" href="https://twitter.com/intent/tweet?text=The+World+Just+Reshuffled.+India+Got+The+Best+Hand.+%F0%9F%87%AE%F0%9F%87%B3&url=https://solutionssnarky-droid.github.io" target="_blank">Share on X</a>
+      <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://solutionssnarky-droid.github.io" target="_blank">Share on LinkedIn</a>
+      <a class="share-btn" href="https://api.whatsapp.com/send?text=The+World+Just+Reshuffled.+India+Got+The+Best+Hand.+%F0%9F%94%A5+https://solutionssnarky-droid.github.io" target="_blank">Share on WhatsApp</a>
+    </div>
+  </div>
+
+</article>
+
+<div id="back-top" title="Back to top">↑</div>
+
+<script>
+  // Progress bar
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    bar.style.width = (scrolled / total * 100) + '%';
+
+    // Back to top
+    document.getElementById('back-top').classList.toggle('show', scrolled > 600);
+  });
+
+  document.getElementById('back-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
