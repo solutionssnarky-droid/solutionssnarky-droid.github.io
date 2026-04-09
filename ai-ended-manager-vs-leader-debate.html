@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Just Ended the Manager vs Leader Debate | Snarky Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-card: #1e1e1e;
+    --text-primary: #e8e4df;
+    --text-secondary: #a8a29e;
+    --text-muted: #6b6560;
+    --coral: #ff6b6b;
+    --coral-glow: #ff6b6b40;
+    --yellow: #fbbf24;
+    --yellow-glow: #fbbf2430;
+    --lavender: #a78bfa;
+    --lavender-glow: #a78bfa30;
+    --pink: #f472b6;
+    --pink-glow: #f472b640;
+    --teal: #5eead4;
+    --teal-glow: #5eead430;
+    --border: #2a2725;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* --- HEADER --- */
+  .site-header {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(15,15,15,0.92);
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .site-logo span { color: var(--coral); }
+
+  .header-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+  }
+
+  .hero-category {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--coral);
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-category::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--coral);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 28px;
+    max-width: 780px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 620px;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    flex-wrap: wrap;
+  }
+
+  .meta-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--text-muted);
+    border-radius: 50%;
+  }
+
+  /* --- DIVIDER --- */
+  .divider {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* --- ARTICLE --- */
+  .article {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  .article-body {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .article-body p {
+    margin-bottom: 24px;
+    color: var(--text-primary);
+    font-weight: 300;
+  }
+
+  .article-body p:first-child::first-letter {
+    font-family: var(--font-display);
+    font-size: 3.8rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 10px;
+    margin-top: 6px;
+    color: var(--coral);
+    font-weight: 900;
+  }
+
+  .article-body .section-break {
+    text-align: center;
+    margin: 48px 0;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+  }
+
+  .article-body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .article-body em {
+    color: var(--yellow);
+    font-style: italic;
+  }
+
+  /* --- PULLQUOTE --- */
+  .pullquote {
+    margin: 52px -40px;
+    padding: 40px 44px;
+    border-left: 3px solid var(--coral);
+    background: linear-gradient(135deg, var(--coral-glow), transparent 60%);
+    border-radius: 0 8px 8px 0;
+    position: relative;
+  }
+
+  .pullquote p {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--text-primary) !important;
+    margin-bottom: 0 !important;
+    font-style: italic;
+  }
+
+  .pullquote-alt {
+    border-left-color: var(--yellow);
+    background: linear-gradient(135deg, var(--yellow-glow), transparent 60%);
+  }
+
+  .pullquote-lavender {
+    border-left-color: var(--lavender);
+    background: linear-gradient(135deg, var(--lavender-glow), transparent 60%);
+  }
+
+  .pullquote-pink {
+    border-left-color: var(--pink);
+    background: linear-gradient(135deg, var(--pink-glow), transparent 60%);
+  }
+
+  .pullquote-teal {
+    border-left-color: var(--teal);
+    background: linear-gradient(135deg, var(--teal-glow), transparent 60%);
+  }
+
+  /* --- SNARK CALLOUT --- */
+  .snark-box {
+    margin: 44px 0;
+    padding: 24px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .snark-box::before {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.1rem;
+    opacity: 0.6;
+  }
+
+  .snark-box.nail-polish::before { content: '💅'; }
+  .snark-box.skull::before { content: '💀'; }
+  .snark-box.clown::before { content: '🤡'; }
+  .snark-box.fire::before { content: '🔥'; }
+  .snark-box.ghost::before { content: '👻'; }
+  .snark-box.coffin::before { content: '⚰️'; }
+  .snark-box.popcorn::before { content: '🍿'; }
+  .snark-box.trophy::before { content: '🏆'; }
+
+  .snark-box p {
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    color: var(--pink);
+    line-height: 1.7;
+    margin-bottom: 0 !important;
+    font-weight: 400;
+  }
+
+  /* --- SCOREBOARD --- */
+  .scoreboard {
+    margin: 52px -20px;
+    padding: 36px 40px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .scoreboard-title {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .score-row:last-child { border-bottom: none; }
+
+  .score-task {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    flex: 1;
+  }
+
+  .score-verdict {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .score-verdict.ai {
+    background: var(--coral-glow);
+    color: var(--coral);
+    border: 1px solid rgba(255,107,107,0.3);
+  }
+
+  .score-verdict.human {
+    background: var(--teal-glow);
+    color: var(--teal);
+    border: 1px solid rgba(94,234,212,0.3);
+  }
+
+  .score-verdict.tbd {
+    background: var(--yellow-glow);
+    color: var(--yellow);
+    border: 1px solid rgba(251,191,36,0.3);
+  }
+
+  /* --- VERDICT BOX --- */
+  .verdict-box {
+    margin: 56px -20px;
+    padding: 44px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--coral);
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .verdict-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, var(--coral-glow), transparent 70%);
+    pointer-events: none;
+  }
+
+  .verdict-box .verdict-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--coral);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .verdict-box .verdict-text {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.45;
+    position: relative;
+    margin-bottom: 0 !important;
+  }
+
+  /* --- CLOSER --- */
+  .closer {
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .closer p {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* --- FOOTER --- */
+  .site-footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 640px) {
+    .hero { padding: 48px 20px 40px; }
+    .article { padding: 40px 20px 60px; }
+    .pullquote { margin: 36px -8px; padding: 28px 24px; }
+    .pullquote p { font-size: 1.15rem; }
+    .verdict-box { margin: 44px -8px; padding: 32px 24px; }
+    .scoreboard { margin: 40px -8px; padding: 28px 20px; }
+    .snark-box { margin: 32px 0; }
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-category { animation: fadeInUp 0.6s ease-out 0.1s both; }
+  .hero h1 { animation: fadeInUp 0.6s ease-out 0.25s both; }
+  .hero-subtitle { animation: fadeInUp 0.6s ease-out 0.4s both; }
+  .hero-meta { animation: fadeInUp 0.6s ease-out 0.55s both; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="site-logo">snarky<span>.</span>solutions</a>
+    <span class="header-tag">AI &bull; Careers &bull; No Fluff</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-category">AI &times; Careers</div>
+  <h1>AI Just Ended the Manager vs Leader Debate.<br>Only One of Them <em>Is Still Breathing.</em></h1>
+  <p class="hero-subtitle">There are a thousand articles about managers versus leaders. This isn't one of them. This is about what happens when AI walks into the room, grabs a chair, and asks "so... who here is automatable?"</p>
+  <div class="hero-meta">
+    <span>Snarky Solutions</span>
+    <span class="meta-dot"></span>
+    <span>April 2026</span>
+    <span class="meta-dot"></span>
+    <span>8 min read</span>
+    <span class="meta-dot"></span>
+    <span>Best enjoyed with existential dread &amp; coffee</span>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ARTICLE -->
+<article class="article">
+  <div class="article-body">
+
+    <p>Picture this. It's 9:14 AM on a Tuesday. A perfectly competent mid-level manager — let's call him Rahul, because every office has a Rahul — is fifteen minutes deep into colour-coding a risk register. Red for critical. Amber for "we should probably talk about this but won't." Green for "nobody actually checked, but it feels fine." He's been doing this for twelve years. He's <em>good</em> at it. HR calls him "dependable." His manager calls him "solid." His team calls him... well, actually, his team just forwards his emails to each other with the 💀 emoji, but that's a different article.</p>
+
+    <p>Meanwhile, an AI agent just generated the same risk register in 4.2 seconds. It also colour-coded it. It also added probability weightings, auto-linked the mitigation actions, and sent a summary to three stakeholders — formatted in their individually preferred styles, because apparently AI has time for that level of emotional labour.</p>
+
+    <p>Rahul, buddy. We need to talk.</p>
+
+    <div class="snark-box skull">
+      <p>Rahul's Excel skills didn't die. They were simply... made redundant. Like a fax machine at a tech startup. Still works. Nobody cares.</p>
+    </div>
+
+    <div class="section-break">• • •</div>
+
+    <p>For thirty years, the "manager vs leader" conversation has been the corporate equivalent of the "are you a dog person or a cat person?" debate. Mildly interesting at dinner. Completely meaningless in practice. Every business school teaches it. Every leadership offsite rehashes it. Every LinkedIn influencer with a ring light and a motivational quote has an opinion on it.</p>
+
+    <p><em>Managers execute. Leaders inspire. Managers maintain. Leaders transform. Managers ask how. Leaders ask why.</em></p>
+
+    <p>Groundbreaking stuff. Truly. Someone get Harvard on the phone.</p>
+
+    <p>But here's what thirty years of recycled wisdom missed: the debate had an expiry date. And it expired the moment a third player walked in — one that doesn't need a title, a salary, a parking spot, or a "quick 15-minute sync" that somehow lasts 47 minutes.</p>
+
+    <p>AI didn't enter the manager-vs-leader debate to pick a side. It entered to <em>eliminate one of the contestants.</em></p>
+
+    <p>Spoiler: it wasn't the leader.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>Let's play a game. I'm going to list everything a good manager does on any given workday. You tell me which ones an AI can't do. Ready? Here we go:</p>
+
+    <p>Tracking deliverables. Monitoring timelines. Allocating resources. Preparing status reports. Flagging risks. Managing escalations. Ensuring compliance. Coordinating across stakeholders. Approving workflows. Maintaining documentation. Scheduling the meeting to discuss the outcome of the meeting that was called to prepare for the other meeting.</p>
+
+    <div class="snark-box clown">
+      <p>If you said "none of them" — congratulations, you've been paying attention. If you said "the meeting one" — oh, honey, AI schedules meetings AND writes the minutes AND sends the follow-up AND passive-aggressively tags the person who didn't do their action item. It's BETTER at corporate than we are.</p>
+    </div>
+
+    <p>The overlap between a manager's core job and what AI was literally <em>engineered</em> to do isn't a Venn diagram. It's a circle. One circle. Fully overlapping. Like when you try to draw a Venn diagram but your hand slips and you just... draw the same circle twice. That's the situation.</p>
+
+    <div class="scoreboard">
+      <div class="scoreboard-title">The Tuesday Morning Scoreboard</div>
+      <div class="score-row">
+        <span class="score-task">Project tracking & status reports</span>
+        <span class="score-verdict ai">AI wins</span>
+      </div>
+      <div class="score-row">
+        <span class="score-task">Resource allocation & scheduling</span>
+        <span class="score-verdict ai">AI wins</span>
+      </div>
+      <div class="score-row">
+        <span class="score-task">Risk flagging & compliance monitoring</span>
+        <span class="score-verdict ai">AI wins</span>
+      </div>
+      <div class="score-row">
+        <span class="score-task">Stakeholder coordination & follow-ups</span>
+        <span class="score-verdict ai">AI wins</span>
+      </div>
+      <div class="score-row">
+        <span class="score-task">Telling a burned-out team member the right thing at the right time</span>
+        <span class="score-verdict human">Humans only</span>
+      </div>
+      <div class="score-row">
+        <span class="score-task">Challenging a flawed strategy when everyone else is nodding</span>
+        <span class="score-verdict human">Humans only</span>
+      </div>
+      <div class="score-row">
+        <span class="score-task">Making a call with 60% data and 100% consequences</span>
+        <span class="score-verdict human">Humans only</span>
+      </div>
+      <div class="score-row">
+        <span class="score-task">Bringing cake on someone's birthday</span>
+        <span class="score-verdict tbd">TBD (robots are learning)</span>
+      </div>
+    </div>
+
+    <p>See the pattern? Everything above the line is management. Everything below it is leadership. And AI just drew a thick red line between the two — one that no amount of "upskilling workshops" is going to erase.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>Now here's where it gets properly spicy. Because this isn't just about AI eating management's lunch. It's about a <em>structural asymmetry</em> that's existed for decades — one that AI just turned from a fun theory into a career-defining reality.</p>
+
+    <p>Ready? Deep breath.</p>
+
+    <p><strong>A good leader can always manage. A good manager cannot automatically lead.</strong></p>
+
+    <p>That's not a LinkedIn quote. That's physics.</p>
+
+    <div class="pullquote pullquote-lavender">
+      <p>Leadership contains management the way the ocean contains a swimming pool. Same water. Wildly different depth. And only one of them has sharks.</p>
+    </div>
+
+    <p>Think about it. A true leader — someone who can navigate ambiguity, inspire trust, and make high-stakes decisions under pressure — can absolutely learn to run a Gantt chart. It's a spreadsheet with dates, not a Rubik's cube. Give a leader a RAID log and they'll figure it out by lunch. Give them a resource plan and they'll optimise it by instinct, because leadership already requires the same core muscle: turning chaos into clarity.</p>
+
+    <p>But flip it around. Give a lifelong manager — someone who's spent fifteen years perfecting process governance, tracker updates, and escalation protocols — give them a room full of demoralised people, a broken strategy, and zero playbook, and say "lead."</p>
+
+    <p>Watch the silence.</p>
+
+    <p>It's not that they're not smart. They're often brilliant. It's that management never <em>asked</em> them to build the leadership muscle. You don't develop the ability to challenge a VP's strategy by spending a decade not challenging anyone. You don't learn to absorb ambiguity by colour-coding it into a RAG status and escalating it upward. You don't build the courage to make the hard call by perfecting the art of deferring the hard call to someone else.</p>
+
+    <div class="snark-box nail-polish">
+      <p>Your stakeholder map is gorgeous. Gallery-worthy, truly. Now quick question — when the CEO killed the strategy mid-quarter, did you push back? Or did you update the RAG status to amber, schedule a "realignment sync," and call it leadership?</p>
+    </div>
+
+    <p>Management is a contained skill. Leadership is the container. And the contained skill just got automated.</p>
+
+    <p>Oops.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>Here's where the movie gets really fun. Act Three: "What Happens When Both Get AI Tools."</p>
+
+    <p>Give a leader AI-powered tools and watch them turn into a superhero with a very boring origin story. They offload the operational noise — the tracking, the scheduling, the reporting, the compliance theatre that used to eat 60% of their week. Suddenly, all that freed-up brainspace goes to the stuff that <em>actually</em> moves the needle. Strategy. Culture. The hard conversation with the underperformer. The bold pivot that nobody else sees coming. The leader gets faster, sharper, more focused. AI doesn't replace them — it <em>unleashes</em> them.</p>
+
+    <p>Now give a pure manager the exact same tools. Same AI. Same subscription. Same cheerful onboarding tutorial with the animated robot mascot.</p>
+
+    <p>And watch the existential crisis load like a progress bar.</p>
+
+    <p><em>"If the AI is doing everything I used to do... what exactly am I... for?"</em></p>
+
+    <div class="pullquote pullquote-pink">
+      <p>The leader takes AI and becomes a force multiplier. The pure manager takes the same AI and slowly realises they've been the human middleware all along — and the system just got an upgrade that doesn't need middleware.</p>
+    </div>
+
+    <p>Oversight of the AI? Sure, for now. But AI is getting better at self-auditing. Quality checks? Increasingly automated. Escalation management? Algorithmic. The pure manager becomes the person checking the AI's homework — and that role has a shelf life shorter than a trending hashtag.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>Now, I can already hear the objection forming. It sounds like this:</p>
+
+    <p><em>"But Snarky, the future belongs to HYBRIDS! People who can both manage AND lead! It's not either/or!"</em></p>
+
+    <p>Sure, sure. That sounds very evolved. Very TED Talk. Very "I read a Brené Brown book on a flight once."</p>
+
+    <p>But let's be honest about what the "hybrid" actually looks like in the AI era. It's not a 50-50 split. It's not a Venn diagram where both circles are equal and overlap in a satisfying way. It's <strong>leadership with AI-powered management baked in</strong>. The leadership is the human. The management is the machine. And the person who only ever built the management muscle is bringing a beautifully laminated clipboard to a strategy war.</p>
+
+    <div class="snark-box fire">
+      <p>Organisations have been promoting their best managers into leadership roles for decades. That's like promoting your best typist to novelist because they hit 120 WPM. Speed isn't story. Process isn't vision. And a perfect tracker has never once been a strategy.</p>
+    </div>
+
+    <p>The promotion pipeline is broken, and AI just exposed the crack. Every "Head of" and "Director of" who got there by being exceptional at operational governance is about to discover that the escalator they were standing on just... stopped. And the person who was <em>climbing the stairs</em> — making bold calls, challenging bad ideas, building trust in rooms where trust is expensive — that person is still moving.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>Okay. Time for the part where this stops being funny and starts being useful. (Don't worry — I'll be snarky about it.)</p>
+
+    <p>Here's the cruelest irony of the AI era, and it deserves to be said plainly: <strong>the skills that corporate culture spent decades underpaying and undervaluing — empathy, judgment, courage, the ability to sit with discomfort and still make a decision — are now the only skills that matter.</strong></p>
+
+    <p>And the skills that got people promoted, celebrated, given corner offices and "exceeds expectations" ratings — operational rigour, process mastery, execution discipline, the ability to produce a twelve-tab Excel report that would make a CFO weep with joy — those are now a software feature. Available for $29/month. No annual review required.</p>
+
+    <div class="pullquote pullquote-alt">
+      <p>The soft skills became the hard currency. The hard skills became the algorithm. If that's not the ultimate corporate plot twist, I don't know what is.</p>
+    </div>
+
+    <p>But — and this is the important but, the but that separates this piece from a thousand doom-and-gloom hot takes — <strong>this isn't a eulogy. It's a door.</strong></p>
+
+    <p>If you've spent your career in the management lane — and there's no shame in that; the lane was well-lit, well-compensated, and came with a nice title — this is your moment. AI just freed you from the operational hamster wheel. Every hour you used to spend on tracking, reporting, coordinating, and attending meetings about meetings? It's yours now.</p>
+
+    <p>The question is what you do with it.</p>
+
+    <p>If you fill it with <em>more</em> tracking — just fancier, AI-assisted tracking with better dashboards — you've missed the point so spectacularly that the point filed a missing persons report.</p>
+
+    <p>But if you use that freedom to finally build the muscle you never had to build before — to challenge instead of comply, to decide instead of escalate, to create clarity instead of documenting chaos in a beautifully formatted deck — then AI isn't your threat. It's the best career unlock you've ever been handed.</p>
+
+    <p>It won't be comfortable. Leadership never is. It means owning outcomes you can't fully control. It means being the person who says the hard thing in a room where everyone else is nodding along and hoping someone else will say it. It means making the call at 60% certainty because waiting for 100% is a luxury that AI just automated too.</p>
+
+    <p>But it's the only move left on the board that a machine can't make for you.</p>
+
+    <div class="verdict-box">
+      <div class="verdict-label">The Only Question That Matters Now</div>
+      <p class="verdict-text">If an AI took over every operational task on your plate tomorrow morning — would anyone still need you in the room by afternoon?</p>
+    </div>
+
+    <p>If the answer is yes — congratulations. You're a leader. The future doesn't just need you. It needs you <em>more than ever.</em> Go do the things the machines can't.</p>
+
+    <p>If the answer makes you squirm — even better. Discomfort is the exact address where leadership lives. Apartment 3B. Buzzer's broken, but the door's unlocked. You still have time to move in.</p>
+
+    <p>But the clock isn't analog anymore. It's counting in tokens per second. And it waits for no one — especially not someone who's still updating the tracker.</p>
+
+    <!-- CLOSER -->
+    <div class="closer">
+      <p>The future doesn't need another status report. It needs someone who knows what to do when the status report says everything is fine — and it isn't. That's not management. That's never been management. That's the terrifying, exhilarating, deeply human act of leading. And no algorithm — no matter how good it gets at colour-coding — is coming for that.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span>&copy; 2026 Snarky Solutions</span>
+  <span>Classy. Sassy. Data-backed.</span>
+</footer>
+
+</body>
+</html>
