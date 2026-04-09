@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Does Home Look Like From 252,000 Miles Away? — Snarky Solutions</title>
+<meta name="description" content="Four people flew to the far side of the Moon. Eight billion watched from a cave. On Artemis II, Orion, and the existential vertigo of seeing Earth fit inside a window frame.">
+<meta property="og:title" content="What Does Home Look Like From 252,000 Miles Away?">
+<meta property="og:description" content="Four people flew to the far side of the Moon. Eight billion watched from a cave.">
+<meta property="og:image" content="https://images-assets.nasa.gov/image/art002e009289/art002e009289~large.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --text-primary: #e8e4df;
+    --text-secondary: #a09a92;
+    --text-muted: #6b6560;
+    --coral: #e8735a;
+    --yellow: #f2c744;
+    --lavender: #b4a7d6;
+    --pink: #d4798f;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  .noise-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999;
+  }
+  .hero-image {
+    width: 100%; max-height: 520px; overflow: hidden; position: relative;
+  }
+  .hero-image img {
+    width: 100%; height: 520px; object-fit: cover; object-position: center 40%; display: block;
+  }
+  .hero-image .credit {
+    position: absolute; bottom: 12px; right: 16px;
+    font-family: var(--font-mono); font-size: 10px;
+    color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase;
+  }
+  article {
+    max-width: 720px; margin: 0 auto; padding: 48px 24px 100px;
+  }
+  .post-meta {
+    font-family: var(--font-mono); font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 20px;
+  }
+  .post-meta span { color: var(--text-muted); margin: 0 8px; }
+  h1 {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(30px, 5.5vw, 48px); line-height: 1.12;
+    color: var(--text-primary); margin-bottom: 16px; letter-spacing: -0.5px;
+  }
+  h1 em { color: var(--coral); font-style: italic; }
+  .subtitle {
+    font-family: var(--font-display); font-weight: 300; font-size: 19px;
+    color: var(--text-secondary); line-height: 1.5; margin-bottom: 48px; font-style: italic;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--coral), var(--yellow));
+    border: none; margin: 48px 0; border-radius: 2px;
+  }
+  h2 {
+    font-family: var(--font-display); font-weight: 600; font-size: 24px;
+    color: var(--yellow); margin-bottom: 16px; margin-top: 48px; letter-spacing: -0.3px;
+  }
+  p { margin-bottom: 20px; color: var(--text-primary); }
+  figure { margin: 36px -24px; position: relative; }
+  figure img {
+    width: 100%; display: block;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  figcaption {
+    font-family: var(--font-mono); font-size: 12px;
+    color: var(--text-muted); padding: 10px 24px 0; line-height: 1.6;
+  }
+  figcaption .img-credit { color: var(--text-muted); opacity: 0.6; }
+  .highlight-block {
+    border-left: 3px solid var(--lavender); padding: 20px 24px;
+    margin: 32px 0; background: var(--bg-card); border-radius: 0 8px 8px 0;
+  }
+  .highlight-block p {
+    color: var(--lavender); font-family: var(--font-display);
+    font-style: italic; font-weight: 400; font-size: 18px; line-height: 1.7; margin-bottom: 0;
+  }
+  .stat-callout {
+    display: inline-block; font-family: var(--font-mono); font-size: 14px;
+    color: var(--coral); background: rgba(232,115,90,0.1);
+    padding: 2px 10px; border-radius: 4px; margin: 0 2px;
+  }
+  .section-label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; display: block;
+  }
+  strong { color: var(--yellow); font-weight: 600; }
+  em { color: var(--pink); }
+  .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .closing p:last-child {
+    font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--coral);
+  }
+  .tag-strip { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag-strip span {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.08); padding: 4px 12px; border-radius: 20px;
+  }
+  @media (max-width: 600px) {
+    article { padding: 36px 18px 80px; }
+    .highlight-block { padding: 16px 18px; }
+    figure { margin: 28px -18px; }
+    figcaption { padding: 10px 18px 0; }
+    .hero-image, .hero-image img { max-height: 320px; height: 320px; }
+  }
+</style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+
+<!-- ══ FEATURE IMAGE: Earthset over Ohm Crater ══ -->
+<div class="hero-image">
+  <img src="https://images-assets.nasa.gov/image/art002e009289/art002e009289~large.jpg"
+       alt="Earthset: Earth setting behind the Moon's Ohm crater, photographed by the Artemis II crew on April 6, 2026"
+       loading="eager">
+  <span class="credit">NASA / Artemis II Crew — April 6, 2026</span>
+</div>
+
+<article>
+
+<div class="post-meta">
+  Snarky Solutions <span>•</span> April 2026 <span>•</span> Space / Philosophy
+</div>
+
+<h1>What Does Home Look Like From <em>252,000 Miles Away?</em></h1>
+
+<p class="subtitle">Four people flew to the far side of the Moon. Eight billion watched from a cave. On Artemis II, Orion, and the existential vertigo of seeing Earth fit inside a window frame.</p>
+
+<hr class="divider">
+
+<span class="section-label">Day 0 — The Cave</span>
+<h2>Plato Had a Point</h2>
+
+<p>Here is what you were doing on the evening of April 1, 2026. You were refreshing your inbox. You were stuck in traffic thinking about something someone said in a meeting that didn't matter. You were arguing about a parking spot, or a deadline, or whose turn it was to order dinner. Normal cave stuff.</p>
+
+<p>Meanwhile, at 6:35 p.m. EDT, four human beings strapped themselves into a capsule called <em>Integrity</em>, sat on top of 8.8 million pounds of thrust, and left the planet. The Orion spacecraft — built by Lockheed Martin, powered by a European Service Module with 33 engines — launched atop the Space Launch System from Kennedy Space Center. Destination: the Moon and back. Duration: ten days. Margin for error: none worth discussing.</p>
+
+<p>Plato wrote about prisoners chained inside a cave, watching shadows flicker on a wall and mistaking them for reality. The allegory was about knowledge — about the violence of realising that everything you thought was real was just a projection. He didn't mention that the exit would involve a <span class="stat-callout">5,000°F</span> heat shield and a reentry speed of <span class="stat-callout">24,700 mph</span>, but the principle holds.</p>
+
+<hr class="divider">
+
+<span class="section-label">Days 1–5 — Outbound</span>
+<h2>Going Deeper Than Anyone Has Gone</h2>
+
+<p>The first two days were mechanical poetry. A perigee raise burn — 43 seconds of engine fire to refine Orion's orbit. Then the translunar injection: five minutes and fifty seconds of main engine thrust that sent four people out of Earth orbit and toward the Moon for the first time since 1972. Not since the Nixon administration had anyone done this.</p>
+
+<!-- ══ Earth with auroras — first downlinked image ══ -->
+<figure>
+  <img src="https://images-assets.nasa.gov/image/art002e000193/art002e000193~large.jpg"
+       alt="Earth photographed from Orion after the translunar injection burn, showing two auroras and zodiacal light"
+       loading="lazy">
+  <figcaption>"Hello, World." The first image downlinked by the crew — Earth eclipsing the Sun, two auroras glowing at opposite edges, zodiacal light catching the edge of everything we've ever known. <span class="img-credit">NASA / Reid Wiseman</span></figcaption>
+</figure>
+
+<p>Commander Reid Wiseman. Pilot Victor Glover. Mission Specialists Christina Koch and Jeremy Hansen of the Canadian Space Agency. Koch — the first woman to travel this deep into space. Glover — the first Black astronaut beyond low Earth orbit. Hansen — the first Canadian to leave Earth's neighbourhood. A crew that looked, for once, like the species it was representing.</p>
+
+<p>By Day 4, Orion was <span class="stat-callout">169,000 miles</span> from Earth and closing on the Moon. Glover took manual control to test the spacecraft's handling in deep space. A capsule that provides roughly 2.25 cubic metres of living space per person. A phone booth with a view of infinity.</p>
+
+<p>On Day 5, the spacecraft crossed the lunar sphere of influence — the invisible line where the Moon's gravity pulls harder than Earth's. Koch radioed home: "We are now falling to the Moon rather than rising away from Earth." The crew took one last photograph of the Moon growing in their window and went to sleep, because even heading into the unknown, humans need rest.</p>
+
+<hr class="divider">
+
+<span class="section-label">Day 6 — The Far Side</span>
+<h2>Forty Minutes of Absolute Silence</h2>
+
+<p>This is the part that rewrites you.</p>
+
+<p>At approximately 6:44 p.m. EDT on April 6, Orion slipped behind the Moon. Radio signals cannot bend around 2,159 miles of rock. Mission Control went quiet. The Deep Space Network lost contact. For forty minutes, four people were more alone than any human beings have ever been — no communication, no ground link, no safety net — drifting past the far side of a world no human had ever seen up close.</p>
+
+<!-- ══ Crew inside Orion during flyby ══ -->
+<figure>
+  <img src="https://images-assets.nasa.gov/image/art002e009302/art002e009302~large.jpg"
+       alt="The Artemis II crew — Koch, Hansen, Glover, and Wiseman — inside the Orion spacecraft during the lunar flyby"
+       loading="lazy">
+  <figcaption>The Artemis II crew during the lunar flyby. Koch (top left), Hansen (top right), Glover (bottom left), Wiseman (bottom right) — 252,000 miles from everything. <span class="img-credit">NASA</span></figcaption>
+</figure>
+
+<p>They knew it was coming. They'd trained for it. And they still marked it. Jeremy Hansen broke out maple cream cookies he'd brought from Canada. They floated in a capsule the size of a large SUV, eating cookies in silence at <span class="stat-callout">252,757 miles</span> from Earth, and toasted what Commander Wiseman later called a "surreal moment." They'd just beaten the Apollo 13 distance record by 4,105 miles.</p>
+
+<p>They saw the Orientale basin — a massive ancient impact scar — the first humans to witness it with their own eyes. They watched for meteoroid flashes on the unlit surface and counted six. They saw the solar corona during a 54-minute eclipse as the Moon blocked the Sun, and Glover described the scene: Earth's reflected light illuminating a black orb suspended against a grey that drifted into blackness. He called it "quite an impressive visual illusion." The word he didn't say, but meant, was <em>terrifying</em>.</p>
+
+<!-- ══ Solar eclipse from behind the Moon ══ -->
+<figure>
+  <img src="https://images-assets.nasa.gov/image/art002e009573/art002e009573~large.jpg"
+       alt="The Moon eclipsing the Sun, photographed from the Orion spacecraft during the Artemis II lunar flyby"
+       loading="lazy">
+  <figcaption>The Moon eclipses the Sun as seen from Orion — 54 minutes of totality, far longer than any eclipse visible from Earth. The corona forms a halo. Saturn and Mars glow at the edges. Earthshine lights the near side. <span class="img-credit">NASA / Artemis II Crew</span></figcaption>
+</figure>
+
+<div class="highlight-block">
+<p>When asked to describe the mission in a single word, Christina Koch said: "Humility." Then she listed everyone who made it possible — starting with Neil Armstrong, Katherine Johnson, and the civil rights movement. You don't name the civil rights movement from 252,000 miles away unless the distance rearranges your priorities.</p>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">Day 6, Continued — The Return of Light</span>
+<h2>And Then They Saw Earth Again</h2>
+
+<p>Forty minutes later, Orion emerged from behind the Moon. The Deep Space Network reacquired the signal. Communications restored. And the crew looked back toward where they came from.</p>
+
+<p>Koch later said the biggest highlight of the entire mission wasn't the flyby, wasn't the record, wasn't the far side. It was that first glimpse of Earth again after the blackout. "It really just reminds you what a special place we have," she said.</p>
+
+<!-- ══ Earthrise — crescent Earth from behind the Moon ══ -->
+<figure>
+  <img src="https://images-assets.nasa.gov/image/art002e009280/art002e009280~large.jpg"
+       alt="Earthrise: crescent Earth rising above the lunar horizon, photographed through the Orion window on April 6, 2026"
+       loading="lazy">
+  <figcaption>Earthrise. A crescent Earth emerges above the lunar horizon as Orion completes its pass behind the Moon. Captured at 7:22 p.m. EDT — the first Earthrise witnessed by human eyes in over fifty years. <span class="img-credit">NASA / Artemis II Crew</span></figcaption>
+</figure>
+
+<p>The photographs are the kind that don't let you sleep well afterward. Earth through Orion's window — a delicate crescent, soft blue hue and scattered white clouds against absolute blackness, the lower portion fading into night. In another image, Earth appears tiny as the Moon looms large — the entire planet reduced to a thumbprint beside an ancient cratered world that doesn't care it exists.</p>
+
+<p>At Dodger Stadium, they paused a baseball game to show the launch on the jumbotron. In Ciudad Juárez, Mexico, a child named Bruno wore a homemade astronaut suit to watch on a screen. In Cape Canaveral, strangers stood in parks together and looked up. None of them were 252,000 miles away, but for a moment, the cave wall flickered differently.</p>
+
+<hr class="divider">
+
+<span class="section-label">Day 10 — Splashdown</span>
+<h2>Coming Home to the Cave</h2>
+
+<p>Tonight — April 10, 2026 — Orion re-enters Earth's atmosphere at roughly 25,000 miles per hour. A steeper descent angle than originally planned, because the Artemis I heat shield showed erosion that forced engineers to redesign the reentry profile. The capsule will scorch through temperatures that would melt most metals, decelerate violently, deploy parachutes, and splash into the Pacific near San Diego. The USS John P. Murtha is already in position.</p>
+
+<p>Four people will be pulled from the ocean. They will be checked medically, debriefed, and eventually returned to traffic and inboxes and parking spots. They will carry something the rest of us can only approximate — the lived memory of Earth as a small, bright, fragile thing hanging in a void that does not care about it.</p>
+
+<div class="closing">
+<p>Plato's prisoners, once they've seen the sun, are supposed to return to the cave and tell the others. The others won't believe them. They'll think the one who left has damaged eyes. They'll prefer the shadows.</p>
+
+<p>That's fine. The shadows are comfortable. The inbox is real enough. Monday will come regardless.</p>
+
+<p>But the photograph exists now. Earth — small, impossibly bright, alone — framed inside the window of a spacecraft named <em>Integrity</em>. You can look at it or you can look away. Either way, the cave doesn't change. Only you do.</p>
+
+<p>252,000 miles. That's all it took.</p>
+</div>
+
+<div class="tag-strip">
+  <span>Space</span>
+  <span>Artemis II</span>
+  <span>Philosophy</span>
+  <span>NASA</span>
+  <span>Orion</span>
+  <span>Perspective</span>
+</div>
+
+</article>
+</body>
+</html>
