@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US-Iran Ceasefire: The World Exhaled. India Should Be Holding Its Breath. — Snarky Solutions</title>
+<meta name="description" content="The US-Iran ceasefire dropped oil below $100 and markets popped champagne. But India imports 85% of its oil through one strait with 25 days of reserves. Japan has 254. The world exhaled. India should be holding its breath. Data, snark, and the numbers that should keep you up at night.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-card: #1e1e1e;
+    --bg-highlight: #252525;
+    --text-primary: #e8e4df;
+    --text-secondary: #a8a4a0;
+    --text-muted: #6b6865;
+    --coral: #ff6b5a;
+    --yellow: #ffd166;
+    --lavender: #b8a9e8;
+    --pink: #f4a0b8;
+    --mint: #7ecbab;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --max-width: 780px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.78;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .noise-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999;
+  }
+
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+  /* ── HERO ── */
+  .hero { padding: 80px 0 40px; border-bottom: 1px solid #2a2a2a; }
+  .hero-meta {
+    font-family: var(--font-mono); font-size: 13px; color: var(--coral);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(2.1rem, 5vw, 3rem); line-height: 1.15;
+    color: var(--text-primary); margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--coral); font-style: italic; }
+  .hero-subtitle {
+    font-family: var(--font-display); font-size: 1.15rem; font-weight: 300;
+    color: var(--text-secondary); line-height: 1.6; font-style: italic; max-width: 660px;
+  }
+  .hero-date {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+    margin-top: 24px; letter-spacing: 0.5px;
+  }
+
+  /* ── TL;DR BOX ── */
+  .tldr {
+    background: linear-gradient(135deg, rgba(255,107,90,0.1), rgba(255,209,102,0.06));
+    border: 1px solid rgba(255,107,90,0.25); border-radius: 10px;
+    padding: 28px 28px 22px; margin: 36px 0 8px;
+  }
+  .tldr-title {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--coral); margin-bottom: 14px;
+  }
+  .tldr-item {
+    font-size: 15px; color: var(--text-secondary); line-height: 1.65;
+    margin-bottom: 10px; padding-left: 20px; position: relative;
+  }
+  .tldr-item::before {
+    content: '→'; position: absolute; left: 0; color: var(--coral); font-weight: 700;
+  }
+  .tldr-note {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    margin-top: 14px; letter-spacing: 0.3px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    display: flex; gap: 0; margin: 40px 0 12px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; padding-bottom: 8px;
+  }
+  .timeline::-webkit-scrollbar { display: none; }
+  .tl-node {
+    flex: 1; min-width: 110px; position: relative;
+    padding: 16px 12px 14px; text-align: center;
+    border-top: 3px solid #2a2a2a;
+  }
+  .tl-node.active { border-top-color: var(--coral); }
+  .tl-node.crisis { border-top-color: var(--pink); }
+  .tl-node.relief { border-top-color: var(--mint); }
+  .tl-node.warning { border-top-color: var(--yellow); }
+  .tl-date {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .tl-node.active .tl-date { color: var(--coral); }
+  .tl-node.crisis .tl-date { color: var(--pink); }
+  .tl-node.relief .tl-date { color: var(--mint); }
+  .tl-node.warning .tl-date { color: var(--yellow); }
+  .tl-label { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+  /* ── SECTION MARKERS ── */
+  .section-marker { display: flex; align-items: center; gap: 16px; margin: 56px 0 28px; }
+  .section-marker .marker-line { flex: 1; height: 1px; background: #2a2a2a; }
+  .section-marker .marker-label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; white-space: nowrap;
+  }
+  .marker-coral .marker-label { color: var(--coral); }
+  .marker-yellow .marker-label { color: var(--yellow); }
+  .marker-lavender .marker-label { color: var(--lavender); }
+  .marker-pink .marker-label { color: var(--pink); }
+  .marker-mint .marker-label { color: var(--mint); }
+
+  /* ── BODY TEXT ── */
+  .content p { margin-bottom: 22px; color: var(--text-primary); }
+  .content h2 {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.65rem;
+    color: var(--text-primary); margin: 48px 0 20px; line-height: 1.3;
+  }
+  .content h3 {
+    font-family: var(--font-display); font-weight: 500; font-size: 1.25rem;
+    color: var(--yellow); margin: 36px 0 14px; line-height: 1.35;
+  }
+  .content strong { color: #fff; font-weight: 600; }
+
+  /* ── DATA BOMB CARDS ── */
+  .data-bomb {
+    background: var(--bg-card); border-left: 3px solid var(--coral);
+    padding: 24px 28px; margin: 32px 0; border-radius: 0 8px 8px 0;
+  }
+  .data-bomb.yellow { border-left-color: var(--yellow); }
+  .data-bomb.lavender { border-left-color: var(--lavender); }
+  .data-bomb.pink { border-left-color: var(--pink); }
+  .data-bomb.mint { border-left-color: var(--mint); }
+  .data-bomb .bomb-number {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: 2.4rem; line-height: 1; margin-bottom: 6px;
+  }
+  .data-bomb .bomb-number.coral { color: var(--coral); }
+  .data-bomb .bomb-number.yellow { color: var(--yellow); }
+  .data-bomb .bomb-number.lavender { color: var(--lavender); }
+  .data-bomb .bomb-number.pink { color: var(--pink); }
+  .data-bomb .bomb-number.mint { color: var(--mint); }
+  .data-bomb .bomb-label {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .data-bomb .bomb-text {
+    font-size: 15px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* ── STAT GRID ── */
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin: 32px 0;
+  }
+  .stat-card {
+    background: var(--bg-highlight); padding: 20px; border-radius: 8px;
+    text-align: center; border: 1px solid #2a2a2a;
+  }
+  .stat-card .stat-num {
+    font-family: var(--font-display); font-weight: 900; font-size: 1.8rem; line-height: 1.1;
+  }
+  .stat-card .stat-desc {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    letter-spacing: 0.8px; text-transform: uppercase; margin-top: 6px;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%; border-collapse: collapse; margin: 32px 0;
+    font-size: 14px;
+  }
+  .compare-table th {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 14px 16px; text-align: left;
+    border-bottom: 2px solid #2a2a2a; color: var(--text-muted);
+  }
+  .compare-table td {
+    padding: 14px 16px; border-bottom: 1px solid #1e1e1e;
+    color: var(--text-secondary); vertical-align: top; line-height: 1.55;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .country-name {
+    font-weight: 600; color: var(--text-primary); white-space: nowrap;
+  }
+  .compare-table .india-row { background: rgba(255,107,90,0.06); }
+  .compare-table .india-row td { color: var(--coral); }
+  .compare-table .india-row .country-name { color: var(--coral); }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    border-left: 3px solid var(--lavender); padding: 20px 28px; margin: 36px 0;
+    background: rgba(184,169,232,0.04); border-radius: 0 6px 6px 0;
+  }
+  .pull-quote p {
+    font-family: var(--font-display); font-style: italic; font-size: 1.15rem;
+    color: var(--lavender); line-height: 1.55; margin-bottom: 8px !important;
+  }
+  .pull-quote .pq-source {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px;
+  }
+
+  /* ── PROS/CONS TABLE ── */
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+  @media (max-width: 600px) { .pros-cons { grid-template-columns: 1fr; } }
+  .pc-col { background: var(--bg-card); padding: 24px; border-radius: 8px; }
+  .pc-col h4 {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .pc-col.pros h4 { color: var(--mint); }
+  .pc-col.cons h4 { color: var(--coral); }
+  .pc-col .pc-item {
+    font-size: 14.5px; color: var(--text-secondary); margin-bottom: 12px;
+    padding-left: 18px; position: relative; line-height: 1.6;
+  }
+  .pc-col.pros .pc-item::before { content: '↑'; position: absolute; left: 0; color: var(--mint); font-weight: 700; }
+  .pc-col.cons .pc-item::before { content: '↓'; position: absolute; left: 0; color: var(--coral); font-weight: 700; }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: linear-gradient(135deg, rgba(255,107,90,0.08), rgba(255,209,102,0.06));
+    border: 1px solid rgba(255,107,90,0.2); border-radius: 10px;
+    padding: 28px; margin: 36px 0;
+  }
+  .callout-title {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--coral); margin-bottom: 12px;
+  }
+  .callout p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── SNARK ASIDE ── */
+  .snark {
+    font-family: var(--font-display); font-style: italic; color: var(--pink);
+    font-size: 0.95rem; margin: 28px 0; padding-left: 20px;
+    border-left: 2px solid rgba(244,160,184,0.3); line-height: 1.65;
+  }
+
+  /* ── SCENARIO CARDS ── */
+  .scenario-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 32px 0; }
+  .scenario-card {
+    background: var(--bg-card); padding: 22px 24px; border-radius: 8px;
+    border-left: 4px solid #2a2a2a;
+  }
+  .scenario-card.green { border-left-color: var(--mint); }
+  .scenario-card.amber { border-left-color: var(--yellow); }
+  .scenario-card.red { border-left-color: var(--coral); }
+  .scenario-title {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .scenario-card.green .scenario-title { color: var(--mint); }
+  .scenario-card.amber .scenario-title { color: var(--yellow); }
+  .scenario-card.red .scenario-title { color: var(--coral); }
+  .scenario-prob {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .scenario-text { font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ── STOCK SCOREBOARD ── */
+  .scoreboard {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0;
+  }
+  @media (max-width: 600px) { .scoreboard { grid-template-columns: 1fr; } }
+  .sb-card {
+    background: var(--bg-highlight); padding: 16px 20px; border-radius: 8px;
+    border: 1px solid #2a2a2a;
+  }
+  .sb-card .sb-name {
+    font-size: 13px; color: var(--text-muted); font-weight: 500; margin-bottom: 4px;
+  }
+  .sb-card .sb-move {
+    font-family: var(--font-display); font-weight: 900; font-size: 1.5rem;
+  }
+  .sb-card .sb-detail {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    margin-top: 4px; letter-spacing: 0.3px;
+  }
+  .sb-green .sb-move { color: var(--mint); }
+  .sb-red .sb-move { color: var(--coral); }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    border-top: 1px solid #2a2a2a; padding: 40px 0 60px; margin-top: 56px;
+  }
+  .footer-tag {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--coral); }
+  .footer-tagline { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.5px;
+    color: var(--text-muted); background: var(--bg-highlight);
+    padding: 5px 12px; border-radius: 20px; border: 1px solid #2a2a2a;
+  }
+</style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div class="container">
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<header class="hero">
+  <div class="hero-meta">Geopolitics · Energy · India · Markets</div>
+  <h1>US-Iran Ceasefire:<br>The World Exhaled.<br><em>India Should Be Holding Its Breath.</em></h1>
+  <p class="hero-subtitle">Oil crashed to $92. The Sensex added ₹16 lakh crore. Markets popped champagne. But India imports 85% of its oil through one strait, has 25 days of reserves, and just watched that strait close — then reopen — then close again — in 24 hours. The world got relief. India got an X-ray of a 40-year broken bone.</p>
+  <p class="hero-date">April 9, 2026 · Snarky Solutions · 18 min read</p>
+</header>
+
+<!-- ═══════════════════ TL;DR ═══════════════════ -->
+<div class="tldr">
+  <div class="tldr-title">If you have 2 minutes</div>
+  <div class="tldr-item">The US and Iran agreed to a <strong>two-week ceasefire</strong> — brokered by Pakistan — hours before Trump's deadline to obliterate Iran. Oil crashed 18%. Markets surged globally.</div>
+  <div class="tldr-item">India's Sensex rallied 2,946 points (+4%), adding <strong>₹16 lakh crore</strong> in market cap. Nifty crossed 24,000. Everything from IndiGo to Shriram Finance surged 8–10%.</div>
+  <div class="tldr-item">But the damage is locked in: <strong>₹1.65 trillion</strong> annual fiscal hole from excise cuts. Rupee hit ₹95/USD. RBI burned $12–15B defending it. FIIs pulled $3B+ in March. GDP forecasts slashed.</div>
+  <div class="tldr-item">India imports <strong>85–90% of its oil</strong> through one strait with <strong>25 days of reserves</strong>. Japan has 254 days. The ceasefire stopped the bleeding. It didn't fix the wound.</div>
+  <div class="tldr-item">Iran <strong>re-closed Hormuz within 24 hours</strong> over Israeli strikes on Lebanon. Islamabad talks start April 10. The ceasefire may not survive the week.</div>
+  <div class="tldr-note">Still here? Good. The full story is below, with all the data that makes this personal.</div>
+</div>
+
+<article class="content">
+
+<!-- ═══════════════════ TIMELINE ═══════════════════ -->
+<div class="timeline">
+  <div class="tl-node active">
+    <div class="tl-date">Feb 28</div>
+    <div class="tl-label">War begins. Khamenei killed. Hormuz shuts.</div>
+  </div>
+  <div class="tl-node crisis">
+    <div class="tl-date">Mar 7</div>
+    <div class="tl-label">1 ship transits Hormuz. Avg: 138/day.</div>
+  </div>
+  <div class="tl-node crisis">
+    <div class="tl-date">Mar 8</div>
+    <div class="tl-label">Brent hits $126/bbl. Largest oil shock since 1970s.</div>
+  </div>
+  <div class="tl-node crisis">
+    <div class="tl-date">Mar 28</div>
+    <div class="tl-label">Rupee breaches ₹95/USD. Record FII exit.</div>
+  </div>
+  <div class="tl-node relief">
+    <div class="tl-date">Apr 7</div>
+    <div class="tl-label">Ceasefire. Oil crashes to $92. Markets erupt.</div>
+  </div>
+  <div class="tl-node warning">
+    <div class="tl-date">Apr 8</div>
+    <div class="tl-label">Iran re-closes Hormuz over Lebanon strikes.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 1: WHAT HAPPENED ═══════════════════ -->
+<div class="section-marker marker-coral">
+  <span class="marker-line"></span>
+  <span class="marker-label">Part I — The Ceasefire That Almost Wasn't</span>
+  <span class="marker-line"></span>
+</div>
+
+<p>Twenty million barrels of oil flow through the Strait of Hormuz every day. That's 231 barrels per second, through a 21-mile-wide gap between Iran and Oman, with no alternative route for 75% of the volume. On February 28, 2026, that gap closed. On April 7, at 8 PM Eastern — roughly 117 minutes before Donald Trump's self-imposed deadline to, and I quote, obliterate an "entire civilization" — it was supposed to reopen.</p>
+
+<p>The deal is deceptively simple. Pakistan brokered it. The US suspends strikes for two weeks. Iran reopens Hormuz with military "coordination." Both sides send delegations to Islamabad on April 10 to negotiate something more permanent. Trump announced it on Truth Social: "TOTAL AND COMPLETE VICTORY." Iran's Supreme National Security Council responded with equal modesty: "enduring defeat" for Washington. Both sides claimed they won. The Strait of Hormuz, having held the global economy hostage for six weeks, supposedly said: fine, you can have your oil back. Temporarily. With conditions. And a $2 million toll per ship.</p>
+
+<div class="snark">Six weeks of war. 1,530 dead in Lebanon. The largest oil supply disruption since the 1970s. Trump calls it "a big day for World Peace!" — capitalization his, not mine.</div>
+
+<p>But here's what the euphoria missed: this isn't a peace deal. It's a <strong>hall pass</strong>. Iran's 10-point proposal demands sanctions lifted, US forces withdrawn, reparations paid, and continued uranium enrichment. The US wants denuclearization, missile elimination, proxy group dissolution, and permanent free Hormuz access. The Venn diagram of overlap looks like two circles in different zip codes. And within 24 hours, Iran re-closed the Strait over Israeli strikes on Lebanon — strikes Netanyahu explicitly said are <em>not</em> covered by the ceasefire.</p>
+
+<div class="data-bomb">
+  <div class="bomb-number coral">40 days, $126/bbl, 1 ship</div>
+  <div class="bomb-label">The six-week report card</div>
+  <div class="bomb-text">40 days of US-Israeli strikes. Brent crude peaked at $126/barrel — up 88% from pre-war $67. On March 7, one commercial vessel transited Hormuz. The daily average is 138. That's a 99.3% collapse in traffic through the world's most critical energy chokepoint. The IEA called it the largest supply disruption in the history of the global oil market.</div>
+</div>
+
+<!-- ═══════════════════ SECTION 2: WORLD vs INDIA ═══════════════════ -->
+<div class="section-marker marker-yellow">
+  <span class="marker-line"></span>
+  <span class="marker-label">Part II — The Tale of Two Ceasefires</span>
+  <span class="marker-line"></span>
+</div>
+
+<h2>For the World: A Sigh of Relief. For India: A Mirror.</h2>
+
+<p>The global headline is unambiguously positive. Oil dropped from $126 to $92 overnight. The Dow had its best day in a year (+1,325 points). South Korea's KOSPI surged 6.87%. Germany's DAX soared 5%. The VIX dropped 22%. Central banks got breathing room to shift from inflation panic to growth support.</p>
+
+<p>But here's the thing about the world: <strong>most of it was never structurally threatened</strong>. The US imports barely 0.5 million barrels/day from the Gulf — shale made it effectively self-sufficient. Europe has gas reserves and LNG alternatives. Japan has 254 days of emergency oil reserves. South Korea has 208. China has roughly 900 million barrels stockpiled. For these economies, the war was a temporary shock on a fundamentally sound base. The ceasefire lets them recover.</p>
+
+<p>India's story is categorically different. And the numbers don't lie.</p>
+
+<table class="compare-table">
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Oil Import Dependency</th>
+      <th>Strategic Reserves (Days)</th>
+      <th>War Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="country-name">United States</td>
+      <td>~3% from Gulf</td>
+      <td>~400+ days</td>
+      <td>Inconvenient. Gas prices up.</td>
+    </tr>
+    <tr>
+      <td class="country-name">Japan</td>
+      <td>95% from Middle East</td>
+      <td>254 days</td>
+      <td>Painful but deeply buffered.</td>
+    </tr>
+    <tr>
+      <td class="country-name">South Korea</td>
+      <td>~70% from Middle East</td>
+      <td>208 days</td>
+      <td>KOSPI dropped 19%, then recovered.</td>
+    </tr>
+    <tr>
+      <td class="country-name">China</td>
+      <td>~33% via Hormuz</td>
+      <td>~90 days (est.)</td>
+      <td>Managed. CSI 300 down only 6%.</td>
+    </tr>
+    <tr class="india-row">
+      <td class="country-name">India</td>
+      <td>85–90% imported, major share via Hormuz</td>
+      <td>20–25 days (actual)</td>
+      <td>Rupee record low. FII exodus. GDP cut. Fiscal hole.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="snark">Japan could survive a full Hormuz closure for eight months on reserves alone. India would be rationing fuel in three weeks. Same crisis, wildly different vulnerability. That's not bad luck — it's four decades of policy failure.</div>
+
+<h3>The $10 Rule: India's Oil Math</h3>
+
+<div class="callout">
+  <div class="callout-title">Every $10/Barrel Changes Everything</div>
+  <p>India imports <strong>5 million barrels of crude per day</strong>. Every <strong>$10/barrel increase</strong> raises the annual import bill by <strong>$14–16 billion</strong>. At $100/barrel, India's daily crude outflow is <strong>$500 million (₹4,600 crore)</strong>. Every. Single. Day.<br><br>
+  Pre-war crude: ~$65. If FY27 averages $110–115, that's an additional <strong>$56–64 billion</strong> in oil imports. At $120, the oil trade deficit hits $220 billion and the current account deficit blows past 3% of GDP.<br><br>
+  The RBI estimates a 10% sustained crude increase pushes retail inflation up <strong>30 basis points</strong> and shaves <strong>15 basis points off GDP growth</strong>. Crude is still 37% above pre-war levels. The math hasn't stopped mathing.</p>
+</div>
+
+<h3>The Double Whammy Nobody Else Faced</h3>
+
+<p>Most countries dealt with <em>either</em> high oil <em>or</em> a weak currency. India got both simultaneously. Between January and March 2026: Brent crude surged <strong>73%</strong> (from $60.75 to $105+). The rupee weakened <strong>5.1%</strong> (from ₹89.96 to ₹94.59 per dollar, eventually breaching ₹95). Every barrel costs more in dollar terms <em>and</em> more in rupee terms. That's a compounding effect that hits harder than either shock alone — and it's uniquely Indian because India's currency is structurally vulnerable to oil-driven capital outflows.</p>
+
+<p>The government's response was to cut excise duty on petrol and diesel by ₹10/litre — keeping pump prices from exploding. Noble intent, devastating fiscal math. Nomura estimates that cut costs <strong>₹1.65 trillion annually</strong>. That money was earmarked for roads, railways, and digital infrastructure. It's now subsidizing fuel. You're not paying for this at the petrol pump — you're paying through slower economic development for the next decade.</p>
+
+<!-- ═══════════════════ SECTION 3: MARKET SCOREBOARD ═══════════════════ -->
+<div class="section-marker marker-mint">
+  <span class="marker-line"></span>
+  <span class="marker-label">Part III — The Market Scoreboard</span>
+  <span class="marker-line"></span>
+</div>
+
+<h2>The Numbers Behind the Rally — and the Numbers Behind the Scars</h2>
+
+<h3>Global Scoreboard: April 8</h3>
+
+<div class="scoreboard">
+  <div class="sb-card sb-green">
+    <div class="sb-name">Dow Jones</div>
+    <div class="sb-move">+1,325 pts</div>
+    <div class="sb-detail">+2.85% — Best day in a year</div>
+  </div>
+  <div class="sb-card sb-green">
+    <div class="sb-name">Nasdaq</div>
+    <div class="sb-move">+2.80%</div>
+    <div class="sb-detail">Nvidia, Meta, Amazon led tech rally</div>
+  </div>
+  <div class="sb-card sb-green">
+    <div class="sb-name">KOSPI (South Korea)</div>
+    <div class="sb-move">+6.87%</div>
+    <div class="sb-detail">Best day in years — led global recovery</div>
+  </div>
+  <div class="sb-card sb-green">
+    <div class="sb-name">Nikkei 225</div>
+    <div class="sb-move">+5.39%</div>
+    <div class="sb-detail">Best since April 2025</div>
+  </div>
+  <div class="sb-card sb-red">
+    <div class="sb-name">WTI Crude</div>
+    <div class="sb-move">-16.4%</div>
+    <div class="sb-detail">$94.41/bbl — Biggest drop since Apr 2020</div>
+  </div>
+  <div class="sb-card sb-red">
+    <div class="sb-name">Brent Crude</div>
+    <div class="sb-move">-13.3%</div>
+    <div class="sb-detail">$94.75/bbl — Still 37% above pre-war</div>
+  </div>
+</div>
+
+<h3>India Scoreboard: April 8</h3>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-num" style="color: var(--mint);">+3.95%</div>
+    <div class="stat-desc">Sensex: +2,946 pts to 77,563</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color: var(--mint);">+3.78%</div>
+    <div class="stat-desc">Nifty 50: +874 pts, crossed 24,000</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color: var(--yellow);">₹16L Cr</div>
+    <div class="stat-desc">Market cap added in one session</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color: var(--lavender);">3,698</div>
+    <div class="stat-desc">Stocks advanced vs 505 declined</div>
+  </div>
+</div>
+
+<h3>Sector Winners and Losers</h3>
+
+<p>The rally wasn't random — it followed the oil-sensitivity map exactly. Sectors that bleed when crude rises are the ones that surged when it dropped.</p>
+
+<div class="pros-cons">
+  <div class="pc-col pros">
+    <h4>Winners — Oil Falls, They Rise</h4>
+    <div class="pc-item"><strong>Nifty Tourism +5.72%</strong> — Hormuz reopening = travel confidence</div>
+    <div class="pc-item"><strong>Nifty Transport & Logistics +5.68%</strong> — Freight costs crashing</div>
+    <div class="pc-item"><strong>Nifty Auto +5.48%</strong> — Biggest sectoral gainer. Fuel costs drive margins</div>
+    <div class="pc-item"><strong>Nifty Realty +5.65%</strong> — Rate-sensitive; RBI held at 5.25%</div>
+    <div class="pc-item"><strong>Nifty Bank +4.37%</strong> — Dovish RBI tone fuelled financials</div>
+    <div class="pc-item"><strong>IndiGo +8.09%</strong> — ATF is 35-40% of airline costs. Crude crash = margin relief</div>
+    <div class="pc-item"><strong>Shriram Finance +10.14%</strong> — Top Nifty gainer. High-beta repricing</div>
+    <div class="pc-item"><strong>Tata Motors +8.75%, Eicher +8.55%</strong> — Auto giants repriced for lower fuel</div>
+    <div class="pc-item"><strong>Ashok Leyland +13%</strong> — Trucking = fuel costs. Massive relief</div>
+  </div>
+  <div class="pc-col cons">
+    <h4>Losers — Oil Falls, They Hurt</h4>
+    <div class="pc-item"><strong>Coal India -3.02%</strong> — Revenue directly tied to energy commodity prices</div>
+    <div class="pc-item"><strong>ONGC -2.55%</strong> — Upstream oil producer. Lower crude = lower revenue</div>
+    <div class="pc-item"><strong>Tech Mahindra -1.35%</strong> — IT was the war's safe haven; profit-booking as money rotated out</div>
+    <div class="pc-item"><strong>Wipro -0.55%</strong> — Same rotation story</div>
+    <div class="pc-item"><strong>Nestle -0.67%</strong> — Defensive FMCG lagged in risk-on environment</div>
+    <div class="pc-item"><strong>Nifty CPSE -0.29%</strong> — Only index to close red; PSU energy names dragged</div>
+  </div>
+</div>
+
+<p>Here's what the scoreboard doesn't show: India's markets are still down significantly from pre-war highs. FIIs pulled <strong>$3 billion+</strong> in March — the largest monthly outflow in recent history. The RBI burned an estimated <strong>$12–15 billion</strong> in forex reserves defending the rupee. Earnings growth for Q4FY26 is forecast at just <strong>6% YoY</strong> — the lowest in five quarters. BofA slashed FY27 Nifty earnings growth from 14% to 8.5%. The rally is real. The recovery isn't.</p>
+
+<div class="pull-quote">
+  <p>"TACO is becoming less of a joke and more of a trading strategy. Investors have seen enough last-minute pivots to know that a two-week deadline isn't necessarily what it seems."</p>
+  <span class="pq-source">— Zavier Wong, eToro market analyst</span>
+</div>
+
+<!-- ═══════════════════ SECTION 4: YOUR MONEY ═══════════════════ -->
+<div class="section-marker marker-pink">
+  <span class="marker-line"></span>
+  <span class="marker-label">Part IV — What This Means for Your Wallet</span>
+  <span class="marker-line"></span>
+</div>
+
+<h2>Five Channels Between the Ceasefire and Your Bank Account</h2>
+
+<p><strong>Channel 1: Fuel prices.</strong> The ₹10/litre excise cut keeps pump prices artificially stable. But that ₹1.65 trillion annual revenue hole means less government spending on infrastructure. You're not saving money at the pump — you're borrowing it from the next decade's roads and railways.</p>
+
+<p><strong>Channel 2: Your grocery bill.</strong> Fertilizer prices are up 50% since the war started. Up to 30% of globally traded fertilizers transit Hormuz. The Northern Hemisphere's spring planting season has been disrupted — corn yields (the backbone of global feed stocks) could fall, pushing food prices higher into 2027. India's food inflation was a comfortable 3.47% in February. That number is moving.</p>
+
+<p><strong>Channel 3: Your SIPs and portfolio.</strong> The Nifty's April 8 rally was cathartic. But it's pricing in hope, not fundamentals. Nifty 50 earnings growth: 6% for Q4FY26. FY27 forecast slashed from 14% to 8.5%. If the ceasefire collapses, the March bloodbath repeats. If it holds, recovery is gradual, not vertical. The smart positioning: large-cap bias, 5–7 year horizon, monthly SIPs. Translation: don't get euphoric.</p>
+
+<p><strong>Channel 4: The rupee in your pocket.</strong> Every imported item got more expensive during the crisis — electronics, machinery, components, even apples (India imports 23% from Iran) and almonds (39%). The RBI is burning forex reserves to defend the currency. That's a finite resource fighting a potentially infinite problem. If crude stays above $90, the rupee stays pressured.</p>
+
+<p><strong>Channel 5: Interest rates.</strong> The RBI held at 5.25%, caught between inflation (oil) and growth anxiety (everything else). If crude stays elevated, rate cuts are off the table. Your home loan EMI isn't getting cheaper. Your car loan stays expensive. Credit-dependent businesses — which means most of India's mid-tier economy — continue operating in an elevated-cost environment.</p>
+
+<div class="data-bomb pink">
+  <div class="bomb-number pink">30 bps + 15 bps</div>
+  <div class="bomb-label">RBI's Rule of Thumb for Every 10% Crude Rise</div>
+  <div class="bomb-text">+30 basis points to retail inflation. -15 basis points off GDP growth. With crude still 37% above pre-war levels, that's roughly 111 bps of embedded inflation pressure and 56 bps of GDP drag — <em>already baked in</em>, regardless of what happens in Islamabad.</div>
+</div>
+
+<!-- ═══════════════════ SECTION 5: WHAT HAPPENS NEXT ═══════════════════ -->
+<div class="section-marker marker-lavender">
+  <span class="marker-line"></span>
+  <span class="marker-label">Part V — The Next 72 Hours Decide Everything</span>
+  <span class="marker-line"></span>
+</div>
+
+<h2>It Took 24 Hours for the Ceasefire to Start Cracking</h2>
+
+<p>By the afternoon of April 8, the ceasefire was already in trouble. Israel launched its <strong>largest coordinated strike on Lebanon</strong> since the war began — hitting Beirut without warning, killing at least 112 people. Iran, which considers Hezbollah part of its "resistance axis," responded by <strong>re-closing the Strait of Hormuz</strong>. The same strait that was the entire point of the ceasefire. Iran's coastguard broadcast to vessels: any ship sailing without permission would be <strong>"targeted and destroyed."</strong></p>
+
+<p>Iran's parliamentary speaker said three ceasefire clauses had already been violated: Lebanon strikes, a drone shot down over Iran's Fars province, and denial of enrichment rights. Meanwhile, the Farsi version of Iran's 10-point plan includes the phrase "acceptance of enrichment" — which is conveniently absent from the English version. Trump called this "fraudulent." VP Vance called the truce "fragile" and said people within Iran had been "lying" about it.</p>
+
+<div class="snark">The ceasefire's signature condition was the "complete, immediate, and safe opening of the Strait of Hormuz." It lasted roughly as long as a TikTok attention span.</div>
+
+<h3>What the Islamabad Talks Need to Bridge</h3>
+
+<div class="pros-cons">
+  <div class="pc-col" style="border-top: 3px solid var(--coral);">
+    <h4 style="color: var(--coral); border-bottom-color: #2a2a2a;">Iran's 10-Point Plan</h4>
+    <div class="pc-item">Controlled Hormuz passage under Iranian military coordination</div>
+    <div class="pc-item">Withdrawal of ALL US combat forces from regional bases</div>
+    <div class="pc-item">Lifting of all sanctions + UN resolutions</div>
+    <div class="pc-item">Full war reparations and compensation</div>
+    <div class="pc-item">End military operations against Hezbollah and all allied groups</div>
+    <div class="pc-item">Continued uranium enrichment rights</div>
+  </div>
+  <div class="pc-col" style="border-top: 3px solid var(--lavender);">
+    <h4 style="color: var(--lavender); border-bottom-color: #2a2a2a;">US 15-Point Counter</h4>
+    <div class="pc-item">No nuclear weapons + handover of enriched uranium</div>
+    <div class="pc-item">Limits on ballistic missile capabilities</div>
+    <div class="pc-item">Dissolution of regional proxy groups</div>
+    <div class="pc-item">Permanent, free, unconditional Hormuz access</div>
+    <div class="pc-item">Iran's nuclear enrichment must END</div>
+    <div class="pc-item">White House: "The president's red lines have not changed."</div>
+  </div>
+</div>
+
+<p>Iran wants to <em>keep</em> enriching and <em>control</em> Hormuz. The US wants enrichment <em>stopped</em> and Hormuz <em>free</em>. VP JD Vance leads the US delegation to Islamabad this weekend, joined by Steve Witkoff and Jared Kushner. Two weeks allocated, extendable by mutual agreement. The question isn't whether these talks will be difficult. It's whether they're possible at all.</p>
+
+<h3>Three Scenarios</h3>
+
+<div class="scenario-grid">
+  <div class="scenario-card green">
+    <div class="scenario-title">Scenario 1: The Deal Holds</div>
+    <div class="scenario-prob">Probability: ~20–25%</div>
+    <div class="scenario-text">Islamabad produces a framework. Hormuz reopens under joint protocol. Oil settles $80–90. Markets extend rally. India gets breathing room — RBI may signal rate cuts by Q3. Rupee recovers toward ₹90.</div>
+  </div>
+  <div class="scenario-card amber">
+    <div class="scenario-title">Scenario 2: Extended Stalemate</div>
+    <div class="scenario-prob">Most likely outcome</div>
+    <div class="scenario-text">Talks drag on. Ceasefire extended but Hormuz stays partially controlled with Iranian toll system. Oil hovers $90–105. Markets choppy. India stuck in inflation-growth bind. RBI holds rates. Rupee range-bound ₹91–94. The "new normal" — worse than before, better than war.</div>
+  </div>
+  <div class="scenario-card red">
+    <div class="scenario-title">Scenario 3: Collapse</div>
+    <div class="scenario-prob">Probability: ~25–30% — and rising</div>
+    <div class="scenario-text">Lebanon escalation or enrichment impasse blows up talks. Hormuz re-closes fully. Oil spikes past $120. March bloodbath replays. India faces current account crisis — rupee tests ₹98–100. FII exodus accelerates. RBI forced into emergency measures. BCA Research warning: "Fighting will ignite later this year, if not later this month."</div>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">The 72-Hour Watchlist</div>
+  <p><strong>Friday April 10:</strong> Does Vance actually land in Islamabad? The White House hasn't fully confirmed. No plane, no talks.<br><br>
+  <strong>Hormuz tanker movements:</strong> 800+ vessels trapped in the Gulf. If they don't start moving by the weekend, the "reopening" is theater. Only 4 tankers transited on Day 1.<br><br>
+  <strong>Lebanon escalation:</strong> Every Israeli strike on Beirut increases odds of permanent Hormuz closure. This is the single biggest risk variable in the entire framework.<br><br>
+  <strong>Oil price floor:</strong> Crude below $95 through Friday = market believes ceasefire. Above $110 = it doesn't.<br><br>
+  <strong>Enrichment language:</strong> Farsi vs. English discrepancy on Iran's nuclear position is a ticking bomb. If not resolved in Islamabad, nothing else matters.</p>
+</div>
+
+<!-- ═══════════════════ THE CLOSER ═══════════════════ -->
+<div class="section-marker marker-coral">
+  <span class="marker-line"></span>
+  <span class="marker-label">The Uncomfortable Truth</span>
+  <span class="marker-line"></span>
+</div>
+
+<h2>A Ceasefire Doesn't Fix a 40-Year Failure</h2>
+
+<p>In the 1980s, India's oil import dependence was 65%. Under ONGC's visionary leadership, Bombay High was pumping 476,000 barrels per day. The target was to bring import reliance below 50%. Instead, domestic production stagnated — and today India imports 90% of its crude. The Strait of Hormuz didn't become a vulnerability overnight. It became one across four decades of policy inertia, underinvestment in domestic production, and strategic complacency.</p>
+
+<p>The war didn't create this weakness. It simply made 1.4 billion people stare at it.</p>
+
+<p>Japan looked at the same Strait and built 254 days of reserves. South Korea built 208 days. India — officially — has capacity for 74 days. Actual inventories, according to refinery sources: <strong>20 to 25 days</strong>. When the Strait closed, Japan could shrug for eight months. India was three weeks from rationing.</p>
+
+<p>The ₹1.65 trillion excise cut. The $12–15 billion in burned forex reserves. The record FII exodus. The slashed GDP forecasts. The 6% earnings growth. The rupee at ₹95. These aren't war casualties — they're stress-test results. The war was the stress test. India's structural resilience was the thing being tested. And the grade came back: <strong>not ready</strong>.</p>
+
+<p>The market rallied 4% on April 8. It felt good. IndiGo popped 8%. Shriram Finance surged 10%. Ashok Leyland jumped 13%. ₹16 lakh crore appeared in a single session. And across the Strait of Hormuz, Iran's coastguard broadcast that any unauthorized ship would be "targeted and destroyed" — while four tankers cautiously transited in a waterway that normally handles 138 ships per day.</p>
+
+<p>The world exhaled. Markets rallied. Oil dropped. Headlines moved on.</p>
+
+<p>India should be holding its breath. Because the ceasefire bought time — but it didn't fix the bone. And now it has a choice: use that time to build reserves, revive domestic production, accelerate renewables, and diversify away from one strait — or go back to pretending the X-ray doesn't exist.</p>
+
+<div class="data-bomb" style="border-left-color: var(--coral); background: linear-gradient(135deg, rgba(255,107,90,0.08), rgba(255,209,102,0.04));">
+  <div class="bomb-number coral" style="font-size: 1.8rem; line-height: 1.3;">25 days of fuel. 85% import dependency. One strait. No backup. ₹4,600 crore leaving the country. Every. Single. Day.</div>
+  <div class="bomb-label" style="margin-top: 12px;">That's not a war problem. That's an India problem.</div>
+  <div class="bomb-text">The ceasefire bought time. What India does with that time — SPR expansion, domestic production revival, renewable acceleration, Hormuz-bypass supply chain diversification — determines whether the next crisis is a stress test or a breaking point. The world exhaled. India should be building. Everything else is noise.</div>
+</div>
+
+</article>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="article-footer">
+  <div class="footer-tag">SNARKY SOLUTIONS</div>
+  <div class="footer-brand">Where the data bites and the snark writes.</div>
+  <div class="footer-tagline">Classy, sassy, and backed by the numbers.</div>
+  <div class="tags">
+    <span class="tag">Geopolitics</span>
+    <span class="tag">Oil & Energy</span>
+    <span class="tag">India Economy</span>
+    <span class="tag">Strait of Hormuz</span>
+    <span class="tag">US-Iran Ceasefire</span>
+    <span class="tag">Stock Markets</span>
+    <span class="tag">Personal Finance</span>
+    <span class="tag">Nifty 50</span>
+  </div>
+</footer>
+
+</div><!-- .container -->
+</body>
+</html>
