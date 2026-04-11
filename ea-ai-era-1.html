@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Didn't Come for Leadership. It Came for the Calendar. | Snarky Solutions</title>
+<meta name="description" content="The Executive Assistant isn't dying — it's evolving. 86% of EAs say AI will enhance their role, not replace it. Here's the blueprint for the ones who'll thrive.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --bg-elevated: #222222;
+    --text-primary: #f0ece4;
+    --text-secondary: #a8a29e;
+    --text-muted: #6b6560;
+    --coral: #ff6b6b;
+    --coral-soft: #ff8a8a;
+    --yellow: #fbbf24;
+    --yellow-soft: #fcd34d;
+    --lavender: #a78bfa;
+    --lavender-soft: #c4b5fd;
+    --pink: #f472b6;
+    --mint: #34d399;
+    --teal: #2dd4bf;
+    --border: #2a2a2a;
+    --border-hover: #3a3a3a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(167, 139, 250, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(255, 107, 107, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(251, 191, 36, 0.04) 0%, transparent 50%);
+    animation: heroGlow 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroGlow {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-3%, 3%) rotate(2deg); }
+  }
+
+  .hero-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(255, 107, 107, 0.1));
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    border-radius: 100px;
+    padding: 0.5rem 1.25rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lavender-soft);
+    margin-bottom: 2rem;
+    animation: fadeDown 0.8s ease-out;
+  }
+
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--coral);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    position: relative;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    max-width: 850px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease-out 0.2s both;
+  }
+
+  .hero h1 .highlight-coral { color: var(--coral); }
+  .hero h1 .highlight-yellow { color: var(--yellow); }
+  .hero h1 .highlight-lavender { color: var(--lavender); }
+
+  .hero-sub {
+    position: relative;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s ease-out 0.4s both;
+  }
+
+  .hero-meta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    animation: fadeUp 1s ease-out 0.6s both;
+  }
+
+  .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SCROLL PROGRESS ─── */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--coral), var(--lavender), var(--yellow));
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ─── CONTENT LAYOUT ─── */
+  .content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  .content p {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .content p.lead {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    margin: 4rem 0 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-primary);
+  }
+
+  /* ─── PULLQUOTE ─── */
+  .pullquote {
+    margin: 3rem 0;
+    padding: 2rem 2.5rem;
+    border-left: 3px solid var(--coral);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.04), rgba(167, 139, 250, 0.03));
+    border-radius: 0 12px 12px 0;
+  }
+
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .pullquote .attrib {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  /* ─── STAT TICKER ─── */
+  .stat-ticker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 3rem 0;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--lavender));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .stat-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+  .stat-card:hover::before { opacity: 1; }
+
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--coral), var(--yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-number.lavender {
+    background: linear-gradient(135deg, var(--lavender), var(--pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .stat-number.mint {
+    background: linear-gradient(135deg, var(--mint), var(--teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .stat-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    opacity: 0.6;
+  }
+
+  /* ─── INTERACTIVE: EA vs AI BATTLE CARDS ─── */
+  .battle-arena {
+    margin: 3rem 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .battle-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(167, 139, 250, 0.08));
+    border-bottom: 1px solid var(--border);
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .battle-header .vs {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--yellow);
+    background: rgba(251, 191, 36, 0.12);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    letter-spacing: 0.1em;
+  }
+
+  .battle-rows { padding: 0.5rem; }
+
+  .battle-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .battle-row:hover { background: rgba(255, 255, 255, 0.02); }
+
+  .battle-skill {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .battle-bar {
+    height: 6px;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .battle-ea .battle-bar {
+    background: linear-gradient(90deg, var(--coral), var(--pink));
+    margin-left: auto;
+  }
+
+  .battle-ai .battle-bar {
+    background: linear-gradient(90deg, var(--lavender), var(--teal));
+  }
+
+  .battle-emoji {
+    font-size: 1.2rem;
+    text-align: center;
+    min-width: 2rem;
+  }
+
+  .battle-verdict {
+    padding: 1rem 1.5rem;
+    background: rgba(52, 211, 153, 0.06);
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--mint);
+    text-align: center;
+  }
+
+  /* ─── INTERACTIVE QUIZ ─── */
+  .quiz-container {
+    margin: 3rem 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .quiz-header {
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(244, 114, 182, 0.06));
+    border-bottom: 1px solid var(--border);
+  }
+
+  .quiz-header h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .quiz-header p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+  }
+
+  .quiz-progress {
+    display: flex;
+    gap: 4px;
+    padding: 1rem 2rem 0;
+  }
+
+  .quiz-dot {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    transition: background 0.4s ease;
+  }
+
+  .quiz-dot.active { background: var(--yellow); }
+  .quiz-dot.done { background: var(--mint); }
+
+  .quiz-body { padding: 2rem; }
+
+  .quiz-question {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    min-height: 2.5em;
+  }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .quiz-option {
+    padding: 1rem 1.25rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quiz-option:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    transform: translateX(4px);
+  }
+
+  .quiz-option.selected {
+    border-color: var(--yellow);
+    color: var(--text-primary);
+    background: rgba(251, 191, 36, 0.06);
+  }
+
+  .quiz-option .option-letter {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--yellow);
+    margin-right: 0.75rem;
+    font-weight: 500;
+  }
+
+  .quiz-result {
+    display: none;
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .quiz-result.show { display: block; }
+
+  .quiz-result-emoji { font-size: 3rem; margin-bottom: 1rem; }
+
+  .quiz-result-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .quiz-result-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .quiz-score-bar {
+    max-width: 300px;
+    margin: 0 auto;
+    background: var(--bg-elevated);
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+  }
+
+  .quiz-score-fill {
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--coral), var(--yellow), var(--mint));
+    transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .quiz-score-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+  }
+
+  .quiz-restart {
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+  }
+
+  .quiz-restart:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  /* ─── EVOLUTION TIMELINE ─── */
+  .timeline {
+    margin: 3rem 0;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--coral), var(--lavender), var(--mint), var(--yellow));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 1.5rem;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 3px solid var(--bg-deep);
+    transition: all 0.3s ease;
+  }
+
+  .timeline-item:nth-child(1)::before { background: var(--coral); }
+  .timeline-item:nth-child(2)::before { background: var(--lavender); }
+  .timeline-item:nth-child(3)::before { background: var(--mint); }
+  .timeline-item:nth-child(4)::before { background: var(--yellow); }
+
+  .timeline-item:hover { border-color: var(--border-hover); transform: translateX(4px); }
+
+  .timeline-era {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-item:nth-child(1) .timeline-era { color: var(--coral); }
+  .timeline-item:nth-child(2) .timeline-era { color: var(--lavender); }
+  .timeline-item:nth-child(3) .timeline-era { color: var(--mint); }
+  .timeline-item:nth-child(4) .timeline-era { color: var(--yellow); }
+
+  .timeline-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  /* ─── FLIP CARDS: DO'S & DON'TS ─── */
+  .flipcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+  }
+
+  .flipcard {
+    perspective: 800px;
+    height: 180px;
+    cursor: pointer;
+  }
+
+  .flipcard-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .flipcard.flipped .flipcard-inner { transform: rotateY(180deg); }
+
+  .flipcard-front, .flipcard-back {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .flipcard-front {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+  }
+
+  .flipcard-front .flip-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+
+  .flipcard-front .flip-label {
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .flipcard-front .flip-hint {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+
+  .flipcard-back {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-hover);
+    transform: rotateY(180deg);
+  }
+
+  .flipcard-back p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  .flipcard.do-card .flipcard-front { border-top: 2px solid var(--mint); }
+  .flipcard.dont-card .flipcard-front { border-top: 2px solid var(--coral); }
+  .flipcard.do-card .flipcard-back { border-top: 2px solid var(--mint); }
+  .flipcard.dont-card .flipcard-back { border-top: 2px solid var(--coral); }
+
+  /* ─── EA vs PA TABLE ─── */
+  .compare-table {
+    margin: 2rem 0;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .compare-table th {
+    background: var(--bg-elevated);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table th:first-child { color: var(--yellow); }
+
+  .compare-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table td:nth-child(2) { color: var(--coral-soft); font-weight: 500; }
+  .compare-table td:nth-child(3) { color: var(--text-muted); }
+
+  /* ─── CTA / CLOSER ─── */
+  .closer {
+    margin: 4rem 0;
+    padding: 3rem 2.5rem;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.06), rgba(167, 139, 250, 0.06), rgba(251, 191, 36, 0.04));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .closer h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .closer p {
+    color: var(--text-secondary);
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  /* ─── SHARE BAR ─── */
+  .share-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .share-btn:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .footer a { color: var(--coral); text-decoration: none; }
+
+  /* ─── SNARK BOX ─── */
+  .snark-box {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    background: rgba(251, 191, 36, 0.05);
+    border: 1px solid rgba(251, 191, 36, 0.15);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: var(--yellow-soft);
+    font-style: italic;
+  }
+
+  .snark-box .snark-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--yellow);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-style: normal;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ─── ANIMATE ON SCROLL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .content { padding: 0 1rem 4rem; }
+    .hero-meta { flex-direction: column; gap: 0.5rem; }
+    .battle-row { grid-template-columns: 1fr auto 1fr; font-size: 0.8rem; }
+    .flipcard-grid { grid-template-columns: 1fr; }
+    .stat-ticker { grid-template-columns: 1fr 1fr; }
+    .pullquote { padding: 1.25rem 1.5rem; }
+    .pullquote p { font-size: 1.1rem; }
+    .closer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Snarky Solutions</div>
+  <h1>AI Didn't Come for <span class="highlight-coral">Leadership.</span><br>
+  It Came for the <span class="highlight-yellow">Calendar.</span></h1>
+  <p class="hero-sub">The Executive Assistant isn't dying. It's shedding its skin. And the ones who refuse to evolve? They're already fossils.</p>
+  <div class="hero-meta">
+    <span>📍 Susmita Patra</span>
+    <span>⏱ 10 min read</span>
+    <span>📅 April 2026</span>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTENT ═══════════════════ -->
+<div class="content">
+
+  <!-- OPENER -->
+  <p class="lead reveal">Here's a sentence that will make half the corporate world clutch their pearls: <em>Your Executive Assistant probably does more strategic thinking than your middle management.</em></p>
+
+  <p class="reveal">There. I said it. Now let's back it up.</p>
+
+  <p class="reveal">The EA profession is having its main character moment — and for once, the narrative isn't "will AI kill this job?" It's "will this job finally get the respect it always deserved?" Because somewhere between booking flights and managing calendars, a quiet revolution happened. The best EAs stopped being administrators. They became <em>operators</em>. And while everyone was busy panicking about AI replacing humans, the smartest EAs picked up the AI and started running the whole show with it.</p>
+
+  <!-- STAT TICKER -->
+  <div class="stat-ticker reveal">
+    <div class="stat-card">
+      <div class="stat-number" id="stat1">86%</div>
+      <div class="stat-label">of EAs say AI will enhance, not replace, their role</div>
+      <div class="stat-source">Vimcal 2026 Report</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number lavender" id="stat2">70%</div>
+      <div class="stat-label">of EAs already use ChatGPT at work</div>
+      <div class="stat-source">Vimcal 2026 Report</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number mint" id="stat3">$21B</div>
+      <div class="stat-label">projected AI assistant market by 2030</div>
+      <div class="stat-source">MarketsandMarkets</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="stat4">304K+</div>
+      <div class="stat-label">executive assistants in the US alone</div>
+      <div class="stat-source">BLS 2026</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section-header reveal">
+    <div class="section-number">01 — The Service Line, Not the Support Line</div>
+    <h2>Beyond Support, Into Strategy</h2>
+  </div>
+
+  <p class="reveal">Let's kill the "calendar manager" narrative right now. If your EA is only managing your calendar, you either have the wrong EA or — and I say this with love — you don't know how to use one.</p>
+
+  <p class="reveal">The modern EA is a force multiplier for leadership. They sit at the intersection of executive bandwidth optimization, decision readiness, stakeholder orchestration, confidential governance, and operational rhythm. They don't just keep your day from falling apart. They make sure the right things happen <em>before</em> you even know you need them.</p>
+
+  <div class="snark-box reveal">
+    <span class="snark-tag">☕ Snarky translation</span>
+    A great EA doesn't just book the meeting room. They know which meeting shouldn't have happened in the first place, who should've been uninvited, and what decision should've been made in a Slack message at 9am.
+  </div>
+
+  <p class="reveal">The impact chain is clean: calendar and time management converts hours into high-value outcomes; communication gatekeeping protects leadership focus; meeting governance drives execution instead of discussion theatre; information synthesis enables faster decisions; and stakeholder alignment prevents the escalations that eat everyone's Thursday afternoon.</p>
+
+  <!-- SECTION 2 -->
+  <div class="section-header reveal">
+    <div class="section-number">02 — EA vs AI: The Real Scorecard</div>
+    <h2>Threat or Transformation?</h2>
+  </div>
+
+  <p class="reveal">Let's be precise about this, because the hot takes are exhausting. AI is not replacing EAs. It is replacing <em>average execution.</em> There's a difference. If all you do is schedule meetings and forward emails, yes — a $20/month subscription will do your job. But if you're reading the room, managing egos, navigating political landmines, and making judgment calls at speed? No algorithm is touching you.</p>
+
+  <!-- BATTLE CARDS -->
+  <div class="battle-arena reveal">
+    <div class="battle-header">
+      <span>🧠 Human EA</span>
+      <span class="vs">VS</span>
+      <span>🤖 AI Tools</span>
+    </div>
+    <div class="battle-rows" id="battleRows">
+      <!-- Filled by JS -->
+    </div>
+    <div class="battle-verdict">⚡ Verdict: AI eliminates task-based EAs. It elevates strategic ones.</div>
+  </div>
+
+  <p class="reveal">The market data tells the same story. The AI workplace assistant market is exploding — but so is demand for human EAs. The Robert Half 2026 Salary Guide puts senior EA compensation at $58K–$87K, with top-tier EAs in major metros commanding six figures. Companies aren't paying that for calendar management. They're paying for judgment, discretion, and the ability to make their C-suite look competent.</p>
+
+  <!-- SECTION 3 -->
+  <div class="section-header reveal">
+    <div class="section-number">03 — The Evolution Blueprint</div>
+    <h2>From Task Executor to Decision Enabler</h2>
+  </div>
+
+  <p class="reveal">This is where it gets real. If you're an EA reading this and thinking "I'm fine, AI won't affect me" — congratulations, you're in the denial stage. Here's the upgrade path for the ones who plan to survive and thrive:</p>
+
+  <!-- TIMELINE -->
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-era">Upgrade 01</div>
+      <div class="timeline-title">Calendar Manager → Time Strategist</div>
+      <div class="timeline-desc">Stop booking meetings. Start prioritizing by business impact. Decline low-value engagements proactively. Your exec's time is a finite, non-renewable resource — guard it like it's uranium.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-era">Upgrade 02</div>
+      <div class="timeline-title">Note-taker → Insight Generator</div>
+      <div class="timeline-desc">Anyone can take minutes. Can you summarize a 90-minute meeting into three decisions, two risks, and five next steps — in under 300 words? That's the difference between documentation and intelligence.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-era">Upgrade 03</div>
+      <div class="timeline-title">Coordinator → Operator</div>
+      <div class="timeline-desc">Run governance rhythms: weekly reviews, dashboards, RAID logs. Move from "arranging things" to "running things." Be the operating system, not the screensaver.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-era">Upgrade 04</div>
+      <div class="timeline-title">Reactive → Predictive</div>
+      <div class="timeline-desc">Anticipate escalations, flag deadlines, preempt leadership needs before they become Slack emergencies at 11pm. The best EAs solve problems that haven't happened yet.</div>
+    </div>
+  </div>
+
+  <div class="pullquote reveal">
+    <p>"AI didn't come for leadership. It came for management. And for EAs, this is not the end — it's a filter."</p>
+    <span class="attrib">— The uncomfortable truth, delivered without anaesthesia</span>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section-header reveal">
+    <div class="section-number">04 — What Leaders Actually Want</div>
+    <h2>They Measure Relief, Not Effort</h2>
+  </div>
+
+  <p class="reveal">Here's what no job description will tell you: executives don't measure EAs by how busy they are. They measure them by how much <em>quieter</em> their world gets. An exceptional EA reduces cognitive load, filters noise, ensures nothing falls through, and keeps leadership prepared — always. Not sometimes. Not "during business hours." <em>Always.</em></p>
+
+  <p class="reveal">The math is straightforward. Structured scheduling buys strategic thinking time. Strong follow-ups compress execution cycles. Briefing documents improve decisions. Stakeholder handling reduces friction. Crisis management ensures business continuity. A strong EA directly improves decision speed, execution quality, and leadership reputation. That's not support. That's infrastructure.</p>
+
+  <div class="snark-box reveal">
+    <span class="snark-tag">☕ Snarky translation</span>
+    Your CEO doesn't need you to "be a team player." They need you to be the reason they don't have a meltdown before the board meeting. Different job. Higher value.
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section-header reveal">
+    <div class="section-number">05 — The 2026 Skill Stack</div>
+    <h2>What You Need in Your Arsenal</h2>
+  </div>
+
+  <p class="reveal">The EA of 2026 needs a very specific cocktail of competencies. Business acumen — understanding revenue, cost, and what actually matters to the P&L. Tech fluency — advanced Excel, AI tools (yes, ChatGPT, but also automation platforms, Copilot, and whatever drops next quarter). Communication mastery — crisp emails, executive summaries, stakeholder handling that doesn't require a follow-up apology. Analytical thinking — connecting dots across discussions, spotting risks before they become fires. Emotional intelligence — reading the room, managing egos, handling sensitive situations with grace. And the non-negotiable: confidentiality and integrity. Break trust once, and your career in this space is done.</p>
+
+  <!-- SECTION 6 -->
+  <div class="section-header reveal">
+    <div class="section-number">06 — The Survival Manual</div>
+    <h2>Tap the Cards. Learn the Rules.</h2>
+  </div>
+
+  <p class="reveal">Here's the do's and don'ts of exceptional EA performance. Tap each card to flip it.</p>
+
+  <div class="flipcard-grid reveal">
+    <div class="flipcard do-card" onclick="this.classList.toggle('flipped')">
+      <div class="flipcard-inner">
+        <div class="flipcard-front">
+          <div class="flip-icon">🎯</div>
+          <div class="flip-label">Be Proactive</div>
+          <div class="flip-hint">tap to flip</div>
+        </div>
+        <div class="flipcard-back">
+          <p>Don't wait for instructions on obvious actions. Anticipate, prepare, act. Your exec shouldn't need to remind you about the quarterly deck — you should've started it two weeks ago.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flipcard dont-card" onclick="this.classList.toggle('flipped')">
+      <div class="flipcard-inner">
+        <div class="flipcard-front">
+          <div class="flip-icon">📬</div>
+          <div class="flip-label">Don't Be a Postbox</div>
+          <div class="flip-hint">tap to flip</div>
+        </div>
+        <div class="flipcard-back">
+          <p>Forwarding emails without context is the EA equivalent of "per my last email." Add value — summarize, prioritize, flag what needs action, and kill what doesn't.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flipcard do-card" onclick="this.classList.toggle('flipped')">
+      <div class="flipcard-inner">
+        <div class="flipcard-front">
+          <div class="flip-icon">🔒</div>
+          <div class="flip-label">Guard Confidentiality</div>
+          <div class="flip-hint">tap to flip</div>
+        </div>
+        <div class="flipcard-back">
+          <p>You will know things that would make Wall Street blush. Salary data. Strategy pivots. Personnel decisions. That information dies with you. Always.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flipcard dont-card" onclick="this.classList.toggle('flipped')">
+      <div class="flipcard-inner">
+        <div class="flipcard-front">
+          <div class="flip-icon">📅</div>
+          <div class="flip-label">Don't Overbook</div>
+          <div class="flip-hint">tap to flip</div>
+        </div>
+        <div class="flipcard-back">
+          <p>A calendar with no gaps isn't "productive" — it's a cry for help. Protect white space. Your exec needs time to think, not just to perform.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flipcard do-card" onclick="this.classList.toggle('flipped')">
+      <div class="flipcard-inner">
+        <div class="flipcard-front">
+          <div class="flip-icon">🧠</div>
+          <div class="flip-label">Think from Their Lens</div>
+          <div class="flip-hint">tap to flip</div>
+        </div>
+        <div class="flipcard-back">
+          <p>Before presenting anything, ask: "If I were the one making the decision, what would I need?" That mindset shift is the gap between good and exceptional.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flipcard dont-card" onclick="this.classList.toggle('flipped')">
+      <div class="flipcard-inner">
+        <div class="flipcard-front">
+          <div class="flip-icon">🚨</div>
+          <div class="flip-label">Don't Escalate Empty</div>
+          <div class="flip-hint">tap to flip</div>
+        </div>
+        <div class="flipcard-back">
+          <p>Never bring a problem without at least one proposed solution. "We have a problem" is information. "We have a problem, here's what I recommend" is leadership.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section-header reveal">
+    <div class="section-number">07 — EA ≠ PA. Let's Settle This.</div>
+    <h2>One Manages Tasks. The Other Manages Impact.</h2>
+  </div>
+
+  <p class="reveal">I know this one stings for some, but the distinction matters — for career progression, compensation, and how you position yourself in interviews. Here's the clean breakdown:</p>
+
+  <table class="compare-table reveal">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Executive Assistant</th>
+        <th>Personal Assistant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Scope</td><td>Business-focused</td><td>Personal + basic admin</td></tr>
+      <tr><td>Involvement</td><td>Strategic</td><td>Operational</td></tr>
+      <tr><td>Decision Influence</td><td>High</td><td>Low</td></tr>
+      <tr><td>Stakeholder Interaction</td><td>Senior leadership</td><td>Limited</td></tr>
+      <tr><td>Skills Required</td><td>Analytical + Business + EQ</td><td>Coordination + Execution</td></tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 8: QUIZ -->
+  <div class="section-header reveal">
+    <div class="section-number">08 — The Reality Check</div>
+    <h2>What Kind of EA Are You?</h2>
+  </div>
+
+  <p class="reveal">Take the quiz. Be honest. The discomfort is the point.</p>
+
+  <div class="quiz-container reveal" id="quizContainer">
+    <div class="quiz-header">
+      <h3>🎯 The EA Evolution Index</h3>
+      <p>5 questions. No sugarcoating. Find out where you stand.</p>
+    </div>
+    <div class="quiz-progress" id="quizProgress"></div>
+    <div class="quiz-body" id="quizBody">
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-result-emoji" id="resultEmoji"></div>
+      <div class="quiz-result-title" id="resultTitle"></div>
+      <div class="quiz-result-desc" id="resultDesc"></div>
+      <div class="quiz-score-bar"><div class="quiz-score-fill" id="scoreFill"></div></div>
+      <div class="quiz-score-label" id="scoreLabel"></div>
+      <button class="quiz-restart" onclick="restartQuiz()">↺ Retake Quiz</button>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section-header reveal">
+    <div class="section-number">09 — Your Positioning Strategy</div>
+    <h2>The Future EA Wears Many Hats</h2>
+  </div>
+
+  <p class="reveal">If you want to not just survive but <em>command</em> this space in the next five years, you need a positioning strategy. Stop calling yourself an assistant. Start positioning as a Chief of Staff (Lite), a Business Partner, an Execution Driver. Your personal brand should whisper one thing loud and clear: <em>"If I am in the room, things will move forward."</em></p>
+
+  <p class="reveal">The data supports this. The Vimcal 2026 report surveyed 600 EAs, and the overwhelming consensus was clear — the best ones are already operating as strategic partners, not support staff. They're using AI to draft agendas, polish communications, and plan smarter. They're not threatened by the technology. They're <em>wielding</em> it.</p>
+
+  <!-- CLOSER -->
+  <div class="closer reveal">
+    <h2>The Filter Is Already On.</h2>
+    <p>The ones who only execute will struggle. The ones who think, anticipate, and influence — will become indispensable. The question isn't whether AI will change the EA profession. It already has. The only question left is: which side of the filter are you on?</p>
+  </div>
+
+  <!-- SHARE BAR -->
+  <div class="share-bar reveal">
+    <a class="share-btn" href="https://twitter.com/intent/tweet?text=AI%20didn%27t%20come%20for%20leadership.%20It%20came%20for%20the%20calendar.%20The%20EA%20evolution%20blueprint%20%F0%9F%94%A5&url=" target="_blank">𝕏 Share</a>
+    <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=" target="_blank">in LinkedIn</a>
+    <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href); this.textContent='✓ Copied!'">🔗 Copy Link</button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><a href="#">Snarky Solutions</a> · Built with opinions and data · © 2026</p>
+  <p style="margin-top:0.5rem;">Sources: Vimcal 2026 EA Report · Robert Half 2026 Salary Guide · MarketsandMarkets · BLS · GeekWire</p>
+</div>
+
+<script>
+// ─── SCROLL PROGRESS ───
+window.addEventListener('scroll', () => {
+  const scrolled = (document.documentElement.scrollTop) / (document.documentElement.scrollHeight - window.innerHeight);
+  document.getElementById('scrollProgress').style.width = `${Math.min(scrolled * 100, 100)}%`;
+});
+
+// ─── REVEAL ON SCROLL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── BATTLE CARDS ───
+const battleData = [
+  { skill: 'Scheduling', ea: 60, ai: 90, emoji: '📅' },
+  { skill: 'Email Drafting', ea: 55, ai: 85, emoji: '✉️' },
+  { skill: 'Data Summary', ea: 50, ai: 92, emoji: '📊' },
+  { skill: 'Travel Planning', ea: 65, ai: 80, emoji: '✈️' },
+  { skill: 'Contextual Judgment', ea: 95, ai: 20, emoji: '🧠' },
+  { skill: 'Political Awareness', ea: 95, ai: 5, emoji: '🎭' },
+  { skill: 'Emotional Intelligence', ea: 98, ai: 8, emoji: '💡' },
+  { skill: 'Crisis Handling', ea: 92, ai: 15, emoji: '🔥' },
+  { skill: 'Trust & Discretion', ea: 99, ai: 10, emoji: '🔒' },
+];
+
+const battleRows = document.getElementById('battleRows');
+battleData.forEach((item, i) => {
+  const row = document.createElement('div');
+  row.className = 'battle-row';
+  row.innerHTML = `
+    <div class="battle-ea" style="text-align:right">
+      <div class="battle-bar" style="width:0%;max-width:100%" data-width="${item.ea}%"></div>
+    </div>
+    <div>
+      <div class="battle-emoji">${item.emoji}</div>
+      <div class="battle-skill">${item.skill}</div>
+    </div>
+    <div class="battle-ai">
+      <div class="battle-bar" style="width:0%;max-width:100%" data-width="${item.ai}%"></div>
+    </div>
+  `;
+  battleRows.appendChild(row);
+});
+
+// Animate battle bars on scroll
+const battleObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.querySelectorAll('.battle-bar').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+      }, 200);
+    }
+  });
+}, { threshold: 0.3 });
+
+battleObserver.observe(document.querySelector('.battle-arena'));
+
+// ─── QUIZ ───
+const quizQuestions = [
+  {
+    q: "Your exec has 3 conflicting meeting requests from equally senior stakeholders. What do you do?",
+    options: [
+      { text: "Book all three — let them sort it out", score: 0 },
+      { text: "First come, first served", score: 1 },
+      { text: "Check priorities, propose a stacked schedule, brief exec with context on each", score: 3 },
+      { text: "Ask your exec which one to prioritize", score: 2 }
+    ]
+  },
+  {
+    q: "A board member emails your exec at 11pm about a 'critical issue' that isn't actually urgent. What's your move?",
+    options: [
+      { text: "Forward it immediately — it's a board member", score: 1 },
+      { text: "Hold it, assess, draft a response, send your exec a brief in the morning with a recommendation", score: 3 },
+      { text: "Ignore it until morning", score: 0 },
+      { text: "Reply on behalf of your exec saying they'll follow up tomorrow", score: 2 }
+    ]
+  },
+  {
+    q: "AI tools just automated 40% of your weekly tasks. What do you do with the freed time?",
+    options: [
+      { text: "Leave earlier — efficiency win!", score: 0 },
+      { text: "Ask your exec what else they need", score: 1 },
+      { text: "Identify gaps in governance, reporting, or stakeholder comms and fill them proactively", score: 3 },
+      { text: "Learn more AI tools", score: 2 }
+    ]
+  },
+  {
+    q: "You overhear a confidential conversation about an upcoming restructure. A colleague directly asks you about it. Your response?",
+    options: [
+      { text: "Share the gist — they'll find out soon anyway", score: 0 },
+      { text: "\"I'm not aware of anything specific\" — then redirect the conversation", score: 3 },
+      { text: "\"I can't discuss that\" — and walk away", score: 2 },
+      { text: "Tell them to ask their own manager", score: 1 }
+    ]
+  },
+  {
+    q: "Your exec asks you to prepare a briefing doc for a meeting in 2 hours. You know the meeting is a waste of time. What do you do?",
+    options: [
+      { text: "Prepare the doc without question", score: 1 },
+      { text: "Prepare the doc AND add a tactful note explaining why the meeting may not be the best use of their time, with an alternative suggestion", score: 3 },
+      { text: "Tell them the meeting is pointless", score: 0 },
+      { text: "Prepare the doc but include a 'recommended action' section that subtly steers the outcome", score: 2 }
+    ]
+  }
+];
+
+let currentQ = 0;
+let quizScore = 0;
+
+function renderQuiz() {
+  const progress = document.getElementById('quizProgress');
+  progress.innerHTML = quizQuestions.map((_, i) =>
+    `<div class="quiz-dot ${i < currentQ ? 'done' : ''} ${i === currentQ ? 'active' : ''}"></div>`
+  ).join('');
+
+  const q = quizQuestions[currentQ];
+  document.getElementById('quizQuestion').textContent = q.q;
+
+  const optionsEl = document.getElementById('quizOptions');
+  const letters = ['A', 'B', 'C', 'D'];
+  optionsEl.innerHTML = q.options.map((opt, i) =>
+    `<div class="quiz-option" onclick="selectAnswer(${i}, ${opt.score})">
+      <span class="option-letter">${letters[i]}</span>${opt.text}
+    </div>`
+  ).join('');
+
+  document.getElementById('quizBody').style.display = 'block';
+  document.getElementById('quizResult').classList.remove('show');
+}
+
+function selectAnswer(index, score) {
+  quizScore += score;
+  const options = document.querySelectorAll('.quiz-option');
+  options[index].classList.add('selected');
+
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < quizQuestions.length) {
+      renderQuiz();
+    } else {
+      showResult();
+    }
+  }, 400);
+}
+
+function showResult() {
+  document.getElementById('quizBody').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.classList.add('show');
+
+  const maxScore = quizQuestions.length * 3;
+  const pct = Math.round((quizScore / maxScore) * 100);
+
+  let emoji, title, desc;
+  if (pct >= 80) {
+    emoji = '🔥'; title = 'The Strategic Operator';
+    desc = "You're already operating at Chief of Staff level. You don't wait for instructions — you anticipate, prepare, and influence. AI is your tool, not your threat.";
+  } else if (pct >= 55) {
+    emoji = '⚡'; title = 'The Rising Strategist';
+    desc = "You've got the instincts but haven't fully committed to the upgrade. The gap between good and exceptional is closing — push through it.";
+  } else if (pct >= 30) {
+    emoji = '📋'; title = 'The Solid Coordinator';
+    desc = "You're reliable and competent, but you're still operating in reactive mode. The evolution from task executor to decision enabler starts now.";
+  } else {
+    emoji = '🚦'; title = 'The Wake-Up Call';
+    desc = "Straight talk: AI can already do most of what you described. The filter is coming — and it's time to decide which side you want to be on.";
+  }
+
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultDesc').textContent = desc;
+  document.getElementById('scoreLabel').textContent = `Evolution Index: ${pct}% — scored ${quizScore}/${maxScore}`;
+
+  setTimeout(() => {
+    document.getElementById('scoreFill').style.width = `${pct}%`;
+  }, 300);
+}
+
+function restartQuiz() {
+  currentQ = 0;
+  quizScore = 0;
+  document.getElementById('scoreFill').style.width = '0%';
+  renderQuiz();
+}
+
+// Initialize quiz
+renderQuiz();
+</script>
+</body>
+</html>
