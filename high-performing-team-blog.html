@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High-Performing Team? Or Just Well-Dressed Chaos? | Snarky Solutions</title>
+<meta name="description" content="10 steps to stop managing chaos and start leading a team that actually delivers. Interactive diagnostic included.">
+<meta property="og:title" content="High-Performing Team? Or Just Well-Dressed Chaos?">
+<meta property="og:description" content="10 steps to stop managing chaos and start leading a team that actually delivers.">
+<meta property="og:type" content="article">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0f0f13;
+  --bg-card: #1a1a22;
+  --bg-accent: #22222e;
+  --bg-elevated: #2a2a38;
+  --coral: #FF6B6B;
+  --yellow: #FFD93D;
+  --lavender: #B8A9E8;
+  --pink: #FF8FA3;
+  --green: #6BCB77;
+  --mint: #4ECDC4;
+  --text: #f0ece4;
+  --text-muted: #9a958c;
+  --text-dim: #6b665f;
+  --champagne: #d4c5a9;
+  --border: #2e2e3a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+::selection { background: rgba(184,169,232,0.3); }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px; line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+}
+a { color: var(--coral); text-decoration: none; }
+.container { max-width: 700px; margin: 0 auto; padding: 0 22px; }
+
+/* Hero */
+.hero {
+  padding: 70px 22px 50px; text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255,107,107,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(184,169,232,0.05) 0%, transparent 50%);
+  animation: glow 12s ease-in-out infinite alternate;
+}
+@keyframes glow { 0%{transform:translate(0,0)} 100%{transform:translate(-3%,2%) rotate(3deg)} }
+.hero-label {
+  font-family: 'DM Mono', monospace; font-size: 11px; color: var(--coral);
+  text-transform: uppercase; letter-spacing: 4px; position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(28px, 6vw, 46px); font-weight: 800;
+  line-height: 1.15; margin: 14px 0 16px; position: relative; z-index: 1;
+}
+.hero h1 span { color: var(--coral); }
+.hero-sub {
+  font-size: 16px; color: var(--text-muted); max-width: 480px; margin: 0 auto;
+  line-height: 1.7; position: relative; z-index: 1;
+}
+.hero-meta {
+  margin-top: 22px; font-family: 'DM Mono', monospace; font-size: 12px;
+  color: var(--text-dim); position: relative; z-index: 1;
+}
+
+/* Progress */
+.reading-bar { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(90deg, var(--coral), var(--lavender), var(--mint)); z-index: 1000; }
+
+/* Sections */
+.section { margin-bottom: 52px; opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
+.section.visible { opacity: 1; transform: translateY(0); }
+.step-tag { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; display: inline-block; margin-bottom: 8px; }
+.section h2 { font-family: 'Fraunces', serif; font-size: clamp(21px, 4vw, 28px); font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+.section h3 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; margin: 22px 0 12px; }
+.section p { color: var(--text-muted); margin-bottom: 14px; }
+.section p.pop { color: var(--text); font-weight: 500; font-size: 17px; }
+.divider { width: 50px; height: 2px; background: linear-gradient(90deg, var(--coral), var(--lavender)); margin: 0 auto 52px; border-radius: 2px; }
+
+/* Callouts */
+.snark, .lift {
+  border-left: 3px solid; border-radius: 0 8px 8px 0;
+  padding: 14px 18px; margin: 18px 0; font-size: 15px; line-height: 1.7; font-style: italic;
+}
+.snark { border-color: var(--coral); background: rgba(255,107,107,0.07); }
+.lift { border-color: var(--green); background: rgba(107,203,119,0.07); }
+.snark::before { content: '🔥 '; font-style: normal; }
+.lift::before { content: '✦ '; font-style: normal; }
+
+/* Expandable */
+.exp { background: var(--bg-accent); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; transition: border-color 0.3s; }
+.exp.open { border-color: rgba(184,169,232,0.3); }
+.exp-head { padding: 13px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+.exp-head:hover { background: var(--bg-elevated); }
+.exp-title { font-size: 14px; font-weight: 500; }
+.exp-icon { font-size: 18px; color: var(--lavender); transition: transform 0.3s; line-height: 1; }
+.exp.open .exp-icon { transform: rotate(45deg); }
+.exp-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.exp.open .exp-body { max-height: 400px; padding: 0 16px 14px; }
+.exp-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+/* Type cards */
+.types { display: grid; gap: 10px; margin: 14px 0; }
+.tcard { background: var(--bg-accent); border-radius: 10px; padding: 14px 16px; border-left: 3px solid; transition: transform 0.2s; }
+.tcard:hover { transform: translateX(3px); }
+.tcard strong { font-family: 'Fraunces', serif; font-size: 15px; }
+.tcard p { font-size: 13px; margin: 4px 0 0; }
+
+/* Rhythm */
+.rhythm { background: var(--bg-accent); border-radius: 12px; overflow: hidden; margin: 16px 0; }
+.rcard { padding: 16px 18px; border-bottom: 1px solid var(--border); }
+.rcard:last-child { border-bottom: none; }
+.rcard-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.rcard-freq { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; }
+.rcard-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+.rcard-focus { font-size: 13px; color: var(--champagne); font-weight: 600; margin-bottom: 4px; }
+.rcard p { font-size: 14px; margin: 0; }
+
+/* Compare */
+.cmp { background: var(--bg-accent); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; }
+.cmp-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--champagne); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+.cmp-no { font-size: 13px; color: var(--coral); text-decoration: line-through; opacity: 0.6; }
+.cmp-yes { font-size: 13px; color: var(--green); font-weight: 500; margin-top: 3px; }
+
+/* Narrative cards */
+.ncard { background: var(--bg-accent); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; border-left: 3px solid; }
+.ncard-dir { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.ncard p { font-size: 13px; margin: 0; }
+
+/* Ambiguity */
+.amb { background: var(--bg-accent); border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.amb-item { display: flex; gap: 8px; align-items: baseline; margin-bottom: 8px; }
+.amb-item:last-child { margin-bottom: 0; }
+.amb-item span:first-child { color: var(--yellow); font-size: 13px; }
+.amb-item span:last-child { font-size: 13px; color: var(--text-muted); }
+
+/* Banner */
+.banner {
+  text-align: center; font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700;
+  padding: 22px; margin: 18px 0; background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(107,203,119,0.1));
+  border-radius: 12px; line-height: 1.4;
+}
+.banner .accent { color: var(--coral); }
+
+/* Diagnostic */
+.diag-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 18px 0; }
+.dq { background: var(--bg-accent); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+.dq-text { font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 10px; }
+.dq-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.dopt {
+  padding: 7px 16px; border-radius: 18px; border: none; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 500;
+  background: var(--bg-card); color: var(--text-muted); transition: all 0.2s;
+}
+.dopt:hover { background: var(--bg-elevated); color: var(--text); }
+.dopt.sel { background: var(--lavender); color: var(--bg); }
+.dsub {
+  width: 100%; padding: 14px; border-radius: 10px; border: none; cursor: pointer;
+  font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700;
+  background: var(--bg-accent); color: var(--text-dim); margin-top: 8px; transition: all 0.3s;
+}
+.dsub.go { background: var(--coral); color: #fff; }
+.dsub.go:hover { background: #ff5252; }
+.dresult { text-align: center; padding: 24px 16px; display: none; }
+.dresult.show { display: block; }
+.dscore-ring {
+  width: 110px; height: 110px; border-radius: 50%; border: 4px solid;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+}
+.dscore-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 800; }
+.dverdict { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 10px; }
+.dmsg { font-size: 14px; color: var(--text); line-height: 1.7; max-width: 440px; margin: 0 auto 16px; }
+.dretake {
+  padding: 8px 20px; border-radius: 18px; border: 1px solid var(--border);
+  background: transparent; color: var(--text-muted); cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px;
+}
+
+/* Checklist */
+.cl-group { margin-bottom: 28px; }
+.cl-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.cl-label { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; }
+.cl-pct { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; }
+.cl-bar { height: 3px; background: var(--bg-accent); border-radius: 3px; margin-bottom: 12px; overflow: hidden; }
+.cl-fill { height: 100%; border-radius: 3px; width: 0%; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+.ci {
+  display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px;
+  cursor: pointer; border-radius: 6px; margin-bottom: 3px; user-select: none;
+}
+.ci:hover { background: rgba(255,255,255,0.02); }
+.cb {
+  width: 18px; height: 18px; min-width: 18px; border-radius: 4px;
+  border: 2px solid var(--text-dim); display: flex; align-items: center;
+  justify-content: center; margin-top: 2px; transition: all 0.2s;
+  font-size: 11px; font-weight: 800; color: var(--bg);
+}
+.ci.done .cb { border-color: var(--green); background: var(--green); }
+.ct { font-size: 13px; line-height: 1.5; color: var(--text); transition: all 0.2s; }
+.ci.done .ct { color: var(--text-muted); text-decoration: line-through; }
+
+/* Footer */
+.post-footer { border-top: 1px solid var(--border); padding: 36px 0 50px; text-align: center; }
+.post-footer p { font-size: 13px; color: var(--text-dim); margin-bottom: 6px; }
+.footer-brand { font-family: 'Fraunces', serif; font-size: 17px; color: var(--champagne); font-weight: 600; }
+
+/* Back to top */
+.btt {
+  position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px;
+  border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-muted); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transition: all 0.3s; z-index: 100; font-size: 16px;
+}
+.btt.on { opacity: 1; }
+.btt:hover { background: var(--coral); color: #fff; border-color: var(--coral); }
+
+@media (max-width: 600px) {
+  .hero { padding: 50px 18px 36px; }
+  .container { padding: 0 16px; }
+  .diag-box { padding: 18px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="reading-bar" id="bar"></div>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-label">Snarky Solutions</span>
+  <h1>High-Performing Team?<br><span>Or Just Well-Dressed Chaos?</span></h1>
+  <p class="hero-sub">10 steps. Zero motivational posters. One diagnostic to make you slightly uncomfortable.</p>
+  <div class="hero-meta">Leadership · Team Management · 6 min read</div>
+</header>
+
+<div class="container">
+
+<!-- INTRO -->
+<section class="section" id="intro">
+  <p>Meetings? Plenty. Updates? Endless. Ownership? Somewhere in the CC list.</p>
+  <p>And yet… nothing really moves.</p>
+  <p>If you're leading a team and everything <em>looks</em> productive but <em>feels</em> heavy — it's not a people problem. It's a system problem. And if you've been leading for more than six months, <em>you are the system.</em></p>
+  <p class="pop">Let's fix that.</p>
+</section>
+<div class="divider"></div>
+
+<!-- DIAGNOSTIC -->
+<section class="section" id="diagnostic">
+  <span class="step-tag" style="color:var(--coral)">Step 00</span>
+  <h2>Quick Check: Where Are You?</h2>
+  <p class="snark">Most leaders skip the mirror and jump straight to frameworks. Don't.</p>
+  <div class="diag-box" id="dbox">
+    <p style="color:var(--champagne);font-style:italic;font-size:13px;margin-bottom:18px">8 questions. Be honest — nobody's watching.</p>
+    <div id="dqs"></div>
+    <button class="dsub" id="dsub" onclick="showResult()">Show me my reality →</button>
+    <div class="dresult" id="dresult">
+      <div class="dscore-ring" id="dring"><span class="dscore-num" id="dnum"></span></div>
+      <div class="dverdict" id="dverd"></div>
+      <p class="dmsg" id="dmsg"></p>
+      <button class="dretake" onclick="resetDiag()">Retake</button>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 1 -->
+<section class="section" id="step1">
+  <span class="step-tag" style="color:var(--yellow)">Step 01</span>
+  <h2>Define Success Like You Mean It</h2>
+  <p class="snark">"Let's do our best" is a screensaver, not a strategy.</p>
+  <p>Good teams run on clarity, not vibes. Put a number on it. Name an owner. Set a deadline. When the scoreboard is clear, nobody argues about what counts as a win.</p>
+  <p class="pop">"98% SLA. Zero surprises. Risks flagged 48 hours early."</p>
+  <p class="lift">Clarity isn't just management — it's respect. It says "I trust you enough to be straight with you."</p>
+
+  <div class="exp" onclick="toggleExp(this)">
+    <div class="exp-head"><span class="exp-title">🧪 Try this: ask your newest member what "good" looks like</span><span class="exp-icon">+</span></div>
+    <div class="exp-body"><p>If they can't answer in 15 seconds, your definition of success is a secret. Secrets don't scale.</p></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 2 -->
+<section class="section" id="step2">
+  <span class="step-tag" style="color:var(--lavender)">Step 02</span>
+  <h2>Read the Room (The Real One)</h2>
+  <p>Forget the org chart. Every team actually runs on four types:</p>
+  <div class="types">
+    <div class="tcard" style="border-color:var(--lavender)"><strong style="color:var(--lavender)">👑 Influencers</strong><p>No title, but they set the tone. Win them first.</p></div>
+    <div class="tcard" style="border-color:var(--yellow)"><strong style="color:var(--yellow)">📖 Narrators</strong><p>They control the corridor story. Fill the vacuum before they do.</p></div>
+    <div class="tcard" style="border-color:var(--coral)"><strong style="color:var(--coral)">🧱 Blockers</strong><p>Slow things down — usually not on purpose. Diagnose before you judge.</p></div>
+    <div class="tcard" style="border-color:var(--green)"><strong style="color:var(--green)">⚡ Doers</strong><p>They deliver. Quietly. Protect them fiercely.</p></div>
+  </div>
+  <p class="lift">Leadership isn't treating everyone the same. It's seeing everyone clearly.</p>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 3 -->
+<section class="section" id="step3">
+  <span class="step-tag" style="color:var(--mint)">Step 03</span>
+  <h2>Build a Dashboard That Doesn't Lie</h2>
+  <p class="snark">If it's not on the dashboard, it didn't happen. Sorry.</p>
+  <div style="background:var(--bg-accent);border-radius:10px;padding:16px 18px;margin:14px 0">
+    <p style="margin-bottom:8px"><span style="color:var(--coral)">●</span> <strong>Red is red.</strong> Not "amber with context."</p>
+    <p style="margin-bottom:8px"><span style="color:var(--yellow)">●</span> <strong>Delay is delay.</strong> Not "revised timeline."</p>
+    <p style="margin-bottom:0"><span style="color:var(--lavender)">●</span> <strong>Owner is named.</strong> A person. Not "cross-functional team."</p>
+  </div>
+  <p>Review it live. Weekly. Together. Let the red cells do the talking.</p>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 4 -->
+<section class="section" id="step4">
+  <span class="step-tag" style="color:var(--pink)">Step 04</span>
+  <h2>Replace Motivation with Rhythm</h2>
+  <p class="snark">Your team doesn't need a TED talk. They need a Tuesday.</p>
+  <div class="rhythm">
+    <div class="rcard">
+      <div class="rcard-head"><span class="rcard-freq" style="color:var(--coral)">Daily</span><span class="rcard-time">15 min</span></div>
+      <div class="rcard-focus">Blockers only</div>
+      <p>What's stuck? Who needs help? Nobody stuck? Done in 2 minutes.</p>
+    </div>
+    <div class="rcard">
+      <div class="rcard-head"><span class="rcard-freq" style="color:var(--yellow)">Weekly</span><span class="rcard-time">30 min</span></div>
+      <div class="rcard-focus">Metrics + Risks</div>
+      <p>Dashboard on screen. What moved? What didn't? Next.</p>
+    </div>
+    <div class="rcard">
+      <div class="rcard-head"><span class="rcard-freq" style="color:var(--lavender)">Monthly</span><span class="rcard-time">60 min</span></div>
+      <div class="rcard-focus">Big picture</div>
+      <p>Zoom out. Are we solving the right problems?</p>
+    </div>
+  </div>
+  <p>Consistency beats intensity. Every single time.</p>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 5 -->
+<section class="section" id="step5">
+  <span class="step-tag" style="color:var(--green)">Step 05</span>
+  <h2>Give Ownership, Not Instructions</h2>
+  <p>More instructions = less accountability. Give people the outcome and let them figure out the how.</p>
+  <div class="cmp">
+    <div class="cmp-label">Instead of → Try</div>
+    <p class="cmp-no">"Send a check-in email every Thursday"</p>
+    <p class="cmp-yes">"Client NPS above 8.5 this quarter — it's yours"</p>
+  </div>
+  <div class="cmp">
+    <div class="cmp-label">Instead of → Try</div>
+    <p class="cmp-no">"Update the tracker daily"</p>
+    <p class="cmp-yes">"Zero surprises at Friday review"</p>
+  </div>
+  <p class="lift">Let them fail small. When they solve it their way — and it works — celebrate loudly. That's the team growing beyond you.</p>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 6 -->
+<section class="section" id="step6">
+  <span class="step-tag" style="color:var(--coral)">Step 06</span>
+  <h2>Break Silos</h2>
+  <p class="snark">Nobody was ever transformed by a trust fall.</p>
+  <p>Silos aren't structural. They're a trust problem in an org chart disguise. Fix them with shared outcomes, not team lunches.</p>
+  <div class="exp" onclick="toggleExp(this)">
+    <div class="exp-head"><span class="exp-title">📊 Share a KPI across two teams</span><span class="exp-icon">+</span></div>
+    <div class="exp-body"><p>When two teams own the same number, they <em>have</em> to talk. Simple as that.</p></div>
+  </div>
+  <div class="exp" onclick="toggleExp(this)">
+    <div class="exp-head"><span class="exp-title">🔄 Rotate people for a month</span><span class="exp-icon">+</span></div>
+    <div class="exp-body"><p>Nothing kills "us vs. them" like having been "them." They come back with empathy.</p></div>
+  </div>
+  <div class="exp" onclick="toggleExp(this)">
+    <div class="exp-head"><span class="exp-title">🔨 Kill "my team's update" in reviews</span><span class="exp-icon">+</span></div>
+    <div class="exp-body"><p>Replace with "this week's outcome" — which usually took three teams. The format shapes the thinking.</p></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 7 -->
+<section class="section" id="step7">
+  <span class="step-tag" style="color:var(--yellow)">Step 07</span>
+  <h2>Kill Ambiguity, Kill Politics</h2>
+  <p>"There's too much politics" usually means "there's too much room for interpretation."</p>
+  <div class="amb">
+    <div class="amb-item"><span>▸</span><span>Roles that overlap with no tiebreaker</span></div>
+    <div class="amb-item"><span>▸</span><span>Decisions made but never written down</span></div>
+    <div class="amb-item"><span>▸</span><span>"Let's discuss offline" that never came back online</span></div>
+    <div class="amb-item"><span>▸</span><span>Goals that mean different things to different people</span></div>
+  </div>
+  <p class="snark">Every ambiguity is a blank cheque for someone's agenda. Stop writing those cheques.</p>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 8 -->
+<section class="section" id="step8">
+  <span class="step-tag" style="color:var(--lavender)">Step 08</span>
+  <h2>Own the Narrative</h2>
+  <p>If you're not shaping your team's story, someone else is. And their version won't be kind.</p>
+  <div class="ncard" style="border-color:var(--lavender)"><div class="ncard-dir" style="color:var(--lavender)">↑ Upward</div><p>Does leadership only hear your fires? That's not a narrative — that's a fire alarm.</p></div>
+  <div class="ncard" style="border-color:var(--champagne)"><div class="ncard-dir" style="color:var(--champagne)">↔ Internal</div><p>Does your team know <em>why</em>? People tolerate hard work — not pointless work.</p></div>
+  <div class="ncard" style="border-color:var(--mint)"><div class="ncard-dir" style="color:var(--mint)">← → Peers</div><p>Are you the team that delivers — or the one always firefighting?</p></div>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 9 -->
+<section class="section" id="step9">
+  <span class="step-tag" style="color:var(--pink)">Step 09</span>
+  <h2>Be Nice. But Not <em>That</em> Nice.</h2>
+  <p class="snark">"Nice" leadership is sometimes just conflict avoidance in a pleasant font.</p>
+  <p>Your team needs safety to speak up — but safety isn't comfort. A comfortable team is a stagnant team.</p>
+  <div class="banner">Safe to speak. <span class="accent">Not safe to coast.</span></div>
+  <p>Praise publicly. Correct privately. But <em>always</em> correct.</p>
+</section>
+<div class="divider"></div>
+
+<!-- STEP 10 -->
+<section class="section" id="step10">
+  <span class="step-tag" style="color:var(--mint)">Step 10</span>
+  <h2>Reward the Flag, Not the Fire</h2>
+  <p>Great teams aren't problem-free. They're problem-fast. Bad news travels quickly because raising it is safe.</p>
+  <p>In excuse cultures, people sit on problems hoping they'll vanish. In early-warning cultures, the first sign of trouble triggers a flag — not blame.</p>
+  <p class="lift">When someone flags a risk early — celebrate it. Even if it's nothing. <em>Especially</em> if it's nothing. That's the behaviour you're training.</p>
+</section>
+<div class="divider"></div>
+
+<!-- 90-DAY PLAYBOOK -->
+<section class="section" id="playbook">
+  <span class="step-tag" style="color:var(--champagne)">The Playbook</span>
+  <h2>Your 90-Day Checklist</h2>
+  <p>Reading's done. Tick these off — one at a time.</p>
+
+  <div class="cl-group" data-color="var(--coral)">
+    <div class="cl-head"><span class="cl-label">Week 1</span><span class="cl-pct" style="color:var(--coral)">0%</span></div>
+    <div class="cl-bar"><div class="cl-fill" style="background:var(--coral)"></div></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Map your team: Influencers, Narrators, Blockers, Doers</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Define 3 measurable outcomes for the quarter</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Set up one honest dashboard</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Start daily standups — 15 min, blockers only</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">1:1 with every direct report. Listen more than talk.</span></div>
+  </div>
+
+  <div class="cl-group" data-color="var(--yellow)">
+    <div class="cl-head"><span class="cl-label">Week 2–3</span><span class="cl-pct" style="color:var(--yellow)">0%</span></div>
+    <div class="cl-bar"><div class="cl-fill" style="background:var(--yellow)"></div></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Share outcome definitions with the full team</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Identify 3 ambiguities causing friction</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Document a decision that was never communicated</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Run your first live dashboard review</span></div>
+  </div>
+
+  <div class="cl-group" data-color="var(--lavender)">
+    <div class="cl-head"><span class="cl-label">Month 1</span><span class="cl-pct" style="color:var(--lavender)">0%</span></div>
+    <div class="cl-bar"><div class="cl-fill" style="background:var(--lavender)"></div></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">First monthly narrative session</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Publicly reward someone for flagging a risk</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Kill one meeting that produces no decisions</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Have the hard conversation you've been dodging</span></div>
+  </div>
+
+  <div class="cl-group" data-color="var(--green)">
+    <div class="cl-head"><span class="cl-label">End of Quarter</span><span class="cl-pct" style="color:var(--green)">0%</span></div>
+    <div class="cl-bar"><div class="cl-fill" style="background:var(--green)"></div></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Is everyone in their highest-leverage role?</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Are cross-team KPIs actually moving?</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Is your "nice but firm" balance right?</span></div>
+    <div class="ci" onclick="tick(this)"><div class="cb"></div><span class="ct">Update your team map — has the ecosystem shifted?</span></div>
+  </div>
+
+  <!-- Closing -->
+  <div style="text-align:center;padding:34px 20px;margin-top:24px;background:linear-gradient(135deg,rgba(255,107,107,0.08),rgba(107,203,119,0.08));border-radius:14px;border:1px solid var(--border)">
+    <p style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;margin-bottom:10px;line-height:1.3">High performance isn't a talent problem.<br><span style="color:var(--coral)">It's a design problem.</span></p>
+    <p style="font-size:15px;color:var(--text-muted);margin-bottom:14px">And if you're the leader? You're the designer.</p>
+    <p style="font-family:'Fraunces',serif;font-size:16px;color:var(--champagne);font-style:italic;margin-bottom:0">Focus less on what happened today.<br>Focus on what actually <em>moved</em>.</p>
+  </div>
+
+  <div style="margin-top:32px;padding:20px;background:var(--bg-card);border-radius:10px;border:1px solid var(--border);text-align:center">
+    <p style="font-size:14px;color:var(--text);margin-bottom:6px">Enjoyed this? Got war stories?</p>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:0">14 years of building, rescuing, and occasionally rage-quitting teams. Let's compare notes.</p>
+  </div>
+</section>
+
+</div>
+
+<footer class="post-footer">
+  <div class="container">
+    <p class="footer-brand">Snarky Solutions</p>
+    <p>Classy takes. Sassy delivery. For professionals who think for themselves.</p>
+  </div>
+</footer>
+
+<script>
+// Diagnostic
+const QS=[
+  "Can your newest member say what 'good' looks like this quarter?",
+  "When something goes red, does the team flag it within 24 hours?",
+  "Do you know who your informal influencers are?",
+  "Is your weekly rhythm consistent — regardless of who's available?",
+  "When did someone last challenge you in a meeting — and you thanked them?",
+  "Do peer teams want to collaborate with yours?",
+  "If you vanished for two weeks, would the team deliver the same?",
+  "Does leadership know your team's story — not just the fires?"
+];
+const OPTS=["Definitely","Mostly","Somewhat","Not really"];
+const SC={"Definitely":3,"Mostly":2,"Somewhat":1,"Not really":0};
+let ans={};
+
+(function(){
+  const c=document.getElementById('dqs');
+  QS.forEach((q,i)=>{
+    const d=document.createElement('div');d.className='dq';d.id='dq'+i;
+    d.innerHTML=`<p class="dq-text">${i+1}. ${q}</p><div class="dq-opts">${OPTS.map(o=>`<button class="dopt" onclick="pickD(${i},'${o}',this)">${o}</button>`).join('')}</div>`;
+    c.appendChild(d);
+  });
+})();
+
+function pickD(i,o,b){
+  ans[i]=o;
+  document.querySelectorAll('#dq'+i+' .dopt').forEach(x=>x.classList.remove('sel'));
+  b.classList.add('sel');
+  if(Object.keys(ans).length===QS.length) document.getElementById('dsub').classList.add('go');
+}
+
+function showResult(){
+  if(Object.keys(ans).length<QS.length)return;
+  const t=Object.values(ans).reduce((s,a)=>s+SC[a],0);
+  const p=Math.round(t/(QS.length*3)*100);
+  let v,c,m;
+  if(p>=80){v="High-Performing";c="var(--green)";m="Your system works. This guide sharpens the edges.";}
+  else if(p>=55){v="Functional but Fragile";c="var(--yellow)";m="Solid bones — but one bad month and it wobbles. Time to reinforce.";}
+  else if(p>=30){v="Well-Dressed Chaos";c="var(--coral)";m="Looks busy. Feels stuck. You're in exactly the right place.";}
+  else{v="Survival Mode";c="var(--pink)";m="Honest about it? That alone puts you ahead. Let's build from here.";}
+  document.querySelectorAll('#dbox .dq, #dsub, #dbox > p').forEach(e=>e.style.display='none');
+  const r=document.getElementById('dresult');r.classList.add('show');
+  document.getElementById('dring').style.borderColor=c;
+  document.getElementById('dnum').style.color=c;
+  document.getElementById('dnum').textContent=p+'%';
+  document.getElementById('dverd').style.color=c;
+  document.getElementById('dverd').textContent=v;
+  document.getElementById('dmsg').textContent=m;
+}
+
+function resetDiag(){
+  ans={};
+  document.querySelectorAll('#dbox .dq, #dsub, #dbox > p').forEach(e=>e.style.display='');
+  document.querySelectorAll('.dopt').forEach(b=>b.classList.remove('sel'));
+  document.getElementById('dsub').classList.remove('go');
+  document.getElementById('dresult').classList.remove('show');
+}
+
+// Expandable
+function toggleExp(el){el.classList.toggle('open');}
+
+// Checklist
+function tick(el){
+  el.classList.toggle('done');
+  el.querySelector('.cb').textContent=el.classList.contains('done')?'✓':'';
+  const g=el.closest('.cl-group'),all=g.querySelectorAll('.ci'),dn=g.querySelectorAll('.ci.done');
+  const p=Math.round(dn.length/all.length*100);
+  g.querySelector('.cl-pct').textContent=p+'%';
+  g.querySelector('.cl-fill').style.width=p+'%';
+  if(p===100){g.querySelector('.cl-pct').style.color='var(--green)';g.querySelector('.cl-fill').style.background='var(--green)';}
+  else{g.querySelector('.cl-pct').style.color=g.dataset.color;g.querySelector('.cl-fill').style.background=g.dataset.color;}
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.section').forEach(s=>obs.observe(s));
+
+// Progress + back to top
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('bar').style.width=(window.scrollY/h*100)+'%';
+  document.getElementById('btt').classList.toggle('on',window.scrollY>400);
+});
+</script>
+</body>
+</html>
