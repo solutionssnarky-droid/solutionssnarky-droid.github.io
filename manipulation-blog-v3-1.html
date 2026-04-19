@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wait… Are You Being Manipulated? | Snarky Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg:#0f0f13; --surface:#16161d; --surface2:#1e1e28; --surface3:#23232f;
+  --coral:#ff6b6b; --yellow:#f5c842; --lavender:#c4b5fd; --pink:#f472b6;
+  --green:#4ade80; --orange:#fb923c;
+  --text:#e8e6e3; --muted:#888799; --border:rgba(255,255,255,0.06); --border2:rgba(255,255,255,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.75;overflow-x:hidden}
+
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--coral),var(--pink),var(--lavender));width:0%;z-index:999;transition:width 0.1s linear}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+header{border-bottom:1px solid var(--border);padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(15,15,19,0.92);backdrop-filter:blur(16px);position:sticky;top:0;z-index:200}
+.logo{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;letter-spacing:-0.02em}
+.logo span{color:var(--coral)}
+nav{display:flex;gap:2rem}
+nav a{font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+nav a:hover{color:var(--coral)}
+
+/* SCORE PILL */
+#score-pill{position:fixed;bottom:2rem;right:2rem;background:var(--surface2);border:1px solid var(--border2);border-radius:100px;padding:0.65rem 1.2rem;display:flex;align-items:center;gap:0.7rem;z-index:300;opacity:0;transform:translateY(20px);transition:all 0.4s ease;backdrop-filter:blur(12px)}
+#score-pill.visible{opacity:1;transform:translateY(0)}
+.pill-label{font-family:'DM Mono',monospace;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)}
+.pill-num{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;color:var(--coral);line-height:1}
+.pill-max{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted)}
+
+/* HERO */
+.hero{position:relative;padding:5rem 2rem 3rem;max-width:800px;margin:0 auto;z-index:1}
+.tag-row{display:flex;gap:0.6rem;margin-bottom:1.6rem;flex-wrap:wrap}
+.tag{font-family:'DM Mono',monospace;font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.27rem 0.75rem;border-radius:2px;font-weight:500}
+.tag-red{background:rgba(255,107,107,0.12);color:var(--coral);border:1px solid rgba(255,107,107,0.25)}
+.tag-yellow{background:rgba(245,200,66,0.1);color:var(--yellow);border:1px solid rgba(245,200,66,0.2)}
+.tag-lav{background:rgba(196,181,253,0.1);color:var(--lavender);border:1px solid rgba(196,181,253,0.18)}
+
+h1{font-family:'Fraunces',serif;font-size:clamp(2.1rem,5vw,3.5rem);font-weight:900;line-height:1.06;letter-spacing:-0.03em;margin-bottom:1.3rem}
+h1 em{font-style:italic;font-weight:300;color:var(--coral)}
+
+.byline{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.byline-dot{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--pink));display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:0.82rem;color:#fff;flex-shrink:0}
+.byline-text{font-size:0.8rem;color:var(--muted)}
+.byline-text strong{color:var(--text);font-weight:600}
+
+.pull-quote{border-left:3px solid var(--coral);padding:1rem 1.4rem;background:rgba(255,107,107,0.05);border-radius:0 6px 6px 0;font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;font-weight:300}
+
+/* CONTENT */
+.content{max-width:800px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+
+p{font-size:1rem;color:#ccc8c4;margin-bottom:1.4rem;font-weight:400}
+p strong{color:var(--text)}
+
+/* Conversational aside */
+.aside{background:var(--surface2);border-left:2px solid var(--lavender);padding:0.9rem 1.2rem;border-radius:0 6px 6px 0;margin:1.5rem 0;font-size:0.9rem;color:#bbb8b4;font-style:italic}
+.aside::before{content:'💬  ';font-style:normal}
+
+h2{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;margin:3rem 0 0.8rem;color:var(--text)}
+h2 .ac{color:var(--yellow)}
+h2 .ac2{color:var(--lavender)}
+h2 .ac3{color:var(--coral)}
+
+.section-mono{font-family:'DM Mono',monospace;font-size:0.69rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin:3rem 0 1.4rem;display:flex;align-items:center;gap:1rem}
+.section-mono::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* STAT ROW */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.stat-box{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1rem;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:900;display:block;margin-bottom:0.3rem}
+.stat-label{font-size:0.7rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);line-height:1.5}
+
+/* ASSESSMENT */
+.assessment-wrapper{background:var(--surface);border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin:2rem 0}
+.assessment-header{background:linear-gradient(135deg,rgba(255,107,107,0.1),rgba(196,181,253,0.07));border-bottom:1px solid var(--border);padding:1.6rem 2rem}
+.assessment-header h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;margin-bottom:0.35rem}
+.assessment-header p{margin:0;font-size:0.85rem;color:var(--muted)}
+.assessment-body{padding:1.4rem 2rem 1.8rem}
+
+.score-meter-wrap{margin-bottom:1.4rem}
+.score-display{display:flex;align-items:baseline;gap:0.4rem;margin-bottom:0.5rem}
+#live-score{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:900;color:var(--coral);line-height:1;transition:color 0.4s}
+.score-denom{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--muted)}
+.score-bar-track{height:5px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden;margin-bottom:0.45rem}
+#score-bar-fill{height:100%;background:var(--coral);border-radius:3px;width:0%;transition:width 0.5s cubic-bezier(.4,0,.2,1),background 0.4s}
+#threat-label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.4s}
+
+/* SIGN CARDS */
+.signs-grid{display:flex;flex-direction:column;gap:0.6rem}
+.sign-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.25s;overflow:hidden;position:relative}
+.sign-card-top{display:grid;grid-template-columns:40px 1fr 28px;gap:0.8rem;align-items:center;padding:0.95rem 1.2rem}
+.sign-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--card-color,var(--coral));opacity:0;transition:opacity 0.3s}
+.sign-card.checked::before{opacity:1}
+.sign-card.checked{border-color:rgba(255,255,255,0.13);background:var(--surface3)}
+.sign-num-sm{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:900;color:var(--card-color,var(--coral));opacity:0.28;transition:opacity 0.3s;line-height:1}
+.sign-card.checked .sign-num-sm{opacity:0.65}
+.sign-card h3{font-size:0.87rem;font-weight:700;color:var(--text);margin-bottom:0.12rem}
+.sign-kw{font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--card-color,var(--coral));opacity:0.7}
+.check-box{width:22px;height:22px;border:1.5px solid var(--border2);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:all 0.25s;flex-shrink:0}
+.sign-card.checked .check-box{background:var(--card-color,var(--coral));border-color:var(--card-color,var(--coral))}
+.check-box svg{display:none}
+.sign-card.checked .check-box svg{display:block}
+
+.sign-expand{max-height:0;overflow:hidden;transition:max-height 0.35s cubic-bezier(.4,0,.2,1)}
+.sign-card.open .sign-expand{max-height:340px}
+.sign-expand-inner{padding:0 1.2rem 1.2rem 3.7rem;display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.expand-block{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:6px;padding:0.85rem 0.95rem}
+.expand-block-label{font-family:'DM Mono',monospace;font-size:0.59rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.35rem}
+.expand-block p{font-size:0.81rem;color:#bab7b3;margin:0;line-height:1.55}
+.expand-action{grid-column:1/-1}
+.expand-action p{color:var(--yellow)}
+
+/* STRATEGY ENGINE */
+.strategy-engine{background:var(--surface);border:1px solid rgba(196,181,253,0.18);border-radius:12px;overflow:hidden;margin:2rem 0}
+.strategy-engine-header{background:linear-gradient(135deg,rgba(196,181,253,0.09),rgba(244,114,182,0.06));border-bottom:1px solid var(--border);padding:1.6rem 2rem}
+.strategy-engine-header h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:0.3rem}
+.strategy-engine-header p{font-size:0.83rem;color:var(--muted);margin:0}
+#strategy-output{padding:1.6rem 2rem;min-height:140px}
+.strategy-placeholder{text-align:center;padding:2rem 1rem;color:var(--muted)}
+.strategy-placeholder .placeholder-icon{font-size:2.2rem;margin-bottom:0.7rem;display:block;opacity:0.4}
+.strategy-placeholder p{font-size:0.85rem}
+.strategy-cards{display:flex;flex-direction:column;gap:0.75rem}
+.strat-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.15rem 1.3rem;display:grid;grid-template-columns:34px 1fr;gap:0.9rem;align-items:start;animation:fadeIn 0.4s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.strat-icon{width:34px;height:34px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0}
+.strat-card h4{font-size:0.87rem;font-weight:700;color:var(--text);margin-bottom:0.28rem}
+.strat-card p{font-size:0.81rem;color:var(--muted);margin:0;line-height:1.55}
+.strat-level{font-family:'DM Mono',monospace;font-size:0.59rem;text-transform:uppercase;letter-spacing:0.08em;padding:0.13rem 0.45rem;border-radius:2px;display:inline-block;margin-bottom:0.28rem}
+
+/* FRAMEWORKS */
+.frameworks-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}
+.framework-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:border-color 0.25s,transform 0.25s;cursor:pointer;position:relative;overflow:hidden}
+.framework-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--fw-color,var(--coral));transform:scaleX(0);transition:transform 0.3s ease}
+.framework-card:hover{transform:translateY(-2px);border-color:var(--border2)}
+.framework-card:hover::after{transform:scaleX(1)}
+.fw-icon{font-size:1.3rem;margin-bottom:0.7rem}
+.fw-label{font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--fw-color,var(--coral));margin-bottom:0.35rem}
+.framework-card h3{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-bottom:0.4rem;color:var(--text)}
+.framework-card p{font-size:0.79rem;color:var(--muted);margin:0;line-height:1.5}
+
+.framework-detail{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.7rem 1.9rem;margin:0.6rem 0 2rem;display:none;animation:fadeIn 0.35s ease}
+.framework-detail.active{display:block}
+.framework-detail h4{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin-bottom:1rem;color:var(--text)}
+.fw-steps{list-style:none;counter-reset:step}
+.fw-steps li{counter-increment:step;display:grid;grid-template-columns:30px 1fr;gap:0.8rem;padding:0.75rem 0;border-bottom:1px solid var(--border);align-items:start}
+.fw-steps li:last-child{border-bottom:none}
+.fw-steps li::before{content:counter(step);font-family:'DM Mono',monospace;font-size:0.7rem;width:26px;height:26px;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0}
+.fw-steps li strong{font-size:0.84rem;color:var(--text);display:block;margin-bottom:0.18rem}
+.fw-steps li span{font-size:0.79rem;color:var(--muted);line-height:1.55}
+
+/* MATRIX */
+.matrix-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.81rem}
+.matrix-table th{font-family:'DM Mono',monospace;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);padding:0.65rem 1rem;text-align:left;border-bottom:1px solid var(--border2);background:rgba(255,255,255,0.02)}
+.matrix-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:#ccc8c4;line-height:1.5;vertical-align:top}
+.matrix-table tr:last-child td{border-bottom:none}
+.matrix-table tr:hover td{background:rgba(255,255,255,0.015)}
+.rec-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.06em;padding:0.15rem 0.48rem;border-radius:2px;font-weight:500}
+.rec-yes{background:rgba(74,222,128,0.12);color:var(--green)}
+.rec-no{background:rgba(255,107,107,0.12);color:var(--coral)}
+.rec-wait{background:rgba(245,200,66,0.12);color:var(--yellow)}
+
+/* EVIDENCE LOG */
+.evidence-template{background:var(--surface);border:1px solid rgba(74,222,128,0.18);border-radius:10px;padding:1.7rem 2rem;margin:1.8rem 0}
+.et-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.3rem}
+.et-icon{width:38px;height:38px;background:rgba(74,222,128,0.09);border:1px solid rgba(74,222,128,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.et-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--text)}
+.et-sub{font-size:0.76rem;color:var(--muted)}
+.log-fields{display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.1rem}
+.log-field{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;display:grid;grid-template-columns:130px 1fr;gap:0.8rem;align-items:center}
+.log-field-label{font-family:'DM Mono',monospace;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted)}
+.log-field-input{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:0.38rem 0.65rem;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;outline:none;transition:border-color 0.2s;width:100%}
+.log-field-input:focus{border-color:rgba(74,222,128,0.35)}
+.log-field-input::placeholder{color:rgba(255,255,255,0.18)}
+.copy-log-btn{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.22);color:var(--green);font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.6rem 1.3rem;border-radius:4px;cursor:pointer;transition:all 0.2s}
+.copy-log-btn:hover{background:rgba(74,222,128,0.18)}
+
+/* CALLOUTS */
+.callout{border:1px solid rgba(245,200,66,0.2);background:rgba(245,200,66,0.04);border-radius:8px;padding:1.3rem 1.5rem;margin:1.8rem 0}
+.callout-label{font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.55rem;display:flex;align-items:center;gap:0.4rem}
+.callout p{color:var(--text);margin:0;font-size:0.91rem}
+.red-alert{border:1px solid rgba(255,107,107,0.22);background:rgba(255,107,107,0.05);border-radius:8px;padding:1.3rem 1.5rem;margin:1.8rem 0}
+.red-alert-label{font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--coral);margin-bottom:0.55rem;display:flex;align-items:center;gap:0.4rem}
+.red-alert p{color:var(--text);margin:0;font-size:0.91rem}
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,rgba(255,107,107,0.09),rgba(196,181,253,0.06));border:1px solid rgba(255,107,107,0.16);border-radius:12px;padding:2.8rem 2.5rem;text-align:center;margin:3rem 0 2rem}
+.final-cta h2{font-size:1.9rem;margin:0 0 0.7rem}
+.final-cta p{max-width:480px;margin:0 auto 1.4rem;font-size:0.92rem}
+.cta-btn{display:inline-block;background:var(--coral);color:#fff;font-family:'DM Mono',monospace;font-size:0.73rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.78rem 1.9rem;border-radius:4px;text-decoration:none;transition:all 0.2s}
+.cta-btn:hover{background:#ff4f4f;transform:translateY(-1px)}
+
+hr.div{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);letter-spacing:0.06em}
+footer span{color:var(--coral)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero>*{animation:fadeUp 0.7s ease both}
+.hero>*:nth-child(1){animation-delay:.05s}.hero>*:nth-child(2){animation-delay:.12s}.hero>*:nth-child(3){animation-delay:.18s}.hero>*:nth-child(4){animation-delay:.24s}.hero>*:nth-child(5){animation-delay:.3s}
+
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:rgba(255,107,107,0.3);border-radius:2px}
+
+@media(max-width:640px){
+  .stat-row,.frameworks-grid{grid-template-columns:1fr}
+  nav{display:none}
+  h1{font-size:2rem}
+  .sign-expand-inner{grid-template-columns:1fr}
+  .log-field{grid-template-columns:1fr;gap:0.35rem}
+  .matrix-table{font-size:0.74rem}
+  .matrix-table th,.matrix-table td{padding:0.5rem 0.6rem}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<div id="score-pill">
+  <div>
+    <div class="pill-label">Your Score</div>
+    <div style="display:flex;align-items:baseline;gap:0.3rem">
+      <span class="pill-num" id="pill-score-num">0</span>
+      <span class="pill-max">/ 13</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="logo">Snarky <span>Solutions</span></div>
+  <nav>
+    <a href="#">Workplace</a><a href="#">Career</a><a href="#">Money</a><a href="#">AI</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="tag-row">
+    <span class="tag tag-red">Workplace</span>
+    <span class="tag tag-yellow">Real Talk</span>
+    <span class="tag tag-lav">Strategy</span>
+  </div>
+  <h1>Wait — Are You<br>Being <em>Manipulated</em>?<br>13 Signs to Check<br>Right Now.</h1>
+  <div class="byline">
+    <div class="byline-dot">S</div>
+    <div class="byline-text">
+      <strong>Snarky Solutions</strong> · April 2026<br>
+      Interactive · 10 min · Workplace Intelligence
+    </div>
+  </div>
+  <div class="pull-quote">
+    "The worst part? It rarely feels like manipulation. It feels like your fault."
+  </div>
+</div>
+
+<div class="content">
+
+  <p>Okay, let's talk. Not in a "here are 13 bullet points" way. In a "sit down, I need to tell you something" way.</p>
+
+  <p>Because there's a very specific kind of exhaustion — you probably know it — where you work hard, you show up, you deliver. And yet somehow, at the end of every week, you feel like you're failing. Like you're always slightly behind. Like you're the common denominator in every problem, even the ones you didn't start.</p>
+
+  <p>That feeling? It has a name. And it's not burnout. It's not imposter syndrome. It's what happens when someone is <strong>deliberately keeping you off-balance</strong> — and doing it well enough that you've started to believe the story they're telling about you.</p>
+
+  <div class="aside">I'm not saying everyone who frustrates you is a manipulator. Most people are just bad at communicating. But when the pattern is consistent, deliberate, and only seems to benefit one person? That's different.</div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="stat-num" style="color:var(--coral)">74%</span>
+      <span class="stat-label">of employees report toxic management behaviours</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num" style="color:var(--lavender)">3×</span>
+      <span class="stat-label">more likely to stay silent when gaslit by authority</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num" style="color:var(--yellow)">58%</span>
+      <span class="stat-label">never even call it manipulation at all</span>
+    </div>
+  </div>
+
+  <p>That last stat is the one that gets me. More than half of people living inside a manipulative dynamic never name it for what it is. They call it stress. They call it a tough phase. They call it "my manager has high standards."</p>
+
+  <p>So here's what we're going to do. I'm going to walk you through 13 signs — and you're going to tick off the ones you recognise. Not as a test. Just as a way of letting yourself see clearly, maybe for the first time in a while.</p>
+
+  <div class="section-mono">The Radar · Check What You've Lived</div>
+
+  <div class="assessment-wrapper">
+    <div class="assessment-header">
+      <h3>🔍 The Manipulation Radar</h3>
+      <p>Tick the signs you recognise. Click any card to dig into what it actually means — and what to do about it. Your strategy builds automatically as you go.</p>
+    </div>
+    <div class="assessment-body">
+      <div class="score-meter-wrap">
+        <div class="score-display">
+          <span id="live-score">0</span>
+          <span class="score-denom">/ 13 recognised so far</span>
+        </div>
+        <div class="score-bar-track"><div id="score-bar-fill"></div></div>
+        <div id="threat-label">Start ticking — no judgment here</div>
+      </div>
+      <div class="signs-grid" id="signs-grid"></div>
+    </div>
+  </div>
+
+  <div class="strategy-engine">
+    <div class="strategy-engine-header">
+      <h3>⚡ Your Strategy, Built in Real Time</h3>
+      <p>Not generic advice. Based on exactly what you just ticked above — here's what to actually do.</p>
+    </div>
+    <div id="strategy-output">
+      <div class="strategy-placeholder">
+        <span class="placeholder-icon">🎯</span>
+        <p>Tick at least one sign to get your personalised moves.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <h2>Now Let's Talk About <span class="ac2">What Actually Helps</span></h2>
+
+  <p>Because "set boundaries" and "have a conversation" are not strategy. They're placeholders for strategy. And if you're dealing with someone who's good at this — someone with power, someone practiced — generic advice will get you nowhere. Might even make things worse.</p>
+
+  <p>These four frameworks are what I'd tell a close friend. They're not dramatic. They're not aggressive. They're just the things that actually work when you're navigating something genuinely difficult at work.</p>
+
+  <div class="frameworks-grid">
+    <div class="framework-card" style="--fw-color:var(--coral)" onclick="showFramework('doc')">
+      <div class="fw-icon">📂</div>
+      <div class="fw-label">Framework 01</div>
+      <h3>The Documentation Protocol</h3>
+      <p>Not just "keep emails." A structured system that turns scattered moments into an evidence trail you can actually use.</p>
+    </div>
+    <div class="framework-card" style="--fw-color:var(--lavender)" onclick="showFramework('vis')">
+      <div class="fw-icon">🏛</div>
+      <div class="fw-label">Framework 02</div>
+      <h3>The Visibility Architecture</h3>
+      <p>Building your reputation with senior stakeholders before a crisis — so you're never dependent on one person's story about you.</p>
+    </div>
+    <div class="framework-card" style="--fw-color:var(--yellow)" onclick="showFramework('exit')">
+      <div class="fw-icon">🚀</div>
+      <div class="fw-label">Framework 03</div>
+      <h3>The Exit Velocity Formula</h3>
+      <p>How to build your options quietly — from inside — without tipping your hand. Because nothing changes your confidence like having a Plan B.</p>
+    </div>
+    <div class="framework-card" style="--fw-color:var(--pink)" onclick="showFramework('confront')">
+      <div class="fw-icon">⚖️</div>
+      <div class="fw-label">Framework 04</div>
+      <h3>The Confrontation Decision Matrix</h3>
+      <p>When to name it, when to stay quiet, and when staying quiet has become the real problem. A decision model, not a gut feeling.</p>
+    </div>
+  </div>
+
+  <div class="framework-detail" id="fw-doc">
+    <h4>📂 The Documentation Protocol — Five Steps</h4>
+    <ol class="fw-steps">
+      <li><strong>Timestamp everything within 30 minutes</strong><span>After any significant conversation, email yourself a quick summary. Subject: [Date] [Person's initials] [Topic]. Don't wait until you remember it better — you won't. Contemporaneous records carry actual legal weight. Memory doesn't.</span></li>
+      <li><strong>Use the STAR-E format</strong><span>Situation. Task. Action. Result. Evidence. For every incident, note what was said, what was implied, who was in the room, and what changed after. Feelings are secondary. Observable facts are primary. The difference matters when it matters.</span></li>
+      <li><strong>Keep your log completely separate</strong><span>Don't mix your evidence log with any formal emails or grievance process. Your log is private intelligence — not a weapon to pull out prematurely. The moment you show your hand too early, you lose the advantage.</span></li>
+      <li><strong>Document a baseline week first</strong><span>Spend five days recording normal interactions before anything escalates. This gives you a behavioural baseline that makes deviations provable, not just memorable. "This felt different from usual" is powerful when you can show what usual looked like.</span></li>
+      <li><strong>Know your contract clauses by number</strong><span>"I think I have rights" is not the same as "Clause 4 of my appointment letter specifies X." Read your contract tonight. Know the clauses covering feedback obligations, notice periods, assessment criteria. Precision changes the room.</span></li>
+    </ol>
+  </div>
+
+  <div class="framework-detail" id="fw-vis">
+    <h4>🏛 The Visibility Architecture — Five Moves</h4>
+    <ol class="fw-steps">
+      <li><strong>Map who knows your work beyond your direct manager</strong><span>If the answer is "nobody" — that's your vulnerability, right there. Visibility with two or more senior stakeholders completely changes your negotiating position. One person cannot control a narrative they don't own exclusively.</span></li>
+      <li><strong>Make your deliverables attribution-rich</strong><span>Every output you create should carry your name, your framing, your voice. Not as ego — as record. When a deck gets forwarded three levels up, it should be obvious who built it and what thinking went into it.</span></li>
+      <li><strong>Send a weekly written update</strong><span>A short end-of-week summary to your manager (bcc'd to yourself) creates a paper trail of your contributions. Phrase it as progress, not justification: "This week I completed X which delivered Y" — not "I just wanted to let you know I was working on..."</span></li>
+      <li><strong>Build lateral relationships with intent</strong><span>Peer allies in other functions create social proof that can't be unilaterally controlled. If someone tries to damage your reputation, having people who've worked directly with you — across teams, not just above you — matters enormously.</span></li>
+      <li><strong>Publish externally when you can</strong><span>A LinkedIn article. An industry comment. A panel slot. External visibility creates an independent professional identity that no internal actor can erase. This is your insurance policy. Build it before you need it.</span></li>
+    </ol>
+  </div>
+
+  <div class="framework-detail" id="fw-exit">
+    <h4>🚀 The Exit Velocity Formula — Five Steps</h4>
+    <ol class="fw-steps">
+      <li><strong>Set a private 90-day horizon</strong><span>Not a rage-quit timeline. A structured 90-day window where you quietly build market readiness without signalling intent. CV updated. Portfolio in order. Two or three exploratory conversations. Nothing public, nothing dramatic.</span></li>
+      <li><strong>Quantify your portable value</strong><span>What have you delivered that's verifiable, measurable, and transferable? Reframe everything in numbers: team size managed, costs reduced, timelines hit, processes built. The external market doesn't know or care about internal politics — but it does respond to evidence.</span></li>
+      <li><strong>Run the parallel track quietly</strong><span>Apply, talk, and explore — while continuing to perform at full capacity internally. The worst negotiating position is being forced to leave. The strongest is choosing to. Stay until you're ready to go on your terms.</span></li>
+      <li><strong>Keep clean lines</strong><span>Never use company systems, devices, or email addresses for your job search. This isn't just caution — it's basic professional ethics. Clean lines protect you legally and morally, and keep your self-respect intact regardless of how the situation resolves.</span></li>
+      <li><strong>Know your number before you talk to anyone</strong><span>Market rate. Minimum acceptable package. Your non-negotiables. Enter no conversation without these anchors. Desperation has a scent — and experienced negotiators and hiring managers detect it immediately. Know your worth first.</span></li>
+    </ol>
+  </div>
+
+  <div class="framework-detail" id="fw-confront">
+    <h4>⚖️ The Confrontation Decision Matrix</h4>
+    <p style="margin-bottom:1rem;font-size:0.84rem;color:var(--muted)">Before you decide whether to raise it formally, address it informally, or strategically absorb it — run it through this.</p>
+    <table class="matrix-table">
+      <thead>
+        <tr><th>Your Situation</th><th>The Move</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pattern repeated 3+ times, and you've documented it</td><td><span class="rec-badge rec-yes">Escalate</span></td><td>Pattern evidence changes it from he-said-she-said to demonstrable conduct. This is the moment documentation was built for.</td></tr>
+        <tr><td>One incident, nothing written down yet</td><td><span class="rec-badge rec-wait">Hold — log first</span></td><td>Escalating without evidence tips them off and weakens your position. Give yourself a week to build the record.</td></tr>
+        <tr><td>You're currently in a formal review or probation</td><td><span class="rec-badge rec-wait">Protect process</span></td><td>Frame everything procedurally, not personally. Reference contract terms and documented criteria — not feelings or history.</td></tr>
+        <tr><td>The other person has significant power over your career</td><td><span class="rec-badge rec-no">Don't confront directly yet</span></td><td>Build visibility and optionality first. You want to confront from a position of strength, not desperation.</td></tr>
+        <tr><td>HR is aligned with or protecting the other person</td><td><span class="rec-badge rec-no">Go external</span></td><td>When internal channels are compromised, your external records — emails sent to personal addresses, dated documents — become your only protection.</td></tr>
+        <tr><td>You have documented proof and at least one credible ally</td><td><span class="rec-badge rec-yes">Act</span></td><td>This is the moment the whole framework was built for. With evidence and witness, the power dynamic shifts meaningfully.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="div" />
+
+  <h2>Before You Close This Tab — <span class="ac3">Write One Thing Down</span></h2>
+
+  <p>I know it feels heavy. I know part of you wants to close this, go make tea, and convince yourself it's not that bad. Maybe it isn't. But if even three of those signs landed — write the first incident down. Right now. Not for HR. Not to send to anyone. Just for you.</p>
+
+  <p>Because the thing about manipulation is it lives in the gap between what you felt and what you can prove. This is how you start closing that gap.</p>
+
+  <div class="evidence-template">
+    <div class="et-header">
+      <div class="et-icon">📋</div>
+      <div>
+        <div class="et-title">Incident Log — Fill It In Now</div>
+        <div class="et-sub">Copy it before you close this page. Paste it somewhere only you can see.</div>
+      </div>
+    </div>
+    <div class="log-fields">
+      <div class="log-field"><span class="log-field-label">Date &amp; Time</span><input class="log-field-input" id="log-date" placeholder="e.g. 19 Apr 2026, 3:30 PM" /></div>
+      <div class="log-field"><span class="log-field-label">Person(s) Involved</span><input class="log-field-input" id="log-person" placeholder="Use initials or role — avoid full names in digital notes" /></div>
+      <div class="log-field"><span class="log-field-label">What Was Said / Done</span><input class="log-field-input" id="log-what" placeholder="Verbatim if possible. Or as close as you can get." /></div>
+      <div class="log-field"><span class="log-field-label">Who Else Was There</span><input class="log-field-input" id="log-witness" placeholder="Anyone else in the room or on the call" /></div>
+      <div class="log-field"><span class="log-field-label">How It Left You Feeling</span><input class="log-field-input" id="log-impact" placeholder="Confused / undermined / gaslit / pressured..." /></div>
+      <div class="log-field"><span class="log-field-label">Which Sign?</span><input class="log-field-input" id="log-pattern" placeholder="Which of the 13 does this map to?" /></div>
+    </div>
+    <button class="copy-log-btn" onclick="copyLog()">📋 Copy to Clipboard</button>
+    <div id="copy-confirm" style="display:none;margin-top:0.6rem;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--green);letter-spacing:0.08em;">✓ Copied. Paste it somewhere safe — notes app, private doc, anywhere offline.</div>
+  </div>
+
+  <div class="red-alert">
+    <div class="red-alert-label">🚨 One More Thing</div>
+    <p>If a process that should protect you — a performance review, a probation cycle, a feedback mechanism — is being run without written criteria, without prior notice, without documentation: that is not an admin gap. It is a deliberate structural choice. Name it in your log. Reference your contract clause. Let the record speak first.</p>
+  </div>
+
+  <div class="final-cta">
+    <h2>You Were Never<br><em style="color:var(--coral);font-family:'Fraunces',serif;font-weight:300;">The Problem.</em></h2>
+    <p>You were the target. Knowing that — really knowing it — changes everything. Now go build your evidence, build your options, and protect your peace.</p>
+    <a href="#" class="cta-btn">More on Snarky Solutions →</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 <span>Snarky Solutions</span> · solutionssnarky-droid.github.io · Classy. Snarky. Unfiltered.
+</footer>
+
+<script>
+const SIGNS = [
+  {id:1,kw:'Gaslighting',title:'They make you question your own memory',color:'var(--coral)',
+   what:'"That\'s not what happened." "You\'re too sensitive." "I never said that." Delivered calmly. Every time.',
+   why:'Gaslighting is a cognitive takeover. It slowly replaces your internal reference point with theirs — until you stop trusting yourself.',
+   action:'Email yourself a brief summary within 30 minutes of any significant conversation. Date, who, what was said. Timestamped records are gaslighting\'s only real antidote.'},
+  {id:2,kw:'Blame-shifting',title:'Every problem somehow ends up at your door',color:'var(--lavender)',
+   what:'The brief changed — but it\'s your fault for not anticipating it. The project failed — but somehow you\'re the one being asked what went wrong.',
+   why:'Blame-shifting is accountability laundering. Someone has to hold the failure, and they\'ve decided it\'s you.',
+   action:'In all written updates, clearly attribute shared decisions to the group: "As agreed in Thursday\'s call, I proceeded with X." Own your part — but name theirs.'},
+  {id:3,kw:'Emotional weaponising',title:'Your reactions are used as evidence against you',color:'var(--yellow)',
+   what:'They provoke. When you respond, you suddenly become "unprofessional" or "difficult." The provocation is never mentioned again.',
+   why:'This is DARVO — Deny, Attack, Reverse Victim and Offender. It\'s a documented pattern in psychological abuse research.',
+   action:'Create a cool-down rule: never respond to provocation in the moment. Ask for 24 hours. Document the provocation, not your reaction.'},
+  {id:4,kw:'Managed confusion',title:'Clarity is always just out of reach',color:'var(--pink)',
+   what:'Instructions shift mid-delivery. The definition of success changes. Last week\'s feedback contradicts this week\'s.',
+   why:'Ambiguity creates dependence. If you can never pin down what "good" looks like, you\'ll keep working for approval — not outcomes.',
+   action:'After every briefing, send a written confirmation: "Just confirming — X, by Y date, measured against Z criteria." Force it into writing.'},
+  {id:5,kw:'Information control',title:'You find out about decisions that affect you — after the fact',color:'var(--coral)',
+   what:'Not cc\'d on key threads. Left out of meetings where your work was discussed. Learning outcomes from someone else\'s calendar.',
+   why:'Knowledge is power. Controlling what you know — and when — is how someone keeps you dependent and reactive.',
+   action:'Build a stakeholder network outside your direct line. Lateral allies, skip-level visibility. Create your own information channels.'},
+  {id:6,kw:'Guilt tripping',title:'"After everything I\'ve done for you"',color:'var(--lavender)',
+   what:'Deployed at exactly the moment you assert a position, push back, or ask for something reasonable.',
+   why:'Manufactured obligation neutralises legitimate requests. Gratitude is real. Guilt as a management tool is manipulation.',
+   action:'Log every instance. Note what you were asking for when it appeared. The pattern will show you exactly what they\'re protecting.'},
+  {id:7,kw:'Isolation',title:'Your trusted people are quietly discredited',color:'var(--yellow)',
+   what:'Colleagues you rely on become "not the right influence." Your allies are subtly distanced. You feel like only this person really understands your situation.',
+   why:'Isolation removes your reality-check system. Without community, you lose the mirror that shows you what\'s actually happening.',
+   action:'Counter-invest in two or three trusted relationships outside their sphere. You don\'t need an army. You need a witness.'},
+  {id:8,kw:'Moving goalposts',title:'Success standards shift every time you get close',color:'var(--pink)',
+   what:'You hit the target. A new target appears with no acknowledgment of the last one. You hit that. Still not quite enough.',
+   why:'Perpetual inadequacy creates perpetual dependency. The goalposts were never meant to be reached — they were meant to keep you running.',
+   action:'Document every agreed target at the point of agreement. When they move, you have a dated record of what was previously accepted as success.'},
+  {id:9,kw:'Hot / cold cycling',title:'Praise and withdrawal come in unpredictable waves',color:'var(--coral)',
+   what:'Generous approval one week. Icy distance the next. No clear reason. You work twice as hard just to get back to the good phase.',
+   why:'Intermittent reinforcement is the most addictive behaviour pattern in psychology. It\'s the engine of trauma bonding.',
+   action:'Chart the cycle. A simple calendar with "warm" and "cold" marked. When the pattern becomes visible, it loses its power over you.'},
+  {id:10,kw:'Triangulation',title:'"Others have noticed." "Leadership is asking."',color:'var(--lavender)',
+   what:'Nameless, faceless pressure applied through hearsay. Invisible observers. The threat you can\'t address because it has no face.',
+   why:'Phantom observers make the pressure feel omnipresent while remaining completely unprovable and unaddressable.',
+   action:'Always ask for specifics: "Can you tell me who raised this so I can address it directly?" Inability to name sources is itself evidence.'},
+  {id:11,kw:'Minimising',title:'"You\'re overthinking this."',color:'var(--yellow)',
+   what:'Your concern is dismissed before it\'s fully heard. You get "it\'s really not a big deal" before you\'ve even finished the sentence.',
+   why:'Repeated dismissal trains you to pre-censor. You stop raising concerns. That silence is manufactured — not earned.',
+   action:'"I hear you saying it\'s minor — I\'d like to understand why it reads differently from my side. Can we revisit this in writing?"'},
+  {id:12,kw:'False urgency',title:'Everything is a crisis. Everything is right now.',color:'var(--pink)',
+   what:'The emergency that can\'t wait. The decision that needs to happen in the next hour. Always, always, always.',
+   why:'Manufactured urgency short-circuits rational thinking. Under pressure, humans make worse decisions and are more susceptible to being led.',
+   action:'Implement a 10-minute pause policy. Even high-stakes decisions can survive: "Give me 10 minutes." Watch how they respond. That reaction is data.'},
+  {id:13,kw:'Credential undermining',title:'"Do you really have experience with this?"',color:'var(--coral)',
+   what:'Death by a thousand qualifiers. Your track record questioned. Your expertise deferred. Always just a bit less than what\'s needed.',
+   why:'Systematic expertise denial creates imposter syndrome on demand. If you can\'t stand behind your own knowledge, you can\'t stand firm on anything.',
+   action:'Build an external evidence trail. Published content, documented outcomes, external validation. An internal actor can\'t credibly undermine what the market has already confirmed.'}
+];
+
+const STRATEGY_MAP = {
+  low:[
+    {icon:'📓',iconBg:'rgba(74,222,128,0.1)',cardBg:'rgba(74,222,128,0.07)',borderColor:'rgba(74,222,128,0.2)',level:'Foundation',levelColor:'var(--green)',levelBg:'rgba(74,222,128,0.1)',
+     title:'Start your log today — before anything else',
+     text:'Even one sign is enough reason to write it down. A quick email to yourself. Date, who, what was said, what shifted. You\'re not building a case yet. You\'re just making sure the details don\'t get rewritten later.'},
+    {icon:'🧭',iconBg:'rgba(196,181,253,0.1)',cardBg:'rgba(196,181,253,0.07)',borderColor:'rgba(196,181,253,0.18)',level:'Awareness',levelColor:'var(--lavender)',levelBg:'rgba(196,181,253,0.1)',
+     title:'Say the word. Just to yourself.',
+     text:'Write "manipulation" in a private note. Notice the resistance. That resistance is what\'s been protecting the dynamic. You don\'t need to tell anyone. You just need to stop protecting someone else\'s version of events inside your own head.'}
+  ],
+  mid:[
+    {icon:'🏛',iconBg:'rgba(245,200,66,0.1)',cardBg:'rgba(245,200,66,0.07)',borderColor:'rgba(245,200,66,0.22)',level:'Tactical',levelColor:'var(--yellow)',levelBg:'rgba(245,200,66,0.1)',
+     title:'Build visibility beyond your direct manager — now',
+     text:'Two or three stakeholders who know your work independently of the person concerned. Not because you\'re building an escape route — because no one\'s reputation should be held by a single person\'s hand.'},
+    {icon:'✍️',iconBg:'rgba(255,107,107,0.1)',cardBg:'rgba(255,107,107,0.07)',borderColor:'rgba(255,107,107,0.2)',level:'Tactical',levelColor:'var(--coral)',levelBg:'rgba(255,107,107,0.1)',
+     title:'Never leave a briefing without a written confirmation',
+     text:'Nothing verbal only. After every significant conversation: "Just confirming — X by Y, measured against Z." This kills gaslighting and the moving-goalposts pattern simultaneously. Two birds.'},
+    {icon:'⚖️',iconBg:'rgba(196,181,253,0.1)',cardBg:'rgba(196,181,253,0.07)',borderColor:'rgba(196,181,253,0.18)',level:'Strategic',levelColor:'var(--lavender)',levelBg:'rgba(196,181,253,0.1)',
+     title:'Run the Confrontation Matrix before you do anything',
+     text:'You\'re in the middle zone — enough to be concerned, not quite enough yet for formal action. Use the Decision Matrix below to figure out whether to hold, document further, or escalate. Acting too early without a trail weakens you.'}
+  ],
+  high:[
+    {icon:'🚨',iconBg:'rgba(255,107,107,0.12)',cardBg:'rgba(255,107,107,0.09)',borderColor:'rgba(255,107,107,0.25)',level:'Critical',levelColor:'var(--coral)',levelBg:'rgba(255,107,107,0.12)',
+     title:'This is a high-risk environment. Treat it like one.',
+     text:'Seven or more signs is not ambiguous. This is a systematically hostile dynamic. Your first priority right now isn\'t performance — it\'s protection. Document everything. Share nothing of your strategy with anyone in that environment.'},
+    {icon:'📂',iconBg:'rgba(255,107,107,0.1)',cardBg:'rgba(255,107,107,0.07)',borderColor:'rgba(255,107,107,0.2)',level:'Urgent',levelColor:'var(--coral)',levelBg:'rgba(255,107,107,0.1)',
+     title:'Start the full Documentation Protocol this week',
+     text:'Not when things escalate. Now. A STAR-E log for every significant interaction. Cross-reference with your contract clauses. If you\'re already in a formal process, every undocumented verbal exchange is a gap they can fill with their version.'},
+    {icon:'🚀',iconBg:'rgba(245,200,66,0.1)',cardBg:'rgba(245,200,66,0.07)',borderColor:'rgba(245,200,66,0.22)',level:'Parallel Track',levelColor:'var(--yellow)',levelBg:'rgba(245,200,66,0.1)',
+     title:'Build your exit options quietly — not because you\'re leaving, but because it changes everything',
+     text:'Update the CV. Define your portable value in numbers. Have two or three exploratory conversations. Once you have options, your psychology shifts completely. So does your performance. So does the dynamic.'},
+    {icon:'🏛',iconBg:'rgba(196,181,253,0.1)',cardBg:'rgba(196,181,253,0.07)',borderColor:'rgba(196,181,253,0.18)',level:'Urgent',levelColor:'var(--lavender)',levelBg:'rgba(196,181,253,0.1)',
+     title:'Create external validation you own independently',
+     text:'Publish something. Apply for something. Speak somewhere. Your professional identity cannot be held hostage by one stakeholder\'s opinion of you. An external reputation is the most powerful counter-narrative available.'},
+    {icon:'⚖️',iconBg:'rgba(244,114,182,0.1)',cardBg:'rgba(244,114,182,0.07)',borderColor:'rgba(244,114,182,0.2)',level:'Foundational',levelColor:'var(--pink)',levelBg:'rgba(244,114,182,0.1)',
+     title:'Know your contract by clause number tonight',
+     text:'"I think I have rights" is not the same as "Clause 4 of my appointment letter specifies X." Read it. Find the clauses on feedback obligations, performance criteria, notice periods. Precision changes everything about how a conversation lands.'}
+  ]
+};
+
+function renderSigns() {
+  const grid = document.getElementById('signs-grid');
+  grid.innerHTML = SIGNS.map(s => `
+    <div class="sign-card" id="card-${s.id}" style="--card-color:${s.color}" onclick="toggleSign(${s.id},event)">
+      <div class="sign-card-top">
+        <div class="sign-num-sm">${String(s.id).padStart(2,'0')}</div>
+        <div class="sign-title-wrap">
+          <div class="sign-kw">${s.kw}</div>
+          <h3>${s.title}</h3>
+        </div>
+        <div class="check-box">
+          <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5l3 3 6-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="sign-expand" id="expand-${s.id}">
+        <div class="sign-expand-inner">
+          <div class="expand-block"><div class="expand-block-label">What It Looks Like</div><p>${s.what}</p></div>
+          <div class="expand-block"><div class="expand-block-label">Why They Do It</div><p>${s.why}</p></div>
+          <div class="expand-block expand-action"><div class="expand-block-label">Your Move</div><p>${s.action}</p></div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+let checkedSet = new Set();
+let openCard = null;
+
+function toggleSign(id, e) {
+  const card = document.getElementById('card-' + id);
+  if (e.target.closest('.check-box')) {
+    checkedSet.has(id) ? (checkedSet.delete(id), card.classList.remove('checked')) : (checkedSet.add(id), card.classList.add('checked'));
+    updateScore();
+    return;
+  }
+  if (openCard && openCard !== id) document.getElementById('card-' + openCard)?.classList.remove('open');
+  if (openCard === id) { card.classList.remove('open'); openCard = null; }
+  else { card.classList.add('open'); openCard = id; }
+}
+
+function updateScore() {
+  const n = checkedSet.size;
+  const pct = (n / 13) * 100;
+  document.getElementById('live-score').textContent = n;
+  document.getElementById('pill-score-num').textContent = n;
+  document.getElementById('score-bar-fill').style.width = pct + '%';
+  n > 0 ? document.getElementById('score-pill').classList.add('visible') : document.getElementById('score-pill').classList.remove('visible');
+
+  let label, color, fillColor;
+  if (n === 0) { label = 'Start ticking — no judgment here'; color = 'var(--muted)'; fillColor = 'var(--muted)'; }
+  else if (n <= 2) { label = '⚪ Low signal — worth keeping an eye on'; color = 'var(--muted)'; fillColor = 'var(--muted)'; }
+  else if (n <= 5) { label = '🟡 A pattern is forming here'; color = 'var(--yellow)'; fillColor = 'var(--yellow)'; }
+  else if (n <= 9) { label = '🟠 This is active — don\'t minimise it'; color = 'var(--orange)'; fillColor = 'var(--orange)'; }
+  else { label = '🔴 You are in a hostile environment'; color = 'var(--coral)'; fillColor = 'var(--coral)'; }
+
+  document.getElementById('threat-label').textContent = label;
+  document.getElementById('threat-label').style.color = color;
+  document.getElementById('live-score').style.color = n <= 2 ? 'var(--coral)' : color;
+  document.getElementById('score-bar-fill').style.background = fillColor;
+  updateStrategy(n);
+}
+
+function updateStrategy(n) {
+  const out = document.getElementById('strategy-output');
+  if (n === 0) {
+    out.innerHTML = `<div class="strategy-placeholder"><span class="placeholder-icon">🎯</span><p>Tick at least one sign to get your personalised moves.</p></div>`;
+    return;
+  }
+  const tier = n <= 2 ? 'low' : n <= 6 ? 'mid' : 'high';
+  const strats = STRATEGY_MAP[tier];
+
+  let bandBg, bandBorder, bandColor, bandMsg;
+  if (tier === 'low') {
+    bandBg='rgba(74,222,128,0.06)'; bandBorder='rgba(74,222,128,0.18)'; bandColor='var(--green)';
+    bandMsg = `You've ticked <strong>${n} sign${n>1?'s':''}.</strong> Early awareness is genuinely your biggest asset right now. Most people at this stage do nothing — and that's how it escalates.`;
+  } else if (tier === 'mid') {
+    bandBg='rgba(245,200,66,0.06)'; bandBorder='rgba(245,200,66,0.2)'; bandColor='var(--yellow)';
+    bandMsg = `<strong>${n} signs.</strong> This isn't ambient stress — a pattern is forming. The good news? You're still in the window where acting strategically makes a real difference.`;
+  } else {
+    bandBg='rgba(255,107,107,0.07)'; bandBorder='rgba(255,107,107,0.22)'; bandColor='var(--coral)';
+    bandMsg = `<strong>${n} signs.</strong> I want to be direct with you: this is serious. Not hopeless — but serious. The strategies below aren't optional extras. They're what protects you.`;
+  }
+
+  out.innerHTML = `
+    <div style="background:${bandBg};border:1px solid ${bandBorder};border-radius:8px;padding:1rem 1.3rem;margin-bottom:1.2rem;animation:fadeIn 0.4s ease">
+      <div style="font-family:'DM Mono',monospace;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:${bandColor};margin-bottom:0.35rem">Where You Are</div>
+      <p style="font-size:0.87rem;color:var(--text);margin:0">${bandMsg}</p>
+    </div>
+    <div class="strategy-cards">
+      ${strats.map((s,i) => `
+        <div class="strat-card" style="background:${s.cardBg};border-color:${s.borderColor};animation-delay:${i*0.07}s">
+          <div class="strat-icon" style="background:${s.iconBg}">${s.icon}</div>
+          <div>
+            <span class="strat-level" style="background:${s.levelBg};color:${s.levelColor}">${s.level}</span>
+            <h4>${s.title}</h4>
+            <p>${s.text}</p>
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+let activefw = null;
+function showFramework(key) {
+  const map = {doc:'fw-doc',vis:'fw-vis',exit:'fw-exit',confront:'fw-confront'};
+  const el = document.getElementById(map[key]);
+  if (activefw === key) { el.classList.remove('active'); activefw = null; return; }
+  document.querySelectorAll('.framework-detail').forEach(d => d.classList.remove('active'));
+  el.classList.add('active'); activefw = key;
+  setTimeout(() => el.scrollIntoView({behavior:'smooth',block:'nearest'}), 50);
+}
+
+function copyLog() {
+  const fields = {
+    'Date & Time': document.getElementById('log-date').value || '—',
+    'Person(s)': document.getElementById('log-person').value || '—',
+    'What Happened': document.getElementById('log-what').value || '—',
+    'Witnesses': document.getElementById('log-witness').value || '—',
+    'Impact': document.getElementById('log-impact').value || '—',
+    'Sign Pattern': document.getElementById('log-pattern').value || '—'
+  };
+  const body = Object.entries(fields).map(([k,v]) => `${k}: ${v}`).join('\n');
+  const full = `INCIDENT LOG — ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}\n${'─'.repeat(42)}\n${body}\n${'─'.repeat(42)}\n[Personal record — not for distribution]`;
+  navigator.clipboard.writeText(full).then(() => {
+    document.getElementById('copy-confirm').style.display = 'block';
+    setTimeout(() => document.getElementById('copy-confirm').style.display = 'none', 3500);
+  }).catch(() => alert('Could not auto-copy — please select and copy the fields manually.'));
+}
+
+window.addEventListener('scroll', () => {
+  const d = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progress-bar').style.width = (d > 0 ? (window.scrollY / d) * 100 : 0) + '%';
+});
+
+renderSigns();
+</script>
+</body>
+</html>
