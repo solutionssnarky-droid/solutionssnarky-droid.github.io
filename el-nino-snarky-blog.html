@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>El Niño Is Back. And It Doesn't Care About Your Plans. | Snarky Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #0f0f13;
+    --surface:   #16161d;
+    --surface2:  #1c1c26;
+    --border:    #2a2a38;
+    --coral:     #ff6b5b;
+    --yellow:    #f5c842;
+    --lavender:  #b39ddb;
+    --pink:      #f06292;
+    --mint:      #4dd0a4;
+    --text:      #e8e6f0;
+    --muted:     #7c7a8e;
+    --tag-bg:    #1e1e2e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,15,19,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1rem, 5vw, 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--coral); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    padding: clamp(4rem, 10vh, 7rem) clamp(1rem, 8vw, 6rem) clamp(3rem, 6vh, 5rem);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  /* Animated wave background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .wave {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+    animation: drift 12s ease-in-out infinite alternate;
+  }
+  .wave-1 { width: 600px; height: 600px; background: var(--coral);    top: -200px; right: -100px; animation-delay: 0s; }
+  .wave-2 { width: 400px; height: 400px; background: var(--lavender); bottom: -150px; left: 10%; animation-delay: -4s; }
+  .wave-3 { width: 300px; height: 300px; background: var(--yellow);   top: 30%; right: 25%; animation-delay: -8s; }
+
+  @keyframes drift {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(30px,20px) scale(1.08); }
+  }
+
+  .hero-inner { position: relative; z-index: 1; max-width: 860px; }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    color: var(--coral);
+    border: 1px solid rgba(255,107,91,0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    margin-bottom: 1.8rem;
+    text-transform: uppercase;
+  }
+  .hero-label::before {
+    content: '▶';
+    font-style: normal;
+    font-size: 0.5rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 1.4rem;
+  }
+  h1 .accent-coral   { color: var(--coral); }
+  h1 .accent-yellow  { color: var(--yellow); }
+  h1 em {
+    font-style: italic;
+    color: var(--lavender);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .hero-meta .dot { color: var(--border); }
+  .hero-meta .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: var(--lavender);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── STAT STRIP ─── */
+  .stat-strip {
+    border-bottom: 1px solid var(--border);
+    padding: 1.8rem clamp(1rem, 8vw, 6rem);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem 2rem;
+  }
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  /* ─── LAYOUT ─── */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 1fr min(680px, 100%) 1fr;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+  }
+  .page-wrap > * { grid-column: 2; }
+
+  /* ─── ARTICLE BODY ─── */
+  .article-body {
+    padding: 3.5rem 0;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 3rem 0 1rem;
+  }
+  h2 .h2-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+  }
+
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: 0.02em;
+    margin: 2rem 0 0.6rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: #c8c6d8;
+    margin-bottom: 1.3rem;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  a { color: var(--lavender); text-underline-offset: 3px; }
+
+  /* Snarky callout box */
+  .snark-box {
+    background: var(--surface);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 6px 6px 0;
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+  .snark-box::before {
+    content: attr(data-label);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .snark-box p {
+    margin-bottom: 0;
+    font-size: 0.97rem;
+    color: var(--text);
+  }
+
+  /* Data callout */
+  .data-box {
+    background: linear-gradient(135deg, rgba(245,200,66,0.05), rgba(179,157,219,0.05));
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--yellow);
+    border-radius: 6px;
+    padding: 1.4rem 1.6rem;
+    margin: 2rem 0;
+  }
+  .data-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--yellow);
+    margin-bottom: 0.6rem;
+  }
+  .data-box p { color: var(--text); margin: 0; font-size: 0.95rem; }
+
+  /* Country grid */
+  .country-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 540px) { .country-grid { grid-template-columns: 1fr; } }
+
+  .country-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    transition: border-color 0.2s;
+  }
+  .country-card:hover { border-color: var(--lavender); }
+  .country-card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .flag { font-size: 1.4rem; line-height: 1; }
+  .country-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .country-verdict {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    font-style: italic;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+  }
+  .verdict-flood   { background: rgba(77,208,164,0.1);  color: var(--mint);    border: 1px solid rgba(77,208,164,0.2); }
+  .verdict-drought { background: rgba(245,200,66,0.1);  color: var(--yellow);  border: 1px solid rgba(245,200,66,0.2); }
+  .verdict-mixed   { background: rgba(179,157,219,0.1); color: var(--lavender);border: 1px solid rgba(179,157,219,0.2); }
+  .verdict-fire    { background: rgba(255,107,91,0.1);  color: var(--coral);   border: 1px solid rgba(255,107,91,0.2); }
+
+  .country-detail {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Timeline */
+  .timeline { margin: 1.5rem 0; }
+  .tl-item {
+    display: flex;
+    gap: 1.2rem;
+    padding-bottom: 1.5rem;
+    position: relative;
+  }
+  .tl-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-year {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--coral);
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .tl-content h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .tl-content p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Survival tips */
+  .tip-list { list-style: none; margin: 1rem 0 2rem; }
+  .tip-list li {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(42,42,56,0.6);
+    font-size: 0.92rem;
+    color: #c8c6d8;
+  }
+  .tip-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--surface2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    position: relative;
+    margin: 3rem 0;
+    padding: 2rem 2rem 2rem 2.5rem;
+    border-left: none;
+  }
+  .pull-quote::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+    font-family: 'Fraunces', serif;
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(255,107,91,0.15);
+  }
+  .pull-quote p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--text);
+    margin: 0;
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: 0.8rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-style: normal;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0;
+    color: var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    font-style: italic;
+    letter-spacing: 0.1em;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Warning banner */
+  .warning-banner {
+    background: linear-gradient(135deg, rgba(255,107,91,0.08), rgba(245,200,66,0.05));
+    border: 1px solid rgba(255,107,91,0.2);
+    border-radius: 8px;
+    padding: 1.5rem 1.8rem;
+    margin: 2.5rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .warning-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .warning-text h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+  .warning-text p { font-size: 0.88rem; color: #c8c6d8; margin: 0; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem clamp(1rem, 8vw, 6rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+  }
+  .footer-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--yellow);
+  }
+  .footer-brand span { color: var(--coral); }
+  .footer-tagline {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.3rem;
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ─── PACIFIC DIAGRAM ─── */
+  .pacific-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .pd-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+  .pd-panels {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  @media (max-width: 600px) {
+    .pd-panels { flex-direction: column; }
+    .pd-vs { transform: rotate(90deg); align-self: center; }
+  }
+  .pd-panel { flex: 1; }
+  .pd-panel-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.7rem;
+    text-align: center;
+  }
+  .normal-title { color: var(--mint); }
+  .elnino-title { color: var(--coral); }
+  .pd-ocean {
+    position: relative;
+    height: 90px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .pd-ocean-warm {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 60%;
+    background: linear-gradient(90deg, rgba(77,208,164,0.25), rgba(77,208,164,0.08));
+  }
+  .pd-ocean-cool {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 40%;
+    background: linear-gradient(90deg, rgba(100,150,255,0.08), rgba(100,150,255,0.25));
+  }
+  .elnino-ocean { }
+  .elnino-warm {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,107,91,0.1), rgba(245,200,66,0.2));
+    animation: heatPulse 3s ease-in-out infinite;
+  }
+  @keyframes heatPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+  .pd-wind-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    animation: windFlow 2s linear infinite;
+  }
+  .normal-wind { color: rgba(77,208,164,0.7); }
+  .elnino-wind { color: rgba(255,107,91,0.7); animation-direction: reverse; }
+  @keyframes windFlow {
+    0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; }
+  }
+  .pd-label-west, .pd-label-east {
+    position: absolute;
+    bottom: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .pd-label-west { left: 6px; }
+  .pd-label-east { right: 6px; text-align: right; }
+  .pd-label-west span, .pd-label-east span { color: var(--muted); display: block; font-size: 0.52rem; }
+  .elnino-west span { color: var(--coral) !important; }
+  .elnino-east span { color: var(--coral) !important; }
+  .pd-caption {
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin-top: 0.6rem;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .pd-vs {
+    flex-shrink: 0;
+    align-self: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--muted);
+    padding: 0 0.3rem;
+    padding-top: 2rem;
+  }
+
+  /* ─── FEEDBACK LOOP ─── */
+  .feedback-loop {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .fl-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--yellow);
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+  .fl-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .fl-step {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    width: 100%;
+    max-width: 440px;
+    transition: border-color 0.2s;
+  }
+  .fl-step:hover { border-color: var(--yellow); }
+  .fl-step-final { border-color: rgba(255,107,91,0.3); }
+  .fl-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: rgba(245,200,66,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--yellow);
+    font-weight: 400;
+  }
+  .fl-text {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .fl-arrow {
+    font-size: 1.1rem;
+    color: var(--border);
+    line-height: 1;
+    padding: 0.15rem 0;
+  }
+
+  /* Reading progress bar */
+  #progress-bar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral), var(--yellow));
+    width: 0%;
+    z-index: 200;
+    transition: width 0.1s;
+  }
+
+  /* Fade-in on load */
+  .fade-in { animation: fadeUp 0.7s ease both; }
+  .fade-in:nth-child(2) { animation-delay: 0.1s; }
+  .fade-in:nth-child(3) { animation-delay: 0.2s; }
+  .fade-in:nth-child(4) { animation-delay: 0.3s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    footer { grid-template-columns: 1fr; }
+    .footer-copy { text-align: left; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Snarky<span>Solutions</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Climate</a></li>
+    <li><a href="#">Workplace</a></li>
+    <li><a href="#">Strategy</a></li>
+    <li><a href="#">AI</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-label fade-in">Climate Dispatch</div>
+    <h1 class="fade-in">
+      El Niño Is Back.<br>
+      <em>And It Doesn't Care</em><br>
+      About <span class="accent-coral">Your Plans.</span>
+    </h1>
+    <p class="hero-sub fade-in">
+      The world's most powerful climate disruptor is warming up — again. Here's what it is, what it wrecks, 
+      and what you should actually be doing about it. No fluff. Just facts with attitude.
+    </p>
+    <div class="hero-meta fade-in">
+      <span>April 2026</span>
+      <span class="dot">·</span>
+      <span>9 min read</span>
+      <span class="dot">·</span>
+      <span class="tag">Climate</span>
+      <span class="tag">Global</span>
+      <span class="tag">Survival Guide</span>
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-card">
+    <span class="stat-num" style="color:var(--coral)">30+</span>
+    <span class="stat-label">El Niño events since 1900</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num" style="color:var(--yellow)">2–7 yrs</span>
+    <span class="stat-label">Cycle recurrence interval</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num" style="color:var(--lavender)">60M+</span>
+    <span class="stat-label">People hit by 2015–16 food crisis</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num" style="color:var(--mint)">$45B</span>
+    <span class="stat-label">Economic damage from 1997–98 event</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num" style="color:var(--pink)">12</span>
+    <span class="stat-label">Consecutive record-hot months in 2023–24</span>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<main class="page-wrap">
+  <article class="article-body">
+
+    <!-- OPENER -->
+    <p>
+      Picture this: a Peruvian fisherman in the 1600s notices the ocean is weirdly warm around Christmas. He names it 
+      <em>El Niño de Navidad</em> — the Christ Child. Poetic. What he didn't know is that he'd just named 
+      <strong>the single largest natural disruption to Earth's climate system</strong>. A phenomenon that can, 
+      depending on where you live, drown your crops, set your forests on fire, or bring a monsoon that simply 
+      doesn't show up.
+    </p>
+
+    <p>
+      Fast forward to 2026. Scientists are raising the alarm about a potential <strong>Super El Niño</strong> 
+      brewing in the Pacific — one that could make the already-searing 2023–24 event look like a warm bath. 
+      The question is: are you paying attention? Or are you still assuming climate is "someone else's problem"?
+    </p>
+
+    <div class="snark-box" data-label="🔥 Snarky Take">
+      <p>Spoiler: that "someone else" is paying for it with their harvest, their health, their GDP, and sometimes their life. Time to take notes.</p>
+    </div>
+
+    <!-- SECTION 1 -->
+    <h2><span class="h2-num">// 01</span>So What Actually Is El Niño?</h2>
+
+    <p>
+      El Niño is not a storm. It's not a hurricane. It's not even a single weather event. It's a 
+      <strong>fundamental shift in how the Pacific Ocean and atmosphere talk to each other</strong> — 
+      and when that conversation goes sideways, the rest of the planet pays.
+    </p>
+
+    <p>
+      Normally, trade winds blow from east to west across the Pacific, pushing warm surface water toward Indonesia 
+      and Australia. This keeps the eastern Pacific (near South America) cooler, triggering an upwelling of 
+      cold, nutrient-rich water that feeds some of the world's richest fisheries.
+    </p>
+
+    <p>
+      During El Niño? Those trade winds weaken — or reverse entirely. Warm water sloshes back toward 
+      South America. The upwelling stops. The rains that belonged in Asia follow the heat east. 
+      Everything that was wet gets dry. Everything that was dry gets drenched.
+    </p>
+
+    <div class="data-box">
+      <div class="data-box-label">📊 By the numbers</div>
+      <p>
+        El Niño and La Niña together account for up to <strong>50% of year-to-year climate variability</strong> 
+        in some regions. The ocean surface in Indonesia is normally 7–10°C warmer than off Ecuador. 
+        El Niño erases that gap — and chaos follows.
+      </p>
+    </div>
+
+    <p>
+      The phenomenon recurs every 2 to 7 years and typically lasts 9 to 12 months. Some events are mild shrugs. 
+      Others — like 1982–83, 1997–98, 2015–16, and 2023–24 — are category-level catastrophes with 
+      trillion-dollar price tags and body counts.
+    </p>
+
+    <div class="pull-quote">
+      <p>El Niño is the largest natural disruption to the Earth system — with direct impacts across most of the Pacific Ocean and indirect ripple effects that reach every continent on the planet.</p>
+      <cite>— NASA Earth Science Division</cite>
+    </div>
+
+    <div class="divider">THE MECHANISM</div>
+
+    <!-- SECTION 2 — CAUSES -->
+    <h2><span class="h2-num">// 02</span>What Actually Flips the Switch?</h2>
+
+    <p>
+      Here's the thing about El Niño — it doesn't arrive like a storm. No single event triggers it. 
+      No volcano, no asteroid, no solar flare. It's a <strong>slow-motion planetary conspiracy between 
+      the ocean and the atmosphere</strong>, each feeding the other until the whole system tips.
+    </p>
+
+    <!-- Animated Pacific diagram -->
+    <div class="pacific-diagram">
+      <div class="pd-label">THE PACIFIC OCEAN — TWO STATES</div>
+      <div class="pd-panels">
+
+        <!-- Normal state -->
+        <div class="pd-panel">
+          <div class="pd-panel-title normal-title">🌊 Normal Year</div>
+          <div class="pd-ocean">
+            <div class="pd-ocean-warm"></div>
+            <div class="pd-ocean-cool"></div>
+            <div class="pd-wind-arrow normal-wind">TRADE WINDS →→→→→</div>
+            <div class="pd-label-west">🇮🇩 Indonesia<br><span>Warm · Wet · Lush</span></div>
+            <div class="pd-label-east">🇵🇪 Peru<br><span>Cool · Dry · Fish</span></div>
+          </div>
+          <p class="pd-caption">Trade winds push warm surface water westward. Cold, nutrient-rich water upwells off South America. Balance maintained.</p>
+        </div>
+
+        <div class="pd-vs">vs</div>
+
+        <!-- El Niño state -->
+        <div class="pd-panel">
+          <div class="pd-panel-title elnino-title">🔥 El Niño Year</div>
+          <div class="pd-ocean elnino-ocean">
+            <div class="pd-ocean-warm elnino-warm"></div>
+            <div class="pd-wind-arrow elnino-wind">←←← WINDS WEAKEN</div>
+            <div class="pd-label-west elnino-west">🇮🇩 Indonesia<br><span>Hot · Drought · Fire</span></div>
+            <div class="pd-label-east elnino-east">🇵🇪 Peru<br><span>Warm · Flood · No fish</span></div>
+          </div>
+          <p class="pd-caption">Trade winds collapse. Warm water sloshes east. Upwelling stops. Rain systems follow the heat. Everything inverts.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <h3>⚙️ The Bjerknes Feedback: A Loop With No Off Switch</h3>
+
+    <p>
+      The genius — and the terror — of El Niño is that once it starts, it <em>feeds itself</em>. 
+      Norwegian meteorologist Jacob Bjerknes first described this in the 1960s, and it remains one of 
+      the most elegant and destructive feedback loops in Earth science.
+    </p>
+
+    <!-- Feedback loop visual -->
+    <div class="feedback-loop">
+      <div class="fl-title">THE BJERKNES FEEDBACK LOOP</div>
+      <div class="fl-steps">
+        <div class="fl-step">
+          <div class="fl-num">1</div>
+          <div class="fl-text">Eastern Pacific warms slightly above normal</div>
+        </div>
+        <div class="fl-arrow">↓</div>
+        <div class="fl-step">
+          <div class="fl-num">2</div>
+          <div class="fl-text">Temperature contrast east–west <strong>decreases</strong></div>
+        </div>
+        <div class="fl-arrow">↓</div>
+        <div class="fl-step">
+          <div class="fl-num">3</div>
+          <div class="fl-text">Pressure difference that drives trade winds <strong>weakens</strong></div>
+        </div>
+        <div class="fl-arrow">↓</div>
+        <div class="fl-step">
+          <div class="fl-num">4</div>
+          <div class="fl-text">Weaker winds let even more warm water stay in the east</div>
+        </div>
+        <div class="fl-arrow">↓</div>
+        <div class="fl-step fl-step-final">
+          <div class="fl-num" style="background:var(--coral)">5</div>
+          <div class="fl-text"><strong>Even warmer eastern Pacific → back to Step 1. Repeat until El Niño.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>🌊 The Hidden Trigger: Kelvin Waves</h3>
+
+    <p>
+      But what kicks the loop off in the first place? This is where it gets genuinely cinematic.
+    </p>
+
+    <p>
+      Deep in the western Pacific, brief bursts of westerly winds — triggered by a weather system called the 
+      <strong>Madden-Julian Oscillation (MJO)</strong> — can dislodge massive pulses of warm water. These 
+      pulses, called <strong>Kelvin waves</strong>, travel <em>eastward just below the ocean surface</em> — 
+      invisible from above, moving at roughly 2–3 metres per second, crossing the entire Pacific in about 
+      2 months. When enough of these subsurface waves stack up and reach the eastern Pacific, sea surface 
+      temperatures tip over the threshold. El Niño wakes up.
+    </p>
+
+    <div class="data-box">
+      <div class="data-box-label">🔬 Right Now — April 2026</div>
+      <p>
+        As of March 2026, NOAA and IRI confirm that <strong>warmer-than-normal subsurface temperatures have 
+        already amplified and expanded eastward across the Pacific basin</strong> — with the Niño 1+2 index 
+        reaching +1.5 in the eastern Pacific. In plain language: the Kelvin waves have been arriving. 
+        The ocean is primed. The trigger is cocked.
+      </p>
+    </div>
+
+    <h3>🌡️ Why Climate Change Turns Up the Volume</h3>
+
+    <p>
+      El Niño is natural. It predates us by millions of years. But here's the uncomfortable truth: 
+      <strong>we've changed the conditions it operates in</strong>. A baseline ocean that's already warmer 
+      means El Niño starts from a higher temperature floor — like setting a pot of water on the stove before 
+      the heat is even turned on. The Bjerknes loop still runs on its own schedule. But every cycle now 
+      releases more heat into an atmosphere that's already running hot. The result isn't a new kind of 
+      El Niño. It's the same old El Niño — just louder, longer, and meaner.
+    </p>
+
+    <div class="snark-box" data-label="⚡ The One-Line Summary">
+      <p>Ocean warms slightly → winds weaken → ocean warms more → winds weaken more → El Niño. Nature built the gun. Climate change loaded it. The Kelvin wave pulled the trigger. You're reading the aftermath.</p>
+    </div>
+
+    <!-- SECTION 3 — History -->
+    <h2><span class="h2-num">// 03</span>A Brief History of Global Chaos</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">1789</div>
+        <div class="tl-content">
+          <h4>The French Revolution — El Niño Conspiracy?</h4>
+          <p>A strong El Niño event caused poor crop yields across Europe, contributing to the food shortages and social unrest that some historians link to the French Revolution. Marie Antoinette had no comment.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1876–1900</div>
+        <div class="tl-content">
+          <h4>The Great Famines — 30–60 Million Dead</h4>
+          <p>El Niño–driven monsoon failures across India, China, and Brazil killed tens of millions. Historian Mike Davis argues these were the deadliest climate events in modern history.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1997–98</div>
+        <div class="tl-content">
+          <h4>The Monster That Changed Everything</h4>
+          <p>Devastating floods in Peru and Ecuador. Catastrophic wildfires in Indonesia. Drought across India and southern Africa. 2,000+ deaths. $30–45 billion in damage. First El Niño fully tracked by modern satellites.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2015–16</div>
+        <div class="tl-content">
+          <h4>Hottest Year on Record (Until 2023–24)</h4>
+          <p>Food shortages affecting 60 million+ people. Record coral bleaching across all major ocean basins. Zambia's entire maize harvest failed. India's monsoon severely weakened.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2023–24</div>
+        <div class="tl-content">
+          <h4>The Fifth-Most Powerful Event Ever Recorded</h4>
+          <p>12 consecutive months of record-breaking global temperatures — an unprecedented streak. Amazon drought. Record ocean temperatures. India banned non-basmati rice exports to protect domestic supply.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">COUNTRY BY COUNTRY</div>
+
+    <!-- SECTION 4 -->
+    <h2><span class="h2-num">// 04</span>The Global Damage Report: Who Gets What</h2>
+
+    <p>
+      El Niño does not distribute pain equally. Your geography is your destiny — at least climatically. 
+      Here's the honest, unsentimental breakdown.
+    </p>
+
+    <div class="country-grid">
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇵🇪</span>
+          <span class="country-name">Peru & Ecuador</span>
+        </div>
+        <span class="country-verdict verdict-flood">Catastrophic Flooding</span>
+        <p class="country-detail">Ground zero. Rainfall can increase tenfold. Bridges collapse, roads wash out, and the anchovy fishery — backbone of the economy — disappears as warm water drives fish away. GDP per capita would be ~20% higher today without El Niño's repeated hits.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇮🇩</span>
+          <span class="country-name">Indonesia & Philippines</span>
+        </div>
+        <span class="country-verdict verdict-drought">Drought & Megafires</span>
+        <p class="country-detail">When El Niño hits, Indonesia burns. Forests ignite, smoke blankets Southeast Asia, and GDP takes a documented -1% hit. The 1997–98 fires remain one of history's worst environmental disasters.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇮🇳</span>
+          <span class="country-name">India</span>
+        </div>
+        <span class="country-verdict verdict-drought">Monsoon Failure</span>
+        <p class="country-detail">Peninsular India dries up while southern India can paradoxically see more rain. Weakened monsoons mean crop failures, water stress, and the kind of supply disruption that triggers rice export bans. In 1876–1900, tens of millions died.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇦🇺</span>
+          <span class="country-name">Australia</span>
+        </div>
+        <span class="country-verdict verdict-fire">Drought & Bushfires</span>
+        <p class="country-detail">Every major El Niño punishes Australia with prolonged drought, heatwaves, and bushfires. Reservoirs drain. Agriculture collapses. The 2019–20 "Black Summer" bushfires were preceded by strong ENSO conditions.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇧🇷</span>
+          <span class="country-name">Brazil</span>
+        </div>
+        <span class="country-verdict verdict-drought">Amazon Drought & Fire</span>
+        <p class="country-detail">The Amazon — lungs of the Earth — chokes under El Niño drought. Deforestation accelerates, hydroelectric power falters, and in 2023–24, the Amazon experienced one of its worst droughts in recorded history.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇺🇸</span>
+          <span class="country-name">United States</span>
+        </div>
+        <span class="country-verdict verdict-mixed">Mixed — Mostly Wins</span>
+        <p class="country-detail">California gets rain (sometimes too much). The north gets warmer winters. Atlantic hurricanes decrease. The IMF pegs US GDP impact at a mild +0.5% during El Niño years. America is basically the rich kid at the climate table.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇰🇪</span>
+          <span class="country-name">East Africa (Kenya, Somalia, Tanzania)</span>
+        </div>
+        <span class="country-verdict verdict-flood">Flooding & Disease</span>
+        <p class="country-detail">El Niño floods the Horn of Africa while drying out the south. In 2015–16, 144,000 people were displaced in Somalia alone. Cholera, typhoid, and Rift Valley Fever outbreaks follow the water.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇿🇦</span>
+          <span class="country-name">Southern Africa</span>
+        </div>
+        <span class="country-verdict verdict-drought">Severe Drought</span>
+        <p class="country-detail">Zimbabwe, South Africa, Zambia, Botswana, Mozambique — all face dryer-than-normal conditions Dec–Feb. In Zambia, the 2015–16 El Niño wiped out maize crops shortly after planting, triggering region-wide food emergency declarations.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇨🇳</span>
+          <span class="country-name">China</span>
+        </div>
+        <span class="country-verdict verdict-mixed">North Dry / South Wet</span>
+        <p class="country-detail">Northern China faces drought pressure while southeastern China sees excess rainfall. A country of 1.4 billion people managing split climate outcomes is a supply chain and food security challenge that keeps Beijing's planners awake at night.</p>
+      </div>
+
+      <div class="country-card">
+        <div class="country-card-header">
+          <span class="flag">🇲🇽</span>
+          <span class="country-name">Mexico & Central America</span>
+        </div>
+        <span class="country-verdict verdict-drought">Drought & Displacement</span>
+        <p class="country-detail">Guatemala, Honduras, El Salvador face crop-destroying droughts. The resulting food insecurity and migration pressure has been directly linked to El Niño cycles. Mexico, curiously, sees a +1.57% GDP boost — geography matters.</p>
+      </div>
+    </div>
+
+    <div class="snark-box" data-label="💡 Pattern Recognition">
+      <p>Notice something? The countries that suffer most are the ones least responsible for climate change — lower-income, tropical, agriculture-dependent. The countries that gain (US, Mexico, parts of Europe) are largely the industrialised emitters. The irony is loud enough to hear from space.</p>
+    </div>
+
+    <!-- SECTION 5 -->
+    <h2><span class="h2-num">// 05</span>2026 Watch: The Super El Niño Nobody Is Talking About</h2>
+
+    <p>
+      Here's what the headlines are not screaming loud enough: a <strong>potential Super El Niño is brewing 
+      right now</strong>. As of April 2026, European weather models show a high probability of a supercharged 
+      event emerging this summer or fall — one that climate scientists warn could produce impacts lasting well 
+      into 2027.
+    </p>
+
+    <div class="warning-banner">
+      <div class="warning-icon">⚠️</div>
+      <div class="warning-text">
+        <h4>Climate Regime Shift Warning</h4>
+        <p>A December 2025 study found that a super El Niño can trigger "climate regime shifts" — sudden, persistent changes to a climate system that pose serious threats to ecosystems and human well-being. After 2015–16, the Gulf of Mexico reached a new sustained warmth level that contributed to stronger Gulf Coast hurricanes for years afterward. We may be watching that happen again. Right now.</p>
+      </div>
+    </div>
+
+    <p>
+      Baseline temperatures are already higher than they were in 2016 — the previous record-holder. If a strong 
+      El Niño now superimposes itself on that already-elevated baseline, the result could break records we don't 
+      even have language for yet. The IMF, NASA, NOAA, and the World Meteorological Organisation are all 
+      watching the same Pacific. The question is: <strong>are you?</strong>
+    </p>
+
+    <div class="divider">THE GIRL WHO COULDN'T SAVE US</div>
+
+    <!-- SECTION 6 — LA NIÑA -->
+    <h2><span class="h2-num">// 06</span>La Niña Tried. Bless Her Heart.</h2>
+
+    <p>
+      After the 2023–24 El Niño finally exhausted itself in May 2024, the world held its breath for its 
+      counterpart — La Niña, the cool phase, the supposed antidote. She arrived. She was weak. She left quickly. 
+      And the planet kept warming anyway.
+    </p>
+
+    <p>
+      Here's the full honest story of the last La Niña cycle — and why it matters enormously for understanding 
+      what comes next.
+    </p>
+
+    <!-- La Niña explainer box -->
+    <div class="data-box" style="border-top-color: var(--mint);">
+      <div class="data-box-label" style="color: var(--mint);">🧊 What Is La Niña?</div>
+      <p>
+        La Niña is the cold phase of ENSO — the opposite of El Niño. Trade winds <em>strengthen</em>, 
+        pushing warm water further west toward Australia and Asia. The eastern Pacific cools. Where El Niño 
+        floods Peru, La Niña floods Australia. Where El Niño dries Indonesia, La Niña drowns it. 
+        Same Pacific Ocean. Opposite personality. Same planet-scale consequences.
+      </p>
+    </div>
+
+    <h3 style="color: var(--mint);">📅 Timeline: The 2024–25 La Niña That Barely Was</h3>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year" style="color: var(--mint); border-color: rgba(77,208,164,0.3);">May<br>2024</div>
+        <div class="tl-content">
+          <h4>El Niño Dies, ENSO Enters Neutral</h4>
+          <p>After 12 consecutive record-breaking months, El Niño finally dissipated. Ocean temperatures in the eastern Pacific returned to normal. The world exhaled. Briefly.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year" style="color: var(--mint); border-color: rgba(77,208,164,0.3);">Sep–Nov<br>2024</div>
+        <div class="tl-content">
+          <h4>La Niña Watch Issued</h4>
+          <p>The WMO issued a 60% probability forecast for La Niña conditions developing between October 2024 and February 2025. Scientists cautioned it would likely be weak and short-lived — and they were right.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year" style="color: var(--mint); border-color: rgba(77,208,164,0.3);">Dec<br>2024</div>
+        <div class="tl-content">
+          <h4>La Niña Officially Declared — Weakly</h4>
+          <p>Sea surface temperature anomalies in the equatorial Pacific finally crossed the La Niña threshold in December 2024. The expected cooling effect on global temperatures? Barely measurable. January 2025 still became the warmest January ever recorded — during an active La Niña. Let that sink in.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year" style="color: var(--mint); border-color: rgba(77,208,164,0.3);">Mar<br>2025</div>
+        <div class="tl-content">
+          <h4>La Niña Begins Fading</h4>
+          <p>The WMO confirmed a 60–70% probability of a return to ENSO-neutral conditions by April–June 2025. A La Niña that emerged in December and began fading by March is, climatologically speaking, a blip — not a counterweight.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year" style="color: var(--mint); border-color: rgba(77,208,164,0.3);">Jul–Dec<br>2025</div>
+        <div class="tl-content">
+          <h4>Negative Anomalies Return — Briefly</h4>
+          <p>Sea surface temperature negative anomalies re-emerged in mid-July 2025 and persisted through mid-December 2025, suggesting a second weak La Niña pulse. Some models had flagged the possibility of a "double-dip" La Niña. It never intensified into a full event.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year" style="color: var(--coral); border-color: rgba(255,107,91,0.3);">Mar<br>2026</div>
+        <div class="tl-content">
+          <h4>La Niña Exits. El Niño Watch Begins.</h4>
+          <p>By mid-March 2026, the IRI and NOAA confirmed the Pacific had transitioned back to ENSO-neutral. But subsurface ocean temperatures — the deeper layer that feeds future El Niño events — were already warming rapidly and expanding eastward. The setup was in motion.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- What La Niña actually did -->
+    <h3 style="color: var(--mint);">🌍 What La Niña Actually Did to the World</h3>
+
+    <p>
+      Despite being weak, the 2024–25 La Niña still left visible fingerprints on global weather patterns, 
+      consistent with its playbook — just at lower volume than a stronger event would produce.
+    </p>
+
+    <div class="country-grid">
+      <div class="country-card" style="border-top: 2px solid var(--mint);">
+        <div class="country-card-header">
+          <span class="flag">🇦🇺</span>
+          <span class="country-name">Australia</span>
+        </div>
+        <span class="country-verdict verdict-flood">Above-Normal Rainfall</span>
+        <p class="country-detail">La Niña is Australia's reprieve from drought. Northern Australia typically sees above-average rainfall, refilling reservoirs and cooling fire risk. The 2024–25 event brought some relief after the brutal El Niño year — though less dramatically than a stronger La Niña would.</p>
+      </div>
+
+      <div class="country-card" style="border-top: 2px solid var(--mint);">
+        <div class="country-card-header">
+          <span class="flag">🌍</span>
+          <span class="country-name">SE Africa & Sahel</span>
+        </div>
+        <span class="country-verdict verdict-flood">Wetter Conditions</span>
+        <p class="country-detail">Southeastern Africa and the Sahel see above-normal rainfall during La Niña — the reverse of El Niño's drought punishment. For subsistence farmers in Mozambique and Zimbabwe, La Niña years are literally life-saving planting seasons.</p>
+      </div>
+
+      <div class="country-card" style="border-top: 2px solid var(--mint);">
+        <div class="country-card-header">
+          <span class="flag">🇧🇷</span>
+          <span class="country-name">Northern Brazil</span>
+        </div>
+        <span class="country-verdict verdict-flood">Wetter Dec–Feb</span>
+        <p class="country-detail">Northern Brazil and the Caribbean region see wetter-than-normal conditions during La Niña. After El Niño's Amazon drought, this is modest recovery — though southern Brazil and Argentina can still see dry spells.</p>
+      </div>
+
+      <div class="country-card" style="border-top: 2px solid var(--mint);">
+        <div class="country-card-header">
+          <span class="flag">🌀</span>
+          <span class="country-name">Atlantic Hurricane Basin</span>
+        </div>
+        <span class="country-verdict verdict-fire">More Intense Seasons</span>
+        <p class="country-detail">La Niña reduces wind shear over the Atlantic, making it easier for hurricanes to develop and intensify. The 2024–25 La Niña added fuel to an already active Atlantic season. The Caribbean and Gulf Coast paid the price.</p>
+      </div>
+
+      <div class="country-card" style="border-top: 2px solid var(--mint);">
+        <div class="country-card-header">
+          <span class="flag">🇮🇳</span>
+          <span class="country-name">India</span>
+        </div>
+        <span class="country-verdict verdict-mixed">Monsoon Boost</span>
+        <p class="country-detail">La Niña years typically strengthen the Indian monsoon — the opposite of El Niño's weakening effect. For a country where 50%+ of agriculture is rain-fed, a stronger monsoon during La Niña is genuinely good news. Until El Niño comes back.</p>
+      </div>
+
+      <div class="country-card" style="border-top: 2px solid var(--mint);">
+        <div class="country-card-header">
+          <span class="flag">🇺🇸</span>
+          <span class="country-name">USA: Southern Tier</span>
+        </div>
+        <span class="country-verdict verdict-drought">Warmer & Drier South</span>
+        <p class="country-detail">The US South and Southwest experience warmer, drier winters under La Niña. Texas and the Gulf States face elevated drought risk. The northern US gets colder and stormier. The 2024–25 La Niña defied some of these patterns — a reminder that ENSO is probabilistic, not deterministic.</p>
+      </div>
+    </div>
+
+    <!-- The punchline -->
+    <div class="snark-box" data-label="🧊 The Cold Hard Truth About La Niña">
+      <p>
+        The 2024–25 La Niña was supposed to bring the planet a breather after two years of record-shattering heat. 
+        Instead, January 2025 became the hottest January in recorded history — <em>during La Niña</em>. 
+        The WMO's own Secretary-General put it bluntly: even if La Niña emerges, 
+        it will not change the long-term trajectory of rising temperatures driven by greenhouse gases. 
+        La Niña is not a reset button. It's a speed bump. And the car is still accelerating.
+      </p>
+    </div>
+
+    <!-- ENSO status box -->
+    <div class="warning-banner" style="border-color: rgba(179,157,219,0.3); background: linear-gradient(135deg, rgba(179,157,219,0.06), rgba(77,208,164,0.04));">
+      <div class="warning-icon">📡</div>
+      <div class="warning-text">
+        <h4 style="color: var(--lavender);">Current ENSO Status — April 2026</h4>
+        <p>As of mid-March 2026, the IRI and NOAA's Climate Prediction Center confirm ENSO-neutral conditions, with La Niña now officially ended. The final La Niña advisory has been issued. An <strong>El Niño Watch</strong> is now active — with a 61% probability of El Niño emerging between May and July 2026, rising to 72–80% by mid-year. Warmer-than-normal subsurface temperatures are already expanding eastward across the Pacific basin. The next chapter is loading.</p>
+      </div>
+    </div>
+
+    <div class="divider">WHAT YOU CAN ACTUALLY DO</div>
+
+    <!-- SECTION 7 -->
+    <h2><span class="h2-num">// 07</span>The Snarky Survival Guide: Actions, Not Panic</h2>
+
+    <p>
+      Climate anxiety is real. Climate helplessness is optional. Here's how informed people — individuals, 
+      businesses, and communities — respond to El Niño cycles without dissolving into doom-scrolling paralysis.
+    </p>
+
+    <h3>🌾 For Farmers & Agriculture</h3>
+    <ul class="tip-list">
+      <li>
+        <div class="tip-icon">📅</div>
+        <span>Monitor ENSO forecasts from NOAA and WMO at least 6 months ahead. El Niño gives you a seasonal heads-up most disasters don't. Use it.</span>
+      </li>
+      <li>
+        <div class="tip-icon">🌱</div>
+        <span>Diversify crops for drought-resilience. If you're in India or southern Africa, El Niño drought cycles are predictable enough to plan around. Plant accordingly.</span>
+      </li>
+      <li>
+        <div class="tip-icon">💧</div>
+        <span>Invest in rainwater harvesting and reservoir infrastructure during neutral years. El Niño punishes short-term thinking.</span>
+      </li>
+    </ul>
+
+    <h3>🏙️ For Urban Households (India / Southeast Asia)</h3>
+    <ul class="tip-list">
+      <li>
+        <div class="tip-icon">🚰</div>
+        <span>Weak monsoon = water scarcity. Stock up on storage solutions. Know your city's water rationing protocol before it's activated at 11pm.</span>
+      </li>
+      <li>
+        <div class="tip-icon">🛒</div>
+        <span>Food prices spike during El Niño years — especially rice, palm oil, and vegetables. A modest pantry buffer is not paranoia; it's pattern literacy.</span>
+      </li>
+      <li>
+        <div class="tip-icon">🦟</div>
+        <span>Malaria and dengue risk rises with irregular rainfall patterns. Clear stagnant water. Get tested early. Don't wait.</span>
+      </li>
+    </ul>
+
+    <h3>💼 For Businesses & Supply Chains</h3>
+    <ul class="tip-list">
+      <li>
+        <div class="tip-icon">⚡</div>
+        <span>Hydroelectric and nuclear power generation drops during drought years in South America, South Asia, and East Africa. Energy contingency planning is not optional anymore.</span>
+      </li>
+      <li>
+        <div class="tip-icon">🚢</div>
+        <span>The Panama Canal restrictions during El Niño drought (1998, 2015, 2023) disrupted global shipping. Build alternative routing options into logistics contracts.</span>
+      </li>
+      <li>
+        <div class="tip-icon">📈</div>
+        <span>Commodity markets — rice, sugar, coffee, soybeans — swing dramatically during ENSO events. Hedge accordingly. Ignorance is not a risk management strategy.</span>
+      </li>
+    </ul>
+
+    <h3>🌍 For Policymakers & Governments</h3>
+    <ul class="tip-list">
+      <li>
+        <div class="tip-icon">📡</div>
+        <span>Early warning systems save lives and GDP. Countries that invest in climate monitoring platforms consistently outperform those that wait for disaster to react.</span>
+      </li>
+      <li>
+        <div class="tip-icon">🏦</div>
+        <span>Pre-position food reserves and emergency funds during neutral phases. The time to build the ark is not when it starts raining.</span>
+      </li>
+      <li>
+        <div class="tip-icon">🤝</div>
+        <span>Water-sharing conflicts between India–China, India–Pakistan, and Ethiopia–Sudan sharpen during El Niño stress. Diplomatic frameworks need to be built before the crisis, not during it.</span>
+      </li>
+    </ul>
+
+    <!-- SECTION 6 - CLOSE -->
+    <div class="divider">FINAL WORD</div>
+
+    <h2><span class="h2-num">// 08</span>The Boy Has Always Been Here. Now It's Angrier.</h2>
+
+    <p>
+      El Niño has been disrupting human civilisations for millennia. The Moche people of Peru may have 
+      collapsed because of it around 700 AD. The French Revolution may have been nudged by it in 1789. 
+      The worst famines of the Victorian era were supercharged by it. We have always been at the mercy 
+      of this warm current and its ripple effects.
+    </p>
+
+    <p>
+      What's different now is that <strong>climate change is loading the dice</strong>. A warming baseline 
+      means each El Niño starts from a higher platform and hits harder. The 2023–24 event was the 
+      fifth-strongest in history and still produced an unprecedented 12 consecutive record-breaking months. 
+      Imagine what a top-three event looks like on top of a planet that is already 1.5°C above pre-industrial 
+      temperatures.
+    </p>
+
+    <div class="snark-box" data-label="🔥 Final Snark">
+      <p>The science is not complicated. The Pacific gets warm, the world gets disrupted, and whoever ignored the forecast pays the price. You now have the forecast. What you do with it is the only variable left that you control.</p>
+    </div>
+
+    <p>
+      Monitor ENSO updates at <strong>climate.gov</strong> and <strong>wmo.int</strong>. Share this post 
+      with someone who still thinks climate is a far-future problem. And the next time the news reports on 
+      a drought in India, a wildfire in Australia, or floods in Kenya — you'll know exactly why.
+    </p>
+
+    <p>
+      <em>Because awareness is the first survival skill.</em>
+    </p>
+
+  </article>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Snarky<span>Solutions</span></div>
+    <div class="footer-tagline">Classy commentary. Sassy data. Zero fluff.</div>
+  </div>
+  <div class="footer-copy">
+    solutionssnarky-droid.github.io<br>
+    © 2026 Snarky Solutions<br>
+    Climate · Workplace · Strategy · AI
+  </div>
+</footer>
+
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const scrollHeight = doc.scrollHeight - doc.clientHeight;
+    const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>
