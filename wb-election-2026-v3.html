@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bengal at the Crossroads: No Heroes, No Villains | Snarky Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral:#ff5f4b; --yellow:#f5d63d; --lav:#b8a9f5;
+    --pink:#ff3d8a; --green:#5ce6a0;
+    --bg:#0d0d12; --surface:#161620; --card:#1e1e2c;
+    --border:#2a2a3a; --text:#e8e8f0; --muted:#8888a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.8;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+
+  /* HEADER */
+  .site-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(13,13,18,0.94);backdrop-filter:blur(12px);}
+  .logo{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:900;color:var(--coral);text-decoration:none;}
+  .logo span{color:var(--yellow);}
+  .pill{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:0.28rem 0.85rem;}
+
+  /* STATUS BAR */
+  .sbar{background:linear-gradient(90deg,rgba(255,95,75,0.09),rgba(184,169,245,0.06),rgba(92,230,160,0.06));border-bottom:1px solid var(--border);padding:0.6rem 2.5rem;display:flex;flex-wrap:wrap;gap:1.8rem;align-items:center;}
+  .si{font-family:'DM Mono',monospace;font-size:0.68rem;display:flex;align-items:center;gap:0.4rem;}
+  .dl{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:blink 1.4s infinite;flex-shrink:0;}
+  @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(1.6)}}
+  .cd{color:var(--green);} .cl{color:var(--coral);} .cc{color:var(--yellow);}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:5rem 2.5rem 4rem;max-width:1100px;margin:0 auto;}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.09;pointer-events:none;}
+  .b1{width:520px;height:520px;background:var(--lav);top:-150px;right:-120px;}
+  .b2{width:380px;height:380px;background:var(--coral);bottom:-80px;left:-100px;}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--lav);margin-bottom:1.1rem;}
+  .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;line-height:1.05;color:#fff;margin-bottom:1.2rem;}
+  .hero h1 em{font-style:italic;color:var(--yellow);}
+  .hero-sub{font-size:1.08rem;color:var(--muted);max-width:640px;margin-bottom:1.6rem;}
+  .hero-meta{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:0.5rem;}
+
+  /* LAYOUT */
+  .wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem;}
+  .sec{padding:3.2rem 0;border-bottom:1px solid var(--border);}
+  .sec:last-of-type{border-bottom:none;}
+  .stag{font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:3px;text-transform:uppercase;color:var(--lav);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;}
+  .stag::before{content:'';width:20px;height:2px;background:var(--lav);display:inline-block;}
+  h2{font-family:'Fraunces',serif;font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:700;line-height:1.2;color:#fff;margin-bottom:1.2rem;}
+  h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-top:2rem;margin-bottom:0.6rem;}
+  p{color:var(--muted);margin-bottom:1rem;}
+  p strong{color:var(--text);}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.8rem 0;}
+  .sc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;}
+  .sn{font-family:'Fraunces',serif;font-size:2rem;font-weight:900;line-height:1;margin-bottom:0.25rem;}
+  .sl{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+
+  /* BOXES */
+  .box{border-radius:10px;padding:1.1rem 1.4rem;margin:1.3rem 0;font-size:0.85rem;}
+  .by{background:rgba(245,214,61,0.06);border:1px solid rgba(245,214,61,0.2);color:var(--text);}
+  .by strong{color:var(--yellow);}
+  .br{background:rgba(255,95,75,0.06);border:1px solid rgba(255,95,75,0.22);color:var(--text);}
+  .br strong{color:var(--coral);}
+  .bg{background:rgba(92,230,160,0.06);border:1px solid rgba(92,230,160,0.2);color:var(--text);}
+  .bg strong{color:var(--green);}
+  .bl{background:rgba(184,169,245,0.06);border:1px solid rgba(184,169,245,0.22);color:var(--text);}
+  .bl strong{color:var(--lav);}
+
+  blockquote{border-left:3px solid var(--lav);margin:1.4rem 0;padding:0.9rem 1.4rem;background:rgba(184,169,245,0.05);border-radius:0 8px 8px 0;font-family:'Fraunces',serif;font-style:italic;color:var(--text);font-size:1rem;}
+  blockquote cite{display:block;font-size:0.7rem;color:var(--muted);font-style:normal;font-family:'DM Mono',monospace;margin-top:0.4rem;}
+
+  /* PARTY STRIP */
+  .party-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1rem;margin-top:1.6rem;}
+  .ps{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.3rem;border-top:3px solid transparent;transition:border-color 0.2s;}
+  .ps-tmc{border-top-color:var(--green);}
+  .ps-bjp{border-top-color:var(--coral);}
+  .ps-left{border-top-color:var(--pink);}
+  .ps-inc{border-top-color:var(--yellow);}
+  .ps-suci{border-top-color:var(--lav);}
+  .ps-oth{border-top-color:var(--muted);}
+  .ps-name{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.2rem;}
+  .ps-lead{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.8px;margin-bottom:0.6rem;text-transform:uppercase;}
+  .ps-body{font-size:0.8rem;color:var(--muted);margin:0;}
+
+  /* SCORECARD */
+  .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.6rem;}
+  @media(max-width:680px){.score-grid{grid-template-columns:1fr;}}
+  .sg{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.6rem;}
+  .sg-tmc{border-top:3px solid var(--green);}
+  .sg-bjp{border-top:3px solid var(--coral);}
+  .sg-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.9rem;}
+  .row{display:flex;gap:0.5rem;margin-bottom:0.45rem;font-size:0.83rem;color:var(--muted);align-items:flex-start;}
+  .ri{flex-shrink:0;margin-top:2px;font-size:0.82rem;}
+  .cr{color:var(--green);} .db{color:var(--coral);}
+
+  /* DATA TABLE */
+  .tw{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-top:1.6rem;}
+  table{width:100%;border-collapse:collapse;font-size:0.84rem;}
+  thead tr{background:var(--surface);border-bottom:2px solid var(--border);}
+  th{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:0.8rem 1.1rem;text-align:left;white-space:nowrap;}
+  td{padding:0.8rem 1.1rem;border-bottom:1px solid var(--border);vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:rgba(255,255,255,0.015);}
+  .tc{color:var(--coral);font-family:'DM Mono',monospace;font-size:0.8rem;}
+  .tg{color:var(--green);font-family:'DM Mono',monospace;font-size:0.8rem;}
+  .ty{color:var(--yellow);font-family:'DM Mono',monospace;font-size:0.8rem;}
+  .pd{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;}
+
+  /* STATE COMPARE */
+  .state-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem;}
+  .stc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.3rem;}
+  .st-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.2rem;}
+  .st-gov{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--coral);margin-bottom:0.8rem;}
+  .sm{display:flex;justify-content:space-between;padding:0.35rem 0;border-bottom:1px solid var(--border);font-size:0.78rem;}
+  .sm:last-child{border-bottom:none;}
+  .sm-l{color:var(--muted);}
+  .sm-v{font-family:'DM Mono',monospace;font-size:0.76rem;}
+  .mg{color:var(--green);} .mm{color:var(--yellow);} .mr{color:var(--coral);}
+
+  /* DEFECTORS */
+  .def-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem;}
+  .dc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.3rem;}
+  .dc-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.3rem;}
+  .dc-path{display:flex;flex-wrap:wrap;align-items:center;gap:0.3rem;margin-bottom:0.6rem;}
+  .tf{font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.12rem 0.4rem;border-radius:4px;background:rgba(92,230,160,0.12);color:var(--green);}
+  .tt{font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.12rem 0.4rem;border-radius:4px;background:rgba(255,95,75,0.12);color:var(--coral);}
+  .tb2{font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.12rem 0.4rem;border-radius:4px;background:rgba(245,214,61,0.1);color:var(--yellow);}
+  .arr{color:var(--muted);font-size:0.72rem;}
+  .dc-body{font-size:0.8rem;color:var(--muted);margin-bottom:0.5rem;}
+  .dc-out{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--yellow);}
+
+  /* Q BOX */
+  .qbox{background:var(--card);border:1px solid var(--lav);border-radius:13px;padding:1.6rem;margin:1.5rem 0;}
+  .ql{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--lav);margin-bottom:0.5rem;}
+  .qt{font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;color:#fff;line-height:1.4;margin-bottom:0.7rem;}
+  .qa{font-size:0.83rem;color:var(--muted);margin:0;}
+
+  /* IMPACT */
+  .imp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.5rem;}
+  .ic{background:var(--card);border-radius:12px;padding:1.3rem;border-left:3px solid transparent;}
+  .ic.gr{border-color:var(--green);background:rgba(92,230,160,0.04);}
+  .ic.co{border-color:var(--coral);background:rgba(255,95,75,0.04);}
+  .ic.ye{border-color:var(--yellow);background:rgba(245,214,61,0.04);}
+  .ic.la{border-color:var(--lav);background:rgba(184,169,245,0.04);}
+  .ic.pi{border-color:var(--pink);background:rgba(255,61,138,0.04);}
+  .ic-title{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.4rem;}
+  .ic-desc{font-size:0.8rem;color:var(--muted);margin:0;}
+
+  /* VERDICT */
+  .verdict{background:linear-gradient(135deg,rgba(184,169,245,0.08),rgba(92,230,160,0.05));border:1px solid rgba(184,169,245,0.2);border-radius:16px;padding:2.2rem;margin-top:1.8rem;position:relative;overflow:hidden;}
+  .verdict::before{content:'"';position:absolute;top:-1rem;left:1.5rem;font-family:'Fraunces',serif;font-size:11rem;font-weight:900;color:var(--lav);opacity:0.06;line-height:1;pointer-events:none;}
+  .vl{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--lav);margin-bottom:0.7rem;}
+  .vt{font-family:'Fraunces',serif;font-size:clamp(1rem,2vw,1.35rem);font-weight:300;font-style:italic;line-height:1.55;color:var(--text);margin:0;}
+
+  footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem;text-align:center;}
+  .fb{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;color:var(--coral);margin-bottom:0.3rem;}
+  .fb span{color:var(--yellow);}
+  footer p{font-size:0.76rem;color:var(--muted);margin:0.25rem 0;}
+
+  @media(max-width:600px){
+    .site-header,.sbar{padding-left:1.4rem;padding-right:1.4rem;}
+    .hero{padding:2.8rem 1.4rem 2.2rem;}
+    .wrap{padding:0 1.4rem;}
+    .sec{padding:2.2rem 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="#" class="logo">Snarky <span>Solutions</span></a>
+  <div class="pill">Bengal 2026 · Analysis</div>
+</header>
+
+<!-- STATUS BAR -->
+<div class="sbar">
+  <div class="si cd">&#10003; Phase 1 · Apr 23 · 152 seats · Done</div>
+  <div class="si cl"><span class="dl"></span>&nbsp;Phase 2 · Apr 29 · 142 seats · 4 Days Away</div>
+  <div class="si cc">&#9654; Results · May 4 · All 294 Seats</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="eyebrow">West Bengal Assembly Election 2026 · Snarky Solutions</div>
+  <h1>Bengal at the<br><em>Crossroads:</em><br>No Heroes, No Villains</h1>
+  <p class="hero-sub">15 years of TMC. A BJP built from its defectors. A Left fighting for survival. A forgotten Marxist conscience. 6.8 crore voters. Here's everything that matters — without the propaganda.</p>
+  <div class="hero-meta">
+    <span>April 25, 2026 &nbsp;·&nbsp;</span>
+    <span>~10 min read &nbsp;·&nbsp;</span>
+    <span>Data-backed · Both sides examined</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ── THE FIELD ── -->
+  <section class="sec" id="parties">
+    <div class="stag">The Field</div>
+    <h2>Who Is Actually Fighting —<br>And What They Stand For</h2>
+    <p>This is not a two-party race. Six distinct political forces are on the field — each with a real constituency and a real agenda. Here's the honest one-liner on each.</p>
+
+    <div class="party-strip">
+      <div class="ps ps-tmc">
+        <div class="ps-name">TMC</div>
+        <div class="ps-lead">Mamata Banerjee · 291 seats · Incumbent</div>
+        <p class="ps-body">Rules on welfare delivery and Bengali identity. Carries 15-year fatigue, a debt mountain, and documented scams alongside real scheme delivery to 2+ crore women.</p>
+      </div>
+      <div class="ps ps-bjp">
+        <div class="ps-name">BJP</div>
+        <div class="ps-lead">Suvendu Adhikari · 293 seats · Challenger</div>
+        <p class="ps-body">Anti-incumbency, CAA for Matua refugees, central fund unlock. Credible diagnosis. Questionable prescription — almost every Bengal BJP leader was TMC just years ago.</p>
+      </div>
+      <div class="ps ps-left">
+        <div class="ps-name">Left Front (CPI-M led)</div>
+        <div class="ps-lead">Chakraborty / Salim · 284 seats · INC alliance</div>
+        <p class="ps-body">34 years of rule, wiped out in 2021, fighting to survive. Most coherent structural critique of both TMC and BJP. Weakest ground organisation.</p>
+      </div>
+      <div class="ps ps-inc">
+        <div class="ps-name">INC</div>
+        <div class="ps-lead">Adhir Ranjan Chowdhury · 293 seats · Left alliance</div>
+        <p class="ps-body">Betting on minority vote consolidation in Murshidabad and Malda. Returns to assembly politics after 25 years. No independent Bengal machinery.</p>
+      </div>
+      <div class="ps ps-suci">
+        <div class="ps-name">SUCI(C)</div>
+        <div class="ps-lead">Independent · South 24 Parganas base · Since 1948</div>
+        <p class="ps-body">India's oldest surviving communist party. Founded by Shibdas Ghosh. Turns 78 this week. No alliances, ever. Rarely wins seats but takes votes from the Left in marginal constituencies — and is the only Bengal party whose leadership has never played defection politics.</p>
+      </div>
+      <div class="ps ps-oth">
+        <div class="ps-name">AIMIM + AJUP</div>
+        <div class="ps-lead">12 + 18 seats · Muslim-majority areas</div>
+        <p class="ps-body">The Muslim vote splitters. Won't win many seats directly but a 3–5% split in Murshidabad and North 24 Parganas could cost TMC 20+ marginal constituencies. The most consequential wildcard in this election.</p>
+      </div>
+    </div>
+
+    <div class="box by" style="margin-top:1.4rem;">
+      <strong>The Number That Frames Everything:</strong> In 2021 TMC won 215 seats. BJP won 77. Left + Congress: 2. The question isn't whether TMC wins — it's whether the anti-TMC vote consolidates enough to change the margin. Every number below is context for that one question.
+    </div>
+  </section>
+
+  <!-- ── SCORECARD ── -->
+  <section class="sec" id="scorecard">
+    <div class="stag">Unbiased Scorecard</div>
+    <h2>Credits and Debits —<br>TMC and BJP, Fairly</h2>
+    <p>Both parties will tell you only the flattering version. Here is the complete ledger.</p>
+
+    <div class="score-grid">
+      <div class="sg sg-tmc">
+        <div class="sg-label" style="color:var(--green)">TMC — 15 Years in Power</div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>GSDP grew ~5x (&#x20B9;4.5L cr → projected &#x20B9;21.5L cr by 2025-26)</span></div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>Lakshmir Bhandar: ₹500–1,000/month direct cash to 2+ crore women</span></div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>Kanyashree: UN Award for reducing girl dropout rates</span></div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>Kolkata among safest large Indian cities by NCRB data</span></div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>Rural infrastructure, roads, connectivity visibly improved</span></div>
+        <div style="height:0.6rem;"></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>State debt: ₹8 lakh crore — a fiscal time bomb</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>SSC scam: sitting ministers arrested; real victims with real names</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>"Cut money" culture — welfare recipients paying a % to party workers</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>R.G. Kar case: cover-up allegations still unresolved</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>Youth unemployment above national average — welfare without jobs</span></div>
+      </div>
+      <div class="sg sg-bjp">
+        <div class="sg-label" style="color:var(--coral)">BJP — No Bengal Track Record Yet</div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>Double-engine can unlock blocked central funds (PM Awas, PM Kisan, Ujjwala)</span></div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>CAA: concrete, life-changing promise for 30L+ Matua refugee families</span></div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>SSC accountability narrative is factually grounded — real investigation</span></div>
+        <div class="row"><span class="ri cr">&#10003;</span><span>Fast-track courts for crimes against women — directly answers R.G. Kar anger</span></div>
+        <div style="height:0.6rem;"></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>ADR data: 72% of BJP candidates have criminal cases — highest of any party this election</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>Bengal leadership is almost entirely ex-TMC — ideological authenticity is zero</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>SIR voter deletions: 65% of disputed names are Muslim — unanswered legitimacy concern</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>2021: 148 TMC turncoats given tickets. Only 6 (4%) won. Shallow roots.</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>No plan for 2cr+ Lakshmir Bhandar recipients if TMC's scheme is disrupted</span></div>
+        <div class="row"><span class="ri db">&#10007;</span><span>Amit Shah's pre-Phase 2 remarks drew Supreme Court censure</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MONEY POWER CRIMINAL ── -->
+  <section class="sec" id="data">
+    <div class="stag">ADR Data 2026</div>
+    <h2>Money, Power &amp; Criminal Cases:<br>What They Filed Under Oath</h2>
+    <p>ADR analysed self-sworn affidavits of 2,920 candidates. These are <strong>their own declarations</strong> to the Election Commission — not allegations. Their words, their numbers.</p>
+
+    <div class="stats">
+      <div class="sc"><div class="sn" style="color:var(--coral)">23%</div><div class="sl">Candidates with Criminal Cases</div></div>
+      <div class="sc"><div class="sn" style="color:var(--yellow)">₹1.27cr</div><div class="sl">Average Assets / Candidate</div></div>
+      <div class="sc"><div class="sn" style="color:var(--lav)">129</div><div class="sl">Red Alert Constituencies</div></div>
+      <div class="sc"><div class="sn" style="color:var(--green)">92.59%</div><div class="sl">Phase 1 Turnout — Record</div></div>
+    </div>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr>
+            <th>Party</th><th>% Criminal Cases</th><th>% Serious Cases</th><th>Avg Assets</th><th>Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="pd" style="background:var(--coral)"></span><strong>BJP</strong></td><td class="tc">72%</td><td class="tc">64%</td><td class="tc">₹3.28 Cr</td><td style="font-size:0.78rem;color:var(--muted);">Highest criminal case %</td></tr>
+          <tr><td><span class="pd" style="background:var(--pink)"></span><strong>CPI(M) / Left</strong></td><td class="ty">51%</td><td class="ty">39%</td><td class="ty">₹1.07 Cr</td><td style="font-size:0.78rem;color:var(--muted);">Mid-range, lower assets</td></tr>
+          <tr><td><span class="pd" style="background:var(--green)"></span><strong>TMC (AITC)</strong></td><td class="ty">35%</td><td class="ty">31%</td><td class="tc">₹5.39 Cr</td><td style="font-size:0.78rem;color:var(--muted);">Lower cases, highest wealth</td></tr>
+          <tr><td><span class="pd" style="background:var(--yellow)"></span><strong>INC</strong></td><td class="tg">26%</td><td class="tg">22%</td><td class="tg">₹1.56 Cr</td><td style="font-size:0.78rem;color:var(--muted);">Cleaner on both metrics</td></tr>
+          <tr><td><span class="pd" style="background:var(--lav)"></span><strong>SUCI(C)</strong></td><td class="tg">4%</td><td class="tg">2%</td><td class="tg">₹12 Lakhs</td><td style="font-size:0.78rem;color:var(--muted);">Cleanest by far — every metric</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box br">
+      <strong>&#9888; Correction from earlier drafts:</strong> Initial estimates had TMC highest on criminal cases. ADR's full Phase 1 + 2 data shows BJP candidates lead on criminal background (72%) and serious cases (64%). TMC leads on declared wealth — average ₹5.39 crore per candidate. SUCI(C)'s ₹12 lakh average assets and 4% criminal case rate is a statistical outlier that stands alone in this election.
+    </div>
+
+    <h3>Named: The Biggest Declared Assets &amp; Cases</h3>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Candidate</th><th>Party</th><th>Constituency</th><th>Declared Assets</th><th>Criminal Cases</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Jakir Hossain</strong></td><td>TMC</td><td>Jangipur</td><td class="tc">₹131.6 Cr</td><td class="tg">—</td></tr>
+          <tr><td><strong>Goutam Mishra (Shyam)</strong></td><td>TMC</td><td>Barjora</td><td class="tc">₹105.7 Cr</td><td class="tg">—</td></tr>
+          <tr><td><strong>Palash Rana</strong></td><td>BJP</td><td>Raidighi</td><td class="tc">₹104 Cr</td><td class="tc">5 (incl. Sec 307 — Attempt to Murder)</td></tr>
+          <tr><td><strong>Firhad Hakim</strong></td><td>TMC</td><td>Kolkata Port</td><td class="ty">₹22.5 Cr</td><td class="ty">2 (CBI/ED — Narada, PMLA)</td></tr>
+          <tr><td><strong>Somenath Shyam</strong></td><td>TMC</td><td>—</td><td class="ty">—</td><td class="ty">3 (Serious, pending)</td></tr>
+          <tr><td><strong>Pranay Karji</strong></td><td>CPI(M)</td><td>—</td><td class="tg">—</td><td class="tg">1 (Protest — blocking public way)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:0.6rem;">Source: ADR &amp; ECI Affidavit Archive. Self-declared figures.</p>
+  </section>
+
+  <!-- ── GROWTH LENS ── -->
+  <section class="sec" id="growth">
+    <div class="stag">The Growth Lens</div>
+    <h2>If BJP Wins — What Actually Happens<br>to Bengal's Economy?</h2>
+    <p>BJP promises "double-engine government." That means central funds unlock and industrial investment follows. Here is what the same party has actually delivered in comparable states — honestly, not cherry-picked.</p>
+
+    <div class="state-row">
+      <div class="stc">
+        <div class="st-name">Gujarat</div>
+        <div class="st-gov">BJP since 1995</div>
+        <div class="sm"><span class="sm-l">GSDP Rank</span><span class="sm-v mg">5th nationally</span></div>
+        <div class="sm"><span class="sm-l">Per Capita Income</span><span class="sm-v mg">Above average</span></div>
+        <div class="sm"><span class="sm-l">Industrial Investment</span><span class="sm-v mg">Top 3 consistently</span></div>
+        <div class="sm"><span class="sm-l">Time to build this</span><span class="sm-v mm">20+ years</span></div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;">Real success. But built on port infrastructure, trading communities, and irrigation that predate BJP. Not a copy-paste template for Bengal.</p>
+      </div>
+      <div class="stc">
+        <div class="st-name">Uttar Pradesh</div>
+        <div class="st-gov">BJP (Yogi) since 2017</div>
+        <div class="sm"><span class="sm-l">GSDP Growth (8yr)</span><span class="sm-v mg">Doubled</span></div>
+        <div class="sm"><span class="sm-l">Per Capita Income</span><span class="sm-v mr">Among lowest in India</span></div>
+        <div class="sm"><span class="sm-l">Multidim. Poverty</span><span class="sm-v mr">~70% districts still high</span></div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;">GSDP doubled. Quality of life didn't match. The lesson: aggregate growth and improved livelihoods are not the same thing.</p>
+      </div>
+      <div class="stc">
+        <div class="st-name">Assam</div>
+        <div class="st-gov">BJP (Himanta) since 2021</div>
+        <div class="sm"><span class="sm-l">Growth Rate</span><span class="sm-v mg">Fastest in NE</span></div>
+        <div class="sm"><span class="sm-l">Central Transfer Dep.</span><span class="sm-v mr">Very high — like Bengal</span></div>
+        <div class="sm"><span class="sm-l">Private Jobs Created</span><span class="sm-v mr">Limited</span></div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;">Most comparable to Bengal geographically. "Double engine" improved scheme delivery — not private employment at scale. Most honest preview of what Bengal gets.</p>
+      </div>
+    </div>
+
+    <div class="box bg">
+      <strong>What Bengal's Economy Actually Needs (No Party Disagrees Privately):</strong> Better ease-of-doing-business rankings. Kolkata port leveraged for logistics. IT expansion beyond the city. Land acquisition law clarity. And fiscal consolidation without gutting welfare. These require 10+ years of consistent governance — not one election result.
+    </div>
+  </section>
+
+  <!-- ── MANIFESTOS ── -->
+  <section class="sec" id="manifestos">
+    <div class="stag">Manifesto Reality Check</div>
+    <h2>What They're Actually Promising —<br>Side by Side</h2>
+    <p>Numbers matter more than slogans. Here is the manifesto comparison with the actual figures — sourced from official party documents and the ADR-ECI analysis.</p>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Issue</th><th>TMC (AITC)</th><th>BJP</th><th>Left · SUCI(C)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Women's Cash</strong></td>
+            <td class="tg">₹1,500–1,700/mo<br><span style="font-size:0.72rem;color:var(--muted)">Lakshmir Bhandar</span></td>
+            <td class="ty">₹3,000/mo<br><span style="font-size:0.72rem;color:var(--muted)">Annapurna Scheme</span></td>
+            <td style="font-size:0.82rem;color:var(--muted)">Rights over doles — universal social security</td>
+          </tr>
+          <tr>
+            <td><strong>Youth / Jobs</strong></td>
+            <td class="ty">₹1,500/mo allowance<br>10L jobs promised<br><span style="font-size:0.72rem;color:var(--muted)">Banglar Yuba-Sathi</span></td>
+            <td class="ty">₹3,000/mo allowance<br>1 crore jobs in 5 yrs<br><span style="font-size:0.72rem;color:var(--muted)">Yuva Shakti</span></td>
+            <td style="font-size:0.82rem;color:var(--muted)">Permanent Job Guarantee · fill all vacancies in first cabinet meeting</td>
+          </tr>
+          <tr>
+            <td><strong>Health</strong></td>
+            <td class="tg">Swasthya Sathi expansion</td>
+            <td class="ty">Ayushman Bharat ₹5L rollout</td>
+            <td style="font-size:0.82rem;color:var(--muted)">Nationalised health — right, not insurance</td>
+          </tr>
+          <tr>
+            <td><strong>Education</strong></td>
+            <td style="font-size:0.82rem;color:var(--muted)">430 Model Schools · 4.5% GDP spend</td>
+            <td style="font-size:0.82rem;color:var(--muted)">Satellite IIT / IIM campuses</td>
+            <td style="font-size:0.82rem;color:var(--muted)">Scrap NEP 2020 · free education up to PG</td>
+          </tr>
+          <tr>
+            <td><strong>Agriculture</strong></td>
+            <td style="font-size:0.82rem;color:var(--muted)">MSP ₹2,500/quintal</td>
+            <td style="font-size:0.82rem;color:var(--muted)">PM-Kisan state top-up</td>
+            <td style="font-size:0.82rem;color:var(--muted)">Swaminathan Commission in full</td>
+          </tr>
+          <tr>
+            <td><strong>Women's Safety</strong></td>
+            <td style="font-size:0.82rem;color:var(--muted)">'Shining Teams' — women patrol units</td>
+            <td style="font-size:0.82rem;color:var(--muted)">Durga Suraksha Squad · fast-track courts</td>
+            <td style="font-size:0.82rem;color:var(--muted)">'Abhaya Bahini' — rapid intervention</td>
+          </tr>
+          <tr>
+            <td><strong>UCC</strong></td>
+            <td class="tc">Opposed</td>
+            <td class="ty">Implementation in 6 months</td>
+            <td class="tc">Anti-UCC · administrative transparency</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box by">
+      <strong>The Number Driving Rural Voters:</strong> ₹1,500 (TMC) vs ₹3,000 (BJP) per month for women. This single comparison has become the dominant talking point in rural Bengal — what political analysts are calling <em>Competitive Populism</em>. The question neither party answers: Bengal carries ₹8 lakh crore in debt. Both promises have to be paid from the same treasury. Ask them how.
+    </div>
+  </section>
+
+  <!-- ── DEFECTORS ── -->
+  <section class="sec" id="defectors">
+    <div class="stag">The Turncoat Question</div>
+    <h2>When BJP's Bengal Leaders Are<br>All Yesterday's TMC</h2>
+    <p>Every major BJP face campaigning against TMC today was inside TMC within the last decade. This is not rhetoric. It is documented political history — and it matters for what it tells you about the nature of the "change" on offer.</p>
+
+    <div class="def-grid">
+      <div class="dc">
+        <div class="dc-name">Suvendu Adhikari</div>
+        <div class="dc-path"><span class="tf">TMC Transport Minister</span><span class="arr">→</span><span class="tt">BJP Dec 2020</span></div>
+        <p class="dc-body">Mamata's closest lieutenant for 22 years. Left when Abhishek Banerjee's influence rose — a factional calculation, not an ideological one. Now leads BJP's Bengal campaign as Leader of Opposition.</p>
+        <div class="dc-out">Defeated Mamata in Nandigram 2021.</div>
+      </div>
+      <div class="dc">
+        <div class="dc-name">Mukul Roy</div>
+        <div class="dc-path"><span class="tf">TMC Co-Founder</span><span class="arr">→</span><span class="tt">BJP 2017</span><span class="arr">→</span><span class="tb2">TMC 2021</span></div>
+        <p class="dc-body">TMC's organisational brain for a decade. Built BJP's Bengal machine. Returned to TMC after BJP lost in 2021. Completed the full defection circuit before his death in February 2026. His life is the definitive statement on Bengal's ideology-free politics.</p>
+        <div class="dc-out">The full cycle: TMC → BJP → TMC. No ideology — only power.</div>
+      </div>
+      <div class="dc">
+        <div class="dc-name">Krishna Kalyani</div>
+        <div class="dc-path"><span class="tt">BJP MP 2024</span><span class="arr">→</span><span class="tf">TMC 2025</span><span class="arr">→</span><span class="tf">Contesting as TMC 2026</span></div>
+        <p class="dc-body">Won Raiganj as BJP in 2024. Switched to TMC in 2025. Now contesting Raiganj as TMC in 2026 against BJP's own candidate. One constituency, two complete reversals in 24 months.</p>
+        <div class="dc-out">The most concentrated example of loyalty-free politics alive today.</div>
+      </div>
+    </div>
+
+    <div class="qbox">
+      <div class="ql">The Question Nobody Answers</div>
+      <div class="qt">"If they were corrupt inside TMC — why did BJP give them tickets? And if they weren't, why did they leave?"</div>
+      <p class="qa">The honest answer: these are power calculations, not ideological migrations. TMC leaders left when their faction weakened. BJP accepted them because Bengal has no homegrown BJP figure capable of winning statewide. The voter is choosing between an incumbent built on patronage and a challenger built on recycled versions of the same patronage network — in different coloured clothing. That is the real choice.</p>
+    </div>
+
+    <div class="box bl">
+      <strong>SUCI(C) — The Statistical Outlier and the Exception Worth Noting:</strong> Party symbol: Torch. Founded 1948, turning 78 this week. Average declared assets per candidate: <strong>₹12 lakhs</strong> — against TMC's ₹5.39 crore and BJP's ₹3.28 crore. Criminal cases: 4%. Serious cases: 2%. Their leadership has never participated in the defection revolving door. They win very few seats. But in an election where every other party's integrity is a question mark, SUCI(C)'s numbers are not a question mark — they are an answer.
+    </div>
+  </section>
+
+  <!-- ── WHAT IT MEANS FOR YOU ── -->
+  <section class="sec" id="impact">
+    <div class="stag">Ground Truth</div>
+    <h2>What the Outcome Actually Means —<br>For Real People</h2>
+
+    <div class="imp-grid">
+      <div class="ic gr">
+        <div class="ic-title">Women — 2cr+ Lakshmir Bhandar Recipients</div>
+        <p class="ic-desc">TMC wins: continuity guaranteed. BJP wins: no stated plan for this transfer — the biggest unanswered question in the entire campaign. These women are watching both parties' silence on this.</p>
+      </div>
+      <div class="ic co">
+        <div class="ic-title">Educated Youth — Unemployed &amp; Waiting</div>
+        <p class="ic-desc">TMC's ₹1,500 allowance is an acknowledgement of failure dressed as a promise. BJP's industrial revival is a direction without a deadline. Neither party has a credible short-term answer for this generation.</p>
+      </div>
+      <div class="ic ye">
+        <div class="ic-title">Matua &amp; Hindu Bengali Refugee Families</div>
+        <p class="ic-desc">CAA is law since 2020. Processing is still slow even in BJP-ruled states. The community is weighing genuine hope against documented delay. A BJP win doesn't automatically mean documents arrive next month.</p>
+      </div>
+      <div class="ic la">
+        <div class="ic-title">Muslim Voters (~27% of Electorate)</div>
+        <p class="ic-desc">SIR deletions, AJUP, AIMIM — all fracturing what was the most consolidated vote bloc in Bengal. A split doesn't just reduce TMC's votes. It changes the geometry of 20–30 marginal seats. The community is calculating seat-by-seat, not block-voting.</p>
+      </div>
+      <div class="ic pi">
+        <div class="ic-title">SSC Teachers — The Clearest Victim Community</div>
+        <p class="ic-desc">Passed their exams. Got nothing. Watched unqualified appointees take their posts. Court orders are slow. Both parties owe this community a concrete plan. Neither has provided one before May 4.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VERDICT ── -->
+  <section class="sec" id="verdict">
+    <div class="stag">Snarky Verdict</div>
+    <h2>The Bottom Line</h2>
+
+    <p><strong>TMC's 15 years produced real welfare delivery and real corruption simultaneously</strong> — not as contradictions but as the same system. The beneficiaries are real. So is the cut money. So is the SSC scam. You don't get to cherry-pick only one of these.</p>
+
+    <p><strong>BJP's campaign is credible in what it criticises and questionable in what it offers as an alternative</strong> — specifically because the alternative is led by the people who ran the thing being criticised, from the other side of an aisle. Double-engine government is a real mechanism. It is not a guaranteed economic outcome.</p>
+
+    <p><strong>The Left-INC alliance is the most ideologically coherent force and the least electorally viable.</strong> SUCI(C), turning 78 this week, is the only party that has not played the defection game at all — and will win very few seats for it.</p>
+
+    <div class="verdict">
+      <div class="vl">Final Take</div>
+      <p class="vt">Bengal is not choosing between good governance and bad. It is choosing between a known system of welfare-plus-corruption and an unknown alternative built from that same system's discontented alumni. The real test isn't who wins on May 4. It's what they do in the six months after — when the central forces leave, the cameras go home, and Bengal's political culture resumes its default settings.</p>
+    </div>
+
+    <div class="box by" style="margin-top:1.8rem;">
+      <strong>Watch on May 4:</strong> The Nandigram margin (Suvendu vs. TMC). North Bengal seat count (BJP's strongest turf). Whether AJUP/AIMIM actually split Muslim votes in Murshidabad. And whether the 2.7 million disputed deleted voter names silently changed 20-30 marginal results — a number no exit poll will ever show you.
+    </div>
+
+    <blockquote>
+      "They became MLAs because they had Didi's face on the poster. They cannot win on their own."
+      <cite>&mdash; Senior TMC leader, The Print, May 2021. Now applies equally to BJP's Bengal lineup.</cite>
+    </blockquote>
+
+    <div class="box bg" style="margin-top:0.5rem;font-size:0.78rem;">
+      <strong>Data Sources:</strong> ADR India · ECI Affidavit Archive · MoSPI / RBI State Finance Reports · Wikipedia WB Election 2026 · The Print · Business Standard · SUCI(C) official publications · Britannica
+    </div>
+  </section>
+
+  <!-- ── SNARKY CLOSING ── -->
+  <section class="sec" id="closing">
+    <div class="stag">A Note From Snarky Solutions</div>
+    <h2>Dear Aam Janta —<br>This One's Actually About You</h2>
+
+    <p>Let's be honest about something the political class will never say out loud: <strong>every five years, you are the most important person in Bengal. And for the four years and eleven months in between, you are not.</strong></p>
+
+    <p>You are the woman who wakes up at 5am, runs a household on ₹12,000 a month, and quietly deposits the Lakshmir Bhandar money before anyone notices. You are the 26-year-old with a B.Tech degree, three years of job applications, and a growing suspicion that the system was never designed with you in mind. You are the Matua family that has waited for a citizenship document for longer than some of your children have been alive. You are the teacher who passed the SSC exam fair and square and watched someone else get the job.</p>
+
+    <p>Here is what no manifesto will tell you plainly:</p>
+
+    <div class="box bl">
+      <strong>The welfare you receive is real — and it costs more than you think.</strong> Bengal's ₹8 lakh crore debt means that every rupee of Lakshmir Bhandar, every free health camp, every pucca house scheme is partly funded by borrowing that your children will repay in the form of reduced public services later. The schemes are not free. They are deferred. That doesn't make them wrong — it makes the fiscal question urgent. Ask any government that wins: how do you sustain this without the debt killing the next generation's schools and hospitals?
+    </div>
+
+    <div class="box by">
+      <strong>The job that doesn't exist is the real crisis.</strong> No party has a serious answer for why Bengal — with Kolkata's port, its educated workforce, its cultural capital — punches so far below its weight in private investment. "Double engine" is a mechanism, not a jobs guarantee. ₹1,500/month allowance is a bandage, not a career. The question you should be asking every candidate knocking on your door is not which scheme they will give you. It is: what specific industry, in which district, with how many jobs, by which year?
+    </div>
+
+    <div class="box br">
+      <strong>Violence after elections is not politics — it is a crime against you.</strong> Bengal has a documented, bipartisan post-election violence problem. Homes burned. Families displaced. Small businesses shut. This happens regardless of who wins. It is not inevitable. It is a choice made by people who believe your neighbourhood is their property after the results come in. It is not. Demand accountability for it — before May 4, not after.
+    </div>
+
+    <div class="box bg">
+      <strong>Your vote is the only moment the power actually belongs to you.</strong> Not to Abhishek Banerjee. Not to Suvendu Adhikari. Not to the party worker who drove you to the booth. Not to the WhatsApp forward that told you what to think. You. Use it on the basis of what you have seen with your own eyes in your own neighbourhood — not what any television channel, party rally, or blog (including this one) told you to feel.
+    </div>
+
+    <p>We at Snarky Solutions don't tell you who to vote for. That's not our job and it's not our right. Our job is to cut through the noise so that when you stand in that booth — for however many minutes you have — you're standing there with facts, not just feelings.</p>
+
+    <p>Bengal is not just a political battleground. It is someone's home. Your home. And no election result changes that. What changes it is what happens in the 1,825 days between now and the next one.</p>
+
+    <div class="verdict" style="margin-top:2rem;">
+      <div class="vl">From Snarky Solutions — With Respect</div>
+      <p class="vt">Whoever wins on May 4, the aam janta of Bengal will wake up on May 5 and go back to work — negotiating traffic, managing budgets, worrying about children's schools, filing complaints that go nowhere, and building lives that the political class takes credit for but did not actually build. That resilience is not a political achievement. It belongs to you. Don't let anyone borrow it for a rally poster without earning it back in governance.</p>
+    </div>
+
+  </section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="fb">Snarky <span>Solutions</span></div>
+  <p>Unapologetically honest. Deeply researched. Built for the thinking Indian.</p>
+  <p style="margin-top:0.4rem;">Published April 25, 2026 &nbsp;·&nbsp; Phase 2: April 29 &nbsp;·&nbsp; Results: May 4</p>
+</footer>
+
+</body>
+</html>
