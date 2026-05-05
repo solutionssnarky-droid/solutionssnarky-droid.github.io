@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Interview Debrief | Snarky Solutions</title>
+  <meta name="description" content="Everyone preps for the interview. Nobody preps for what comes after. The debrief is where offers are won, negotiations are lost, and rejections become referrals."/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg: #0d0b10;
+      --card: #161320;
+      --border: #231f2e;
+      --coral: #ff6b5b;
+      --yellow: #f5c842;
+      --lavender: #b8a8f8;
+      --pink: #f08ec1;
+      --green: #6eddb0;
+      --white: #f0ecea;
+      --muted: #6e6880;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.78;
+      font-size: 1.0625rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--coral);
+    }
+    .nav-tags {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .nav-tags span { margin-left: 1.4rem; }
+    .nav-tags span:hover { color: var(--yellow); cursor: pointer; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 840px;
+      margin: 5rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .meta-row {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pink);
+      display: flex;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+    }
+    .meta-row .sep { color: var(--muted); }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 7vw, 4.6rem);
+      line-height: 1.05;
+      margin-bottom: 1.4rem;
+    }
+    h1 .sub {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      color: var(--pink);
+      margin-top: 0.3rem;
+    }
+
+    .deck {
+      font-size: 1.12rem;
+      color: var(--muted);
+      font-weight: 400;
+      max-width: 600px;
+      margin-bottom: 2.8rem;
+      line-height: 1.65;
+    }
+
+    .rule { width: 56px; height: 3px; background: linear-gradient(90deg, var(--pink), var(--lavender)); margin-bottom: 3rem; }
+
+    .open-quote {
+      border-left: 3px solid var(--pink);
+      padding: 1.3rem 1.8rem;
+      background: #181320;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 3.2rem;
+    }
+    .open-quote p {
+      font-family: 'Fraunces', serif;
+      font-size: 1.28rem;
+      font-style: italic;
+      color: var(--pink);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── ARTICLE ── */
+    article {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: var(--white);
+      margin: 3.8rem 0 1rem;
+      line-height: 1.22;
+    }
+    h2 .hp { color: var(--pink); }
+    h2 .hy { color: var(--yellow); }
+    h2 .hl { color: var(--lavender); }
+    h2 .hg { color: var(--green); }
+    h2 .hc { color: var(--coral); }
+
+    h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      margin: 2.6rem 0 0.8rem;
+    }
+
+    p { margin-bottom: 1.3rem; }
+    strong { color: var(--white); font-weight: 600; }
+    em { color: var(--lavender); font-style: italic; }
+
+    /* ── STAT STRIP ── */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 2rem 0 3rem;
+    }
+    .stat-item {
+      background: var(--card);
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+    }
+    .stat-item .n {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-item p { font-size: 0.77rem; color: var(--muted); line-height: 1.4; margin: 0; }
+    .np { color: var(--pink); }
+    .ny { color: var(--yellow); }
+    .nl { color: var(--lavender); }
+    .ng { color: var(--green); }
+    .nc { color: var(--coral); }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2.2rem;
+      margin: 2rem 0 3rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--pink), var(--lavender), var(--green));
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -2.2rem;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
+    .tl-window {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .tl-item h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .tl-item p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-left: 4px solid var(--pink);
+      background: #1a1220;
+      padding: 1.3rem 1.6rem;
+      border-radius: 0 8px 8px 0;
+      margin: 2rem 0;
+    }
+    .callout .cl {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 0.45rem;
+    }
+    .callout p { font-size: 0.93rem; color: var(--white); margin: 0; line-height: 1.65; }
+
+    .callout.green { border-color: var(--green); background: #111c18; }
+    .callout.green .cl { color: var(--green); }
+    .callout.yellow { border-color: var(--yellow); background: #1a1910; }
+    .callout.yellow .cl { color: var(--yellow); }
+    .callout.coral { border-color: var(--coral); background: #1c1210; }
+    .callout.coral .cl { color: var(--coral); }
+    .callout.lav { border-color: var(--lavender); background: #141220; }
+    .callout.lav .cl { color: var(--lavender); }
+
+    /* ── TABLE ── */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin: 1.5rem 0 2.5rem;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    th {
+      background: #181420;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #14111c; }
+    .t-do { color: var(--green); font-weight: 600; }
+    .t-dont { color: var(--coral); font-weight: 600; }
+    .t-why { color: var(--muted); font-size: 0.82rem; }
+
+    /* ── NEGOTIATION CARDS ── */
+    .neg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.1rem;
+      margin: 1.8rem 0 2.5rem;
+    }
+    .neg-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .neg-card .nc-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .neg-card h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.55rem;
+      line-height: 1.3;
+    }
+    .neg-card p { font-size: 0.84rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; padding: 0; margin: 1.2rem 0 2rem; }
+    .checklist li {
+      padding: 0.65rem 0 0.65rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      font-size: 0.95rem;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: "→";
+      position: absolute; left: 0;
+      color: var(--pink);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ── SCRIPT BLOCK ── */
+    .script-block {
+      background: #0a0910;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 1.4rem 1.6rem;
+      margin: 1.2rem 0 1.8rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.84rem;
+      color: var(--green);
+      line-height: 1.7;
+    }
+    .script-block .label {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── REJECTION TRACK ── */
+    .track-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1.8rem 0 2.5rem;
+    }
+    .track-col {
+      background: var(--card);
+      padding: 1.6rem 1.3rem;
+    }
+    .track-col .tc-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .track-col h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+    .track-col ul { list-style: none; padding: 0; }
+    .track-col ul li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.45;
+    }
+    .track-col ul li:last-child { border-bottom: none; }
+
+    @media (max-width: 600px) {
+      .track-wrap { grid-template-columns: 1fr; }
+      .neg-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.2rem 0;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .pull-quote p {
+      font-family: 'Fraunces', serif;
+      font-size: 1.45rem;
+      font-style: italic;
+      color: var(--yellow);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.45;
+    }
+
+    /* ── SNARK BADGE + CTA ── */
+    .snark-badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--pink);
+      color: #0d0b10;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 500;
+      margin-bottom: 0.7rem;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #161220, #12161e);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--pink);
+      border-radius: 0 0 12px 12px;
+      padding: 2.5rem 2rem;
+      margin-top: 3.5rem;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--pink);
+      margin-bottom: 0.6rem;
+    }
+    .cta-box p { color: var(--muted); font-size: 0.88rem; max-width: 500px; margin: 0 auto 1.4rem; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--pink);
+      color: #0d0b10;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .cta-btn:hover { background: var(--yellow); text-decoration: none; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    footer span { color: var(--coral); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Snarky Solutions</div>
+  <div class="nav-tags">
+    <span>Careers</span>
+    <span>Leadership</span>
+    <span>AI at Work</span>
+    <span>Finance</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="meta-row">
+    <span>Careers · Real Talk</span>
+    <span class="sep">·</span>
+    <span>May 2026</span>
+    <span class="sep">·</span>
+    <span>9 min read</span>
+  </div>
+
+  <h1>The Interview<br/>Debrief<span class="sub">What happens after you walk out is the part nobody teaches.</span></h1>
+
+  <p class="deck">
+    Everyone has a prep ritual. Nobody has an exit strategy.
+    The 48 hours after an interview contain the follow-up that seals offers,
+    the negotiation most people fumble, and the rejection most people waste.
+    Here is how to use all of it.
+  </p>
+
+  <div class="rule"></div>
+
+  <div class="open-quote">
+    <p>"The interview ends when you leave the building. The process ends when you decide it does — and not before."</p>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<article>
+
+  <!-- DATA -->
+  <h2>The Numbers <span class="hp">Are Uncomfortable</span></h2>
+
+  <p>
+    The statistics on post-interview behaviour are a masterclass in collective self-sabotage. The average candidate does significant preparation work before an interview — and almost nothing deliberate after it. The gap is where opportunities quietly expire.
+  </p>
+
+  <div class="stat-strip">
+    <div class="stat-item">
+      <div class="n np">5%</div>
+      <p>of candidates send a personalised follow-up note after an interview — putting the other 95% at an immediate disadvantage</p>
+    </div>
+    <div class="stat-item">
+      <div class="n ny">70%</div>
+      <p>of hiring managers say a thoughtful follow-up positively influences their final decision when candidates are otherwise equal</p>
+    </div>
+    <div class="stat-item">
+      <div class="n nl">₹3–8L</div>
+      <p>average salary left on the table by Indian professionals who accept the first offer without attempting negotiation</p>
+    </div>
+    <div class="stat-item">
+      <div class="n ng">85%</div>
+      <p>of recruiters say they would consider a rejected candidate for a future role — if the exit was handled professionally</p>
+    </div>
+    <div class="stat-item">
+      <div class="n nc">1 in 3</div>
+      <p>offers are extended to candidates who were not the top-ranked after round one — because of how they showed up in the follow-through</p>
+    </div>
+  </div>
+
+  <p>
+    Read that last one again. One in three offers go to candidates who did not lead after the first round. The debrief — your follow-up, your presence between rounds, your conduct at the offer stage — is itself a performance. Most people don't know the curtain is still up.
+  </p>
+
+  <!-- SECTION 1: THE WINDOW -->
+  <h2>The 48-Hour <span class="hy">Window</span></h2>
+  <p><em>The period most candidates spend recovering. The period that is actually still the interview.</em></p>
+
+  <p>
+    You leave the room. The adrenaline drops. The Monday-morning quarterbacking begins — the answers you should have given, the moment you stumbled, the one question that caught you clean. That's human. But while you're doing that, the hiring panel is already comparing notes. The window to shape that conversation is narrow, and almost no one uses it.
+  </p>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--pink)"></div>
+      <div class="tl-window" style="color:var(--pink)">Within 2 Hours</div>
+      <h4>Write Your Own Debrief — While the Memory Is Hot</h4>
+      <p>Before you decompress, spend 10 minutes writing down: which questions caught you off guard, which answers felt underpowered, what you wanted to say but didn't, what the interviewer's energy told you about their priorities. This is your intelligence file — not for regret, for recovery.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--lavender)"></div>
+      <div class="tl-window" style="color:var(--lavender)">Within 24 Hours</div>
+      <h4>Send the Follow-Up That Actually Does Something</h4>
+      <p>Not a template. Not "Thank you for your time." A note that references one specific thing from the conversation — a point that resonated, a challenge they named, a question you've been sitting with since you left. Three to five sentences. Subject line with your name and role. This alone puts you in the top 5% of candidates.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--yellow)"></div>
+      <div class="tl-window" style="color:var(--yellow)">Within 48 Hours</div>
+      <h4>Address Anything That Landed Poorly — Proactively</h4>
+      <p>If there was a question you fumbled, a data point you couldn't recall, or an answer you know deserved more — you can address it. Not defensively; as a continuation. "I've been reflecting on your question about X — I wanted to share a more considered response." Most candidates don't know this is allowed. It is. And it works.</p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--green)"></div>
+      <div class="tl-window" style="color:var(--green)">After the Decision Timeline Passes</div>
+      <h4>One Follow-Up. Not Two. Not Three.</h4>
+      <p>If the timeline they gave you has passed without word, send one clean, professional check-in. No anxiety, no pressure, no "just following up." State your continued interest, ask for an update on timeline, keep it to two sentences. Silence after that is information — receive it accordingly.</p>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="cl">The Follow-Up Formula</div>
+    <p>Open with a specific reference from the interview. Add one sentence connecting your experience to something they said. Close with a genuine expression of interest — not eagerness, interest. The difference is detectable, and panels detect it every time.</p>
+  </div>
+
+  <!-- SECTION 2: NEGOTIATION -->
+  <h2>The Offer Arrives. <span class="hl">Now What.</span></h2>
+  <p><em>The moment most Indian professionals treat as a finish line. It is actually the opening of a separate negotiation.</em></p>
+
+  <p>
+    Here is the thing about offers that nobody says clearly: <strong>the first number is rarely the final number.</strong> Companies build negotiation room into offers as standard practice — because a significant percentage of candidates will not use it. That gap is not generosity on their part. It is structural. You are allowed to negotiate. You are expected to.
+  </p>
+
+  <h3>What You Can Actually Negotiate</h3>
+
+  <div class="neg-grid">
+    <div class="neg-card">
+      <div class="nc-tag" style="color:var(--pink)">The Obvious One</div>
+      <h4>Base Salary</h4>
+      <p>Ask for 10–20% above the offer as an opening position. Anchor to your current CTC, a competing offer if you have one, or market data. Frame it as alignment, not demand: "Based on my research and the scope of this role, I was expecting something closer to X."</p>
+    </div>
+    <div class="neg-card">
+      <div class="nc-tag" style="color:var(--lavender)">Often Overlooked</div>
+      <h4>Variable & Bonus Structure</h4>
+      <p>If base is fixed, ask about the variable component, payout triggers, and historical achievement rates. A 20% variable that pays out at 60% is not a 20% variable. Get the real number before you accept what sounds like a strong package.</p>
+    </div>
+    <div class="neg-card">
+      <div class="nc-tag" style="color:var(--yellow)">Almost Never Asked For</div>
+      <h4>Joining Date &amp; Notice Buyout</h4>
+      <p>If your notice period creates a financial gap, ask if the company offers a joining bonus to cover it. Many mid-to-senior offers include this — but it is rarely volunteered. Ask directly: "Is there flexibility on a joining bonus given my notice period?"</p>
+    </div>
+    <div class="neg-card">
+      <div class="nc-tag" style="color:var(--green)">High-Value, Low-Resistance</div>
+      <h4>Role Scope &amp; Title</h4>
+      <p>If the compensation has a hard ceiling, negotiate the title or scope instead. A more senior title at the same pay changes your market position at the next move. Scope expansion now means promotion evidence later. These cost the company nothing and are more negotiable than salary.</p>
+    </div>
+    <div class="neg-card">
+      <div class="nc-tag" style="color:var(--coral)">For The Long Game</div>
+      <h4>Review Timeline</h4>
+      <p>If you're accepting below your ask, negotiate a structured 6-month review with a defined increment tied to delivery milestones. Get it in writing — even a confirming email. This converts a compromise today into a contractual commitment for later.</p>
+    </div>
+    <div class="neg-card">
+      <div class="nc-tag" style="color:var(--pink)">The Sleeper</div>
+      <h4>Flexibility &amp; Work Conditions</h4>
+      <p>Hybrid days, remote arrangements, travel expectations, equipment allowances. These are negotiable more often than candidates assume — especially for mid-to-senior roles. Name them clearly and early, not as an afterthought once you've already accepted on other terms.</p>
+    </div>
+  </div>
+
+  <h3>The Negotiation Language That Works in India</h3>
+  <p>
+    The cultural context matters. Direct salary negotiation in Indian corporate settings can feel confrontational if framed wrongly — which leads most candidates to either avoid it or apologise through it, both of which signal weakness. The frame that works is <strong>alignment, not demand.</strong>
+  </p>
+
+  <div class="script-block">
+    <div class="label">Use This / Not That</div>
+    ✓ "I'm genuinely excited about this role. Based on my current CTC and the market range for this scope, I was expecting something closer to [X]. Is there flexibility there?"<br/><br/>
+    ✓ "I want to make this work. The one piece I'd like to revisit is the base — could we look at [X]?"<br/><br/>
+    ✗ "I was hoping for more." (No anchor, no ask, no outcome.)<br/><br/>
+    ✗ "My current company is also offering me a raise." (Unverifiable, sounds like a bluff even when true.)<br/><br/>
+    ✗ "I need at least X." (Need is a weak position. Market data is a strong one.)
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Do This</th>
+          <th>Not This</th>
+          <th>Why It Matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First offer received verbally</td>
+          <td class="t-do">Ask for it in writing before responding</td>
+          <td class="t-dont">Accept or counter on the call</td>
+          <td class="t-why">Written offers can be compared and countered precisely. Verbal commitments shift.</td>
+        </tr>
+        <tr>
+          <td>Offer below your expectation</td>
+          <td class="t-do">Counter once with a specific number and rationale</td>
+          <td class="t-dont">Accept silently or reject without countering</td>
+          <td class="t-why">Most companies expect one counter. Not countering leaves money on the table — usually yours.</td>
+        </tr>
+        <tr>
+          <td>Deadline pressure on decision</td>
+          <td class="t-do">Ask for 48 hours. Take the time.</td>
+          <td class="t-dont">Decide under artificial urgency</td>
+          <td class="t-why">A company that withdraws an offer because you requested two days to decide has told you something important.</td>
+        </tr>
+        <tr>
+          <td>Competing offer in hand</td>
+          <td class="t-do">Disclose the fact. Not the number.</td>
+          <td class="t-dont">Use it as a threat or fabricate one</td>
+          <td class="t-why">Competing offers are leverage. Bidding wars are liabilities. Know the difference.</td>
+        </tr>
+        <tr>
+          <td>Offer accepted below ask</td>
+          <td class="t-do">Negotiate a 6-month structured review in writing</td>
+          <td class="t-dont">Accept and hope it gets better naturally</td>
+          <td class="t-why">"We'll revisit it" is not a commitment. A written review trigger is.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 3: REJECTION -->
+  <h2>The Rejection. <span class="hg">Handle It Like a Professional.</span></h2>
+  <p><em>Most candidates treat a rejection as the end of a conversation. The ones who build lasting careers treat it as the beginning of one.</em></p>
+
+  <p>
+    A rejection email is not a verdict on your worth. It is a snapshot of fit, timing, and available headcount — three factors that will all be different in six months. The way you respond to it determines whether you stay in the ecosystem or exit it permanently.
+  </p>
+
+  <div class="track-wrap">
+    <div class="track-col">
+      <div class="tc-label" style="color:var(--coral)">Within 24 Hours</div>
+      <h4 style="color:var(--coral)">The Response</h4>
+      <ul>
+        <li>Acknowledge the decision graciously — two sentences maximum</li>
+        <li>Express genuine appreciation for the process, not hollow gratitude</li>
+        <li>Ask one specific question: "Is there anything you'd be comfortable sharing about where my profile fell short?"</li>
+        <li>Reiterate interest in the organisation for future roles — only if true</li>
+      </ul>
+    </div>
+    <div class="track-col">
+      <div class="tc-label" style="color:var(--yellow)">Within 1 Week</div>
+      <h4 style="color:var(--yellow)">The Debrief</h4>
+      <ul>
+        <li>If they gave feedback — document it. Pattern it against your other interviews.</li>
+        <li>If they didn't — note what questions you stumbled on and build those stories now</li>
+        <li>Connect with the interviewer on LinkedIn with a brief, professional note</li>
+        <li>Do not litigate the decision, even internally. It compounds nothing.</li>
+      </ul>
+    </div>
+    <div class="track-col">
+      <div class="tc-label" style="color:var(--green)">Over 6 Months</div>
+      <h4 style="color:var(--green)">The Long Game</h4>
+      <ul>
+        <li>Engage with the company's content occasionally — a comment, a share</li>
+        <li>If you've made meaningful progress, reach out: "I wanted to share what I've been working on since we last spoke."</li>
+        <li>85% of recruiters will consider a rejected candidate who maintained the relationship</li>
+        <li>The person who rejected you is also building their own network — be worth being in it</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <div class="cl">The Reframe</div>
+    <p>A rejection from the right company, handled well, is worth more than an offer from the wrong one. It is a live relationship with people who already know your name, have seen your work, and are now watching — without pressure — to see what you do next. Very few candidates understand they are still being observed after a no.</p>
+  </div>
+
+  <!-- SECTION 4: THE DEBRIEF HABIT -->
+  <h2>Build the <span class="hc">Debrief Habit</span></h2>
+  <p><em>One interview teaches you something. Ten interviews — debriefed properly — make you formidable.</em></p>
+
+  <p>
+    The professionals who interview consistently well are not luckier or more naturally polished. They have processed more data. Every interview, every follow-up, every negotiation is a signal — and the candidates who treat it as one build a compounding intelligence that the reactive ones simply cannot match.
+  </p>
+
+  <h3>Your Post-Interview Intelligence File</h3>
+  <ul class="checklist">
+    <li><strong>Record every question that surprised you.</strong> That surprise is a gap in your story bank. Fill it before the next round.</li>
+    <li><strong>Rate each answer you gave on a 1–3 scale.</strong> Not for self-criticism — for prioritisation. A 1 gets rebuilt before you use it again.</li>
+    <li><strong>Note the interviewer's energy.</strong> Where did they lean in? Where did they check out? What was the room actually interested in? This data refines your read of what the role is really about.</li>
+    <li><strong>Track your follow-up actions and their outcomes.</strong> Did the personalised note get a response? Did the post-rejection LinkedIn request get accepted? Pattern recognition is your competitive advantage.</li>
+    <li><strong>Review the file before every subsequent interview at that company.</strong> Your own debrief notes are better prep material than any generic guide — including this one.</li>
+  </ul>
+
+  <div class="callout lav">
+    <div class="cl">For EA &amp; Operations Professionals</div>
+    <p>Your post-interview debrief has one additional layer: did you articulate your invisible impact clearly? Not just what you did — but what it <em>enabled</em>? If the answer is no, that is the single most important thing to sharpen before round two. The follow-up note is also your opportunity to land that impact statement cleanly, without the pressure of a live room. Use it.</p>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <p>"Interviews are not events. They are relationships in compression. How you exit determines whether the door stays open."</p>
+  </div>
+
+  <!-- CLOSE -->
+  <h2>The Part No One Tells You <span class="hp">About the Debrief</span></h2>
+
+  <p>
+    The hiring process does not end when a decision is made. It ends when the relationship either closes permanently or graduates into something longer. You have more control over which of those happens than the decision itself.
+  </p>
+  <p>
+    The follow-up you send tonight. The negotiation you have the courage to open. The rejection you respond to with grace instead of silence. These are the moves that determine not just this outcome — but the next five. Job searches are public. Careers are long. The professional who manages the debrief well is the one that recruiters remember, refer, and return to.
+  </p>
+
+  <div class="snark-badge">Bottom Line</div>
+  <p>
+    <strong>Prepare for the interview. But compete in the debrief. That is where most of the field has already given up — which means it is exactly where you win.</strong>
+  </p>
+
+  <div class="cta-box">
+    <h3>Know someone in the middle of a search?</h3>
+    <p>Forward this. The debrief is the part nobody told them about — and the part that changes the outcome.</p>
+    <a href="#" class="cta-btn">Share Snarky Solutions</a>
+  </div>
+
+</article>
+
+<footer>
+  <p>© 2026 <span>Snarky Solutions</span> &nbsp;·&nbsp; Classy. Sassy. Always backed by data.</p>
+</footer>
+
+</body>
+</html>
