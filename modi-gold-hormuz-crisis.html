@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When the PM Asks You Not to Buy Gold at Your Own Wedding | Snarky Solutions</title>
+<meta name="description" content="Modi's 7 appeals from Hyderabad weren't a motivational speech. They were an economic distress signal dressed in patriotism — and the world should be paying attention.">
+<meta property="og:title" content="When the PM Asks You Not to Buy Gold at Your Own Wedding">
+<meta property="og:description" content="India, Iran, oil, gold, and the most expensive crisis nobody's explaining properly. Snarky Solutions does the work.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0f0f13;
+    --bg-card: #16161d;
+    --bg-lift: #1c1c26;
+    --coral: #ff6b6b;
+    --yellow: #ffd93d;
+    --lavender: #c77dff;
+    --pink: #ff9ebb;
+    --mint: #6bffb8;
+    --text: #e8e6f0;
+    --text-muted: #8b8a9b;
+    --text-dim: #5a5a72;
+    --border: rgba(255,255,255,0.06);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* PROGRESS BAR */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--coral), var(--yellow), var(--lavender));
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 900;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(15,15,19,0.85);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--coral);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(255,107,107,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(199,125,255,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 60% 70%, rgba(255,216,61,0.07) 0%, transparent 50%);
+    z-index: 0;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--yellow);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--yellow);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.35s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 620px;
+    margin-bottom: 48px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s forwards;
+  }
+
+  .hero-meta-item {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-meta-item span {
+    color: var(--text-muted);
+  }
+
+  .hero-divider {
+    color: var(--text-dim);
+  }
+
+  .tag-strip {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+
+  .tag-coral { color: var(--coral); border-color: rgba(255,107,107,0.3); background: rgba(255,107,107,0.06); }
+  .tag-yellow { color: var(--yellow); border-color: rgba(255,217,61,0.3); background: rgba(255,217,61,0.06); }
+  .tag-lavender { color: var(--lavender); border-color: rgba(199,125,255,0.3); background: rgba(199,125,255,0.06); }
+  .tag-pink { color: var(--pink); border-color: rgba(255,158,187,0.3); background: rgba(255,158,187,0.06); }
+  .tag-mint { color: var(--mint); border-color: rgba(107,255,184,0.3); background: rgba(107,255,184,0.06); }
+
+  /* SCROLL INDICATOR */
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s forwards;
+    z-index: 1;
+  }
+
+  .scroll-hint span {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--coral), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* ARTICLE LAYOUT */
+  .article-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .article-body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 80px;
+    align-items: start;
+    padding-bottom: 120px;
+  }
+
+  .article-main { min-width: 0; }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 64px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,107,107,0.2);
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 16px;
+    margin-top: 40px;
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 1.02rem;
+  }
+
+  p strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* LEAD PARAGRAPH */
+  .lead {
+    font-size: 1.18rem;
+    line-height: 1.85;
+    color: #c4c2d4;
+    font-weight: 300;
+    border-left: 3px solid var(--coral);
+    padding-left: 24px;
+    margin-bottom: 40px;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    margin: 48px 0;
+    padding: 36px 40px;
+    background: var(--bg-lift);
+    border-left: 3px solid var(--yellow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 8rem;
+    color: rgba(255,217,61,0.08);
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--yellow);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 16px;
+    font-style: normal;
+  }
+
+  /* SNARK BOX */
+  .snark-box {
+    margin: 40px 0;
+    padding: 28px 32px;
+    background: rgba(255,107,107,0.06);
+    border: 1px solid rgba(255,107,107,0.2);
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .snark-box::before {
+    content: '⚡ SNARKY TAKE';
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .snark-box p {
+    color: #d4c8e8;
+    margin: 0;
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  /* DATA CARD */
+  .data-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin: 48px 0;
+    background: var(--border);
+  }
+
+  .data-card {
+    background: var(--bg-card);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .data-number {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+
+  .data-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  .data-sub {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+    font-family: var(--font-mono);
+  }
+
+  /* SEVEN APPEALS VISUAL */
+  .appeals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 40px 0;
+  }
+
+  .appeal-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+
+  .appeal-item:hover { border-color: rgba(255,217,61,0.3); }
+
+  .appeal-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: rgba(255,217,61,0.2);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 36px;
+  }
+
+  .appeal-text {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    padding-top: 4px;
+  }
+
+  .appeal-text strong {
+    color: var(--yellow);
+    display: block;
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    margin: 40px 0;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--coral), var(--lavender), transparent);
+  }
+
+  .timeline-item {
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 0 12px rgba(255,107,107,0.5);
+  }
+
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .timeline-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .timeline-text strong { color: var(--text); }
+
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 0.88rem;
+  }
+
+  .compare-table th {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 12px 16px;
+    text-align: left;
+    background: var(--bg-lift);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+
+  .compare-table td:first-child {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--lavender);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .val-bad { color: var(--coral) !important; }
+  .val-good { color: var(--mint) !important; }
+  .val-warn { color: var(--yellow) !important; }
+
+  /* HIGHLIGHT BLOCK */
+  .highlight-block {
+    margin: 48px 0;
+    padding: 36px;
+    background: linear-gradient(135deg, rgba(199,125,255,0.08) 0%, rgba(255,107,107,0.05) 100%);
+    border: 1px solid rgba(199,125,255,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-block::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(199,125,255,0.15), transparent 70%);
+    pointer-events: none;
+  }
+
+  .highlight-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--lavender);
+    margin: 0 0 12px;
+  }
+
+  .highlight-block p {
+    font-size: 0.96rem;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* SIDEBAR */
+  .article-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .sidebar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .sidebar-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .toc-link {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, padding-left 0.2s;
+    line-height: 1.4;
+  }
+
+  .toc-link:last-child { border-bottom: none; }
+  .toc-link:hover { color: var(--yellow); padding-left: 6px; }
+
+  .toc-link.active { color: var(--yellow); padding-left: 6px; }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-row:last-child { border-bottom: none; }
+
+  .stat-key {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    flex: 1;
+  }
+
+  .stat-val {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  /* CLOSING */
+  .closing-section {
+    margin-top: 80px;
+    padding: 64px 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,107,107,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .closing-section h2 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    margin-bottom: 24px;
+  }
+
+  .closing-section p {
+    font-size: 1.05rem;
+    max-width: 680px;
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 60px 40px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-link {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: var(--coral); }
+
+  /* DIVIDER */
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--coral);
+    margin: 40px 0;
+  }
+
+  /* INLINE HIGHLIGHT */
+  mark {
+    background: transparent;
+    color: var(--yellow);
+    font-weight: 600;
+  }
+
+  .coral { color: var(--coral); }
+  .lavender { color: var(--lavender); }
+  .mint { color: var(--mint); }
+  .yellow { color: var(--yellow); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .article-wrapper { padding: 0 24px; }
+    .article-body { grid-template-columns: 1fr; gap: 48px; }
+    .article-sidebar { position: relative; top: 0; }
+    .data-strip { grid-template-columns: 1fr; }
+    .appeals-grid { grid-template-columns: 1fr; }
+    .closing-section { padding: 40px 28px; }
+    .site-footer { padding: 40px 24px 32px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-title { font-size: 2.2rem; }
+    .pull-quote p { font-size: 1.1rem; }
+    .compare-table { font-size: 0.8rem; }
+    .compare-table th, .compare-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <a href="#" class="nav-brand">Snarky Solutions</a>
+  <span class="nav-tag">Geopolitics · Economy · May 2026</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Deep Dive — Issue 14</div>
+
+    <h1 class="hero-title">
+      When the PM Asks You Not to Buy<br>
+      <em>Gold at Your Own Wedding,</em><br>
+      Pay Attention
+    </h1>
+
+    <p class="hero-subtitle">
+      Modi's 7 appeals from Hyderabad weren't a motivational speech.
+      They were an economic distress signal dressed in patriotism — beamed from a political rally,
+      not the Prime Minister's office. That choice alone tells you everything.
+    </p>
+
+    <div class="hero-meta">
+      <span class="hero-meta-item">By <span>Snarky Solutions</span></span>
+      <span class="hero-divider">·</span>
+      <span class="hero-meta-item"><span>May 12, 2026</span></span>
+      <span class="hero-divider">·</span>
+      <span class="hero-meta-item"><span>12 min read</span></span>
+    </div>
+
+    <div class="tag-strip">
+      <span class="tag tag-coral">Geopolitics</span>
+      <span class="tag tag-yellow">Indian Economy</span>
+      <span class="tag tag-lavender">Iran War</span>
+      <span class="tag tag-pink">Strait of Hormuz</span>
+      <span class="tag tag-mint">Oil Crisis</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+
+<!-- ARTICLE -->
+<div class="article-wrapper">
+<div class="article-body">
+
+<!-- MAIN CONTENT -->
+<main class="article-main">
+
+  <!-- INTRO -->
+  <section class="section" id="intro">
+    <p class="lead">
+      There is a particular kind of political speech that sounds like inspiration but functions as an alarm.
+      On May 10, 2026, Prime Minister Narendra Modi delivered one of those speeches — and the world
+      largely shrugged and moved on. It shouldn't have.
+    </p>
+
+    <p>
+      Standing at a BJP public rally in Hyderabad — not the PMO podium, not a national broadcast,
+      not Parliament — Modi issued seven lifestyle appeals to 1.4 billion Indians.
+      Skip buying gold for a year. Cut petrol use. Work from home. Cancel your foreign holiday.
+      Buy local. Eat less imported oil. Farmers: ditch the chemical fertiliser.
+    </p>
+
+    <p>
+      The crowd cheered. <strong>Jewellery stocks fell 10% the next morning.</strong>
+      The internet argued about gold. And most people missed the actual story entirely.
+    </p>
+
+    <div class="snark-box">
+      <p>When the Prime Minister of a country with 1.4 billion people asks citizens to reconsider buying gold at their cousin's wedding, he is not making a lifestyle suggestion. He's telling you, in the most politically palatable way he can manage, that the country is in an expensive race on a tightening budget.</p>
+    </div>
+  </section>
+
+  <!-- WHAT MODI SAID -->
+  <section class="section" id="appeals">
+    <div class="section-label">Act One</div>
+    <h2>The Seven Appeals That Sound Simple but Aren't</h2>
+
+    <p>
+      Presented under the theme <mark>"Nation First — Duty Above Comfort,"</mark>
+      each appeal was framed as a patriotic gesture. But strip away the packaging and what
+      you have is a tightly connected balance-of-payments crisis management plan —
+      outsourced to the public.
+    </p>
+
+    <div class="appeals-grid">
+      <div class="appeal-item">
+        <div class="appeal-num">01</div>
+        <div class="appeal-text"><strong>Gold Freeze</strong>Don't buy gold for weddings or ceremonies for one year.</div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">02</div>
+        <div class="appeal-text"><strong>Fuel Discipline</strong>Use metro, public transport, carpool, shift to EVs.</div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">03</div>
+        <div class="appeal-text"><strong>Work from Home</strong>Revive pandemic-era remote work wherever feasible.</div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">04</div>
+        <div class="appeal-text"><strong>No Foreign Holidays</strong>Postpone overseas travel for at least one year.</div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">05</div>
+        <div class="appeal-text"><strong>Swadeshi Push</strong>Use fewer foreign-branded products. Go local.</div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">06</div>
+        <div class="appeal-text"><strong>Edible Oil Cut</strong>Reduce imported edible oil consumption at home.</div>
+      </div>
+      <div class="appeal-item" style="grid-column: 1 / -1;">
+        <div class="appeal-num">07</div>
+        <div class="appeal-text"><strong>Natural Farming</strong>Farmers: cut chemical fertilisers, shift to sustainable methods.</div>
+      </div>
+    </div>
+
+    <p>
+      Seven appeals. Seven import categories. Every single one a direct drain on India's
+      foreign exchange reserves — the dollars the country desperately needs
+      to keep paying for oil.
+    </p>
+  </section>
+
+  <!-- THE FIRE -->
+  <section class="section" id="war">
+    <div class="section-label">Act Two</div>
+    <h2>The Fire That Started in February — and Why It Changes Everything</h2>
+
+    <p>
+      To understand why a sitting Prime Minister is asking aunties to skip gold at weddings,
+      you need to go back to <mark>February 28, 2026</mark>. That's when the world's
+      most strategically important waterway got shut down — and the global economy
+      started running a fever it still hasn't broken.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Feb 28, 2026</div>
+        <p class="timeline-text">The US and Israel launch <strong>Operation Epic Fury</strong> — coordinated airstrikes on Iran targeting military facilities, nuclear sites, and leadership. Supreme Leader Ali Khamenei is assassinated. Iran retaliates with missile and drone barrages across the region.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">March 4, 2026</div>
+        <p class="timeline-text">Iran declares the <strong>Strait of Hormuz closed</strong>. The waterway through which 20% of the world's seaborne oil and 20% of its LNG normally passes goes dark. Shipping traffic collapses to 5% of pre-war levels.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Late March</div>
+        <p class="timeline-text">Crude oil prices surge to a 52-week high of <strong>$126 per barrel</strong>. The International Energy Agency calls this "the greatest global energy security challenge in history."</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">April 8, 2026</div>
+        <p class="timeline-text">A US-Iran ceasefire brokered by Pakistan goes into effect. The Strait remains effectively closed anyway. A <strong>"dual blockade"</strong> emerges — the US Navy blockades Iranian ports; Iran blockades the Gulf.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">May 10, 2026</div>
+        <p class="timeline-text">Crude prices sit above <strong>$100 per barrel</strong>. Modi takes the stage in Hyderabad. The Strait is still barely open.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>The Strait of Hormuz is 34 kilometres wide at its narrowest point. That's barely the width of the English Channel. And yet a chokepoint the size of a modest sea crossing is currently dictating the economic destiny of billions of people across Asia, Europe, and Africa.</p>
+      <cite>Context you needed</cite>
+    </div>
+  </section>
+
+  <!-- INDIA'S EXPOSURE -->
+  <section class="section" id="india">
+    <div class="section-label">Act Three</div>
+    <h2>Why India Is More Exposed Than It Looks</h2>
+
+    <p>
+      Here's where the story gets personal for every Indian household —
+      and relevant for every investor, analyst, and foreign policy watcher globally.
+    </p>
+
+    <div class="data-strip">
+      <div class="data-card">
+        <div class="data-number coral">88%</div>
+        <div class="data-label">of India's crude oil<br>is imported</div>
+        <div class="data-sub">$134B+ annual bill</div>
+      </div>
+      <div class="data-card">
+        <div class="data-number yellow">50%</div>
+        <div class="data-label">of India's crude imports<br>via Hormuz</div>
+        <div class="data-sub">+ 60% LNG, ~100% LPG</div>
+      </div>
+      <div class="data-card">
+        <div class="data-number lavender">$72B</div>
+        <div class="data-label">spent on gold imports<br>in FY26</div>
+        <div class="data-sub">10% of total import bill</div>
+      </div>
+    </div>
+
+    <p>
+      An Indian LPG tanker, the <em>Jag Vasant</em>, was stranded for 23 days in
+      the Strait of Hormuz. When it finally docked in Mumbai, it was treated as
+      <strong>relief news</strong>. That's the level of strain India is operating under.
+    </p>
+
+    <p>
+      Meanwhile, India's foreign exchange reserves have dropped from $728 billion earlier
+      this year to $691 billion. The rupee is trading near 94.9 against the US dollar —
+      close to an all-time low. Global brokerage UBS has already downgraded India's FY27
+      GDP growth forecast from 6.7% to 6.2%.
+    </p>
+
+    <div class="snark-box">
+      <p>India imports nearly everything it needs to function — oil, gold, edible oil, fertiliser, electronics. The Strait of Hormuz closing is not an abstract geopolitical event for India. It's a direct hit to the monthly budget of 300 million households.</p>
+    </div>
+  </section>
+
+  <!-- THE GOLD QUESTION -->
+  <section class="section" id="gold">
+    <div class="section-label">Act Four</div>
+    <h2>The Gold Question Everyone Is Asking Wrong</h2>
+
+    <p>
+      When Modi asked Indians not to buy gold for a year, a surprisingly large number of people
+      assumed this was geopolitical signalling — some pressure tactic aimed at US or UK
+      gold markets. Let's address this directly, because it matters.
+    </p>
+
+    <p>
+      <strong>No. This is not about the US or UK.</strong> This is purely defensive.
+      Here's the chain of logic that makes gold a financial crisis in miniature:
+    </p>
+
+    <div class="highlight-block">
+      <h3>The Dollar Drain Explained</h3>
+      <p>
+        India buys gold — almost all of it with <mark>US dollars</mark>. During a crisis,
+        people instinctively run to gold as a safe-haven asset. More Indians buying gold means
+        more dollars leaving the country. More dollars leaving means further rupee weakness.
+        A weaker rupee means more expensive oil imports. More expensive oil means higher inflation
+        for everything. Gold, which just sits in lockers and jewellery boxes, accelerates
+        the very crisis it was purchased to hedge against — at a national scale.
+      </p>
+    </div>
+
+    <p>
+      Could India reducing gold purchases marginally affect global gold prices?
+      Technically, yes — India is the world's second-largest gold consumer after China,
+      and global prices are partly set on the London Bullion Market.
+      But <strong>India buying less gold for one year would barely register</strong> against
+      institutional investors, central banks, and gold ETFs that dwarf Indian retail demand.
+      The US and UK are not going to lose sleep over this.
+    </p>
+
+    <p>
+      If India actually wanted to put pressure on the West, the moves would look entirely different.
+      Dumping US Treasury bonds. Settling oil trade in non-dollar currencies at scale.
+      Aligning closer to the China-Russia-Iran axis. None of those things are happening.
+    </p>
+
+    <div class="snark-box">
+      <p>A country wielding geopolitical leverage doesn't ask citizens to skip gold at their cousin's wedding. A country quietly scrambling to protect its rupee and reserves does. Modi's gold appeal is an admission of vulnerability wrapped in a patriotic bow — which makes it honest, actually.</p>
+    </div>
+  </section>
+
+  <!-- THE POLITICAL COMMUNICATION -->
+  <section class="section" id="politics">
+    <div class="section-label">Act Five</div>
+    <h2>The Most Important Detail Nobody Is Talking About</h2>
+
+    <p>
+      Why Hyderabad? Why a BJP political rally?
+      Why not the PMO, a national broadcast, Parliament, or even a formal press conference?
+    </p>
+
+    <p>
+      This is the sharpest question in the entire episode. And it has a sharp answer.
+    </p>
+
+    <h3>A PMO address comes with accountability.</h3>
+    <p>
+      A formal statement from the Prime Minister's Office invites opposition, Parliament,
+      and the press to demand answers the government doesn't want to give right now.
+      Why are India's strategic petroleum reserves just 21 million barrels —
+      compared to Japan's 263 million and China's <mark>1,397 million barrels</mark>?
+      Why weren't alternative supply chains developed over the past decade?
+      Why did India not secure preferential Hormuz access the way China did?
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Strategic Oil Reserves</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>China</td>
+          <td class="val-good">1,397 million barrels</td>
+          <td class="val-good">Hormuz access maintained</td>
+        </tr>
+        <tr>
+          <td>Japan</td>
+          <td class="val-warn">263 million barrels</td>
+          <td class="val-warn">Diversifying urgently</td>
+        </tr>
+        <tr>
+          <td>India</td>
+          <td class="val-bad">21 million barrels</td>
+          <td class="val-bad">~⅔ capacity, critical</td>
+        </tr>
+        <tr>
+          <td>USA</td>
+          <td class="val-good">Strategic Petroleum Reserve</td>
+          <td class="val-good">IEA released 400M bbl</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>A rally speech mobilises without governing.</h3>
+    <p>
+      From a BJP gathering in Congress-governed Telangana, the message reaches the nationalist
+      base, gets amplified as patriotism, and frames the ask as voluntary national duty
+      rather than a government failure to absorb the crisis at the policy level.
+    </p>
+
+    <p>
+      The Hyderabad location is also not accidental. The BJP is actively building ground in
+      Telangana. Framing a national economic crisis appeal from there simultaneously
+      serves a state-level political agenda. Two birds, one carefully chosen podium.
+    </p>
+
+    <div class="pull-quote">
+      <p>When inflation rises, fuel prices climb, and LPG cylinders get more expensive — which they will — the political groundwork is already laid. "I told you this was coming. I asked for your help. Did you answer the call?"</p>
+      <cite>The preemptive framing Modi just bought himself</cite>
+    </div>
+
+    <p>
+      This is not cynicism for its own sake.
+      It is a recognition that <strong>the most sophisticated political communication
+      is the kind that governs without appearing to govern.</strong>
+    </p>
+  </section>
+
+  <!-- INDIA'S STRATEGIC BIND -->
+  <section class="section" id="strategy">
+    <div class="section-label">Act Six</div>
+    <h2>The Triangle Nobody Wants to Name</h2>
+
+    <p>
+      Behind the domestic economics lies a foreign policy bind that is only getting tighter —
+      and this is the part of the story that matters most to global readers.
+    </p>
+
+    <p>
+      Modi visited the Israeli Knesset in February 2026. Analysts noted it signalled India's
+      deeper tilt toward the US-Israel axis. Months later, when Iran closed the Strait of Hormuz,
+      it initially allowed passage <strong>only to Chinese vessels</strong> — citing China's
+      supportive stance. India did not receive that courtesy.
+    </p>
+
+    <div class="highlight-block">
+      <h3 style="color: var(--pink)">India's Multi-Alignment Dilemma</h3>
+      <p>
+        India has long practised what diplomats call <mark>"strategic autonomy"</mark> —
+        maintaining relationships with everyone and firm commitments to no one.
+        It works beautifully in peacetime. In a crisis of this magnitude,
+        it leaves you without guaranteed shipping lanes, without adequate reserves to absorb
+        the shock, and without a clean domestic political narrative.
+        China built its way out of this dilemma with 1,397 million barrels of reserves
+        and a warm relationship with Tehran. India is improvising.
+      </p>
+    </div>
+
+    <p>
+      The US granted India a temporary 30-day emergency waiver in March 2026 to purchase
+      stranded Russian oil — a sign that Washington values India's neutrality enough to
+      extend a diplomatic courtesy. But it's a band-aid, not a strategy.
+    </p>
+
+    <p>
+      If the conflict expands into the Indian Ocean region — not impossible given the trajectory —
+      India may be forced to shift from principled neutrality to selective alignment.
+      That would fundamentally reshape South Asian geopolitics, US-India relations,
+      and India's own domestic political calculus simultaneously.
+    </p>
+
+    <div class="snark-box">
+      <p>India is watching China sail ships through a closed strait while hosting emergency LPG tankers stranded for three weeks. "Multi-alignment" has real costs. May 2026 is one of them.</p>
+    </div>
+  </section>
+
+  <!-- WHAT IT MEANS -->
+  <section class="section" id="meaning">
+    <div class="section-label">Act Seven</div>
+    <h2>What This Actually Means — For You</h2>
+
+    <p>
+      If you're a salaried professional in India, a global investor with India exposure,
+      or simply someone watching what happens when the world's fifth-largest economy runs
+      headfirst into a geopolitical crisis it had no part in creating — here is the
+      plain-language translation.
+    </p>
+
+    <p>
+      <strong>Fuel prices will not come down quickly.</strong> The Strait of Hormuz
+      remains effectively closed. Every commodity that moves by ship — which is most
+      of what India imports — carries higher freight costs that will reach your grocery bill,
+      electricity charges, and petrol pump. The current account deficit is projected at
+      $84.5 billion for 2026.
+    </p>
+
+    <p>
+      <strong>The rupee at 94.9 per dollar means quiet inflation.</strong> Every imported
+      product — electronics, raw materials, branded goods — is getting silently more
+      expensive. Your salary doesn't change. The value of what it buys does.
+    </p>
+
+    <p>
+      <strong>Gold, paradoxically, is a good store of value during exactly this kind of crisis.</strong>
+      Which is why Modi's appeal is culturally difficult and economically counterintuitive.
+      He's asking people to give up the one hedge that makes individual financial sense —
+      for the macro good of the nation. That is not an easy ask. It is, however, an honest one.
+    </p>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="section" id="closing">
+    <div class="section-divider"></div>
+
+    <div class="closing-section">
+      <div class="section-label">The Real Story</div>
+      <h2>The Rally Is Over.<br>The Real Work Has Just Begun.</h2>
+
+      <p>
+        Modi's seven appeals are not a new idea. In 1965, Lal Bahadur Shastri asked Indians to
+        skip a meal a week during the India-Pakistan war. The appeal to individual sacrifice
+        during national stress is as old as the republic itself. What's different today is
+        the complexity of the crisis.
+      </p>
+
+      <p style="margin-top: 20px;">
+        This is not a bilateral conflict with a clear enemy. This is a global oil shock
+        triggered by a war India had no part in — playing out through financial markets,
+        shipping lanes, and currency tables. Invisible to the eye. Very present in the wallet.
+      </p>
+
+      <p style="margin-top: 20px;">
+        When the Prime Minister asks you not to buy gold at your cousin's wedding this year,
+        he is communicating — in the most palatable political way he can — that
+        <strong>the country's economic shock absorbers are already working overtime,
+        and he needs yours too.</strong>
+      </p>
+
+      <p style="margin-top: 20px; color: var(--coral); font-style: italic; font-family: var(--font-display); font-size: 1.1rem;">
+        Whether the policy infrastructure behind the oratory matches the moment —
+        that's the question that will define the next eighteen months of India's story.
+        Watch this space.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside class="article-sidebar">
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">In This Story</div>
+    <a href="#intro" class="toc-link">The Speech That Wasn't Just a Speech</a>
+    <a href="#appeals" class="toc-link">Modi's 7 Appeals, Decoded</a>
+    <a href="#war" class="toc-link">The War That Closed the World's Oil Tap</a>
+    <a href="#india" class="toc-link">Why India Is Dangerously Exposed</a>
+    <a href="#gold" class="toc-link">The Gold Question, Answered</a>
+    <a href="#politics" class="toc-link">Why a Rally, Not the PMO</a>
+    <a href="#strategy" class="toc-link">India's Foreign Policy Bind</a>
+    <a href="#meaning" class="toc-link">What This Means for You</a>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">Crisis Numbers</div>
+    <div class="stat-row">
+      <span class="stat-key">Crude oil price (peak)</span>
+      <span class="stat-val yellow">$126/bbl</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-key">Current crude price</span>
+      <span class="stat-val coral">$100+/bbl</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-key">Hormuz traffic remaining</span>
+      <span class="stat-val coral">~5%</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-key">India forex reserves</span>
+      <span class="stat-val">$691B</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-key">Rupee vs USD</span>
+      <span class="stat-val coral">₹94.9</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-key">India gold imports FY26</span>
+      <span class="stat-val yellow">$72B</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-key">India strategic reserves</span>
+      <span class="stat-val coral">21M bbl</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-key">China strategic reserves</span>
+      <span class="stat-val mint">1,397M bbl</span>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">About This Blog</div>
+    <p style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; margin: 0;">
+      <span style="color: var(--coral); font-family: var(--font-display); font-weight: 700;">Snarky Solutions</span> is an editorial content brand for professionals who want the real story — data-backed, classy, and unapologetically sassy.
+    </p>
+  </div>
+
+</aside>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-brand">Snarky Solutions</div>
+  <div class="footer-tagline">Classy. Sassy. Data-backed. · solutionssnarky-droid.github.io</div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Snarky Solutions. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#" class="footer-link">All Posts</a>
+      <a href="#" class="footer-link">Geopolitics</a>
+      <a href="#" class="footer-link">Economy</a>
+      <a href="#" class="footer-link">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (scrollTop / docHeight) * 100;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  // Scroll-triggered section reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  // TOC active link
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => tocObserver.observe(s));
+</script>
+
+</body>
+</html>
