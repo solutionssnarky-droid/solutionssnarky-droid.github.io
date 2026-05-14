@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Survival & Opportunity Guide for 2026 | Snarky Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0f0f13;
+  --surface:#16161d;
+  --surface2:#1e1e2a;
+  --coral:#ff6b6b;
+  --yellow:#ffd166;
+  --lavender:#c77dff;
+  --pink:#f72585;
+  --mint:#06d6a0;
+  --sky:#48cae4;
+  --text:#e8e8f0;
+  --muted:#888899;
+  --border:#2a2a3a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:16px;line-height:1.75;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;opacity:0.3;
+}
+#progress-bar{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--coral),var(--yellow),var(--lavender),var(--mint));
+  width:0%;z-index:1000;transition:width .1s linear;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,15,19,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:.9rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--coral);}
+.nav-tag{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);border:1px solid var(--border);padding:.25rem .65rem;border-radius:20px;}
+
+/* ── HERO ── */
+.hero{
+  max-width:860px;margin:0 auto;
+  padding:5rem 2.5rem 2.5rem;
+  animation:fadeUp .9s ease both;
+}
+.pill{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:rgba(6,214,160,.1);border:1px solid rgba(6,214,160,.3);
+  color:var(--mint);font-family:'DM Mono',monospace;
+  font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+  padding:.3rem .9rem;border-radius:20px;margin-bottom:1.6rem;
+}
+.pill-dot{width:6px;height:6px;border-radius:50%;background:var(--mint);animation:blink 1.6s infinite;}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.4rem,6vw,3.8rem);
+  font-weight:900;line-height:1.08;letter-spacing:-.035em;
+  margin-bottom:1.3rem;
+}
+h1.title .line2{color:var(--yellow);}
+h1.title .line3{color:var(--coral);font-style:italic;}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:2rem;}
+.meta{display:flex;flex-wrap:wrap;gap:1.2rem;font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);}
+.meta .dot{color:var(--border);}
+
+/* ── CRISIS TICKER ── */
+.ticker-wrap{
+  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--surface);padding:.7rem 0;
+  animation:fadeUp .7s .1s ease both;
+}
+.ticker-inner{
+  display:flex;gap:3rem;white-space:nowrap;
+  animation:ticker 30s linear infinite;
+}
+.tick-item{
+  font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);
+  display:flex;align-items:center;gap:.5rem;
+}
+.tick-item strong{color:var(--text);}
+.tick-item .up{color:var(--coral);}
+.tick-item .stable{color:var(--mint);}
+.tick-item .warn{color:var(--yellow);}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── LAYOUT ── */
+.content{max-width:860px;margin:0 auto;padding:3rem 2.5rem 5rem;}
+
+/* ── SECTION HEADERS ── */
+.s-label{
+  font-family:'DM Mono',monospace;font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;
+}
+h2.s-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.6rem,3.5vw,2.1rem);
+  font-weight:700;letter-spacing:-.025em;margin-bottom:1.5rem;line-height:1.2;
+}
+
+/* ── CONTEXT STRIP ── */
+.context-strip{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:4px solid var(--coral);
+  border-radius:0 10px 10px 0;
+  padding:1.4rem 1.6rem;margin-bottom:3.5rem;
+}
+.context-strip p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:.6rem;}
+.context-strip p:last-child{margin-bottom:0;}
+.context-strip p strong{color:var(--text);}
+
+/* ── BIG STAT ROW ── */
+.stat-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+  gap:.9rem;margin-bottom:3.5rem;
+}
+.stat-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:1.2rem 1.3rem;
+  transition:transform .2s,border-color .25s;
+  opacity:0;transform:translateY(14px);
+}
+.stat-box:hover{transform:translateY(-3px);border-color:var(--coral);}
+.stat-n{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:900;line-height:1;margin-bottom:.3rem;}
+.stat-l{font-size:.75rem;color:var(--muted);line-height:1.45;}
+
+/* ── ACTION CARDS — TABBED ── */
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
+.tab-btn{
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--muted);font-size:.78rem;font-family:'DM Mono',monospace;
+  padding:.45rem 1rem;border-radius:6px;cursor:pointer;transition:all .2s;
+}
+.tab-btn.active{border-color:var(--yellow);color:var(--yellow);background:rgba(255,209,102,.07);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* ── ACTION CARD ── */
+.action-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:1.5rem 1.6rem;margin-bottom:1rem;
+  display:flex;gap:1.2rem;align-items:flex-start;
+  transition:border-color .25s,transform .2s;
+  opacity:0;transform:translateY(12px);
+}
+.action-card:hover{transform:translateY(-2px);}
+.action-card.fin:hover{border-color:var(--yellow);}
+.action-card.career:hover{border-color:var(--lavender);}
+.action-card.consume:hover{border-color:var(--mint);}
+.action-card.invest:hover{border-color:var(--sky);}
+.card-icon{font-size:1.5rem;min-width:32px;text-align:center;padding-top:.1rem;}
+.card-body h4{font-size:.95rem;font-weight:700;margin-bottom:.35rem;}
+.card-body p{font-size:.85rem;color:var(--muted);line-height:1.6;}
+.card-body .snarky{
+  margin-top:.7rem;
+  background:rgba(199,125,255,.07);border-radius:6px;padding:.7rem .9rem;
+  font-size:.82rem;line-height:1.6;
+}
+.card-body .snarky::before{
+  content:'💬 ';
+  font-size:.75rem;
+}
+.urgency{
+  display:inline-block;margin-left:.5rem;
+  font-family:'DM Mono',monospace;font-size:.6rem;
+  padding:.15rem .5rem;border-radius:4px;vertical-align:middle;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.u-high{background:rgba(255,107,107,.15);color:var(--coral);}
+.u-med{background:rgba(255,209,102,.12);color:var(--yellow);}
+.u-low{background:rgba(6,214,160,.1);color:var(--mint);}
+
+/* ── CHECKLIST ── */
+.checklist-section{margin-bottom:3.5rem;}
+.check-item{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 1.2rem;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background .2s;border-radius:6px;
+}
+.check-item:hover{background:var(--surface);}
+.check-item.done{opacity:.45;}
+.check-box{
+  width:20px;height:20px;min-width:20px;border-radius:4px;
+  border:2px solid var(--border);margin-top:.2rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;font-size:.75rem;
+}
+.check-item.done .check-box{background:var(--mint);border-color:var(--mint);color:#000;font-weight:700;}
+.check-body h5{font-size:.88rem;font-weight:600;margin-bottom:.15rem;}
+.check-body span{font-size:.8rem;color:var(--muted);}
+
+/* ── PORTFOLIO MATRIX ── */
+.matrix{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:1rem;margin-bottom:3.5rem;
+}
+.matrix-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:1.3rem;
+  opacity:0;transform:translateY(12px);transition:all .25s;
+}
+.matrix-card:hover{transform:translateY(-2px);}
+.m-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;}
+.m-title{font-size:.82rem;font-weight:700;}
+.m-signal{font-family:'DM Mono',monospace;font-size:.62rem;padding:.2rem .5rem;border-radius:4px;}
+.sig-buy{background:rgba(6,214,160,.12);color:var(--mint);}
+.sig-hold{background:rgba(255,209,102,.1);color:var(--yellow);}
+.sig-wait{background:rgba(255,107,107,.1);color:var(--coral);}
+.m-names{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.7rem;}
+.m-chip{font-family:'DM Mono',monospace;font-size:.68rem;background:var(--surface2);border:1px solid var(--border);padding:.25rem .55rem;border-radius:5px;color:var(--muted);}
+.m-reason{font-size:.78rem;color:var(--muted);line-height:1.5;}
+
+/* ── WHAT NOT TO DO ── */
+.dont-list{
+  background:var(--surface);border:1px solid rgba(255,107,107,.2);
+  border-radius:12px;padding:1.8rem;margin-bottom:3.5rem;
+}
+.dont-item{
+  display:flex;gap:.9rem;align-items:flex-start;
+  padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.88rem;
+}
+.dont-item:last-child{border-bottom:none;padding-bottom:0;}
+.dont-x{color:var(--coral);font-weight:700;font-size:1rem;min-width:16px;}
+.dont-text strong{display:block;font-size:.88rem;margin-bottom:.2rem;}
+.dont-text span{font-size:.82rem;color:var(--muted);}
+
+/* ── CLOSING STATEMENT ── */
+.close-block{
+  background:linear-gradient(135deg,rgba(255,107,107,.07),rgba(199,125,255,.06),rgba(6,214,160,.05));
+  border:1px solid rgba(255,209,102,.2);
+  border-radius:14px;padding:2.4rem;margin-bottom:3rem;
+}
+.close-block h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;}
+.close-block p{font-size:.93rem;color:var(--muted);margin-bottom:.9rem;line-height:1.7;}
+.close-block p strong{color:var(--text);}
+.close-quote{
+  font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;
+  color:var(--yellow);border-top:1px solid rgba(255,209,102,.2);
+  padding-top:1.3rem;margin-top:1.3rem;line-height:1.5;
+}
+
+/* ── SHARE ── */
+.share-bar{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;padding-top:1.5rem;border-top:1px solid var(--border);}
+.share-lbl{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);}
+.share-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:.78rem;padding:.4rem .95rem;border-radius:6px;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.share-btn:hover{border-color:var(--coral);color:var(--coral);}
+
+/* ── READ INDICATOR ── */
+.read-pill{position:fixed;bottom:1.4rem;right:1.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:50px;padding:.45rem .95rem;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);z-index:100;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+@media(max-width:620px){
+  nav,.hero,.content{padding-left:1.3rem;padding-right:1.3rem;}
+  h1.title{font-size:2.1rem;}
+  .stat-row{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <span class="nav-brand">Snarky Solutions</span>
+  <span class="nav-tag">Economy · May 2026</span>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="pill"><span class="pill-dot"></span>Actionable Analysis</div>
+  <h1 class="title">
+    India Is in an Oil Shock.<br/>
+    <span class="line2">Here's What You Should</span><br/>
+    <span class="line3">Actually Do About It.</span>
+  </h1>
+  <p class="hero-sub">The West Asia conflict has pushed crude past $100/barrel, hammered the rupee, and is quietly baking future inflation into every Indian household. The crisis is real. The window to get ahead of it is now. This is your no-fluff action guide.</p>
+  <div class="meta">
+    <span>Snarky Solutions</span>
+    <span class="dot">·</span>
+    <span>May 13, 2026</span>
+    <span class="dot">·</span>
+    <span>9 min read</span>
+    <span class="dot">·</span>
+    <span style="color:var(--coral)">Finance · Career · Lifestyle</span>
+  </div>
+</div>
+
+<!-- ─── CRISIS TICKER ─── -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="tick-item">Crude Oil <strong class="up">$104/bbl ▲</strong></span>
+    <span class="tick-item">52-wk High <strong class="up">$126 (Apr 30)</strong></span>
+    <span class="tick-item">INR/USD <strong class="up">All-time Low ▼</strong></span>
+    <span class="tick-item">India Fuel Prices <strong class="stable">Stable (Govt Absorbing)</strong></span>
+    <span class="tick-item">OMC Daily Loss <strong class="warn">₹1,000 Cr/day</strong></span>
+    <span class="tick-item">Crude Stocks <strong class="stable">60 Days Cover</strong></span>
+    <span class="tick-item">LPG Stocks <strong class="stable">45 Days Cover</strong></span>
+    <span class="tick-item">India GDP FY27 (UBS) <strong class="warn">6.2% ▼ (was 6.7%)</strong></span>
+    <span class="tick-item">India Fuel Import Bill <strong class="up">$174.9B FY26</strong></span>
+    <span class="tick-item">Gold Import Bill <strong class="up">$72B/year</strong></span>
+    <!-- duplicate for seamless loop -->
+    <span class="tick-item">Crude Oil <strong class="up">$104/bbl ▲</strong></span>
+    <span class="tick-item">52-wk High <strong class="up">$126 (Apr 30)</strong></span>
+    <span class="tick-item">INR/USD <strong class="up">All-time Low ▼</strong></span>
+    <span class="tick-item">India Fuel Prices <strong class="stable">Stable (Govt Absorbing)</strong></span>
+    <span class="tick-item">OMC Daily Loss <strong class="warn">₹1,000 Cr/day</strong></span>
+    <span class="tick-item">Crude Stocks <strong class="stable">60 Days Cover</strong></span>
+    <span class="tick-item">LPG Stocks <strong class="stable">45 Days Cover</strong></span>
+    <span class="tick-item">India GDP FY27 (UBS) <strong class="warn">6.2% ▼ (was 6.7%)</strong></span>
+    <span class="tick-item">India Fuel Import Bill <strong class="up">$174.9B FY26</strong></span>
+    <span class="tick-item">Gold Import Bill <strong class="up">$72B/year</strong></span>
+  </div>
+</div>
+
+<!-- ─── MAIN CONTENT ─── -->
+<div class="content">
+
+  <!-- Context Strip -->
+  <div class="context-strip" style="margin-top:2.5rem;">
+    <p><strong>What's actually happening:</strong> The Iran-US-Israel conflict has stretched past 70 days with the Strait of Hormuz partially disrupted. India routes roughly 85% of its fuel imports through overseas suppliers — half of that via Hormuz. Oil marketing companies are absorbing losses of ₹1,000 crore per day to keep petrol prices stable at the pump. That subsidy will not last forever. When it ends, prices spike. SBI has already warned that the <strong>full inflation impact hasn't yet hit the data</strong>. You're in the calm before the second wave.</p>
+    <p>This is not a time for panic. It is a time for precision. Here's what to do.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="s-label" style="color:var(--coral)">The Numbers</div>
+  <h2 class="s-title">Why This Is Different From Usual "Global Volatility"</h2>
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-n" style="color:var(--coral)">85%</div><div class="stat-l">Of India's fuel needs are imported. No domestic buffer exists at scale.</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--yellow)">50%</div><div class="stat-l">Of crude imports flow through the Strait of Hormuz — currently stressed.</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--lavender)">₹2L Cr</div><div class="stat-l">OMC under-recoveries in Q1 2026 alone. This is being quietly absorbed.</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--mint)">60 days</div><div class="stat-l">India's crude oil strategic reserve. Enough for now. Not enough forever.</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--sky)">6.2%</div><div class="stat-l">Revised India GDP forecast FY27 by UBS — down from 6.7% pre-crisis.</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--pink)">$174B</div><div class="stat-l">India's crude & petroleum import bill in FY26. That's 22% of total imports.</div></div>
+  </div>
+
+  <!-- Tabbed Action Cards -->
+  <div style="margin-bottom:3.5rem;">
+    <div class="s-label" style="color:var(--yellow)">The Playbook</div>
+    <h2 class="s-title">Your Action Guide — By Area of Life</h2>
+    <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;">Pick your area. Each card tells you what to do, why it matters right now, and what the snarky-but-honest take is.</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('fin',this)">💰 Money & Finance</button>
+      <button class="tab-btn" onclick="switchTab('career',this)">💼 Career & Work</button>
+      <button class="tab-btn" onclick="switchTab('consume',this)">🛍️ Spending & Lifestyle</button>
+      <button class="tab-btn" onclick="switchTab('invest',this)">📈 Investing</button>
+    </div>
+
+    <!-- Finance Tab -->
+    <div class="tab-panel active" id="tab-fin">
+
+      <div class="action-card fin">
+        <div class="card-icon">🛡️</div>
+        <div class="card-body">
+          <h4>Build a 90-Day Liquid Buffer <span class="urgency u-high">Do This First</span></h4>
+          <p>If fuel prices are eventually passed on to consumers — which they will be when OMC subsidies end — your cost of living goes up across the board. Petrol, LPG, transport, food logistics, everything cascades. A 90-day buffer in a liquid fund or high-yield savings account is not paranoia. It's table stakes.</p>
+          <div class="snarky">The government has been absorbing ₹1,000 crore a day in losses. At some point, that bill lands. When it does, do you want to be adjusting on the fly, or sitting comfortably with a pre-built cushion?</div>
+        </div>
+      </div>
+
+      <div class="action-card fin">
+        <div class="card-icon">🪙</div>
+        <div class="card-body">
+          <h4>Pause Large Gold Purchases <span class="urgency u-high">Timing Matters</span></h4>
+          <p>Gold prices in rupees are at historic highs — a double hit of high global gold prices and a weak rupee. Buying now means buying at peak stress pricing. Unless it's a wedding that cannot be rescheduled, deferring large gold purchases makes financial sense independent of any policy message. Wait for rupee recovery and any easing in Hormuz tension.</p>
+          <div class="snarky">India is the world's second-largest gold buyer at $72 billion a year. The country imports gold, pays in dollars, at a time the rupee is at all-time lows. Every kilogram you defer right now is a small but real win for your own forex situation.</div>
+        </div>
+      </div>
+
+      <div class="action-card fin">
+        <div class="card-icon">📉</div>
+        <div class="card-body">
+          <h4>Audit Your Dollar-Denominated Expenses <span class="urgency u-med">This Month</span></h4>
+          <p>Subscriptions billed in USD, overseas streaming platforms, imported goods — all of these quietly get more expensive as the rupee weakens. Do a single sweep: list every recurring expense in a foreign currency. Cancel the non-essentials. Renegotiate the ones you can. The rupee at all-time lows means this math gets worse before it gets better.</p>
+          <div class="snarky">That $9.99/month subscription you forgot about? It now costs noticeably more in rupees than it did six months ago. Small individually. Collectively, this adds up to a few thousand rupees a year that you're silently losing to currency depreciation.</div>
+        </div>
+      </div>
+
+      <div class="action-card fin">
+        <div class="card-icon">🏠</div>
+        <div class="card-body">
+          <h4>Lock EMI Rates Before Any Rate Movement <span class="urgency u-med">Watch Closely</span></h4>
+          <p>Oil shocks feed inflation. Inflation triggers rate hikes. If the RBI eventually has to respond to a second inflation wave — as SBI has warned is coming — floating-rate loans get more expensive. If you are taking a home loan or any large EMI in the next 3–6 months, talk to your bank about fixed-rate options now, before they reprice.</p>
+          <div class="snarky">Everyone got comfortable with low rates. Oil shocks don't care about your comfort. The RBI has been cautious, but it isn't immune to imported inflation. This is the window where acting early costs nothing and acting late costs plenty.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career Tab -->
+    <div class="tab-panel" id="tab-career">
+
+      <div class="action-card career">
+        <div class="card-icon">🏡</div>
+        <div class="card-body">
+          <h4>Negotiate Hybrid/WFH Before It Becomes Policy <span class="urgency u-high">This Week</span></h4>
+          <p>Major corporates — PwC, and others — are already advising employees to limit business travel. The cultural permission to ask for remote work is higher right now than it has been since 2022. Don't wait for a top-down policy that may come with conditions you don't like. Proactively propose a hybrid arrangement now, backed by a productivity case.</p>
+          <div class="snarky">Your commute budget is about to quietly inflate. The political and corporate permission structure for WFH is at a rare peak. Ask now. The worst answer is no, which is exactly what you'd get in six months when the crisis is "over" and managers want bodies back.</div>
+        </div>
+      </div>
+
+      <div class="action-card career">
+        <div class="card-icon">⚡</div>
+        <div class="card-body">
+          <h4>Skill into the Sectors Getting Tailwinds <span class="urgency u-high">12-Month Window</span></h4>
+          <p>Crisis accelerates sector shifts that were already underway. India's energy transition, defence indigenisation, domestic manufacturing, and AI-enabled services are all moving faster now. If your current role is adjacent to these areas, double down. If it isn't, start building a credential or a project portfolio that connects you to them.</p>
+          <div class="snarky">Volatile macros create winners and losers at the sector level. The people who got into IT services in 2003 rode the Y2K-adjacent wave for a decade. The current tailwind industries are clean energy, defence tech, and domestic AI. You don't have to abandon your career — just orient toward the wind.</div>
+        </div>
+      </div>
+
+      <div class="action-card career">
+        <div class="card-icon">💡</div>
+        <div class="card-body">
+          <h4>Build a Parallel Income Stream — Now <span class="urgency u-med">12-Month Goal</span></h4>
+          <p>A single income source in a volatile macro environment is a structural vulnerability. Consulting, content, freelance, or any skill-based digital income takes 3–6 months to build to meaningful levels. Starting now means you have something by the time the second inflation wave hits. Target even ₹10,000–20,000/month as a buffer that runs on 1 hour/day.</p>
+          <div class="snarky">This is the part everyone agrees with in theory and ignores in practice. The goal isn't to replace your salary. The goal is to make a macro shock survivable with dignity. Snarky truth: the people who built digital side income in 2020 had a very different 2022 than those who didn't.</div>
+        </div>
+      </div>
+
+      <div class="action-card career">
+        <div class="card-icon">🌐</div>
+        <div class="card-body">
+          <h4>Delay Non-Critical Business Travel; Maximise Remote Presence <span class="urgency u-low">Ongoing</span></h4>
+          <p>International business travel is expensive and the rupee makes it worse. Evaluate every trip against a clear ROI — can this meeting happen over video? Most can. Use the saved budget and time to invest in digital presence, stakeholder visibility, and skill-building. A well-maintained LinkedIn and a strong voice in online professional communities often outperform a flight.</p>
+          <div class="snarky">Nobody ever closed a deal exclusively because they flew business class to meet someone they could have Zoomed. In 2026, showing up digitally well is the competitive advantage, not air miles.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spending Tab -->
+    <div class="tab-panel" id="tab-consume">
+
+      <div class="action-card consume">
+        <div class="card-icon">🚇</div>
+        <div class="card-body">
+          <h4>Switch to Public Transport for Daily Commutes <span class="urgency u-high">This Week</span></h4>
+          <p>Pump prices are artificially stable right now — but the moment OMC subsidies end, petrol prices will spike. If you're commuting daily by car, you are one policy decision away from a 20–30% increase in your monthly fuel spend. Building the habit of metro or bus use now means the adjustment is already done when prices change, not something you scramble to do then.</p>
+          <div class="snarky">Metro cards are underrated life infrastructure. You read, you decompress, you don't hunt for parking, and you're insulated from every petrol price notification. The commute might take 10 minutes longer. The money saved is real and immediate.</div>
+        </div>
+      </div>
+
+      <div class="action-card consume">
+        <div class="card-icon">🛍️</div>
+        <div class="card-body">
+          <h4>Replace One Category of Imported Products with Indian <span class="urgency u-med">This Month</span></h4>
+          <p>Not a blanket boycott — just one deliberate swap per month. Personal care, kitchen staples, clothing, electronics accessories. Indian alternatives across most categories are better than they were five years ago and competitively priced. Each swap reduces forex pressure at a macro level and usually saves money at the household level. Start with edible oil — switch to domestic mustard or groundnut oil.</p>
+          <div class="snarky">India imports cooking oil heavily from Indonesia and via Ukraine-disrupted sunflower routes. The imported oil is not significantly better for your health. The domestic alternative is cheaper. This is one of those rare cases where patriotism and personal finance genuinely align.</div>
+        </div>
+      </div>
+
+      <div class="action-card consume">
+        <div class="card-icon">🏖️</div>
+        <div class="card-body">
+          <h4>Pivot International Leisure Travel to Domestic <span class="urgency u-med">Next 12 Months</span></h4>
+          <p>With the rupee at all-time lows, international holidays have quietly become 15–20% more expensive than they were a year ago — even before airfare adjustments. Domestic alternatives — Northeast India, Andaman, Ladakh, Coorg, Hampi — offer genuine world-class experiences at a fraction of the all-in cost. This isn't settling. It's rational re-pricing.</p>
+          <div class="snarky">The "Bali is cheaper than Goa" argument that circulated for years has reversed. Between the rupee drop, fuel surcharges, and flight costs, that equation no longer holds. Goa has always been underrated. Meghalaya will genuinely blow your mind. And neither requires converting your savings at all-time-low rupee rates.</div>
+        </div>
+      </div>
+
+      <div class="action-card consume">
+        <div class="card-icon">🍳</div>
+        <div class="card-body">
+          <h4>Reduce Mindless Food Delivery; Cook Strategically <span class="urgency u-low">Habit Shift</span></h4>
+          <p>Food delivery platforms pass on fuel and logistics cost increases faster than any other consumer category. Every order is a small bet that delivery economics stay stable — and right now, they won't. Meal planning and batch cooking are not lifestyle downgrades. They are inflation-proofing strategies dressed up as domestic skills.</p>
+          <div class="snarky">The ₹800 Swiggy order that used to cost ₹600 and will cost ₹950 by Q4 is a real cost spiral. You are funding three layers of fuel-sensitive logistics each time. Cook more. Order less. Your waistline and wallet will both adjust positively.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Investing Tab -->
+    <div class="tab-panel" id="tab-invest">
+
+      <div class="action-card invest">
+        <div class="card-icon">⚡</div>
+        <div class="card-body">
+          <h4>Increase Allocation to Energy Transition Stocks <span class="urgency u-high">12–18 Month Thesis</span></h4>
+          <p>Every oil shock in Indian history has accelerated domestic energy investment. NTPC, Tata Power, and Adani Green are direct beneficiaries of policy push and long-term structural demand. The current crisis makes the government's urgency to reduce oil dependence more real, not less. Renewable energy capex is going up — and equity exposure to it makes sense at this macro moment.</p>
+          <div class="snarky">The cleanest trade in any oil crisis is the exit from oil. India's renewable sector is not a future bet anymore — it's a policy-backed present tense. The government's motivation to fund this is at a decade high right now.</div>
+        </div>
+      </div>
+
+      <div class="action-card invest">
+        <div class="card-icon">🏗️</div>
+        <div class="card-body">
+          <h4>Stay Long on Domestic Infrastructure & Defence <span class="urgency u-high">Multi-Year Thesis</span></h4>
+          <p>Operation Sindoor and the West Asia crisis have together made a strong case for India's defence indigenisation budget increasing further. L&T, BEL, HAL, and the broader infra sector benefit from a government that is in "build at home, reduce imports" mode. This isn't a new theme — but the crisis has put rocket fuel under it.</p>
+          <div class="snarky">India spent decades importing defence equipment. The government's pivot to Make in India on defence is now crisis-driven, not just ideological. Crisis-driven policy spending is the most reliable kind. The orders will flow.</div>
+        </div>
+      </div>
+
+      <div class="action-card invest">
+        <div class="card-icon">🏦</div>
+        <div class="card-body">
+          <h4>Hold Quality Private Banks; Avoid Rate-Sensitive Plays <span class="urgency u-med">Watch RBI Signals</span></h4>
+          <p>HDFC Bank, ICICI Bank, and SBI offer stable domestic demand exposure. However, if the RBI eventually hikes rates to manage imported inflation, NBFCs and rate-sensitive small-caps will take a hit. Stay in quality large-cap banking with strong deposit franchises. Avoid leveraged positions in rate-sensitive sectors until the inflation picture clarifies.</p>
+          <div class="snarky">Banks with strong deposit bases are shock absorbers. They can survive a rate cycle. The aggressive NBFCs with thin margins and floating-rate books are the ones that wobble when the RBI gets serious about inflation.</div>
+        </div>
+      </div>
+
+      <div class="action-card invest">
+        <div class="card-icon">🧯</div>
+        <div class="card-body">
+          <h4>Trim or Avoid Aviation & Jewellery Stocks <span class="urgency u-high">Near-Term Caution</span></h4>
+          <p>IndiGo fell 2.8% on the day of the appeal on foreign travel — and that's before actual demand impact hits. Titan fell nearly 6%. These are forward-looking market signals. Aviation is directly hit by fuel costs AND reduced demand. Jewellery gets it from both the gold pause signal and consumer spending compression. These are not sectors to be accumulating in right now.</p>
+          <div class="snarky">The market read these correctly on day one. Aviation runs on oil. Jewellery runs on discretionary spend and import gold. Both headwinds are blowing at full force right now. There's no heroism in holding against the macro.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The 30-Day Checklist -->
+  <div class="checklist-section">
+    <div class="s-label" style="color:var(--mint)">Your Checklist</div>
+    <h2 class="s-title">30 Things to Do in 30 Days</h2>
+    <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.2rem;">Click to tick off as you go. One a day, done in a month.</p>
+
+    <div id="checklist">
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Calculate your 90-day expense total</h5><span>Know the exact number before building the buffer</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Move 3 months of expenses to a liquid fund</h5><span>Parag Parikh, HDFC, or any AAA liquid fund works</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>List every USD/foreign currency subscription</h5><span>Netflix, Spotify, software, Amazon — all of it</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Cancel at least 2 non-essential foreign subscriptions</h5><span>Indian alternatives often exist and are cheaper</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Defer any large gold purchase by 6 months</h5><span>Prices are at rupee-denominated highs. Wait.</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Switch to metro or bus for 5 commuting days</h5><span>Test the habit before prices force it</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Swap imported cooking oil for Indian mustard/groundnut</h5><span>Cheaper, local, healthier for Indian cooking</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Research one domestic travel destination you haven't visited</h5><span>Plan before you default to a foreign holiday</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Ask your manager for a hybrid work arrangement in writing</h5><span>Frame it as a fuel-cost productivity proposal</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Review your portfolio for aviation and jewellery exposure</h5><span>Both sectors face direct headwinds — reassess</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Add one energy transition stock to your watchlist</h5><span>NTPC, Tata Power — start with research, not buying</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Identify one skill to develop aligned with India's growth sectors</h5><span>Energy, defence, AI, domestic manufacturing</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Write down one parallel income idea to test this month</h5><span>Consulting, content, freelance, teaching — pick one</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Check your home loan rate — fixed vs floating conversation</h5><span>If rate hikes are coming, this matters now</span></div></div>
+      <div class="check-item" onclick="tick(this)"><div class="check-box"></div><div class="check-body"><h5>Reduce food delivery orders by 30% this week</h5><span>Logistics costs are the first to spike in an oil shock</span></div></div>
+    </div>
+    <div id="progress-summary" style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);"></div>
+  </div>
+
+  <!-- What NOT to Do -->
+  <div>
+    <div class="s-label" style="color:var(--pink)">Avoid This</div>
+    <h2 class="s-title">What NOT to Do Right Now</h2>
+    <div class="dont-list">
+      <div class="dont-item"><span class="dont-x">✕</span><div class="dont-text"><strong>Panic-sell your equity portfolio</strong><span>Macro stress creates short-term noise, not structural collapse for India. The right sectors will recover. Selling in panic locks in losses and removes you from the recovery.</span></div></div>
+      <div class="dont-item"><span class="dont-x">✕</span><div class="dont-text"><strong>Hoard fuel or LPG cylinders</strong><span>India has 60-day crude and 45-day LPG cover. Panic buying creates the very shortage it fears. The government confirmed supply is adequate.</span></div></div>
+      <div class="dont-item"><span class="dont-x">✕</span><div class="dont-text"><strong>Lock large sums in long-duration fixed deposits right now</strong><span>If inflation rises and RBI hikes rates, you'll be stuck at today's rate while new FDs offer better returns. Keep duration short until the inflation picture clears.</span></div></div>
+      <div class="dont-item"><span class="dont-x">✕</span><div class="dont-text"><strong>Take on new EMI debt for discretionary purchases</strong><span>A car upgrade, a luxury gadget, a destination wedding loan — this is the worst time to increase fixed liabilities. Defer everything non-essential that requires borrowing.</span></div></div>
+      <div class="dont-item"><span class="dont-x">✕</span><div class="dont-text"><strong>Ignore the rupee when planning anything 6+ months out</strong><span>Foreign education fees, international travel, imported goods — all of these are being priced with a weak-rupee assumption baked in. Build that cushion into any long-term plan you're making.</span></div></div>
+    </div>
+  </div>
+
+  <!-- Sector Watchlist Matrix -->
+  <div style="margin-bottom:3.5rem;">
+    <div class="s-label" style="color:var(--sky)">Sector View</div>
+    <h2 class="s-title">Where to Look — And Where to Step Back</h2>
+    <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.3rem;"><em>This is a framework, not financial advice. Research before acting.</em></p>
+    <div class="matrix">
+      <div class="matrix-card"><div class="m-header"><span class="m-title">⚡ Renewables</span><span class="m-signal sig-buy">Watch Closely</span></div><div class="m-names"><span class="m-chip">NTPC</span><span class="m-chip">Tata Power</span><span class="m-chip">Adani Green</span></div><div class="m-reason">Policy tailwinds at highest urgency. Oil crisis = faster pivot to clean energy. Capex is government-backed.</div></div>
+      <div class="matrix-card"><div class="m-header"><span class="m-title">🏗️ Infra & Defence</span><span class="m-signal sig-buy">Watch Closely</span></div><div class="m-names"><span class="m-chip">L&T</span><span class="m-chip">BEL</span><span class="m-chip">HAL</span></div><div class="m-reason">Indigenisation push is crisis-accelerated. Government defence and infra spend is the most recession-resistant budget line.</div></div>
+      <div class="matrix-card"><div class="m-header"><span class="m-title">🏦 Quality Banking</span><span class="m-signal sig-hold">Hold / Accumulate</span></div><div class="m-names"><span class="m-chip">HDFC Bank</span><span class="m-chip">ICICI Bank</span><span class="m-chip">SBI</span></div><div class="m-reason">Domestic demand anchor. Strong deposit franchises survive rate cycles. Avoid thin-margin rate-sensitive names.</div></div>
+      <div class="matrix-card"><div class="m-header"><span class="m-title">💻 IT Services</span><span class="m-signal sig-hold">Hold / Selective</span></div><div class="m-names"><span class="m-chip">TCS</span><span class="m-chip">Infosys</span><span class="m-chip">HCL Tech</span></div><div class="m-reason">Global uncertainty drives outsourcing demand. Rupee weakness boosts export earnings. But watch deal pipeline signals.</div></div>
+      <div class="matrix-card"><div class="m-header"><span class="m-title">✈️ Aviation</span><span class="m-signal sig-wait">Step Back</span></div><div class="m-names"><span class="m-chip">IndiGo</span><span class="m-chip">Air India</span></div><div class="m-reason">Direct fuel cost exposure + foreign travel demand drop. IndiGo fell 2.8% immediately. Recovery needs Hormuz resolution.</div></div>
+      <div class="matrix-card"><div class="m-header"><span class="m-title">💍 Jewellery</span><span class="m-signal sig-wait">Step Back</span></div><div class="m-names"><span class="m-chip">Titan</span><span class="m-chip">Kalyan</span></div><div class="m-reason">Gold purchase pause signal + consumer spending compression. Titan fell 6% in a single session. Structural risk near-term.</div></div>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="close-block">
+    <h3>🎯 The Bottom Line</h3>
+    <p>India is not in crisis. It is in <strong>a stress period that most people are not yet fully pricing in</strong>. The government has done a remarkable job suppressing the visible symptoms — stable fuel prices, managed inflation data. But those suppressions have real costs that will eventually surface. The question is not whether things will get harder. The question is whether you will be ready when they do.</p>
+    <p>The prepared individual — the one who has built a financial buffer, reduced avoidable imported spend, positioned their portfolio toward domestic tailwinds, and started building an income layer beyond their single salary — will navigate this period as an <strong>opportunity</strong>. Everyone else will navigate it as a crisis.</p>
+    <p>The window between "early" and "obvious" is always short. Right now, you're in the early window.</p>
+    <div class="close-quote">"Volatility is not the enemy. Being unprepared for volatility is."</div>
+  </div>
+
+  <!-- Share -->
+  <div class="share-bar">
+    <span class="share-lbl">SHARE THIS →</span>
+    <button class="share-btn" onclick="copyLink()">🔗 Copy Link</button>
+    <button class="share-btn">𝕏 Twitter / X</button>
+    <button class="share-btn">💼 LinkedIn</button>
+    <button class="share-btn">📱 WhatsApp</button>
+  </div>
+
+</div><!-- /content -->
+
+<div class="read-pill" id="readPill">0% read</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  const pct=Math.round((d.scrollTop/(d.scrollHeight-d.clientHeight))*100);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('readPill').textContent=pct+'% read';
+});
+
+// Tabs
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  // Re-trigger observe for newly visible cards
+  document.querySelectorAll('#tab-'+id+' .action-card').forEach(c=>{
+    c.style.opacity='1';c.style.transform='none';
+  });
+}
+
+// Checklist
+function tick(el){
+  el.classList.toggle('done');
+  el.querySelector('.check-box').textContent = el.classList.contains('done') ? '✓' : '';
+  const total=document.querySelectorAll('.check-item').length;
+  const done=document.querySelectorAll('.check-item.done').length;
+  const summary=document.getElementById('progress-summary');
+  summary.textContent=done>0?`${done} of ${total} done · ${Math.round((done/total)*100)}% complete`:'';
+  if(done===total) summary.textContent='✅ All done. You are genuinely prepared.';
+  summary.style.color=done===total?'var(--mint)':'var(--muted)';
+}
+
+// Copy link
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    const btn=event.target;
+    btn.textContent='✓ Copied!';btn.style.color='var(--mint)';
+    setTimeout(()=>{btn.textContent='🔗 Copy Link';btn.style.color='';},2000);
+  });
+}
+
+// Intersection observer
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+      e.target.style.transition='opacity .5s ease, transform .5s ease';
+    }
+  });
+},{threshold:0.08});
+
+document.querySelectorAll('.stat-box,.matrix-card').forEach(el=>{
+  obs.observe(el);
+});
+
+// Trigger first active tab cards immediately
+document.querySelectorAll('#tab-fin .action-card').forEach(c=>{
+  c.style.opacity='1';c.style.transform='none';
+});
+</script>
+</body>
+</html>
