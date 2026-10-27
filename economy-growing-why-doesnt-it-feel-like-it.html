@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Economy Is Growing. Why Doesn’t It Feel Like It? | Snarky Solutions</title>
+<meta name="description" content="India’s economic growth looks promising on paper. But GDP, inflation, jobs and household purchasing power tell different parts of the story.">
+<meta name="author" content="Snarky Solutions">
+<link rel="canonical" href="https://solutionssnarky-droid.github.io/economy-growing-why-doesnt-it-feel-like-it/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Economy Is Growing. Why Doesn’t It Feel Like It?">
+<meta property="og:description" content="GDP is up. Ambitions are up. So why does an ordinary salary still feel like it is running on a treadmill?">
+<meta property="article:published_time" content="2026-10-27">
+<meta name="theme-color" content="#111013">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111013; --panel:#1b1a1f; --line:#2c2a33; --text:#ece9f1; --muted:#a9a4b5;
+  --coral:#ff6b5b; --yellow:#ffd166; --lavender:#b8a7ff; --pink:#ff8fc7;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.75 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--yellow);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--lavender);outline-offset:3px}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+.top{border-bottom:1px solid var(--line);padding:1rem 0}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.brand{font:700 1.15rem var(--serif);color:var(--text);text-decoration:none}
+.brand span{color:var(--coral)}
+.top a.back{font:400 .85rem var(--mono);color:var(--muted);text-decoration:none}
+header.hero{padding:4rem 0 2.5rem}
+.cats{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.5rem;padding:0;list-style:none}
+.cats li{font:500 .78rem var(--mono);padding:.25rem .7rem;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.cats li:nth-child(1){border-color:var(--coral);color:var(--coral)}
+.cats li:nth-child(2){border-color:var(--lavender);color:var(--lavender)}
+.cats li:nth-child(3){border-color:var(--pink);color:var(--pink)}
+h1{font:700 clamp(2.2rem,7vw,3.6rem)/1.08 var(--serif);letter-spacing:-.02em;margin:0 0 1.25rem;text-wrap:balance}
+.dek{font:italic 500 1.3rem/1.5 var(--serif);color:var(--muted);margin:0 0 1.75rem}
+.meta{font:400 .85rem var(--mono);color:var(--muted)}
+article h2{font:700 1.7rem/1.25 var(--serif);margin:3.25rem 0 1rem;padding-top:1.25rem;border-top:1px solid var(--line);text-wrap:balance}
+article p{margin:0 0 1.25rem}
+article strong{color:var(--yellow);font-weight:700}
+.lead p:first-child{font-size:1.2rem}
+.q{font:italic 500 1.45rem/1.4 var(--serif);color:var(--lavender);border-left:3px solid var(--lavender);padding:.25rem 0 .25rem 1.25rem;margin:1.75rem 0}
+.src{font:400 .82rem/1.6 var(--mono);color:var(--muted);margin-top:1.5rem}
+.src a{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin:1.75rem 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
+.stat b{display:block;font:700 2rem/1.1 var(--serif)}
+.stat span{font:400 .8rem/1.4 var(--mono);color:var(--muted)}
+.stat:nth-child(1) b{color:var(--coral)}
+.stat:nth-child(2) b{color:var(--yellow)}
+.stat:nth-child(3) b{color:var(--pink)}
+.stat:nth-child(4) b{color:var(--lavender)}
+.formula{font:500 .95rem/1.6 var(--mono);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;overflow-x:auto;margin:1.25rem 0}
+.calc{background:var(--panel);border:1px solid var(--yellow);border-radius:16px;padding:1.5rem;margin:2rem 0}
+.calc h3{font:700 1.2rem var(--serif);margin:0 0 1rem}
+.calc .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc label{display:block;font:400 .8rem var(--mono);color:var(--muted);margin-bottom:.35rem}
+.calc input{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:.6rem .75rem;font:500 1.05rem var(--mono)}
+.calc .out{margin-top:1.25rem;font:700 2.6rem/1 var(--serif);color:var(--yellow)}
+.calc .out.neg{color:var(--coral)}
+.calc .note{font:400 .85rem/1.5 var(--sans);color:var(--muted);margin:.5rem 0 0}
+ul.clean{list-style:none;padding:0;margin:0 0 1.25rem}
+ul.clean li{padding:.9rem 0;border-bottom:1px solid var(--line)}
+ul.clean li b{font-family:var(--serif);font-size:1.1rem}
+ul.clean li:nth-child(1) b{color:var(--coral)}
+ul.clean li:nth-child(2) b{color:var(--yellow)}
+ul.clean li:nth-child(3) b{color:var(--lavender)}
+ul.clean li:nth-child(4) b{color:var(--pink)}
+ul.clean li:nth-child(5) b{color:var(--coral)}
+ul.clean li:nth-child(6) b{color:var(--yellow)}
+.verdict{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:12px;padding:1.75rem 1.5rem;margin-top:3rem}
+.verdict h2{border:0;margin:0 0 1rem;padding:0}
+.verdict .final{font:700 1.4rem/1.35 var(--serif);color:var(--yellow);margin:1.5rem 0 0}
+.sources{margin-top:3.5rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.sources h2{font-size:1.2rem;border:0;margin:0 0 .75rem;padding:0}
+.sources ol{margin:0;padding-left:1.25rem;font-size:.92rem;color:var(--muted)}
+.sources li{margin-bottom:.5rem;overflow-wrap:anywhere}
+.about{font-size:.9rem;color:var(--muted);margin:2rem 0 0}
+footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.5rem 0 3rem;font:400 .8rem var(--mono);color:var(--muted)}
+@media (max-width:520px){.stats,.calc .row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.aside{background:var(--panel);border:1px dashed var(--pink);border-radius:12px;padding:.9rem 1.1rem;margin:1.5rem 0;font:italic 500 1.08rem/1.5 var(--serif)}
+.aside::before{content:"Snark meter: ";font:500 .8rem var(--mono);color:var(--pink);font-style:normal}
+.calc.c{border-color:var(--coral)}.calc.l{border-color:var(--lavender)}
+.calc h4{font:700 1rem var(--serif);margin:1.3rem 0 .3rem;color:var(--lavender)}
+.g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:.5rem;align-items:center;margin:.4rem 0}.g.c1{grid-template-columns:1.5fr 1fr}
+.g span{font-size:.9rem}.g.hd span{font:400 .75rem var(--mono);color:var(--muted)}
+.g input{padding:.45rem .6rem;font-size:.95rem}
+.bar{height:10px;border-radius:99px;background:var(--bg);overflow:hidden;margin:.25rem 0 .8rem}.bar i{display:block;height:100%;width:0;transition:width .3s}
+.lbl{font:400 .8rem var(--mono);color:var(--muted)}
+.btn{background:var(--yellow);color:#111013;border:0;border-radius:99px;padding:.6rem 1.1rem;font:700 .9rem var(--sans);cursor:pointer;margin:.75rem .5rem 0 0}.btn.alt{background:transparent;color:var(--text);border:1px solid var(--line)}
+@media print{body{background:#fff;color:#000}.top,footer,.btn,header.hero,article>*:not(#plan){display:none!important}.calc{border-color:#000;background:#fff}.calc input,.lbl,.note{color:#000;background:#fff}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="brand" href="/">Snarky <span>Solutions</span></a>
+  <a class="back" href="/">All posts</a>
+</div></div>
+
+<main class="wrap">
+<header class="hero">
+  <ul class="cats"><li>India</li><li>Global Economics</li><li>Current Affairs</li></ul>
+  <h1>The Economy Is Growing. Why Doesn’t It Feel Like It?</h1>
+  <p class="dek">GDP is up. Ambitions are up. So why does an ordinary salary still feel like it is running on a treadmill?</p>
+  <div class="meta">By Snarky Solutions • <time datetime="2026-10-27">27 October 2026</time></div>
+</header>
+
+<article>
+<div class="lead">
+  <p>Let’s begin with a familiar experience.</p>
+  <p>Your salary gets revised. You do a little mental arithmetic, perhaps imagine a better holiday, a healthier savings account, or finally getting ahead on that loan.</p>
+  <p>Then rent is due. Groceries need replenishing. School fees arrive. Fuel costs what it costs. An unexpected medical bill appears, because apparently life has a subscription model nobody remembers signing up for.</p>
+  <p>And somehow, the raise disappears.</p>
+  <p>Meanwhile, the economic headlines tell you that India is growing, investment is strengthening, and the country’s long-term prospects remain promising.</p>
+  <p class="q">So, what exactly are we missing?</p>
+  <p>Perhaps nothing. Perhaps we are looking at two different measures of economic success and expecting them to tell the same story.</p><p class="aside">The GDP report says we’re thriving. Your grocery bill says we’re negotiating.</p>
+</div>
+
+<h2>1. GDP measures the economy. Not your bank balance.</h2>
+<p>Gross Domestic Product, or GDP, measures the value of goods and services produced within a country. It is an essential indicator of economic activity.</p>
+<p>But GDP growth does not automatically mean that every household earns more, that every worker gets a better job, or that essential expenses become more affordable.</p>
+<p>An economy can expand while the benefits are distributed unevenly. Some sectors may grow rapidly while others struggle. Business profits can rise without wages increasing at the same pace. New infrastructure can improve productivity over time without immediately reducing a family’s monthly expenses.</p>
+<p>India’s investment outlook offers reasons for optimism. Deloitte’s October 2026 economic outlook reported that gross fixed capital formation grew by <strong>11.9%</strong> in the first quarter of FY2026–27, the strongest growth in four years, and noted signs of strengthening private investment.</p>
+<p>That matters. Investment can create productive capacity, support employment and improve future economic output.</p>
+<p>But the next question is equally important: how effectively does that investment translate into jobs, incomes and better living standards?</p>
+<p>A growing economy creates possibilities. Whether those possibilities reach households is a separate question.</p>
+<p class="aside">GDP grew. Your landlord noticed before you did.</p><p class="src">Source: <a href="https://www.deloitte.com/us/en/insights/topics/economy/asia-pacific/india-economic-outlook.html" target="_blank" rel="noopener">Deloitte — India Economic Outlook, October 2026</a></p>
+
+<h2>2. Inflation is not just a number. It is a change in what you can afford.</h2>
+<p>India’s official Consumer Price Index release for September 2026 recorded:</p>
+<div class="stats">
+  <div class="stat"><b>5.54%</b><span>Retail inflation, year-on-year</span></div>
+  <div class="stat"><b>7.74%</b><span>Food inflation, year-on-year</span></div>
+  <div class="stat"><b>6.08%</b><span>Retail inflation, rural India</span></div>
+  <div class="stat"><b>4.88%</b><span>Retail inflation, urban India</span></div>
+</div>
+<p>These are provisional figures published by the Ministry of Statistics and Programme Implementation.</p>
+<p>The difference between headline inflation and food inflation deserves attention. Food is not an optional purchase that households can simply cancel when prices rise.</p>
+<p>And the national average is not everybody’s personal inflation rate.</p>
+<p>A household that spends a large share of its income on food, transport and rent can experience a very different squeeze from a household that spends more on discretionary goods and services. Two families facing the same published inflation rate may have completely different experiences.</p>
+<p>There is another important distinction: <strong>a lower inflation rate does not necessarily mean lower prices.</strong></p>
+<p>Inflation measures how quickly prices are changing. If inflation falls, prices may still be rising, just more slowly. The household that has already absorbed several rounds of price increases does not automatically recover its lost purchasing power.</p>
+<p>That is why the question, “Has inflation come down?” is incomplete.</p>
+<p class="q">The more useful question: “What does my income buy today compared with what it bought a year ago?”</p>
+<p class="aside">Inflation “cooling” means prices are rising slower, not falling. The ice cream is still expensive. It just melts at a more dignified pace.</p><div class="calc l" id="pi"><h3>Your inflation is not the government’s inflation</h3>
+<p class="note">Enter what you spend monthly and how much more it costs than a year ago. The defaults are made up, so swap in yours.</p>
+<div id="pir"></div><div class="out" id="piout"></div><p class="note" id="pinote"></p></div>
+<p class="src">Source: <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2322244&amp;lang=1&amp;reg=3" target="_blank" rel="noopener">MoSPI via Press Information Bureau — CPI, September 2026</a></p>
+
+<h2>3. The salary hike illusion (a magic trick, minus the magic)</h2>
+<p>Imagine that your annual salary increases by 8%, while the prices of the goods and services you regularly purchase increase by 6%.</p>
+<p>Your approximate inflation-adjusted income growth is not 8%. It is about <strong>1.9%</strong>.</p>
+<p>The calculation is:</p>
+<div class="formula">Real income growth = (1 + nominal income growth) / (1 + inflation) − 1<br><br>(1.08 / 1.06) − 1 ≈ 1.89%</div>
+
+<div class="calc" id="calc">
+  <h3>Run your own numbers</h3>
+  <div class="row">
+    <div><label for="raise">Salary hike (%)</label><input id="raise" type="number" step="0.1" value="8" inputmode="decimal"></div>
+    <div><label for="infl">Your personal inflation (%)</label><input id="infl" type="number" step="0.1" value="6" inputmode="decimal"></div>
+  </div>
+  <div class="out" id="out" aria-live="polite">1.89%</div>
+  <p class="note" id="note">Approximate real income growth. Use your own household inflation, not the national average.</p>
+</div>
+
+<div class="calc c" id="lk"><h3>The raise disappearing act</h3>
+<p class="note">Enter your monthly raise after tax, then the new monthly costs that arrived with it.</p>
+<label for="rz">Monthly raise, after tax (₹)</label><input id="rz" type="number" value="6000" min="0">
+<div id="lkr"></div><div class="bar"><i id="lkb" style="background:var(--coral)"></i></div>
+<div class="out" id="lkout"></div><p class="note" id="lknote"></p></div>
+<p>And that assumes your personal cost of living rises by exactly 6%, which may not be true.</p>
+<p>Now add a higher school fee, a loan repricing, increased rent or an unexpected expense. Your actual financial breathing room may shrink further.</p>
+<p>This is why nominal salary growth can look impressive in an appraisal letter but feel surprisingly underwhelming in everyday life.</p>
+<p>There is no conspiracy required. The arithmetic alone can explain much of the disconnect.</p><p class="aside">Your appraisal letter says “exceptional performer.” Your rent says “thanks for the contribution.”</p>
+<p>Of course, not every household experiences the same outcome. A person whose income rises faster than their expenses may genuinely become better off. Someone whose earnings remain stagnant while essential costs rise may become worse off.</p>
+<p>The point is not that economic growth is meaningless. It is that gross salary and economic growth are incomplete measures of financial well-being.</p>
+
+<h2>4. The employment question is bigger than unemployment.</h2>
+<p>A country needs jobs, but it also needs productive jobs that pay adequately and offer some degree of security.</p>
+<p>India’s September 2026 Periodic Labour Force Survey reported an overall unemployment rate of <strong>5%</strong> among people aged 15 and above under the survey’s current weekly status measure. The same release reported an urban unemployment rate of <strong>6.9%</strong>, compared with <strong>4.2%</strong> in rural areas.</p>
+<p>These figures are useful, but they need context.</p>
+<p>The unemployment rate measures the proportion of people in the labour force who are unemployed and seeking or available for work. It does not measure every person who would like a better job, more working hours, higher pay or employment that matches their qualifications.</p>
+<p>Nor does a single national rate reveal the full picture for new graduates, experienced professionals facing restructuring, informal workers, or people who have stopped looking for work.</p>
+<p class="aside">Employed: yes. Financially secure: please see the other tab.</p><p>Employment quality matters too.</p>
+<ul class="clean">
+  <li><b>Stability:</b> Are workers receiving stable incomes?</li>
+  <li><b>Wages:</b> Are they keeping pace with essential expenses?</li>
+  <li><b>Entry:</b> Are new entrants finding productive work?</li>
+  <li><b>Mobility:</b> Can people change jobs without risking months of financial insecurity?</li>
+</ul>
+<p>These are not arguments against celebrating improvements in employment indicators. They are reasons to examine them alongside other measures.</p>
+<p>Because having a job and having enough financial security to plan a future are related, but not identical, achievements.</p>
+<p class="src">Source: <a href="https://ddnews.gov.in/en/urban-workforce-participation-improves-in-september-female-lfpr-reaches-highest-level-since-october-2025/" target="_blank" rel="noopener">DD News — Urban Workforce Participation Improves in September, 15 October 2026</a></p>
+
+<h2>5. Global economics eventually arrives at your front door.</h2>
+<p>Economic headlines about oil prices, trade restrictions, geopolitical tensions and supply chains can sound distant from the concerns of an ordinary household.</p>
+<p>They are not.</p>
+<p>India’s exposure to imported energy means that disruptions in global energy markets can affect domestic costs. Depending on the scale and duration of a shock, the consequences can spread through transport, manufacturing, logistics and food distribution.</p>
+<p>Trade uncertainty can influence businesses’ investment decisions. Higher financing costs can affect borrowing and expansion. Supply disruptions can raise input costs.</p>
+<p>Businesses may absorb some of these pressures, pass some on to consumers, or respond by changing investment and hiring plans.</p>
+<p>The effects are neither automatic nor identical across sectors. Government policy, exchange rates, domestic supply, taxes and market competition all influence how global shocks are transmitted.</p>
+<p class="aside">Somewhere a tanker gets rerouted and your auto fare politely goes up.</p><p>Still, the connection is worth understanding.</p>
+<p>A conflict thousands of kilometres away can become an energy bill. A supply-chain disruption can become a higher product price. A change in global interest rates can influence the cost of borrowing.</p>
+<p class="q">Global economics is not a spectator sport. Its consequences often arrive disguised as ordinary expenses.</p>
+
+<h2>6. What should India measure alongside growth?</h2>
+<p>GDP remains important. Investment matters. Inflation data and employment statistics matter.</p>
+<p>But a more complete picture of economic progress would put several questions together:</p>
+<ul class="clean">
+  <li><b>Income:</b> Are real wages and household incomes improving?</li>
+  <li><b>Affordability:</b> How much of an ordinary income goes towards housing, food, education, healthcare and transport?</li>
+  <li><b>Employment:</b> Are enough productive jobs being created, and are they accessible to new entrants?</li>
+  <li><b>Opportunity:</b> Can people improve their economic position through education, skills, entrepreneurship and work?</li>
+  <li><b>Security:</b> Can households withstand an unexpected expense without taking on unsustainable debt?</li>
+  <li><b>Public services:</b> Are reliable healthcare, education, transport and basic infrastructure reducing the cost of living and expanding opportunity?</li>
+</ul>
+<p>These questions are not substitutes for GDP. They help explain what GDP alone cannot.</p>
+<p>They also make economic debate more useful. Instead of arguing over whether a single statistic proves that everything is wonderful or everything is terrible, we can examine which parts of the economy are improving, who is benefiting, and where progress remains insufficient.</p>
+
+<h2>7. Your turn: the Snarky Reality Check</h2>
+<p>Enough diagnosis. Here is a monthly money template. It checks your budget against the classic 50/30/20 split (needs, wants, savings), shows how long your emergency fund would last, and lets you download or print the result.</p>
+<div class="calc" id="plan"><h3>Monthly money template</h3>
+<p class="note">The numbers are illustrative. Replace them with yours. Everything stays in your browser.</p>
+<label for="inc">Monthly take-home income (₹)</label><input id="inc" type="number" value="80000" min="0">
+<h4>Needs (target 50%)</h4><div id="pn"></div>
+<h4>Wants (target 30%)</h4><div id="pw"></div>
+<h4>Savings and investing (target 20%)</h4><div id="ps"></div>
+<h4>Emergency fund</h4><div class="g c1"><span>Saved so far (₹)</span><input id="ef" type="number" value="150000" min="0"></div>
+<div class="g c1"><span>Target (months of needs)</span><input id="em" type="number" value="6" min="1"></div>
+<h4>The verdict</h4>
+<div class="lbl" id="l1"></div><div class="bar"><i id="b1" style="background:var(--coral)"></i></div>
+<div class="lbl" id="l2"></div><div class="bar"><i id="b2" style="background:var(--yellow)"></i></div>
+<div class="lbl" id="l3"></div><div class="bar"><i id="b3" style="background:var(--lavender)"></i></div>
+<div class="out" id="plout" style="font-size:1.6rem"></div><p class="note" id="plnote"></p>
+<button class="btn" id="csv" type="button">Download CSV</button><button class="btn alt" id="prt" type="button">Print</button></div>
+<section class="verdict">
+  <h2>8. The Snarky Verdict</h2>
+  <p>India’s growth story can be real, its investment prospects promising, and its economic challenges significant, all at the same time.</p>
+  <p>There is no contradiction in acknowledging progress while asking who benefits from it.</p>
+  <p>The problem begins when national economic success is treated as proof of universal household prosperity, or when personal financial difficulty is dismissed simply because the headline numbers look good.</p>
+  <p>A country is more than its GDP. A family’s financial health is more than its salary. And a falling inflation rate is not a refund for everything that has already become expensive.</p>
+  <p>The real test of growth is not whether the economy looks impressive in a presentation.</p>
+  <p>It is whether people can turn their work into a better standard of living, build some savings, manage unexpected costs and make plans that extend beyond the next payday.</p>
+  <p>After all, economic progress should eventually make life more manageable, not merely make the charts look better.</p>
+  <p>If the economy is growing, the next question is simple: how much better is life becoming for the people who keep it running?</p>
+  <p class="final">That is the number worth following.</p>
+</section>
+
+<section class="sources">
+  <h2>Sources and further reading</h2>
+  <ol>
+    <li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2322244&amp;lang=1&amp;reg=3" target="_blank" rel="noopener">Ministry of Statistics and Programme Implementation — Consumer Price Index, September 2026</a></li>
+    <li><a href="https://ddnews.gov.in/en/urban-workforce-participation-improves-in-september-female-lfpr-reaches-highest-level-since-october-2025/" target="_blank" rel="noopener">DD News — Labour force and employment indicators, September 2026</a></li>
+    <li><a href="https://www.deloitte.com/us/en/insights/topics/economy/asia-pacific/india-economic-outlook.html" target="_blank" rel="noopener">Deloitte — India Economic Outlook, October 2026</a></li>
+    <li><a href="https://www.federalreserve.gov/econres/notes/feds-notes/india-and-the-global-economy-20260408.html" target="_blank" rel="noopener">Federal Reserve — India and the Global Economy</a></li>
+  </ol>
+</section>
+<p class="about">Snarky Solutions examines current affairs, economics and public priorities through evidence, context and a healthy suspicion of oversimplified narratives. Opinions are editorial; cited data and interpretations are presented separately.</p>
+</article>
+</main>
+
+<footer><div class="wrap">© 2026 Snarky Solutions</div></footer>
+
+<script>
+(function(){
+  var r=document.getElementById('raise'),i=document.getElementById('infl'),o=document.getElementById('out'),n=document.getElementById('note');
+  function u(){
+    var a=parseFloat(r.value),b=parseFloat(i.value);
+    if(isNaN(a)||isNaN(b)||b<=-100){o.textContent='—';o.className='out';return;}
+    var v=((1+a/100)/(1+b/100)-1)*100;
+    o.textContent=(v>0?'+':'')+v.toFixed(2)+'%';
+    o.className='out'+(v<0?' neg':'');
+    n.textContent=v<0?'Your hike is losing to your expenses. The raise is a pay cut in disguise.':'Approximate real income growth. Use your own household inflation, not the national average.';
+  }
+  r.addEventListener('input',u);i.addEventListener('input',u);u();
+})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},fm=function(n){return "₹"+Math.round(n).toLocaleString("en-IN")},
+nums=function(l){return [].map.call(l,function(x){return parseFloat(x.value)||0})};
+function mk(id,rows,heads,cb){var b=$(id),h='<div class="g'+(heads[1]?'':' c1')+' hd"><span></span><span>'+heads[0]+'</span>'+(heads[1]?'<span>'+heads[1]+'</span>':'')+'</div>';
+ rows.forEach(function(r){h+='<div class="g'+(heads[1]?'':' c1')+'"><span>'+r[0]+'</span><input type="number" min="0" step="any" inputmode="decimal" aria-label="'+r[0]+'" value="'+r[1]+'">'+(heads[1]?'<input type="number" min="0" step="any" inputmode="decimal" aria-label="'+r[0]+' price rise" value="'+r[2]+'">':'')+'</div>'});
+ b.innerHTML=h;var ins=b.querySelectorAll("input");[].forEach.call(ins,function(x){x.addEventListener("input",cb)});return ins}
+var pr=mk("pir",[["Food and groceries",15000,8],["Rent or EMI",25000,5],["Fuel and commute",6000,7],["School and education",8000,10],["Health and insurance",4000,9],["Everything else",12000,4]],["₹ per month","% costlier"],pi);
+function pi(){var v=nums(pr),s=0,w=0;for(var k=0;k<v.length;k+=2){s+=v[k];w+=v[k]*v[k+1]}var p=s?w/s:0,d=p-5.54;
+ $("piout").textContent=p.toFixed(2)+"%";$("piout").className="out"+(d>0?" neg":"");
+ $("pinote").textContent=d>0?"That is "+d.toFixed(2)+" points above the official 5.54%. The statistics aren’t wrong. They’re just not about you.":"That is "+Math.abs(d).toFixed(2)+" points below the official 5.54%. Rare. Enjoy it quietly.";}
+pi();
+var lr=mk("lkr",[["Rent or EMI increase",2000],["Groceries and daily needs",1500],["School or tuition fee",1200],["Fuel and commute",600],["Medical or surprise bills",800]],["₹ per month"],lk);
+function lk(){var r=parseFloat($("rz").value)||0,c=nums(lr).reduce(function(a,b){return a+b},0),l=r-c,pc=r?l/r*100:0;
+ $("lkout").textContent=(l<0?"−":"")+fm(Math.abs(l))+" left";$("lkout").className="out"+(l<0?" neg":"");
+ $("lkb").style.width=Math.max(0,Math.min(100,pc))+"%";
+ $("lknote").textContent=l<=0?"The raise left before you did. It’s a pay cut with better letterhead.":pc<50?"Raise detected, mostly consumed. Survival confirmed, celebration cancelled.":"An actual raise. Frame the payslip.";}
+$("rz").addEventListener("input",lk);lk();
+var G={pn:[["Rent or EMI",24000],["Groceries",12000],["Utilities and bills",5000],["Transport",5000],["Insurance and school fees",6000]],
+pw:[["Eating out and delivery",6000],["Shopping",7000],["Subscriptions and travel",8000]],
+ps:[["SIP and investments",10000],["Emergency fund top-up",4000],["Loan prepayment",2000]]},I={},names={pn:"Needs",pw:"Wants",ps:"Savings"};
+for(var g in G)I[g]=mk(g,G[g],["₹ per month"],pl);
+["inc","ef","em"].forEach(function(i){$(i).addEventListener("input",pl)});
+function sum(g){return nums(I[g]).reduce(function(a,b){return a+b},0)}
+function pl(){var inc=parseFloat($("inc").value)||0,n=sum("pn"),w=sum("pw"),sv=sum("ps"),f=function(x){return inc?x/inc*100:0},free=inc-n-w-sv,
+ T=[["Needs",n,50,"b1","l1"],["Wants",w,30,"b2","l2"],["Savings",sv,20,"b3","l3"]];
+ T.forEach(function(t){var p=f(t[1]);$(t[4]).textContent=t[0]+": "+fm(t[1])+" = "+p.toFixed(0)+"% of income (target "+t[2]+"%)";$(t[3]).style.width=Math.min(100,p)+"%"});
+ var run=n?(parseFloat($("ef").value)||0)/n:0,tg=parseFloat($("em").value)||6,sp=f(sv);
+ $("plout").textContent=free<0?"Over budget by "+fm(-free):fm(free)+" unallocated";$("plout").className="out"+(free<0?" neg":"");
+ $("plnote").textContent=(free<0?"You’ve budgeted money you don’t have. Creative, but banks disagree. ":sp<10?"Savings rate: vibes only. ":sp<20?"Respectable. Your future self nods politely. ":"Look at you, being an adult. ")+"Emergency fund covers "+run.toFixed(1)+" months of needs (target "+tg+")."+(run<tg?" Keep topping up.":" Target met.");}
+pl();
+$("csv").addEventListener("click",function(){var r=[["Group","Item","Monthly amount (INR)"],["Income","Take-home",$("inc").value]];
+ for(var g in G){var v=nums(I[g]);G[g].forEach(function(x,k){r.push([names[g],x[0],v[k]])})}
+ r.push(["Emergency fund","Saved so far",$("ef").value],["Emergency fund","Target months",$("em").value]);
+ var b=new Blob([r.map(function(x){return x.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(",")}).join("\n")],{type:"text/csv"}),a=document.createElement("a");
+ a.href=URL.createObjectURL(b);a.download="snarky-reality-check.csv";a.click()});
+$("prt").addEventListener("click",function(){window.print()});
+})();
+</script>
+</body>
+</html>
