@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Isn’t Taking Your Job. It’s Taking the Boring Half and Handing You a Harder One. | Snarky Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111013;--ink:#f3eee8;--mute:#a59fae;--card:#1c1a21;--line:#34313c;--coral:#ff6b5a;--yel:#ffd24a;--lav:#b8a4ff;--pink:#ff8ac4;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Plus Jakarta Sans",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:0 20px 64px}
+h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.08;margin:0}
+h1{font-size:clamp(2rem,7.5vw,3.2rem);font-weight:900;margin:.6em 0 .3em}
+h1 em{font-style:normal;color:var(--coral)}
+h2{font-size:clamp(1.55rem,5.5vw,2.1rem);font-weight:700;margin:2.4em 0 .35em}
+h3{font:400 .82rem "DM Mono",monospace;color:var(--lav);margin:1.1em 0 .3em}
+p{margin:.6em 0}.mute{color:var(--mute)}.sub{font-size:1.15rem;color:var(--mute);max-width:34em}
+a{color:var(--yel)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--yel);outline-offset:2px}
+.by{font:.8rem "DM Mono",monospace;color:var(--mute);padding-top:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0}
+.jd{border-left:4px solid var(--coral)}
+.jd ul{list-style:none;padding:0;margin:.4em 0 1em}
+.jd li{padding:7px 0;border-bottom:1px dashed var(--line)}
+.jd .o{transition:.4s}.jd .n{display:none;color:var(--yel);font-weight:700}
+.jd.on .o{text-decoration:line-through;color:var(--mute)}.jd.on .n{display:block}
+.btn{background:var(--coral);color:#111013;border:0;border-radius:999px;padding:10px 20px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}
+.stats div{background:var(--card);border-radius:12px;padding:14px;border-top:3px solid var(--c)}
+.stats b{display:block;font:900 2rem Fraunces,serif;color:var(--c)}.stats span{font-size:.85rem;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chips button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.92rem}
+.chips button[aria-pressed=true]{background:var(--lav);color:#111013;border-color:var(--lav);font-weight:700}
+.panel{background:var(--card);border-radius:14px;padding:6px 20px 18px;border:1px solid var(--line)}
+.panel ul{margin:.3em 0;padding-left:1.1em}.learn{color:var(--yel);font-weight:600}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0;padding:12px 18px}
+summary{cursor:pointer;font-weight:700}details ul{margin:.5em 0 0;padding-left:1.1em}
+.flips{display:grid;gap:8px;margin:14px 0}
+.flip{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:block;width:100%}
+.flip small{font:.75rem "DM Mono",monospace;color:var(--coral);display:block}
+.flip.on{border-color:var(--yel)}.flip.on small{color:var(--yel)}.flip.on span{font-weight:700}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--yel));transition:width .4s}
+.ph h3{color:var(--pink)}.ph label{display:flex;gap:10px;padding:5px 0;cursor:pointer}
+.ph input{accent-color:var(--coral);width:18px;height:18px;margin-top:5px;flex:none}
+.q{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+.q .yn{display:flex;gap:6px;flex:none}
+.q button{border:1px solid var(--line);background:transparent;border-radius:8px;padding:5px 12px}
+.q button[aria-pressed=true]{background:var(--yel);color:#111013;border-color:var(--yel);font-weight:700}
+#verdict{font:700 1.25rem Fraunces,serif;color:var(--pink);margin-top:14px}
+.trio{display:grid;gap:10px;margin:16px 0}.trio div{border-left:4px solid var(--c);padding:4px 14px}
+.trio b{color:var(--c)}
+.punch{font:900 clamp(1.5rem,6vw,2.1rem) Fraunces,serif;line-height:1.15;margin:1.6em 0 .4em}
+footer{margin-top:40px;font-size:.85rem;color:var(--mute);border-top:1px solid var(--line);padding-top:16px}
+footer li{margin:6px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head>
+<body><main>
+<div class="by">Snarky Solutions · Future of Work series, part 1</div>
+<h1>AI Isn’t Taking Your Job. <em>It’s Taking the Boring Half and Handing You a Harder One.</em></h1>
+<p class="sub">AI isn’t just changing what we do. It’s changing what organisations will pay us to know, decide and deliver.</p>
+
+<div class="card jd" id="jd">
+<p class="mute" style="margin-top:0">Your job description, 2024 edition. Tap to apply the update nobody sent you.</p>
+<ul id="jdl"></ul>
+<button class="btn" id="jdb">Apply the AI update</button>
+</div>
+
+<p>The biggest career disruption of the AI era may not be job losses. It may be the end of the way we’ve always done those jobs. For decades the deal was simple: learn a skill, get efficient, own bigger things, manage people, become a leader. AI just wandered into that queue and started skipping the line.</p>
+<p><b>Experience alone no longer guarantees progression.</b> What does: experience, technology, judgement and business understanding, used together. The winners won’t be the people who know the most about AI. They’ll be the ones who combine domain expertise with AI to deliver outcomes.</p>
+
+<div class="stats">
+<div style="--c:var(--coral)"><b>22%</b><span>of today’s jobs reshuffled by 2030 (created plus displaced)</span></div>
+<div style="--c:var(--yel)"><b>170M</b><span>new roles created globally (all causes, not just AI)</span></div>
+<div style="--c:var(--lav)"><b>92M</b><span>roles displaced, so a net gain of 78M</span></div>
+<div style="--c:var(--pink)"><b>39%</b><span>of key skills change by 2030 (44% in the 2023 survey)</span></div>
+</div>
+<p class="mute" style="font-size:.85rem">WEF Future of Jobs Report 2025: a survey of 1,000+ employers covering 14M workers in 55 economies. These are employer expectations driven by tech, the green transition and demographics, not AI alone. Translation: the challenge isn’t finding another job. It’s keeping up with the one you already have.</p>
+
+<h2>1. How work evolves (tap through it)</h2>
+<div class="chips" id="evc"></div><div class="panel" id="evp"></div>
+<p class="mute" style="font-size:.85rem">Illustrative, not a timeline. Your industry, and your company’s appetite for change management, will set the speed.</p>
+
+<h2>2. Pick your function. See what moves.</h2>
+<p>The shift hits tasks first, job titles later. Titles survive. Their contents don’t.</p>
+<div class="chips" id="rc"></div><div class="panel" id="rp"></div>
+
+<h2>3. The five pillars of career readiness</h2>
+<p>No, you don’t need to become a programmer. A joint ILO-led report (Aug 2026) finds rising demand for cognitive, socio-emotional, digital and AI skills, and calls AI literacy a foundational skill. Open the boxes.</p>
+<details><summary>AI and digital fluency</summary><ul><li>Gen AI tools and prompting</li><li>AI agents and workflow automation</li><li>APIs and system integrations</li><li>Data literacy and business intelligence</li><li>Validating AI output, using it responsibly</li></ul></details>
+<details><summary>Analytical and strategic thinking</summary><ul><li>Critical thinking and root-cause analysis</li><li>Problem-solving</li><li>Business and financial acumen</li><li>Decisions under uncertainty</li></ul></details>
+<details><summary>Human and leadership skills</summary><ul><li>Stakeholder management</li><li>Negotiation and influence</li><li>Conflict resolution and emotional intelligence</li><li>Coaching and change leadership</li></ul></details>
+<details><summary>Process and transformation</summary><ul><li>Process redesign</li><li>Spotting automation opportunities</li><li>Workflow orchestration</li><li>Change management, risk, compliance and governance</li></ul></details>
+<details><summary>Continuous learning and adaptability</summary><ul><li>Learning unfamiliar tech</li><li>Cross-functional exposure</li><li>Experimentation and knowledge sharing</li><li>Building transferable skills</li></ul></details>
+<p><b>Learning an AI tool is step one. Redesigning a business process around it is where the value is.</b> Skip the certificate hoarding: don’t learn Power BI to make dashboards, learn it to turn data into management decisions. Don’t learn prompting to write emails, learn it to build repeatable workflows.</p>
+
+<h2>4. Stop this. Start that.</h2>
+<p class="mute">Tap a card to flip it.</p>
+<div class="flips" id="fl"></div>
+<div class="card" style="border-color:var(--coral)"><b>The catch:</b> don’t outsource your thinking. If AI writes every analysis and makes every call, you lose the judgement that made you worth hiring. Use it to expand your capability, not replace your brain.</div>
+
+<h2>5. Meet the AI-enabled employee</h2>
+<p>The old measure was tasks completed. The new one: can you spot where AI helps, decide what to automate, design workflows across people, tools and agents, validate the output, handle exceptions, and prove the value? Microsoft’s 2026 Work Trend Index (a vendor report, based on 20,000 knowledge workers who already use AI) argues that as agents take on execution, humans direct the work and own the outcomes. Asked which human skills matter more, respondents ranked quality control of AI output (50%) and critical thinking (46%) first.</p>
+<p>Plot twist: people who deeply understand how their business runs may end up more valuable than people who only understand the tech.</p>
+
+<h2>6. Your 12-month plan (tick as you go)</h2>
+<div class="bar"><i id="pb"></i></div><p class="mute" id="pt" style="margin-top:-8px"></p>
+<div id="rm"></div>
+
+<h2>7. Which stage are you at?</h2>
+<div class="chips" id="sc"></div><div class="panel" id="sp"></div>
+
+<h2>8. The replaceability check</h2>
+<p class="mute">There’s no future-proof job. The goal is being hard to replace, not impossible. Six honest answers:</p>
+<div class="card" id="qz"></div>
+
+<h2>9. For the people running the show</h2>
+<p>Reskilling isn’t a staff-only sport. Organisations need to:</p>
+<ul>
+<li><b>Assess tasks, not titles.</b> Whole jobs rarely vanish. Activities do.</li>
+<li><b>Build role-based learning.</b> HR, finance, PMO and ops need different curricula.</li>
+<li><b>Let people experiment</b> and show results.</li>
+<li><b>Rewrite performance metrics</b> around quality, decisions and outcomes, not task counts.</li>
+<li><b>Own AI governance:</b> data security, accuracy, human approvals, accountability. Non-negotiable once agents run multi-step work.</li>
+</ul>
+
+<h2>The verdict</h2>
+<div class="trio">
+<div style="--c:var(--coral)"><b>Expertise.</b> Know your profession and how the business actually runs.</div>
+<div style="--c:var(--yel)"><b>Technology.</b> Use AI, data and automation to improve your work.</div>
+<div style="--c:var(--lav)"><b>Judgement.</b> Know when to trust the tool, when to challenge it, and when a human must step in.</div>
+</div>
+<p>Executing tasks is no longer the differentiator. Deciding what needs doing, designing how, and owning the outcome is.</p>
+<p class="punch">Don’t race AI on speed. Use it to solve problems you couldn’t solve before.</p>
+<p>Your next milestone shouldn’t just be another designation. It should be a visible expansion of what you can deliver.</p>
+
+<div class="card"><b>Next in the series</b>
+<ul><li>The Middle Management Dilemma: will AI make traditional people management obsolete?</li><li>The Experience Trap: why 15 years may not be enough</li><li>The New Corporate Skillset: what to learn before 2030</li><li>The Rise of the AI Manager: managing digital workers</li><li>The Great Reskilling Question: who pays when your skills expire?</li></ul></div>
+
+<footer><b>Sources</b>
+<ul>
+<li><a href="https://www.weforum.org/media/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces">WEF, Future of Jobs Report 2025</a></li>
+<li><a href="https://www.ilo.org/publications/changing-landscape-skills-age-ai">ILO, ETF, Cedefop and partners, Changing Landscape of Skills in the Age of AI (13 Aug 2026)</a></li>
+<li><a href="https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization">Microsoft, 2026 Work Trend Index (May 2026)</a></li>
+
+</ul>
+<p>Projections and survey findings are forecasts, not guarantees. Pace varies by sector, geography and organisation. The role-by-role breakdown in section 2 is our own read, not a finding from the sources above.</p></footer>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+function tabs(c,p,items,fn,start){const C=$(c),P=$(p);items.forEach((it,i)=>{const b=document.createElement("button");b.textContent=it.n;b.onclick=()=>{[...C.children].forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");P.innerHTML=fn(it)};C.appendChild(b)});C.children[start||0].click()}
+const jd=[["Compile the weekly status report","Decide what the report should change"],["Schedule and chase meetings","Anticipate what leadership needs next"],["Track project milestones","Own outcomes and dependencies"],["Copy data between spreadsheets","Turn data into decisions"],["Be the information provider","Be the interpreter"]];
+$("#jdl").innerHTML=jd.map(r=>`<li><span class="o">${r[0]}</span><span class="n">${r[1]}</span></li>`).join("");
+$("#jdb").onclick=()=>{const on=$("#jd").classList.toggle("on");$("#jdb").textContent=on?"Revert (nice try)":"Apply the AI update"};
+tabs("#evc","#evp",[
+{n:"Traditional",t:"Humans perform, coordinate, analyse and manage nearly every step.",k:"Human-led execution"},
+{n:"AI-assisted",t:"Humans use AI to research, draft, analyse, automate and speed things up.",k:"Human + AI collaboration"},
+{n:"Agent-enabled",t:"AI agents run defined workflows, touch business systems and coordinate tasks. Humans supervise, validate and handle exceptions.",k:"Human + AI orchestration"},
+{n:"Outcome-driven",t:"People are judged on decisions, innovation, business impact, governance and what human-AI teams deliver.",k:"Human accountability and strategic ownership"}],
+x=>`<h3>${x.k}</h3><p>${x.t}</p>`,1);
+tabs("#rc","#rp",[
+{n:"Admin and coordination",a:["Scheduling, routine email, meeting notes and follow-ups","Travel and expense workflows","Trackers that update themselves"],m:"Executive enablement, stakeholder intelligence and workflow orchestration. Confidentiality, prioritisation and anticipating leadership stay human.",l:"AI assistants, workflow automation, executive intelligence"},
+{n:"Project and PMO",a:["Plans, status reports and dashboards","Early flags on risks, delays and dependencies","Milestone monitoring and auto-escalation"],m:"Outcomes, strategic dependencies, transformation risk and business value, not progress tracking.",l:"AI project analytics, Power BI, automation, transformation"},
+{n:"HR and talent",a:["CV screening and candidate matching","Skills-gap analysis and workforce planning","Attrition and performance-trend analysis"],m:"Talent strategy, employee experience, workforce transformation, org development.",l:"People analytics, AI recruitment, workforce planning"},
+{n:"Finance",a:["Invoices, reconciliations, routine reporting","Forecasting and variance analysis","Anomaly and risk detection"],m:"Commercial insight, financial controls, risk and decision support. Less compiling numbers, more interpreting them.",l:"Advanced analytics, AI forecasting, financial controls"},
+{n:"Operations",a:["Repetitive workflows","Service requests classified, routed, resolved by agents","Auto-corrective actions on process deviations"],m:"Designing intelligent operations, fixing processes and owning service outcomes, not managing volumes and headcount.",l:"Process mining, RPA, agentic workflows, data analytics"},
+{n:"Sales and marketing",a:["Content creation and campaign execution","Predictive segmentation and lead scoring","Routine customer queries"],m:"Customer intelligence, relationships, complex negotiation, brand trust and revenue strategy.",l:"Customer analytics, AI content, CRM automation"},
+{n:"Tech and services",a:["AI-assisted coding and testing","Automated research and documentation","Faster design and prototyping"],m:"Designing, integrating, validating and governing solutions instead of just producing deliverables.",l:"Integration, architecture, cybersecurity, responsible AI"}],
+x=>`<h3>AI picks up</h3><ul>${x.a.map(i=>`<li>${i}</li>`).join("")}</ul><h3>You become</h3><p>${x.m}</p><h3>Learn first</h3><p class="learn">${x.l}</p>`);
+const fp=[["Years of experience","Demonstrable business impact"],["Manual reporting","Data-driven decision support"],["Routine task execution","Process improvement"],["Managing task volumes","Managing outcomes"],["Knowing one software tool","Understanding connected workflows"],["Being the information provider","Being the interpreter"],["Individual productivity","Human-AI team productivity"],["Waiting for formal training","Self-directed learning"]];
+fp.forEach(p=>{const b=document.createElement("button");b.className="flip";b.setAttribute("aria-pressed","false");b.innerHTML=`<small>Stop relying on</small><span>${p[0]}</span>`;b.onclick=()=>{const on=b.classList.toggle("on");b.setAttribute("aria-pressed",on);b.innerHTML=on?`<small>Start developing</small><span>${p[1]}</span>`:`<small>Stop relying on</small><span>${p[0]}</span>`};$("#fl").appendChild(b)});
+const rm=[["Months 1–2: Build AI literacy",["Learn how gen AI and agents work, plus prompting and output checks","Try ChatGPT, Copilot, Gemini","List five repetitive tasks in your role AI could improve"]],["Months 3–4: Automate something",["Learn Power Automate or an equivalent","Learn basic workflow design and integrations","Build at least one practical automation"]],["Months 5–6: Get fluent in data",["Advanced Excel","Power BI","Turn data into recommendations, not just charts"]],["Months 7–9: Redesign a process",["Map a real process and find the automation gaps","Design a human-AI workflow with governance, privacy and risk controls","Deliver one measurable improvement project"]],["Months 10–12: Make it count",["Write a business case for AI adoption","Practise change management and stakeholder influence","Update your portfolio with measured results"]]];
+let st={};try{st=JSON.parse(localStorage.getItem("snarky-fow")||"{}")}catch(e){}
+function prog(){const a=[...document.querySelectorAll("#rm input")],n=a.filter(i=>i.checked).length;$("#pb").style.width=(n/a.length*100)+"%";$("#pt").textContent=n+" of "+a.length+" done";try{localStorage.setItem("snarky-fow",JSON.stringify(Object.fromEntries(a.map(i=>[i.id,i.checked]))))}catch(e){}}
+$("#rm").innerHTML=rm.map((p,i)=>`<div class="card ph"><h3>${p[0]}</h3>${p[1].map((t,j)=>`<label><input type="checkbox" id="c${i}${j}"${st["c"+i+j]?" checked":""}><span>${t}</span></label>`).join("")}</div>`).join("");
+document.querySelectorAll("#rm input").forEach(i=>i.onchange=prog);prog();
+tabs("#sc","#sp",[{n:"0–5 years",t:"Build fundamentals: AI tools, data analysis, communication, domain depth. Solve problems instead of following instructions."},{n:"5–15 years",t:"The critical window. Pair your experience with automation, analytics and strategy. Move from owning tasks to owning processes and outcomes."},{n:"15+ years",t:"Lead transformation: governance, judgement, business value, and teams where people and AI agents work together. Starting late isn’t fatal. Your domain knowledge is the edge."}],x=>`<p>${x.t}</p>`,1);
+const qs=["I know which parts of my role AI can already do","I know which of my responsibilities get more valuable as routine work is automated","I can solve a business problem now that I couldn’t a year ago","I can manage and evaluate an AI-assisted workflow","My skills transfer across industries","I can show measurable value beyond my job description"];
+const vd=["Your job description is drafting its resignation. Start with the plan above.","Awake, but not moving. Pick one item from the plan and ship it this month.","Half-ready. You see the shift; now make it visible.","Getting hard to replace. Close the last gap and put numbers on it.","Hard to replace, not impossible. Nobody gets that last badge. Keep moving.","Hard to replace, not impossible. Nobody gets that last badge. Keep moving."];
+const ans=Array(6).fill(null);
+$("#qz").innerHTML=qs.map((q,i)=>`<div class="q"><span>${q}</span><span class="yn"><button data-i="${i}" data-v="1" aria-pressed="false">Yes</button><button data-i="${i}" data-v="0" aria-pressed="false">Not yet</button></span></div>`).join("")+`<div id="verdict"></div>`;
+$("#qz").onclick=e=>{const b=e.target.closest("button");if(!b)return;const i=+b.dataset.i;ans[i]=+b.dataset.v;b.parentNode.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));const d=ans.filter(v=>v!==null).length,s=ans.reduce((a,v)=>a+(v||0),0);$("#verdict").textContent=d<6?`${d} of 6 answered`:`${s}/6. ${vd[s]}`};
+</script></body></html>
