@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Appraisal Isn’t a Verdict. It’s a Negotiation You Didn’t Prepare For. | Snarky Solutions</title>
+<meta name="description" content="Appraisal season is here. The average Indian hike is about 9%. Here is how to stop accepting the average by default.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111013;--panel:#1b1a1f;--line:#2e2c35;--text:#ece8e1;--mute:#a29eab;--coral:#ff6b5e;--yellow:#ffd24a;--lav:#b9a6ff;--pink:#ff8fc7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.06rem/1.75 'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:720px;margin:0 auto;padding:clamp(28px,6vw,72px) 22px 80px}
+.kicker{font:500 .8rem 'DM Mono',monospace;color:var(--yellow);margin:0 0 18px}
+h1{font:900 clamp(2.1rem,6.4vw,3.6rem)/1.06 'Fraunces',serif;letter-spacing:-.02em;margin:0 0 22px}
+h1 em{font-style:italic;font-weight:400;color:var(--coral)}
+h2{font:700 clamp(1.45rem,4vw,1.9rem)/1.2 'Fraunces',serif;margin:56px 0 14px;color:var(--text)}
+h3{font:700 1.05rem 'Plus Jakarta Sans',sans-serif;color:var(--lav);margin:26px 0 6px}
+p{margin:0 0 18px}
+.lede{font-size:1.2rem;color:var(--mute)}
+.meta{font:400 .85rem 'DM Mono',monospace;color:var(--mute);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+a{color:var(--pink);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+.pull{border-left:4px solid var(--coral);padding:4px 0 4px 20px;margin:30px 0;font:400 italic 1.35rem/1.45 'Fraunces',serif}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:26px 0}
+.stat{background:var(--panel);border-top:3px solid var(--lav);padding:16px 18px}
+.stat:nth-child(2){border-color:var(--yellow)}
+.stat:nth-child(3){border-color:var(--pink)}
+.stat b{display:block;font:900 2rem/1.1 'Fraunces',serif}
+.stat span{font-size:.88rem;color:var(--mute)}
+.table-wrap{overflow-x:auto;margin:22px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .85rem 'DM Mono',monospace;color:var(--yellow);border-bottom:2px solid var(--yellow)}
+td:first-child{font-weight:700;color:var(--lav);white-space:nowrap}
+.say{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:14px 0}
+.say small{display:block;font:500 .8rem 'DM Mono',monospace;color:var(--coral);margin-bottom:6px}
+.say p{margin:0;font-style:italic}
+ol.plan{padding-left:0;list-style:none;margin:20px 0}
+ol.plan li{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+ol.plan li b{font:500 .85rem 'DM Mono',monospace;color:var(--yellow);padding-top:3px}
+.note{font-size:.9rem;color:var(--mute);border:1px dashed var(--line);padding:14px 18px;margin:34px 0}
+.src{font-size:.92rem;color:var(--mute);padding-left:20px}
+.src li{margin-bottom:8px}
+.close{font:700 clamp(1.3rem,3.6vw,1.65rem)/1.35 'Fraunces',serif;color:var(--yellow);margin-top:48px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--coral),var(--yellow),var(--lav));z-index:9}
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:34px 0}
+.tool h3{margin:0 0 4px;color:var(--yellow);font:700 1.35rem 'Fraunces',serif}
+.tl{color:var(--mute);font-size:.92rem;margin:0 0 14px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.fields label{display:flex;flex-direction:column;gap:6px;font:500 .8rem 'DM Mono',monospace;color:var(--mute)}
+.fields input,.fields select{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:500 1rem 'Plus Jakarta Sans',sans-serif;width:100%}
+.fields input:focus-visible,.fields select:focus-visible,.say:focus-visible,.chk input:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+#out{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+#out div{background:var(--bg);border-top:3px solid var(--lav);padding:12px 14px}
+#out div:nth-child(3){border-color:var(--coral)}
+#out div:nth-child(4){border-color:var(--pink)}
+#out b{display:block;font:900 1.3rem 'Fraunces',serif}
+#out span{font-size:.8rem;color:var(--mute)}
+#verdict,#score{margin:16px 0 0;font:400 italic 1.1rem/1.5 'Fraunces',serif;color:var(--pink)}
+#score b{font:900 1.6rem 'Fraunces',serif;font-style:normal;color:var(--yellow);margin-right:8px}
+.js .say{cursor:pointer}
+.js .say p{display:none;margin-top:8px}
+.js .say.open p{display:block}
+.js .say small:after{content:" \2014 tap to reveal";color:var(--mute)}
+.js .say.open small:after{content:""}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.chk input{margin-top:5px;accent-color:var(--coral);width:18px;height:18px;flex:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:520px){ol.plan li{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<!-- DRAFT for review. Stats verified against linked sources in the Sources list (checked 3 Nov 2026). -->
+<div id="bar"></div>
+<main>
+<article>
+<p class="kicker">Snarky Solutions &middot; Career &middot; Appraisal season &middot; Interactive</p>
+<h1>Your appraisal isn’t a verdict. It’s a <em>negotiation</em> you didn’t prepare for.</h1>
+<p class="lede">Most of us walk into appraisal season like students walking into an exam we never revised for, then act shocked by the result. Your manager has data, a budget and a calibration meeting. You have “but I worked really hard this year.”</p>
+<p class="meta">6 min read, plus 2 minutes of playing with the tools &middot; For Indian professionals &middot; November 2026</p>
+
+<h2>The number everyone is quoting</h2>
+<p>Two big surveys landed on the same figure for 2026. Aon’s salary survey, covering 1,400+ organisations across 45 industries, projects an average increase of 9.1% for India. Deloitte’s India Talent Outlook also projects 9.1%, up from 9.0% in 2025.</p>
+<div class="stats">
+  <div class="stat"><b>9.1%</b><span>Projected average hike, 2026 (Aon and Deloitte)</span></div>
+  <div class="stat"><b>6.9%</b><span>Projected average for IT services, the lowest of the major sectors (Deloitte)</span></div>
+  <div class="stat"><b>14%</b><span>Employees promoted in 2025, up from 12% in 2024 (Deloitte)</span></div>
+</div>
+<p>Here is the part that matters. An average is a midpoint, not a promise. Aon’s own rewards leader points out that organisations are putting their money behind top talent, with much higher percentages for superior performance than for average performers.</p>
+<p>So the real question isn’t “Will I get 9%?” It’s “What evidence do I have that I belong above the average?”</p>
+
+<section class="tool" aria-labelledby="calc-h">
+<h3 id="calc-h">The ₹ reality check</h3>
+<p class="tl">Plug in your numbers and see where your hike really lands. Nothing leaves your browser.</p>
+<div class="fields">
+<label>Annual CTC (₹)<input id="ctc" type="number" inputmode="numeric" min="0" value="1200000"></label>
+<label>Your sector<select id="sec">
+<option value="6.9">IT services (6.9%)</option>
+<option value="8.8">Global capability centres (8.8%)</option>
+<option value="9.1" selected>India Inc. average (9.1%)</option>
+<option value="9.2">IT product (9.2%)</option>
+<option value="9.8">Manufacturing (9.8%)</option>
+<option value="10.1">Pharma and semiconductors (10.1%)</option>
+<option value="10.4">Renewables (10.4%)</option>
+</select></label>
+<label>Hike you were offered (%)<input id="hike" type="number" inputmode="decimal" step="0.1" min="0" value="8"></label>
+</div>
+<div id="out" aria-live="polite"></div>
+<p id="verdict"></p>
+<p class="tl" style="margin-top:14px">Sector figures are Deloitte’s 2026 projected averages. They are not a promise or your company’s budget. The five-year line assumes the same hike repeats every year.</p>
+</section>
+<div class="pull">If you can’t show your impact in one page, someone else will summarise it for you in one line.</div>
+
+<h2>Your rating is calibrated, not just given</h2>
+<p>Deloitte found that the share of employees receiving the top rating on a five-point scale fell from 10% in 2024 to 7% in 2025, while around 16% now sit in the bottom two rating bands. Promotions still rose. Translation: your manager doesn’t decide alone. They defend you in a room, against other managers defending their people, with a fixed budget.</p>
+<p>Your manager can only argue what they can remember and prove. That makes you responsible for handing them ammunition.</p>
+
+<h2>Step 1: Keep receipts (the Evidence File)</h2>
+<p>Start this today, not the night before your review. Ten minutes every Friday is enough.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Log this</th><th>Example</th></tr>
+<tr><td>Impact</td><td>Cut month-end reporting from 5 days to 3</td></tr>
+<tr><td>Scope</td><td>Now handling 3 stakeholders where the role says 1</td></tr>
+<tr><td>Money or time</td><td>Saved 12 hours a week for a team of 10</td></tr>
+<tr><td>Risks avoided</td><td>Flagged a dependency early, avoided a delivery slip</td></tr>
+<tr><td>Recognition</td><td>Praise from a client or senior stakeholder, with date and name</td></tr>
+<tr><td>Skills added</td><td>Certification completed, tool mastered, people mentored</td></tr>
+</table>
+</div>
+<p>Numbers beat adjectives. “Reliable and hardworking” describes a personality. “Reduced rework by 30%” describes a contribution.</p>
+
+<h2>Step 2: Check your market value</h2>
+<p>Salary conversations collapse when you only compare yourself to yourself. Triangulate instead:</p>
+<h3>Inside your company</h3>
+<p>Know your band, your level and what the next level requires. Ask what “exceeds expectations” looks like for your role, in writing if possible.</p>
+<h3>Outside your company</h3>
+<p>Look at current openings for your role and level. You don’t need to apply. You need a number that isn’t anchored in your own employer’s budget.</p>
+<h3>Your sector</h3>
+<p>Sector matters a great deal. In Deloitte’s 2026 projections, renewables lead at 10.4% while IT services sits at the bottom of the major sectors at 6.9%. Aon’s survey puts technology consulting and IT services at roughly 6.8%. Know where your industry stands before you ask for something its budget can’t stretch to.</p>
+
+<h2>Step 3: Prepare the conversation</h2>
+<p>Don’t improvise. Use if/then planning, which research on implementation intentions shows helps people actually follow through on difficult actions.</p>
+<p class="tl">Tap each scenario to reveal your line.</p>
+<div class="say"><small>If they open with the rating</small><p>“Thank you. Can we walk through the criteria for the next rating level, and where you see the gap between my work and that level?”</p></div>
+<div class="say"><small>If they say the budget is tight</small><p>“I understand. If the increment is limited, can we agree on a title change, a wider scope, or a review in six months with clear targets?”</p></div>
+<div class="say"><small>If they say “you’re doing great, just keep going”</small><p>“Great. What specifically would I need to deliver to be promoted in the next cycle? Can we put those goals on paper?”</p></div>
+<div class="say"><small>If you disagree with the outcome</small><p>“I’d like to understand how this was decided. Can I share a summary of my contributions for the calibration discussion or for next year’s review?”</p></div>
+<p>Notice what these have in common. None of them is an ultimatum. They turn a verdict into a conversation with next steps.</p>
+
+<h2>Step 4: Know what else you can ask for</h2>
+<p>If the money is capped, the negotiation isn’t over. Ask for what’s still on the table:</p>
+<ul>
+<li>A title or level change that raises your market value</li>
+<li>A larger scope, a visible project or a leadership role</li>
+<li>A learning or certification budget</li>
+<li>Flexibility in hours or location</li>
+<li>A dated, written review point instead of “we’ll see”</li>
+</ul>
+
+<h2>The loyalty tax: yes, it’s real</h2>
+<p>Staying put is a legitimate choice. But if your increments have tracked the average year after year while your scope has grown, you are paying a quiet tax for staying. Compare your current pay to what the market offers for your current responsibilities, not your original job description. If the gap is large, the conversation is about more than this year’s hike.</p>
+
+<h2>A reality check</h2>
+<p>Not every disappointing result is a failure of preparation. Budgets get frozen, sectors slow down and some managers will not advocate for you no matter what you bring. Preparation raises your odds. It doesn’t guarantee an outcome. If you’ve done everything right and the answer is still no, that is useful information about whether this employer is investing in your future.</p>
+
+<h2>Are you appraisal-ready? A 30-second honesty test</h2>
+<div class="tool">
+<p class="tl">Tick only what’s genuinely true. Nobody is grading you except your next increment.</p>
+<label class="chk"><input type="checkbox"><span>I’ve logged my wins, with numbers, in the last 90 days</span></label>
+<label class="chk"><input type="checkbox"><span>I know my band and what the next level requires</span></label>
+<label class="chk"><input type="checkbox"><span>I’ve looked at five or more external roles at my level</span></label>
+<label class="chk"><input type="checkbox"><span>I can state my top three contributions in 30 seconds</span></label>
+<label class="chk"><input type="checkbox"><span>I’ve asked my manager what “exceeds expectations” looks like</span></label>
+<label class="chk"><input type="checkbox"><span>I’ve prepared at least one non-salary ask</span></label>
+<p id="score" aria-live="polite"></p>
+</div>
+<h2>Your pre-appraisal plan</h2>
+<ol class="plan">
+<li><b>This week</b><span>Start the Evidence File. Write down your top five contributions with numbers.</span></li>
+<li><b>Next 2 weeks</b><span>Check your band and level. Scan five external openings for your role.</span></li>
+<li><b>Before the meeting</b><span>Write a one-page summary. Send it to your manager ahead of time.</span></li>
+<li><b>In the room</b><span>Use your if/then lines. Ask for next-level criteria and a date for the next review.</span></li>
+<li><b>After the meeting</b><span>Send a short written recap of what was agreed. Calendar the follow-up.</span></li>
+</ol>
+
+<p class="close">Appraisal season doesn’t reward the hardest worker. It rewards the person whose work is easiest to defend in a room they’re not in.</p>
+
+<p class="note">Salary figures are survey projections of averages, not guarantees, and they vary by company, sector and role. The Evidence File and conversation scripts are practical editorial frameworks, not independently validated instruments or substitutes for professional career or legal advice.</p>
+
+<h2>Sources</h2>
+<ol class="src">
+<li>Aon, Annual Salary Increase and Turnover Survey 2025-26 India, coverage via <a href="https://www.storyboard18.com/brand-makers/corporate-india-to-see-9-1-salary-hike-in-2026-as-attrition-normalises-aon-survey-90571.htm">Storyboard18</a> and <a href="https://www.dailyexcelsior.com/?p=2164465">Daily Excelsior</a> (sample size).</li>
+<li>Aon rewards leader on higher pay for top performers, via <a href="https://www.tribuneindia.com/news/business/india-leads-global-salary-hikes-with-average-appraisal-of-9-1-per-cent-aon-survey/">The Tribune</a>.</li>
+<li>Deloitte India Talent Outlook 2026, <a href="https://www.deloitte.com/in/en/about/press-room/average-increment-in-india-is-expected-to-be-9-1-percent-in-2026.html">press release</a>.</li>
+<li>Deloitte sector and promotion findings (IT services, promotion share), via <a href="https://www.peoplematters.in/news/compensation-benefits/pharma-and-semiconductors-lead-indias-2026-pay-hikes-while-it-services-slips-to-69percent-49129">People Matters</a>.</li>
+<li>Gollwitzer, P. M. &amp; Sheeran, P. (2006). Implementation Intentions and Goal Achievement. <a href="https://doi.org/10.1016/S0065-2601(06)38002-1">doi.org/10.1016/S0065-2601(06)38002-1</a></li>
+</ol>
+</article>
+</main>
+<script>
+(function(){
+document.documentElement.classList.add('js');
+var bar=document.getElementById('bar');
+function prog(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?h.scrollTop/m*100:0)+'%'}
+addEventListener('scroll',prog,{passive:true});prog();
+var fmt=new Intl.NumberFormat('en-IN',{maximumFractionDigits:0});
+function rs(n){return '₹'+fmt.format(Math.round(Math.abs(n)))}
+function sg(n){return (n<0?'−':'+')+rs(n)}
+var ctc=document.getElementById('ctc'),sec=document.getElementById('sec'),hike=document.getElementById('hike'),out=document.getElementById('out'),ver=document.getElementById('verdict');
+function calc(){
+var c=parseFloat(ctc.value),s=parseFloat(sec.value),h=parseFloat(hike.value);
+if(!(c>0)||isNaN(h)){out.innerHTML='';ver.textContent='Enter your CTC and hike to see where you land.';return}
+var mine=c*h/100,avg=c*s/100,five=c*(Math.pow(1+h/100,5)-Math.pow(1+s/100,5));
+out.innerHTML='<div><b>'+rs(mine)+'</b><span>Your raise</span></div><div><b>'+rs(avg)+'</b><span>Sector average raise</span></div><div><b>'+sg(mine-avg)+'</b><span>Gap this year</span></div><div><b>'+sg(five)+'</b><span>Yearly pay gap after 5 years of this pattern</span></div>';
+ver.textContent=h-s<=-0.5?'Below your sector average. That isn’t a verdict. It’s your negotiation agenda.':h-s>=0.5?'Above your sector average. Lovely. Keep the receipts anyway.':'Right on average. Statistically unremarkable, which is exactly the problem this post exists to fix.';
+}
+[ctc,sec,hike].forEach(function(e){e.addEventListener('input',calc)});calc();
+document.querySelectorAll('.say').forEach(function(d){
+d.tabIndex=0;d.setAttribute('role','button');d.setAttribute('aria-expanded','false');
+function t(){d.setAttribute('aria-expanded',d.classList.toggle('open'))}
+d.addEventListener('click',t);
+d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}});
+});
+var cks=document.querySelectorAll('.chk input'),sc=document.getElementById('score');
+var msg=['Walking in on vibes alone. Brave, but vibes don’t survive calibration.','Walking in on vibes alone. Brave, but vibes don’t survive calibration.','Halfway there. Your manager is rooting for you but holding no ammunition.','Halfway there. Your manager is rooting for you but holding no ammunition.','Strong. Close the last gap or two before the meeting.','Strong. Close the last gap or two before the meeting.','Annoyingly well prepared. Go get it.'];
+function q(){var n=0;cks.forEach(function(c){if(c.checked)n++});sc.innerHTML='<b>'+n+'/6</b>'+msg[n]}
+cks.forEach(function(c){c.addEventListener('change',q)});q();
+})();
+</script>
+</body>
+</html>
