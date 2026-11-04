@@ -6,11 +6,20 @@ Sharp, honest takes on work, career growth, geopolitics, finance, AI, and the me
 
 🌐 **Live site:** https://solutionssnarky-droid.github.io/
 
+## Repository snapshot
+
+This repository is a static GitHub Pages site with a lightweight content structure and no heavy app framework.
+
+- **Primary language:** HTML
+- **Detected repository composition:** HTML — 1,342,702 bytes (~100% of tracked code)
+- **Hosting model:** GitHub Pages from the `main` branch
+- **Content pattern:** standalone root-level HTML articles auto-discovered by the homepage
+
 ## How the blog archive works
 
-The homepage (`index.html`) automatically discovers standalone `.html` article files in the repository root using the GitHub API. It then reads each article's HTML metadata to display its title and description, and links each entry directly to the post.
+The homepage (`index.html`) automatically discovers standalone `.html` article files in the repository root using the GitHub API. It then reads each article's HTML metadata to display its title and description in the archive.
 
-This means **new root-level HTML posts are included automatically** after they are pushed to the `main` branch. You do not need to manually add a row to the homepage or maintain a separate list in this README.
+This means **new root-level HTML posts are included automatically** after they are pushed to the `main` branch. You do not need to manually add a row to the homepage or maintain a separate list in code.
 
 - `index.html` — homepage, featured article, searchable archive, and about section.
 - `*.html` in the repository root — individual published articles.
@@ -49,7 +58,7 @@ The site uses a dark editorial style with Fraunces headings, Plus Jakarta Sans b
 
 ## Deployment
 
-The site is intended for GitHub Pages from the `main` branch, using the repository root as the publishing source. The automatic archive reads the public GitHub repository and raw HTML article files in the browser; if the GitHub API is temporarily unavailable or rate-limited, the archive will display a link to the repository instead.
+The site is intended for GitHub Pages from the `main` branch, using the repository root as the publishing source. The automatic archive reads the public GitHub repository and raw HTML article files to build the homepage live.
 
 ## About
 
